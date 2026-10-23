@@ -26,7 +26,6 @@
       min-height: 100vh;
     }
 
-    /* Animated Header */
     header {
       background: var(--primary-gradient);
       padding: 16px 24px;
@@ -63,7 +62,6 @@
 
     .container { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
 
-    /* Glassmorphism Cards */
     .card { 
       background: var(--card-bg); 
       backdrop-filter: blur(12px);
@@ -94,7 +92,6 @@
 
     .hidden { display: none !important; }
 
-    /* Folders Grid */
     .folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
     .folder-card { 
       background: rgba(255, 255, 255, 0.05); 
@@ -109,7 +106,6 @@
       border-color: #e9d5ff;
     }
 
-    /* Responsive Table Layout */
     .table-container { width: 100%; overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
     th, td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(168, 85, 247, 0.2); word-break: break-word; }
@@ -123,7 +119,6 @@
       border: 1px solid var(--card-border); flex-wrap: wrap; 
     }
 
-    /* Person / Faculty Cards */
     .person-card { 
       background: rgba(0, 0, 0, 0.25); 
       border: 1px solid var(--card-border); 
@@ -145,12 +140,10 @@
     }
     .btn-delete { background: #ef4444; color: #fff; padding: 5px 10px; border-radius: 6px; font-size: 11px; border: none; cursor: pointer; }
 
-    /* Challenge Board Cards */
     .challenge-card { border-radius: 14px; padding: 18px; color: #fff; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
     .grad-purple-pink { background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); }
     .grad-violet-blue { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
 
-    /* Admin Sidebar */
     .admin-sidebar-btn { width: 100%; text-align: left; background: transparent; border: none; color: var(--text-color); padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-bottom: 4px; transition: 0.2s; }
     .admin-sidebar-btn.active, .admin-sidebar-btn:hover { background: rgba(192, 132, 252, 0.2); color: var(--accent-color); }
 
@@ -181,7 +174,6 @@
     </div>
   </header>
 
-  <!-- Marquee Notification Ticker -->
   <div class="no-print" style="background: rgba(0,0,0,0.3); border-bottom: 1px solid var(--card-border); padding: 8px 0; overflow: hidden; white-space: nowrap;">
     <div style="display: inline-block; animation: marquee 25s linear infinite; font-size: 13px; color: var(--accent-color); font-weight: bold;">
       <span id="noticeMarqueeText">📢 Welcome to Abdul Bari Academy Student Information Portal! Manage portals, attendance, and records efficiently.</span>
@@ -190,7 +182,6 @@
 
   <div class="container">
     
-    <!-- HOME TAB -->
     <div id="homeTab" class="tab-content">
       <div class="card" style="background: var(--primary-gradient); color: #fff;">
         <h1 style="margin: 0 0 10px 0; font-size: 26px;">Abdul Bari Academy</h1>
@@ -214,9 +205,7 @@
       </div>
     </div>
 
-    <!-- PORTALS TAB -->
     <div id="portalsTab" class="tab-content hidden">
-      <!-- Level 1: Categories -->
       <div id="mainCategoryLevel" class="card">
         <h2>📁 Select Study Category</h2>
         <div class="folder-grid">
@@ -231,21 +220,18 @@
         </div>
       </div>
 
-      <!-- Level 2: Classes -->
       <div id="classFolderLevel" class="card hidden">
         <button class="btn" id="btnBackToMain" style="margin-bottom: 15px;">⬅️ Back to Categories</button>
         <h2 id="selectedCategoryHeader">Select Class</h2>
         <div class="folder-grid" id="classFoldersGrid"></div>
       </div>
 
-      <!-- Level 3: Subjects -->
       <div id="subjectFolderLevel" class="card hidden">
         <button class="btn" id="btnBackToClasses" style="margin-bottom: 15px;">⬅️ Back to Classes</button>
         <h2 id="selectedClassHeader">Subjects</h2>
         <div class="folder-grid" id="subjectFoldersGrid"></div>
       </div>
 
-      <!-- Level 4: Subject Portal -->
       <div id="subjectDetailLevel" class="card hidden">
         <button class="btn no-print" id="btnBackToSubjects" style="margin-bottom: 15px;">⬅️ Back to Subjects</button>
         
@@ -307,7 +293,6 @@
       </div>
     </div>
 
-    <!-- STUDENTS TAB -->
     <div id="studentsTab" class="tab-content hidden">
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
@@ -337,7 +322,6 @@
       </div>
     </div>
 
-    <!-- USTHADS & COMMITTEE TAB -->
     <div id="usthadsTab" class="tab-content hidden">
       <div class="card">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
@@ -352,7 +336,6 @@
       </div>
     </div>
 
-    <!-- CHALLENGE BOARD TAB -->
     <div id="pointsTab" class="tab-content hidden">
       <div class="card">
         <h2>🏆 Subject Challenge & Leaderboard</h2>
@@ -368,7 +351,6 @@
       </div>
     </div>
 
-    <!-- ADMIN TAB (Hidden for Public View by default) -->
     <div id="adminTab" class="tab-content hidden admin-only">
       <div class="card">
         <h2>🛠️ Academy Administration Panel</h2>
@@ -384,7 +366,6 @@
           </div>
 
           <div>
-            <!-- Section 1: Classes -->
             <div id="secClasses" class="admin-sub-sec">
               <h3>Manage Classes</h3>
               <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
@@ -399,7 +380,6 @@
               <div id="manageClassesList"></div>
             </div>
 
-            <!-- Section 2: Students -->
             <div id="secStudents" class="admin-sub-sec hidden">
               <h3>Register New Student</h3>
               <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
@@ -414,7 +394,6 @@
               </div>
             </div>
 
-            <!-- Section 3: Faculty -->
             <div id="secUsthads" class="admin-sub-sec hidden">
               <h3>Manage Faculty / Usthads</h3>
               <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
@@ -432,7 +411,6 @@
               <div id="manageTeachersList"></div>
             </div>
 
-            <!-- Section 4: Challenge Teams -->
             <div id="secChallenges" class="admin-sub-sec hidden">
               <h3>Create Subject Challenge Team</h3>
               <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
@@ -450,7 +428,6 @@
               </div>
             </div>
 
-            <!-- Section 5: Announcements -->
             <div id="secAnnouncements" class="admin-sub-sec hidden">
               <h3>Broadcast Announcements</h3>
               <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
@@ -465,7 +442,6 @@
               </div>
             </div>
 
-            <!-- Section 6: Data -->
             <div id="secData" class="admin-sub-sec hidden">
               <h3>Backup & Reset Data</h3>
               <p style="font-size: 13px; opacity: 0.8;">Download portal database backup or reset state if needed.</p>
@@ -481,7 +457,6 @@
 
   </div>
 
-  <!-- Login Modal -->
   <div id="loginModal" class="card hidden" style="position: fixed; top: 30%; left: 50%; transform: translate(-50%, -30%); width: 300px; z-index: 1200; border: 2px solid var(--accent-color);">
     <h3 style="margin-top:0;">Admin Login</h3>
     <input type="text" id="adminUser" placeholder="Username (admin)" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 6px; box-sizing: border-box;"><br>
@@ -492,12 +467,29 @@
     </div>
   </div>
 
-  <script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB5e0DcxX-5AWIgHBU5yyD4-UdM4rXYjhg",
+      authDomain: "abdul-bari-academy-attendence.firebaseapp.com",
+      projectId: "abdul-bari-academy-attendence",
+      storageBucket: "abdul-bari-academy-attendence.firebasestorage.app",
+      messagingSenderId: "376010557860",
+      appId: "1:376010557860:web:624d8b620c707773f59931",
+      measurementId: "G-8E94QZXLNQ"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+    const dbRef = ref(database, 'ab_academy_db');
+
     let isAdmin = false;
     let currentActiveClassName = '';
     let currentActiveSubjectName = '';
-    
-    let dbData = JSON.parse(localStorage.getItem('ab_academy_final_db')) || {
+
+    const defaultDbData = {
       adminCreds: { user: 'admin', pass: '123' },
       marqueeText: "📢 Welcome to Abdul Bari Academy Student Information Portal!",
       liveAnnouncement: "Welcome to the official digital portal. Check out overall class statistics and subject details below!",
@@ -516,6 +508,37 @@
       studyNotes: {}
     };
 
+    window.dbData = defaultDbData;
+
+    onValue(dbRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        window.dbData = data;
+      } else {
+        set(dbRef, defaultDbData);
+      }
+      refreshUI();
+    });
+
+    window.saveData = function() {
+      set(dbRef, window.dbData);
+      refreshUI();
+    };
+
+    function refreshUI() {
+      updateDashboardStats(); 
+      populateAdminDropdowns();
+      renderManageClassesList();
+      renderManageTeachersList();
+      renderLiveAnnouncements();
+      renderUsthads();
+      renderDashStudentsTable();
+      if (currentActiveClassName && currentActiveSubjectName) {
+        renderAttendanceTable();
+        renderSubjectNotes();
+      }
+    }
+
     function updateDateTimeDisplay() {
       const now = new Date();
       const dateStr = now.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
@@ -528,266 +551,42 @@
     }
     setInterval(updateDateTimeDisplay, 1000);
 
-    function saveData() { 
-      localStorage.setItem('ab_academy_final_db', JSON.stringify(dbData)); 
-      updateDashboardStats(); 
-      populateAdminDropdowns();
-      renderManageClassesList();
-      renderManageTeachersList();
-      renderLiveAnnouncements();
-    }
-
     function setupClick(id, fn) {
       const el = document.getElementById(id);
       if(el) { el.addEventListener('click', (e) => fn(e)); }
     }
 
-    function showAdminSubSection(secId, btnEl) {
+    window.switchTab = function(tabId, btnEl) {
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(tb => tb.classList.remove('active'));
+      document.getElementById(tabId).classList.remove('hidden');
+      if (btnEl) btnEl.classList.add('active');
+    };
+
+    window.showAdminSubSection = function(secId, btnEl) {
       document.querySelectorAll('.admin-sub-sec').forEach(s => s.classList.add('hidden'));
       document.querySelectorAll('.admin-sidebar-btn').forEach(b => b.classList.remove('active'));
       document.getElementById(secId).classList.remove('hidden');
       if(btnEl) btnEl.classList.add('active');
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => switchTab(btn.dataset.tab, btn));
-      });
-
-      setupClick('authBtn', () => document.getElementById('loginModal').classList.remove('hidden'));
-      setupClick('btnCancelLogin', () => document.getElementById('loginModal').classList.add('hidden'));
-      
-      setupClick('btnDoLogin', () => {
-        const u = document.getElementById('adminUser').value;
-        const p = document.getElementById('adminPass').value;
-        if(u === dbData.adminCreds.user && p === dbData.adminCreds.pass) {
-          isAdmin = true;
-          document.getElementById('userInfo').innerText = "Admin View";
-          document.getElementById('authBtn').classList.add('hidden');
-          document.getElementById('logoutBtn').classList.remove('hidden');
-          document.getElementById('loginModal').classList.add('hidden');
-          document.querySelectorAll('.admin-only').forEach(e => e.classList.remove('hidden'));
-          populateAdminDropdowns();
-          renderDashStudentsTable();
-          alert("✅ Admin Login Success!");
-        } else { alert("❌ Invalid Credentials"); }
-      });
-
-      setupClick('logoutBtn', () => {
-        isAdmin = false;
-        document.getElementById('userInfo').innerText = "Public View";
-        document.getElementById('authBtn').classList.remove('hidden');
-        document.getElementById('logoutBtn').classList.add('hidden');
-        document.querySelectorAll('.admin-only').forEach(e => e.classList.add('hidden'));
-        switchTab('homeTab', document.querySelector('[data-tab="homeTab"]'));
-        renderDashStudentsTable();
-      });
-
-      setupClick('btnAddClass', adminAddNewClass);
-      setupClick('btnAddTeacher', adminAddTeacher);
-
-      setupClick('btnCollegePortal', () => openSectionFolders('College Studies'));
-      setupClick('btnSchoolPortal', () => openSectionFolders('School Studies'));
-      setupClick('btnBackToMain', backToMainCategory);
-      setupClick('btnBackToClasses', () => {
-        document.getElementById('subjectFolderLevel').classList.add('hidden');
-        document.getElementById('classFolderLevel').classList.remove('hidden');
-      });
-      setupClick('btnBackToSubjects', () => {
-        document.getElementById('subjectDetailLevel').classList.add('hidden');
-        document.getElementById('subjectFolderLevel').classList.remove('hidden');
-      });
-
-      updateDashboardStats();
-      renderDashStudentsTable();
-      populateDashClassFilter();
-      renderUsthads();
-      populateAdminDropdowns();
-      renderManageClassesList();
-      renderManageTeachersList();
-      renderLiveAnnouncements();
-      updateDateTimeDisplay();
-    });
-
-    function renderLiveAnnouncements() {
-      if(dbData.marqueeText) document.getElementById('noticeMarqueeText').innerText = dbData.marqueeText;
-      if(dbData.liveAnnouncement) document.getElementById('msgNotificationText').innerText = dbData.liveAnnouncement;
-      if(dbData.msgTimestamp) document.getElementById('msgTimestamp').innerText = dbData.msgTimestamp;
-    }
-
-    function switchTab(tabId, btn) {
-      document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.getElementById(tabId).classList.remove('hidden');
-      if(btn) btn.classList.add('active');
-      if(tabId === 'pointsTab') populateChallengeFilters();
-    }
+    };
 
     function updateDashboardStats() {
-      let stCount = 0; for(let cls in dbData.students) stCount += dbData.students[cls].length;
-      let clsCount = 0; for(let p in dbData.classes) clsCount += dbData.classes[p].length;
-      let ustCount = dbData.usthads ? dbData.usthads.length : 0;
-      document.getElementById('pubStatStudents').innerText = stCount;
-      document.getElementById('pubStatClasses').innerText = clsCount;
-      document.getElementById('pubStatUsthads').innerText = ustCount;
-    }
-
-    function populateDashClassFilter() {
-      const sel = document.getElementById('dashClassFilterSelect');
-      if(!sel) return;
-      sel.innerHTML = '<option value="">📁 All Classes</option>';
-      for(let p in dbData.classes) {
-        dbData.classes[p].forEach(c => { sel.innerHTML += `<option value="${c}">${c}</option>`; });
+      let totStudents = 0;
+      let totClasses = 0;
+      if (window.dbData.students) {
+        Object.values(window.dbData.students).forEach(arr => totStudents += (arr ? arr.length : 0));
       }
-    }
-
-    function renderDashStudentsTable() {
-      const tbody = document.getElementById('dashStudentsTableBody');
-      const q = document.getElementById('dashStudentSearchInput') ? document.getElementById('dashStudentSearchInput').value.toLowerCase().trim() : '';
-      const selectedClass = document.getElementById('dashClassFilterSelect') ? document.getElementById('dashClassFilterSelect').value : '';
-      if(!tbody) return; tbody.innerHTML = "";
-
-      let c = 1, found = false;
-      for(let cls in dbData.students) {
-        if(selectedClass && selectedClass !== cls) continue;
-        dbData.students[cls].forEach(s => {
-          if(!q || s.name.toLowerCase().includes(q)) {
-            found = true;
-            let adminBtns = isAdmin ? `<button class="btn-delete" onclick="deleteStudent(${s.id}, '${cls}')">🗑️ Delete</button>` : '';
-            let phoneClean = (s.phone || '').replace(/\D/g, '');
-            let waBtn = `<a href="https://wa.me/91${phoneClean}" target="_blank" class="btn-whatsapp">💬 Chat WA</a>`;
-
-            tbody.innerHTML += `<tr>
-              <td><img src="${s.photo || 'https://via.placeholder.com/45'}" style="width:38px; height:38px; border-radius:50%; object-fit:cover;"></td>
-              <td>${c++}</td>
-              <td><b>${s.name}</b></td>
-              <td>${s.father || 'N/A'}</td>
-              <td>${cls}</td>
-              <td>${waBtn} ${adminBtns}</td>
-            </tr>`;
-          }
-        });
+      if (window.dbData.classes) {
+        Object.values(window.dbData.classes).forEach(arr => totClasses += (arr ? arr.length : 0));
       }
-      if(!found) tbody.innerHTML = `<tr><td colspan="6" style="color:#ffd000; padding:16px;">No student records found.</td></tr>`;
-    }
-
-    function renderUsthads() {
-      const usthadGrid = document.getElementById('usthadsGrid');
-      const committeeGrid = document.getElementById('committeeGrid');
-      const q = document.getElementById('teacherSearchInput') ? document.getElementById('teacherSearchInput').value.toLowerCase().trim() : '';
-      if(!usthadGrid || !committeeGrid) return;
+      const pubStatStudents = document.getElementById('pubStatStudents');
+      const pubStatClasses = document.getElementById('pubStatClasses');
+      const pubStatUsthads = document.getElementById('pubStatUsthads');
       
-      usthadGrid.innerHTML = ""; committeeGrid.innerHTML = "";
-
-      (dbData.usthads || []).forEach(u => {
-        let teacherLocStr = u.loc || 'Academy Campus';
-        let subList = (u.sub || 'General Studies').split(',');
-
-        if(!q || u.name.toLowerCase().includes(q) || teacherLocStr.toLowerCase().includes(q) || u.sub.toLowerCase().includes(q)) {
-          let adminBtns = isAdmin ? `<div style="margin-top:10px;"><button class="btn-delete" onclick="deleteTeacher(${u.id})">🗑️ Delete</button></div>` : '';
-          let phoneClean = (u.contact || '').replace(/\D/g, '');
-          let waBtn = u.contact ? `<a href="https://wa.me/91${phoneClean}" target="_blank" class="btn-whatsapp">💬 WhatsApp Teacher</a>` : '';
-
-          const cardHtml = `<div class="person-card">
-            <img src="${u.photo || 'https://via.placeholder.com/80'}">
-            <h3 style="margin:2px 0 0 0; font-size:16px;">${u.name}</h3>
-            <div style="font-size:12px; opacity:0.8; margin-top:2px;">📍 ${teacherLocStr}</div>
-            <div style="font-size:11px; color:var(--accent-color); font-weight:bold; margin-top:4px;">📖 Subjects: ${u.sub || 'Faculty'}</div>
-            ${waBtn}
-            ${adminBtns}
-          </div>`;
-
-          if(u.type === 'committee') committeeGrid.innerHTML += cardHtml;
-          else usthadGrid.innerHTML += cardHtml;
-        }
-      });
+      if (pubStatStudents) pubStatStudents.innerText = totStudents;
+      if (pubStatClasses) pubStatClasses.innerText = totClasses;
+      if (pubStatUsthads) pubStatUsthads.innerText = window.dbData.usthads ? window.dbData.usthads.length : 0;
     }
-
-    function backToMainCategory() {
-      document.getElementById('mainCategoryLevel').classList.remove('hidden');
-      document.getElementById('classFolderLevel').classList.add('hidden');
-      document.getElementById('subjectFolderLevel').classList.add('hidden');
-      document.getElementById('subjectDetailLevel').classList.add('hidden');
-    }
-
-    function openSectionFolders(sec) {
-      document.getElementById('mainCategoryLevel').classList.add('hidden');
-      document.getElementById('classFolderLevel').classList.remove('hidden');
-      document.getElementById('selectedCategoryHeader').innerText = `Select Class (${sec})`;
-      const grid = document.getElementById('classFoldersGrid'); grid.innerHTML = "";
-      (dbData.classes[sec] || []).forEach(cls => {
-        const card = document.createElement('div');
-        card.className = 'folder-card';
-        card.innerHTML = `<h3>📁 ${cls}</h3>`;
-        card.onclick = () => openSubjectFoldersForClass(cls);
-        grid.appendChild(card);
-      });
-    }
-
-    function openSubjectFoldersForClass(clsName) {
-      currentActiveClassName = clsName;
-      document.getElementById('classFolderLevel').classList.add('hidden');
-      document.getElementById('subjectFolderLevel').classList.remove('hidden');
-      document.getElementById('selectedClassHeader').innerText = `Subjects for ${clsName}`;
-      const grid = document.getElementById('subjectFoldersGrid'); grid.innerHTML = "";
-      (dbData.subjects[clsName] || []).forEach(sub => {
-        const card = document.createElement('div');
-        card.className = 'folder-card';
-        card.innerHTML = `<h3>📖 ${sub}</h3>`;
-        card.onclick = () => openSubjectStudentList(clsName, sub);
-        grid.appendChild(card);
-      });
-    }
-
-    function openSubjectStudentList(clsName, subName) {
-      currentActiveClassName = clsName; currentActiveSubjectName = subName;
-      document.getElementById('subjectFolderLevel').classList.add('hidden');
-      document.getElementById('subjectDetailLevel').classList.remove('hidden');
-      document.getElementById('topicTitle').innerText = `${clsName} - ${subName} Portal`;
-      renderAttendanceTable(clsName);
-    }
-
-    function renderAttendanceTable(clsName) {
-      const tbody = document.getElementById('attendanceList'); tbody.innerHTML = "";
-      let students = dbData.students[clsName] || [];
-      students.forEach((s, idx) => {
-        tbody.innerHTML += `<tr>
-          <td><img src="${s.photo || 'https://via.placeholder.com/40'}" style="width:36px; height:36px; border-radius:50%; object-fit:cover;"></td>
-          <td>${idx+1}</td>
-          <td><b>${s.name}</b></td>
-          <td><span style="color:#10b981; font-weight:bold;">${s.status || 'Present'}</span></td>
-        </tr>`;
-      });
-    }
-
-    function exportAttendanceToExcel() {
-      let students = dbData.students[currentActiveClassName] || [];
-      let selectedMonth = document.getElementById('exportMonthSelect').value;
-      let excelData = students.map((s, i) => ({
-        'Month': selectedMonth,
-        'Class': currentActiveClassName,
-        'Subject': currentActiveSubjectName,
-        'Roll No': i + 1,
-        'Student Name': s.name,
-        'Attendance Status': s.status || 'Present'
-      }));
-      let worksheet = XLSX.utils.json_to_sheet(excelData);
-      let workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, `${selectedMonth} Attendance`);
-      XLSX.writeFile(workbook, `${currentActiveClassName}_${currentActiveSubjectName}_Attendance.xlsx`);
-    }
-
-    function printAttendanceSheet() { window.print(); }
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyB5e0DcxX-5AWIgHBU5yyD4-UdM4rXYjhg",
-  authDomain: "abdul-bari-academy-attendence.firebaseapp.com",
-  projectId: "abdul-bari-academy-attendence",
-  storageBucket: "abdul-bari-academy-attendence.firebasestorage.app",
-  messagingSenderId: "376010557860",
-  appId: "1:376010557860:web:624d8b620c707773f59931",
-  measurementId: "G-8E94QZXLNQ"
-};
   </script>
 </body>
 </html>
