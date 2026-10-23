@@ -255,17 +255,6 @@
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
               <h3 style="margin: 0;">📋 Attendance Register</h3>
               <div class="no-print" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                <select id="exportMonthSelect" style="padding: 6px 10px; border-radius: 6px; background: #0f172a; color: #fff; border: 1px solid var(--card-border);">
-                  <option value="All">Full Year / All Months</option>
-                  <option value="January">January</option><option value="February">February</option><option value="March">March</option>
-                  <option value="April">April</option><option value="May">May</option><option value="June">June</option>
-                  <option value="July">July</option><option value="August">August</option><option value="September">September</option>
-                  <option value="October">October</option><option value="November">November</option><option value="December">December</option>
-                </select>
-                <select id="attendanceViewMode" style="padding: 6px 10px; border-radius: 6px; background: #0f172a; color: #fff; border: 1px solid var(--card-border);" onchange="renderAttendanceTable()">
-                  <option value="daily">Standard View</option>
-                  <option value="weekOnPage">One Week View (1 Page)</option>
-                </select>
                 <button class="btn" style="background: #10b981;" id="btnExportExcel">📊 Export Excel</button>
                 <button class="btn" style="background: #6366f1;" id="btnPrintSheet">🖨️ Print Sheet</button>
               </div>
@@ -277,8 +266,8 @@
             </div>
 
             <div class="table-container">
-              <table id="attendanceTableElement">
-                <thead id="attendanceTableHead">
+              <table>
+                <thead>
                   <tr>
                     <th style="width: 50px;">Photo</th>
                     <th style="width: 60px;">Roll</th>
@@ -381,7 +370,7 @@
             </div>
 
             <div id="secUsthads" class="admin-sub-sec hidden">
-              <h3>Manage Faculty / Usthads (with Map & Specialization)</h3>
+              <h3>Manage Faculty / Usthads</h3>
               <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
                 <select id="teacherCategorySelect" style="padding: 8px; margin-bottom: 10px; border-radius: 6px; width: 100%;">
                   <option value="usthad">Usthad / Faculty</option>
@@ -389,8 +378,6 @@
                 </select>
                 <input type="text" id="teacherNameInput" placeholder="Faculty Name" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 8px; box-sizing: border-box;">
                 <input type="text" id="teacherLocInput" placeholder="Location / Place" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 8px; box-sizing: border-box;">
-                <input type="text" id="teacherMapUrlInput" placeholder="Google Map Embed / Location Link" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 8px; box-sizing: border-box;">
-                <input type="text" id="teacherSpecializationInput" placeholder="Specialization (e.g., Senior Fiqh Expert)" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 8px; box-sizing: border-box;">
                 <input type="text" id="teacherSubInput" placeholder="Subjects Handled" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 8px; box-sizing: border-box;">
                 <input type="text" id="teacherContactInput" placeholder="WhatsApp Number" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 8px; box-sizing: border-box;">
                 <button class="btn" id="btnAddTeacher">Add Faculty Member</button>
@@ -462,7 +449,7 @@
         'Plus One': [{ id: 102, name: 'Rahul Sharma', father: 'Sharma', phone: '9847000000', photo: 'https://via.placeholder.com/100', status: 'Present' }]
       },
       usthads: [
-        { id: 1, type: 'usthad', name: 'Prof. Abdul Bari', loc: 'Puthupparmba', mapUrl: 'https://maps.google.com', specialization: 'Senior Fiqh Instructor', sub: 'Fiqh, Arabic', contact: '9847000000', photo: 'https://via.placeholder.com/100' }
+        { id: 1, type: 'usthad', name: 'Prof. Abdul Bari', loc: 'Puthupparmba', sub: 'Fiqh, Arabic', contact: '9847000000', photo: 'https://via.placeholder.com/100' }
       ],
       studyNotes: {}
     };
@@ -607,91 +594,36 @@
 
     function renderAttendanceTable() {
       const tbody = document.getElementById('attendanceList');
-      const thead = document.getElementById('attendanceTableHead');
-      if (!tbody || !thead) return;
+      if (!tbody) return;
       tbody.innerHTML = '';
 
-      const viewMode = document.getElementById('attendanceViewMode') ? document.getElementById('attendanceViewMode').value : 'daily';
       const stds = (window.dbData.students && window.dbData.students[currentActiveClassName]) ? window.dbData.students[currentActiveClassName] : [];
-
-      if (viewMode === 'weekOnPage') {
-        // One week attendance on one page view
-        thead.innerHTML = `
-          <tr>
-            <th style="width: 40px;">Photo</th>
-            <th>Name</th>
-            <th>Mon</th>
-            <th>Tue</th>
-            <th>Wed</th>
-            <th>Thu</th>
-            <th>Fri</th>
-            <th>Sat</th>
-            <th>Sun</th>
-          </tr>
+      
+      stds.forEach((st, idx) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><img src="${st.photo || 'https://via.placeholder.com/50'}" style="width:35px; height:35px; border-radius:50%; object-fit:cover;"></td>
+          <td>${st.id || (idx + 1)}</td>
+          <td><b>${st.name}</b></td>
+          <td>
+            <button class="btn" style="padding:4px 10px; font-size:11px; background:${st.status === 'Absent' ? '#ef4444' : '#10b981'}" id="btnToggleAtt_${idx}">
+              ${st.status || 'Present'}
+            </button>
+          </td>
         `;
-        if (stds.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="9" style="text-align:center; color:#ffd000;">No students registered.</td></tr>';
-          return;
-        }
-        stds.forEach((st, idx) => {
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td><img src="${st.photo || 'https://via.placeholder.com/50'}" style="width:30px; height:30px; border-radius:50%; object-fit:cover;"></td>
-            <td><b>${st.name}</b></td>
-            <td><span style="color:${st.wMon==='Absent'?'#ef4444':'#10b981'}">${st.wMon||'P'}</span></td>
-            <td><span style="color:${st.wTue==='Absent'?'#ef4444':'#10b981'}">${st.wTue||'P'}</span></td>
-            <td><span style="color:${st.wWed==='Absent'?'#ef4444':'#10b981'}">${st.wWed||'P'}</span></td>
-            <td><span style="color:${st.wThu==='Absent'?'#ef4444':'#10b981'}">${st.wThu||'P'}</span></td>
-            <td><span style="color:${st.wFri==='Absent'?'#ef4444':'#10b981'}">${st.wFri||'P'}</span></td>
-            <td><span style="color:${st.wSat==='Absent'?'#ef4444':'#10b981'}">${st.wSat||'P'}</span></td>
-            <td><span style="color:${st.wSun==='Absent'?'#ef4444':'#10b981'}">${st.wSun||'P'}</span></td>
-          `;
-          tbody.appendChild(tr);
-        });
-      } else {
-        // Standard Daily / Monthly View with Admin check
-        thead.innerHTML = `
-          <tr>
-            <th style="width: 50px;">Photo</th>
-            <th style="width: 60px;">Roll</th>
-            <th>Student Name</th>
-            <th>Status / Action</th>
-          </tr>
-        `;
-        if (stds.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:#ffd000;">No students registered.</td></tr>';
-          return;
-        }
-
-        stds.forEach((st, idx) => {
-          const tr = document.createElement('tr');
-          const canToggle = isAdmin; // Only admin can change attendance status
-          tr.innerHTML = `
-            <td><img src="${st.photo || 'https://via.placeholder.com/50'}" style="width:35px; height:35px; border-radius:50%; object-fit:cover;"></td>
-            <td>${st.id || (idx + 1)}</td>
-            <td><b>${st.name}</b></td>
-            <td>
-              <button class="btn" style="padding:4px 10px; font-size:11px; background:${st.status === 'Absent' ? '#ef4444' : '#10b981'}; ${canToggle ? '' : 'cursor:default; opacity:0.9;'}" id="btnToggleAtt_${idx}" ${canToggle ? '' : 'disabled'}>
-                ${st.status || 'Present'} ${canToggle ? '' : ' (View Only)'}
-              </button>
-            </td>
-          `;
-          tbody.appendChild(tr);
-          
-          if (canToggle) {
-            setTimeout(() => {
-              const btn = document.getElementById(`btnToggleAtt_${idx}`);
-              if(btn) {
-                btn.onclick = () => {
-                  const curr = window.dbData.students[currentActiveClassName][idx].status || 'Present';
-                  window.dbData.students[currentActiveClassName][idx].status = (curr === 'Present') ? 'Absent' : 'Present';
-                  window.saveData();
-                };
-              }
-            }, 0);
+        tbody.appendChild(tr);
+        
+        setTimeout(() => {
+          const btn = document.getElementById(`btnToggleAtt_${idx}`);
+          if(btn) {
+            btn.onclick = () => {
+              const curr = window.dbData.students[currentActiveClassName][idx].status || 'Present';
+              window.dbData.students[currentActiveClassName][idx].status = (curr === 'Present') ? 'Absent' : 'Present';
+              window.saveData();
+            };
           }
-        });
-      }
+        }, 0);
+      });
     }
 
     function renderSubjectNotes() {
@@ -752,20 +684,13 @@
       const usthadsList = window.dbData.usthads || [];
 
       usthadsList.forEach((u) => {
-        let studentCount = 0;
-        if(window.dbData.students) {
-          Object.values(window.dbData.students).forEach(arr => studentCount += arr.length);
-        }
-
         const card = document.createElement('div');
         card.className = 'person-card';
         card.innerHTML = `
           <img src="${u.photo || 'https://via.placeholder.com/100'}">
           <h3 style="margin:5px 0; font-size:16px;">${u.name}</h3>
-          <p style="margin:2px 0; font-size:12px; color:var(--accent-color);"><b>${u.specialization || 'Faculty'}</b></p>
-          <p style="margin:2px 0; font-size:12px; opacity:0.8;">📍 ${u.loc || 'Academy'} ${u.mapUrl ? `<a href="${u.mapUrl}" target="_blank" style="color:#38bdf8;">[Map]</a>`:''}</p>
-          <p style="margin:3px 0; font-size:11px; opacity:0.8;">👥 Total Students in Academy: ${studentCount}</p>
-          <p style="margin:4px 0; font-size:11px; color:#e9d5ff;"><b>Sub: ${u.sub || 'General'}</b></p>
+          <p style="margin:2px 0; font-size:12px; opacity:0.8;">📍 ${u.loc || 'Academy'}</p>
+          <p style="margin:4px 0; font-size:11px; color:var(--accent-color);"><b>${u.sub || 'Faculty'}</b></p>
           <a href="https://wa.me/91${u.contact}" target="_blank" class="btn-whatsapp">📱 Contact</a>
         `;
 
@@ -786,7 +711,6 @@
         document.getElementById('authBtn').classList.add('hidden');
         document.getElementById('logoutBtn').classList.remove('hidden');
         document.getElementById('loginModal').classList.add('hidden');
-        refreshUI();
       } else {
         alert('Invalid Login Credentials!');
       }
@@ -798,7 +722,6 @@
       document.getElementById('userInfo').innerText = 'Public View';
       document.getElementById('authBtn').classList.remove('hidden');
       document.getElementById('logoutBtn').classList.add('hidden');
-      refreshUI();
       window.switchTab('homeTab', document.querySelector('.tab-btn[data-tab="homeTab"]'));
     });
 
@@ -820,54 +743,6 @@
       }
       regSelect.innerHTML = classOptions;
     }
-
-    setupClick('btnAddTeacher', () => {
-      const type = document.getElementById('teacherCategorySelect').value;
-      const name = document.getElementById('teacherNameInput').value.trim();
-      const loc = document.getElementById('teacherLocInput').value.trim();
-      const mapUrl = document.getElementById('teacherMapUrlInput').value.trim();
-      const specialization = document.getElementById('teacherSpecializationInput').value.trim();
-      const sub = document.getElementById('teacherSubInput').value.trim();
-      const contact = document.getElementById('teacherContactInput').value.trim();
-
-      if(!name) { alert('Please enter faculty name!'); return; }
-      if(!window.dbData.usthads) window.dbData.usthads = [];
-
-      window.dbData.usthads.push({
-        id: Date.now(), type, name, loc, mapUrl, specialization, sub, contact,
-        photo: 'https://via.placeholder.com/100'
-      });
-
-      document.getElementById('teacherNameInput').value = '';
-      document.getElementById('teacherLocInput').value = '';
-      document.getElementById('teacherMapUrlInput').value = '';
-      document.getElementById('teacherSpecializationInput').value = '';
-      document.getElementById('teacherSubInput').value = '';
-      document.getElementById('teacherContactInput').value = '';
-      alert('Faculty added successfully!');
-      window.saveData();
-    });
-
-    setupClick('btnExportExcel', () => {
-      const selectedMonth = document.getElementById('exportMonthSelect').value;
-      const stds = (window.dbData.students && window.dbData.students[currentActiveClassName]) ? window.dbData.students[currentActiveClassName] : [];
-      if (stds.length === 0) { alert('No data to export!'); return; }
-
-      const exportData = stds.map(s => ({
-        Roll: s.id,
-        Name: s.name,
-        Father: s.father,
-        Month: selectedMonth,
-        Status: s.status || 'Present'
-      }));
-
-      const ws = XLSX.utils.json_to_sheet(exportData);
-      const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, `Attendance_${selectedMonth}`);
-      XLSX.writeFile(wb, `${currentActiveClassName}_Attendance_${selectedMonth}.xlsx`);
-    });
-
-    setupClick('btnPrintSheet', () => { window.print(); });
 
   </script>
 </body>
