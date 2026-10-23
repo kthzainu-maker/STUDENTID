@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdul Bari Academy Portal</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+      --card-bg: rgba(30, 27, 75, 0.65);
+      --card-border: rgba(168, 85, 247, 0.25);
+      --text-color: #f3e8ff;
+      --accent-color: #c084fc;
+      --primary-gradient: linear-gradient(135deg, #7e22ce 0%, #581c87 100%);
+      --button-gradient: linear-gradient(135deg, #9333ea 0%, #6b21a8 100%);
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      color: var(--text-color);
+      margin: 0; padding: 0;
+      min-height: 100vh;
+    }
+
+    /* Animated Header */
+    header {
+      background: var(--primary-gradient);
+      padding: 16px 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 4px 20px rgba(126, 34, 206, 0.4);
+      border-bottom: 1px solid rgba(216, 180, 254, 0.2);
+    }
+    .header-title { 
+      font-size: 22px; 
+      font-weight: 800; 
+      color: #fff;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .nav-tabs { 
+      display: flex; gap: 8px; 
+      background: rgba(0,0,0,0.3); 
+      padding: 6px; border-radius: 12px; 
+      backdrop-filter: blur(8px);
+      flex-wrap: wrap; 
+    }
+    .tab-btn { 
+      background: transparent; border: none; 
+      color: #e9d5ff; padding: 8px 16px; 
+      border-radius: 8px; cursor: pointer; 
+      font-weight: 600; font-size: 13px;
+      transition: all 0.3s ease; 
+    }
+    .tab-btn.active, .tab-btn:hover { 
+      background: var(--button-gradient); 
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(147, 51, 234, 0.5);
+    }
+
+    .container { max-width: 1200px; margin: 24px auto; padding: 0 16px; }
+
+    /* Glassmorphism Cards */
+    .card { 
+      background: var(--card-bg); 
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 16px; padding: 22px; 
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); 
+      margin-bottom: 20px; 
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn { 
+      background: var(--button-gradient); 
+      color: #fff; border: none; 
+      padding: 10px 18px; border-radius: 10px; 
+      font-weight: bold; cursor: pointer; 
+      transition: all 0.2s; font-size: 13px; 
+      box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
+    }
+    .btn:hover { 
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(147, 51, 234, 0.5);
+    }
+
+    .hidden { display: none !important; }
+
+    /* Folders Grid */
+    .folder-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; }
+    .folder-card { 
+      background: rgba(255, 255, 255, 0.05); 
+      border: 2px dashed var(--accent-color); 
+      padding: 24px; border-radius: 14px; 
+      text-align: center; cursor: pointer; 
+      transition: all 0.3s ease; 
+    }
+    .folder-card:hover { 
+      transform: translateY(-5px); 
+      background: rgba(192, 132, 252, 0.15); 
+      border-color: #e9d5ff;
+    }
+
+    /* Responsive Table Layout */
+    .table-container { width: 100%; overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 14px; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(168, 85, 247, 0.2); word-break: break-word; }
+    th { background: rgba(0,0,0,0.4); color: var(--accent-color); }
+
+    .badge-datetime { 
+      background: rgba(0, 0, 0, 0.4); 
+      padding: 10px 18px; border-radius: 20px; 
+      display: inline-flex; gap: 16px; font-size: 13px; font-weight: bold; 
+      color: var(--accent-color); margin-bottom: 15px; 
+      border: 1px solid var(--card-border); flex-wrap: wrap; 
+    }
+
+    /* Person / Faculty Cards */
+    .person-card { 
+      background: rgba(0, 0, 0, 0.25); 
+      border: 1px solid var(--card-border); 
+      border-radius: 14px; padding: 18px; text-align: center; 
+      transition: transform 0.3s;
+    }
+    .person-card:hover { transform: translateY(-4px); }
+    .person-card img { 
+      width: 75px; height: 75px; border-radius: 50%; 
+      object-fit: cover; margin-bottom: 8px; 
+      border: 2px solid var(--accent-color); 
+      box-shadow: 0 0 12px rgba(192, 132, 252, 0.4);
+    }
+
+    .btn-whatsapp { 
+      background: #25d366; color: #fff; padding: 6px 12px; 
+      border-radius: 8px; font-size: 11px; text-decoration: none; 
+      display: inline-block; font-weight: bold; margin-top: 6px;
+    }
+    .btn-delete { background: #ef4444; color: #fff; padding: 5px 10px; border-radius: 6px; font-size: 11px; border: none; cursor: pointer; }
+
+    /* Challenge Board Cards */
+    .challenge-card { border-radius: 14px; padding: 18px; color: #fff; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+    .grad-purple-pink { background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); }
+    .grad-violet-blue { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
+
+    /* Admin Sidebar */
+    .admin-sidebar-btn { width: 100%; text-align: left; background: transparent; border: none; color: var(--text-color); padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-bottom: 4px; transition: 0.2s; }
+    .admin-sidebar-btn.active, .admin-sidebar-btn:hover { background: rgba(192, 132, 252, 0.2); color: var(--accent-color); }
+
+    @media print {
+      body * { visibility: hidden; }
+      #printableArea, #printableArea * { visibility: visible; }
+      #printableArea { position: absolute; left: 0; top: 0; width: 100%; }
+      .no-print { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="no-print">
+    <div class="header-title">🎓 Abdul Bari Academy</div>
+    <div class="nav-tabs">
+      <button class="tab-btn active" data-tab="homeTab">🏠 Home</button>
+      <button class="tab-btn" data-tab="portalsTab">📁 Portals</button>
+      <button class="tab-btn" data-tab="studentsTab">👥 Students</button>
+      <button class="tab-btn" data-tab="usthadsTab">⭐ Faculty & Committee</button>
+      <button class="tab-btn" data-tab="pointsTab">🏆 Challenge Board</button>
+      <button class="tab-btn hidden admin-only" data-tab="adminTab" id="adminTabNavBtn">🛠️ Admin</button>
+    </div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span id="userInfo" style="font-size: 13px; color: var(--accent-color); font-weight: bold;">Public View</span>
+      <button class="btn" id="authBtn" style="padding: 6px 12px; font-size: 12px;">Login</button>
+      <button class="btn hidden" id="logoutBtn" style="padding: 6px 12px; font-size: 12px; background: #ef4444;">Logout</button>
+    </div>
+  </header>
+
+  <!-- Marquee Notification Ticker -->
+  <div class="no-print" style="background: rgba(0,0,0,0.3); border-bottom: 1px solid var(--card-border); padding: 8px 0; overflow: hidden; white-space: nowrap;">
+    <div style="display: inline-block; animation: marquee 25s linear infinite; font-size: 13px; color: var(--accent-color); font-weight: bold;">
+      <span id="noticeMarqueeText">📢 Welcome to Abdul Bari Academy Student Information Portal! Manage portals, attendance, and records efficiently.</span>
+    </div>
+  </div>
+
+  <div class="container">
+    
+    <!-- HOME TAB -->
+    <div id="homeTab" class="tab-content">
+      <div class="card" style="background: var(--primary-gradient); color: #fff;">
+        <h1 style="margin: 0 0 10px 0; font-size: 26px;">Abdul Bari Academy</h1>
+        <p id="msgNotificationText" style="margin: 0; font-size: 15px; opacity: 0.9;">Welcome to the official digital portal. Check out overall class statistics and subject details below!</p>
+        <div style="margin-top: 10px; font-size: 11px; opacity: 0.8;">Last updated: <span id="msgTimestamp">Today</span></div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 20px;">
+        <div class="card" style="text-align: center; margin-bottom: 0;">
+          <h3 style="margin: 0; font-size: 32px; color: var(--accent-color);" id="pubStatStudents">0</h3>
+          <p style="margin: 5px 0 0 0; font-size: 13px; opacity: 0.8;">Total Students</p>
+        </div>
+        <div class="card" style="text-align: center; margin-bottom: 0;">
+          <h3 style="margin: 0; font-size: 32px; color: var(--accent-color);" id="pubStatClasses">0</h3>
+          <p style="margin: 5px 0 0 0; font-size: 13px; opacity: 0.8;">Active Classes</p>
+        </div>
+        <div class="card" style="text-align: center; margin-bottom: 0;">
+          <h3 style="margin: 0; font-size: 32px; color: var(--accent-color);" id="pubStatUsthads">0</h3>
+          <p style="margin: 5px 0 0 0; font-size: 13px; opacity: 0.8;">Faculty & Usthads</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PORTALS TAB -->
+    <div id="portalsTab" class="tab-content hidden">
+      <!-- Level 1: Categories -->
+      <div id="mainCategoryLevel" class="card">
+        <h2>📁 Select Study Category</h2>
+        <div class="folder-grid">
+          <div class="folder-card" id="btnCollegePortal">
+            <div style="font-size: 40px; margin-bottom: 8px;">🏛️</div>
+            <h3 style="margin: 0;">College Studies</h3>
+          </div>
+          <div class="folder-card" id="btnSchoolPortal">
+            <div style="font-size: 40px; margin-bottom: 8px;">🏫</div>
+            <h3 style="margin: 0;">School Studies</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Level 2: Classes -->
+      <div id="classFolderLevel" class="card hidden">
+        <button class="btn" id="btnBackToMain" style="margin-bottom: 15px;">⬅️ Back to Categories</button>
+        <h2 id="selectedCategoryHeader">Select Class</h2>
+        <div class="folder-grid" id="classFoldersGrid"></div>
+      </div>
+
+      <!-- Level 3: Subjects -->
+      <div id="subjectFolderLevel" class="card hidden">
+        <button class="btn" id="btnBackToClasses" style="margin-bottom: 15px;">⬅️ Back to Classes</button>
+        <h2 id="selectedClassHeader">Subjects</h2>
+        <div class="folder-grid" id="subjectFoldersGrid"></div>
+      </div>
+
+      <!-- Level 4: Subject Portal -->
+      <div id="subjectDetailLevel" class="card hidden">
+        <button class="btn no-print" id="btnBackToSubjects" style="margin-bottom: 15px;">⬅️ Back to Subjects</button>
+        
+        <div id="printableArea">
+          <h2 id="topicTitle" style="margin-bottom: 10px;">Subject Portal</h2>
+          
+          <div class="badge-datetime">
+            <span>📅 <span id="currentDateDisplay">Loading Date...</span></span>
+            <span>⏰ <span id="currentTimeDisplay">Loading Time...</span></span>
+          </div>
+
+          <div class="card" style="background: rgba(0,0,0,0.2);">
+            <h3 style="margin-top: 0;">📚 Study Notes & Materials</h3>
+            <div id="notesDisplayList"><span style="color:#ffd000;">No notes uploaded yet.</span></div>
+            
+            <div class="admin-only hidden no-print" style="margin-top: 15px; display: flex; gap: 8px; flex-wrap: wrap;">
+              <input type="text" id="noteTitleInput" placeholder="Note Title" style="padding: 8px; border-radius: 6px; border: 1px solid #ccc; flex: 1;">
+              <input type="text" id="noteUrlInput" placeholder="Note Document/Link URL" style="padding: 8px; border-radius: 6px; border: 1px solid #ccc; flex: 1;">
+              <button class="btn" onclick="addSubjectStudyNote()">Add Note</button>
+            </div>
+          </div>
+
+          <div class="card" style="background: rgba(0,0,0,0.2);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+              <h3 style="margin: 0;">📋 Attendance Register</h3>
+              <div class="no-print" style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                <select id="exportMonthSelect" style="padding: 6px 10px; border-radius: 6px; background: #0f172a; color: #fff; border: 1px solid var(--card-border);">
+                  <option value="January">January</option><option value="February">February</option><option value="March">March</option>
+                  <option value="April">April</option><option value="May">May</option><option value="June">June</option>
+                  <option value="July">July</option><option value="August">August</option><option value="September">September</option>
+                  <option value="October">October</option><option value="November">November</option><option value="December">December</option>
+                </select>
+                <button class="btn" style="background: #10b981;" onclick="exportAttendanceToExcel()">📊 Export Excel</button>
+                <button class="btn" style="background: #6366f1;" onclick="printAttendanceSheet()">🖨️ Print Sheet</button>
+              </div>
+            </div>
+
+            <div class="admin-only hidden no-print" style="margin-bottom: 12px; display: flex; gap: 8px;">
+              <button class="btn" style="padding: 6px 12px; font-size: 12px; background: #10b981;" onclick="bulkMarkAttendance('Present')">Mark All Present</button>
+              <button class="btn" style="padding: 6px 12px; font-size: 12px; background: #ef4444;" onclick="bulkMarkAttendance('Absent')">Mark All Absent</button>
+            </div>
+
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 50px;">Photo</th>
+                    <th style="width: 60px;">Roll</th>
+                    <th>Student Name</th>
+                    <th>Status / Action</th>
+                  </tr>
+                </thead>
+                <tbody id="attendanceList"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STUDENTS TAB -->
+    <div id="studentsTab" class="tab-content hidden">
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+          <h2>👥 Student Directory</h2>
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <select id="dashClassFilterSelect" onchange="renderDashStudentsTable()" style="padding: 8px; border-radius: 6px; background: #0f172a; color: #fff; border: 1px solid var(--card-border);">
+              <option value="">📁 All Classes</option>
+            </select>
+            <input type="text" id="dashStudentSearchInput" oninput="renderDashStudentsTable()" placeholder="🔍 Search student name..." style="padding: 8px; border-radius: 6px; border: 1px solid var(--card-border); background: #0f172a; color: #fff;">
+          </div>
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 50px;">Photo</th>
+                <th style="width: 60px;">Roll</th>
+                <th>Student Name</th>
+                <th>Father's Name</th>
+                <th>Class</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="dashStudentsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- USTHADS & COMMITTEE TAB -->
+    <div id="usthadsTab" class="tab-content hidden">
+      <div class="card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
+          <h2>⭐ Faculty, Usthads & Committee Members</h2>
+          <input type="text" id="teacherSearchInput" oninput="renderUsthads()" placeholder="🔍 Search faculty..." style="padding: 8px; border-radius: 6px; border: 1px solid var(--card-border); background: #0f172a; color: #fff;">
+        </div>
+        <h3 style="color: var(--accent-color); margin-bottom: 10px;">Academy Usthads</h3>
+        <div class="folder-grid" id="usthadsGrid" style="margin-bottom: 25px;"></div>
+        
+        <h3 style="color: var(--accent-color); margin-bottom: 10px;">Management Committee</h3>
+        <div class="folder-grid" id="committeeGrid"></div>
+      </div>
+    </div>
+
+    <!-- CHALLENGE BOARD TAB -->
+    <div id="pointsTab" class="tab-content hidden">
+      <div class="card">
+        <h2>🏆 Subject Challenge & Leaderboard</h2>
+        <div style="display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+          <select id="challengeClassFilter" onchange="renderChallengeLeaderboard()" style="padding: 8px; border-radius: 6px; background: #0f172a; color: #fff; border: 1px solid var(--card-border);"></select>
+          <select id="challengeSubjectFilter" onchange="renderChallengeLeaderboard()" style="padding: 8px; border-radius: 6px; background: #0f172a; color: #fff; border: 1px solid var(--card-border);">
+            <option value="">📖 Select Subject...</option>
+          </select>
+        </div>
+        <div id="classWiseChallengeContainer">
+          <p style="color:#ffd000; text-align:center;">Please select Class & Subject to view challenge teams!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADMIN TAB (Hidden for Public View by default) -->
+    <div id="adminTab" class="tab-content hidden admin-only">
+      <div class="card">
+        <h2>🛠️ Academy Administration Panel</h2>
+        <div style="display: grid; grid-template-columns: 220px 1fr; gap: 20px; margin-top: 15px;">
+          
+          <div style="border-right: 1px solid var(--card-border); padding-right: 15px;">
+            <button class="admin-sidebar-btn active" onclick="showAdminSubSection('secClasses', this)">📁 Classes & Subjects</button>
+            <button class="admin-sidebar-btn" onclick="showAdminSubSection('secStudents', this)">👥 Student Management</button>
+            <button class="admin-sidebar-btn" onclick="showAdminSubSection('secUsthads', this)">⭐ Faculty Management</button>
+            <button class="admin-sidebar-btn" onclick="showAdminSubSection('secChallenges', this)">🏆 Challenge Teams</button>
+            <button class="admin-sidebar-btn" onclick="showAdminSubSection('secAnnouncements', this)">📢 Announcements</button>
+            <button class="admin-sidebar-btn" onclick="showAdminSubSection('secData', this)">💾 Backup & Reset</button>
+          </div>
+
+          <div>
+            <!-- Section 1: Classes -->
+            <div id="secClasses" class="admin-sub-sec">
+              <h3>Manage Classes</h3>
+              <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                <label>Category:</label>
+                <select id="newClassPortal" style="padding: 8px; margin: 5px 0 10px 0; border-radius: 6px; display: block; width: 100%;">
+                  <option value="College Studies">College Studies</option>
+                  <option value="School Studies">School Studies</option>
+                </select>
+                <input type="text" id="newClassNameInput" placeholder="New Class Name (e.g. BA Final)" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 10px; box-sizing: border-box;">
+                <button class="btn" id="btnAddClass">Create Class</button>
+              </div>
+              <div id="manageClassesList"></div>
+            </div>
+
+            <!-- Section 2: Students -->
+            <div id="secStudents" class="admin-sub-sec hidden">
+              <h3>Register New Student</h3>
+              <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
+                <label>Select Class:</label>
+                <select id="regStudentClassSelect" style="padding: 8px; margin: 5px 0 10px 0; border-radius: 6px; display: block; width: 100%;"></select>
+                <input type="text" id="regStudentName" placeholder="Student Name" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 10px; box-sizing: border-box;">
+                <input type="text" id="regFatherName" placeholder="Father's Name" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 10px; box-sizing: border-box;">
+                <input type="text" id="regPhoneNum" placeholder="WhatsApp Phone Number" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 10px; box-sizing: border-box;">
+                <label style="font-size:12px; display:block; margin-bottom:4px;">Student Photo:</label>
+                <input type="file" id="regStudentPhotoFile" accept="image/*" style="margin-bottom: 10px; display: block;">
+                <button class="btn" onclick="adminRegisterStudent()">Register Student</button>
+              </div>
+            </div>
+
+            <!-- Section 3: Faculty -->
+            <div id="secUsthads" class="admin-sub-sec hidden">
+              <h3>Manage Faculty / Usthads</h3>
+              <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                <select id="teacherCategorySelect" style="padding: 8px; margin-bottom: 10px; border-radius: 6px; width: 100%;">
+                  <option value="usthad">Usthad / Faculty</option>
+                  <option value="committee">Management Committee</option>
+                </select>
+                <input type="text" id="teacherNameInput" placeholder="Faculty Name" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 8px; box-sizing: border-box;">
+                <input type="text" id="teacherLocInput" placeholder="Location / Place" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 8px; box-sizing: border-box;">
+                <input type="text" id="teacherSubInput" placeholder="Subjects Handled (comma separated)" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 8px; box-sizing: border-box;">
+                <input type="text" id="teacherContactInput" placeholder="WhatsApp Contact Number" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 8px; box-sizing: border-box;">
+                <input type="file" id="teacherPhotoFile" accept="image/*" style="margin-bottom: 10px; display: block;">
+                <button class="btn" id="btnAddTeacher">Add Faculty Member</button>
+              </div>
+              <div id="manageTeachersList"></div>
+            </div>
+
+            <!-- Section 4: Challenge Teams -->
+            <div id="secChallenges" class="admin-sub-sec hidden">
+              <h3>Create Subject Challenge Team</h3>
+              <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
+                <select id="challengeTeamClassSelect" onchange="populateChallengeSubjectDropdown()" style="padding: 8px; width: 100%; margin-bottom: 8px; border-radius: 6px;"></select>
+                <select id="challengeTeamSubjectSelect" style="padding: 8px; width: 100%; margin-bottom: 8px; border-radius: 6px;">
+                  <option value="">-- Select Subject --</option>
+                </select>
+                <input type="text" id="newTeamNameInput" placeholder="Team Name (e.g. Fiqh Champions)" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 8px; box-sizing: border-box;">
+                <input type="number" id="newTeamPointsInput" placeholder="Initial Points (e.g. 100)" style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin-bottom: 8px; box-sizing: border-box;">
+                <select id="newTeamColorSelect" style="padding: 8px; width: 100%; margin-bottom: 10px; border-radius: 6px;">
+                  <option value="grad-purple-pink">Purple-Pink Theme</option>
+                  <option value="grad-violet-blue">Violet-Blue Theme</option>
+                </select>
+                <button class="btn" onclick="adminAddSubjectChallengeTeam()">Create Challenge Team</button>
+              </div>
+            </div>
+
+            <!-- Section 5: Announcements -->
+            <div id="secAnnouncements" class="admin-sub-sec hidden">
+              <h3>Broadcast Announcements</h3>
+              <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px; margin-bottom: 15px;">
+                <label>Marquee Ticker Text:</label>
+                <input type="text" id="adminMarqueeInput" placeholder="Enter marquee notification..." style="padding: 8px; width: 100%; border-radius: 6px; border: 1px solid #ccc; margin: 5px 0 10px 0; box-sizing: border-box;">
+                <button class="btn" onclick="saveMarqueeNotice()">Update Marquee</button>
+              </div>
+              <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 8px;">
+                <label>Home Dashboard Banner Notification:</label>
+                <textarea id="adminLiveMsgInput" placeholder="Enter homepage message..." style="padding: 8px; width: 100%; height: 60px; border-radius: 6px; border: 1px solid #ccc; margin: 5px 0 10px 0; box-sizing: border-box;"></textarea>
+                <button class="btn" onclick="saveLiveAnnouncement()">Broadcast Message</button>
+              </div>
+            </div>
+
+            <!-- Section 6: Data -->
+            <div id="secData" class="admin-sub-sec hidden">
+              <h3>Backup & Reset Data</h3>
+              <p style="font-size: 13px; opacity: 0.8;">Download portal database backup or reset state if needed.</p>
+              <button class="btn" onclick="backupPortalData()" style="margin-right: 10px; background: #38bdf8;">📥 Download JSON Backup</button>
+              <button class="btn" onclick="resetPortalData()" style="background: #ef4444;">⚠️ Reset Portal Data</button>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="card hidden" style="position: fixed; top: 30%; left: 50%; transform: translate(-50%, -30%); width: 300px; z-index: 1200; border: 2px solid var(--accent-color);">
+    <h3 style="margin-top:0;">Admin Login</h3>
+    <input type="text" id="adminUser" placeholder="Username (admin)" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 6px; box-sizing: border-box;"><br>
+    <input type="password" id="adminPass" placeholder="Password (123)" style="width: 100%; padding: 8px; margin-bottom: 10px; border-radius: 6px; box-sizing: border-box;"><br>
+    <div style="display: flex; justify-content: flex-end; gap: 8px;">
+      <button class="btn" id="btnCancelLogin" style="background: #64748b;">Cancel</button>
+      <button class="btn" id="btnDoLogin">Login</button>
+    </div>
+  </div>
+
+  <script>
+    let isAdmin = false;
+    let currentActiveClassName = '';
+    let currentActiveSubjectName = '';
+    
+    let dbData = JSON.parse(localStorage.getItem('ab_academy_final_db')) || {
+      adminCreds: { user: 'admin', pass: '123' },
+      marqueeText: "📢 Welcome to Abdul Bari Academy Student Information Portal!",
+      liveAnnouncement: "Welcome to the official digital portal. Check out overall class statistics and subject details below!",
+      msgTimestamp: "Today",
+      classes: { 'College Studies': ['BA Degree'], 'School Studies': ['Plus One', 'Plus Two'] },
+      classTeachers: { 'Plus One': 'Prof. Abdul Bari' },
+      subjects: { 'BA Degree': ['Fiqh', 'Aqeedah'], 'Plus One': ['English', 'Arabic', 'Fiqh'] },
+      students: { 
+        'BA Degree': [{ id: 101, name: 'Muhammad Ali', father: 'Hassan', phone: '9847000000', photo: 'https://via.placeholder.com/100', status: 'Present' }],
+        'Plus One': [{ id: 102, name: 'Rahul Sharma', father: 'Sharma', phone: '9847000000', photo: 'https://via.placeholder.com/100', status: 'Present' }]
+      },
+      usthads: [
+        { id: 1, type: 'usthad', name: 'Prof. Abdul Bari', loc: 'Puthupparmba', sub: 'Fiqh, Arabic, Islamic Studies', contact: '9847000000', photo: 'https://via.placeholder.com/100' }
+      ],
+      subjectChallengeTeams: {},
+      studyNotes: {}
+    };
+
+    function updateDateTimeDisplay() {
+      const now = new Date();
+      const dateStr = now.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long' });
+      const timeStr = now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+      
+      const dateEl = document.getElementById('currentDateDisplay');
+      const timeEl = document.getElementById('currentTimeDisplay');
+      if (dateEl) dateEl.innerText = dateStr;
+      if (timeEl) timeEl.innerText = timeStr;
+    }
+    setInterval(updateDateTimeDisplay, 1000);
+
+    function saveData() { 
+      localStorage.setItem('ab_academy_final_db', JSON.stringify(dbData)); 
+      updateDashboardStats(); 
+      populateAdminDropdowns();
+      renderManageClassesList();
+      renderManageTeachersList();
+      renderLiveAnnouncements();
+    }
+
+    function setupClick(id, fn) {
+      const el = document.getElementById(id);
+      if(el) { el.addEventListener('click', (e) => fn(e)); }
+    }
+
+    function showAdminSubSection(secId, btnEl) {
+      document.querySelectorAll('.admin-sub-sec').forEach(s => s.classList.add('hidden'));
+      document.querySelectorAll('.admin-sidebar-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(secId).classList.remove('hidden');
+      if(btnEl) btnEl.classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => switchTab(btn.dataset.tab, btn));
+      });
+
+      setupClick('authBtn', () => document.getElementById('loginModal').classList.remove('hidden'));
+      setupClick('btnCancelLogin', () => document.getElementById('loginModal').classList.add('hidden'));
+      
+      setupClick('btnDoLogin', () => {
+        const u = document.getElementById('adminUser').value;
+        const p = document.getElementById('adminPass').value;
+        if(u === dbData.adminCreds.user && p === dbData.adminCreds.pass) {
+          isAdmin = true;
+          document.getElementById('userInfo').innerText = "Admin View";
+          document.getElementById('authBtn').classList.add('hidden');
+          document.getElementById('logoutBtn').classList.remove('hidden');
+          document.getElementById('loginModal').classList.add('hidden');
+          document.querySelectorAll('.admin-only').forEach(e => e.classList.remove('hidden'));
+          populateAdminDropdowns();
+          renderDashStudentsTable();
+          alert("✅ Admin Login Success!");
+        } else { alert("❌ Invalid Credentials"); }
+      });
+
+      setupClick('logoutBtn', () => {
+        isAdmin = false;
+        document.getElementById('userInfo').innerText = "Public View";
+        document.getElementById('authBtn').classList.remove('hidden');
+        document.getElementById('logoutBtn').classList.add('hidden');
+        document.querySelectorAll('.admin-only').forEach(e => e.classList.add('hidden'));
+        switchTab('homeTab', document.querySelector('[data-tab="homeTab"]'));
+        renderDashStudentsTable();
+      });
+
+      setupClick('btnAddClass', adminAddNewClass);
+      setupClick('btnAddTeacher', adminAddTeacher);
+
+      setupClick('btnCollegePortal', () => openSectionFolders('College Studies'));
+      setupClick('btnSchoolPortal', () => openSectionFolders('School Studies'));
+      setupClick('btnBackToMain', backToMainCategory);
+      setupClick('btnBackToClasses', () => {
+        document.getElementById('subjectFolderLevel').classList.add('hidden');
+        document.getElementById('classFolderLevel').classList.remove('hidden');
+      });
+      setupClick('btnBackToSubjects', () => {
+        document.getElementById('subjectDetailLevel').classList.add('hidden');
+        document.getElementById('subjectFolderLevel').classList.remove('hidden');
+      });
+
+      updateDashboardStats();
+      renderDashStudentsTable();
+      populateDashClassFilter();
+      renderUsthads();
+      populateAdminDropdowns();
+      renderManageClassesList();
+      renderManageTeachersList();
+      renderLiveAnnouncements();
+      updateDateTimeDisplay();
+    });
+
+    function renderLiveAnnouncements() {
+      if(dbData.marqueeText) document.getElementById('noticeMarqueeText').innerText = dbData.marqueeText;
+      if(dbData.liveAnnouncement) document.getElementById('msgNotificationText').innerText = dbData.liveAnnouncement;
+      if(dbData.msgTimestamp) document.getElementById('msgTimestamp').innerText = dbData.msgTimestamp;
+    }
+
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById(tabId).classList.remove('hidden');
+      if(btn) btn.classList.add('active');
+      if(tabId === 'pointsTab') populateChallengeFilters();
+    }
+
+    function updateDashboardStats() {
+      let stCount = 0; for(let cls in dbData.students) stCount += dbData.students[cls].length;
+      let clsCount = 0; for(let p in dbData.classes) clsCount += dbData.classes[p].length;
+      let ustCount = dbData.usthads ? dbData.usthads.length : 0;
+      document.getElementById('pubStatStudents').innerText = stCount;
+      document.getElementById('pubStatClasses').innerText = clsCount;
+      document.getElementById('pubStatUsthads').innerText = ustCount;
+    }
+
+    function populateDashClassFilter() {
+      const sel = document.getElementById('dashClassFilterSelect');
+      if(!sel) return;
+      sel.innerHTML = '<option value="">📁 All Classes</option>';
+      for(let p in dbData.classes) {
+        dbData.classes[p].forEach(c => { sel.innerHTML += `<option value="${c}">${c}</option>`; });
+      }
+    }
+
+    function renderDashStudentsTable() {
+      const tbody = document.getElementById('dashStudentsTableBody');
+      const q = document.getElementById('dashStudentSearchInput') ? document.getElementById('dashStudentSearchInput').value.toLowerCase().trim() : '';
+      const selectedClass = document.getElementById('dashClassFilterSelect') ? document.getElementById('dashClassFilterSelect').value : '';
+      if(!tbody) return; tbody.innerHTML = "";
+
+      let c = 1, found = false;
+      for(let cls in dbData.students) {
+        if(selectedClass && selectedClass !== cls) continue;
+        dbData.students[cls].forEach(s => {
+          if(!q || s.name.toLowerCase().includes(q)) {
+            found = true;
+            let adminBtns = isAdmin ? `<button class="btn-delete" onclick="deleteStudent(${s.id}, '${cls}')">🗑️ Delete</button>` : '';
+            let phoneClean = (s.phone || '').replace(/\D/g, '');
+            let waBtn = `<a href="https://wa.me/91${phoneClean}" target="_blank" class="btn-whatsapp">💬 Chat WA</a>`;
+
+            tbody.innerHTML += `<tr>
+              <td><img src="${s.photo || 'https://via.placeholder.com/45'}" style="width:38px; height:38px; border-radius:50%; object-fit:cover;"></td>
+              <td>${c++}</td>
+              <td><b>${s.name}</b></td>
+              <td>${s.father || 'N/A'}</td>
+              <td>${cls}</td>
+              <td>${waBtn} ${adminBtns}</td>
+            </tr>`;
+          }
+        });
+      }
+      if(!found) tbody.innerHTML = `<tr><td colspan="6" style="color:#ffd000; padding:16px;">No student records found.</td></tr>`;
+    }
+
+    function renderUsthads() {
+      const usthadGrid = document.getElementById('usthadsGrid');
+      const committeeGrid = document.getElementById('committeeGrid');
+      const q = document.getElementById('teacherSearchInput') ? document.getElementById('teacherSearchInput').value.toLowerCase().trim() : '';
+      if(!usthadGrid || !committeeGrid) return;
+      
+      usthadGrid.innerHTML = ""; committeeGrid.innerHTML = "";
+
+      (dbData.usthads || []).forEach(u => {
+        let teacherLocStr = u.loc || 'Academy Campus';
+        let subList = (u.sub || 'General Studies').split(',');
+
+        if(!q || u.name.toLowerCase().includes(q) || teacherLocStr.toLowerCase().includes(q) || u.sub.toLowerCase().includes(q)) {
+          let adminBtns = isAdmin ? `<div style="margin-top:10px;"><button class="btn-delete" onclick="deleteTeacher(${u.id})">🗑️ Delete</button></div>` : '';
+          let phoneClean = (u.contact || '').replace(/\D/g, '');
+          let waBtn = u.contact ? `<a href="https://wa.me/91${phoneClean}" target="_blank" class="btn-whatsapp">💬 WhatsApp Teacher</a>` : '';
+
+          const cardHtml = `<div class="person-card">
+            <img src="${u.photo || 'https://via.placeholder.com/80'}">
+            <h3 style="margin:2px 0 0 0; font-size:16px;">${u.name}</h3>
+            <div style="font-size:12px; opacity:0.8; margin-top:2px;">📍 ${teacherLocStr}</div>
+            <div style="font-size:11px; color:var(--accent-color); font-weight:bold; margin-top:4px;">📖 Subjects: ${u.sub || 'Faculty'}</div>
+            ${waBtn}
+            ${adminBtns}
+          </div>`;
+
+          if(u.type === 'committee') committeeGrid.innerHTML += cardHtml;
+          else usthadGrid.innerHTML += cardHtml;
+        }
+      });
+    }
+
+    function backToMainCategory() {
+      document.getElementById('mainCategoryLevel').classList.remove('hidden');
+      document.getElementById('classFolderLevel').classList.add('hidden');
+      document.getElementById('subjectFolderLevel').classList.add('hidden');
+      document.getElementById('subjectDetailLevel').classList.add('hidden');
+    }
+
+    function openSectionFolders(sec) {
+      document.getElementById('mainCategoryLevel').classList.add('hidden');
+      document.getElementById('classFolderLevel').classList.remove('hidden');
+      document.getElementById('selectedCategoryHeader').innerText = `Select Class (${sec})`;
+      const grid = document.getElementById('classFoldersGrid'); grid.innerHTML = "";
+      (dbData.classes[sec] || []).forEach(cls => {
+        const card = document.createElement('div');
+        card.className = 'folder-card';
+        card.innerHTML = `<h3>📁 ${cls}</h3>`;
+        card.onclick = () => openSubjectFoldersForClass(cls);
+        grid.appendChild(card);
+      });
+    }
+
+    function openSubjectFoldersForClass(clsName) {
+      currentActiveClassName = clsName;
+      document.getElementById('classFolderLevel').classList.add('hidden');
+      document.getElementById('subjectFolderLevel').classList.remove('hidden');
+      document.getElementById('selectedClassHeader').innerText = `Subjects for ${clsName}`;
+      const grid = document.getElementById('subjectFoldersGrid'); grid.innerHTML = "";
+      (dbData.subjects[clsName] || []).forEach(sub => {
+        const card = document.createElement('div');
+        card.className = 'folder-card';
+        card.innerHTML = `<h3>📖 ${sub}</h3>`;
+        card.onclick = () => openSubjectStudentList(clsName, sub);
+        grid.appendChild(card);
+      });
+    }
+
+    function openSubjectStudentList(clsName, subName) {
+      currentActiveClassName = clsName; currentActiveSubjectName = subName;
+      document.getElementById('subjectFolderLevel').classList.add('hidden');
+      document.getElementById('subjectDetailLevel').classList.remove('hidden');
+      document.getElementById('topicTitle').innerText = `${clsName} - ${subName} Portal`;
+      renderAttendanceTable(clsName);
+    }
+
+    function renderAttendanceTable(clsName) {
+      const tbody = document.getElementById('attendanceList'); tbody.innerHTML = "";
+      let students = dbData.students[clsName] || [];
+      students.forEach((s, idx) => {
+        tbody.innerHTML += `<tr>
+          <td><img src="${s.photo || 'https://via.placeholder.com/40'}" style="width:36px; height:36px; border-radius:50%; object-fit:cover;"></td>
+          <td>${idx+1}</td>
+          <td><b>${s.name}</b></td>
+          <td><span style="color:#10b981; font-weight:bold;">${s.status || 'Present'}</span></td>
+        </tr>`;
+      });
+    }
+
+    function exportAttendanceToExcel() {
+      let students = dbData.students[currentActiveClassName] || [];
+      let selectedMonth = document.getElementById('exportMonthSelect').value;
+      let excelData = students.map((s, i) => ({
+        'Month': selectedMonth,
+        'Class': currentActiveClassName,
+        'Subject': currentActiveSubjectName,
+        'Roll No': i + 1,
+        'Student Name': s.name,
+        'Attendance Status': s.status || 'Present'
+      }));
+      let worksheet = XLSX.utils.json_to_sheet(excelData);
+      let workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, `${selectedMonth} Attendance`);
+      XLSX.writeFile(workbook, `${currentActiveClassName}_${currentActiveSubjectName}_Attendance.xlsx`);
+    }
+
+    function printAttendanceSheet() { window.print(); }
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyB5e0DcxX-5AWIgHBU5yyD4-UdM4rXYjhg",
+  authDomain: "abdul-bari-academy-attendence.firebaseapp.com",
+  projectId: "abdul-bari-academy-attendence",
+  storageBucket: "abdul-bari-academy-attendence.firebasestorage.app",
+  messagingSenderId: "376010557860",
+  appId: "1:376010557860:web:624d8b620c707773f59931",
+  measurementId: "G-8E94QZXLNQ"
+};
+  </script>
+</body>
+</html>
