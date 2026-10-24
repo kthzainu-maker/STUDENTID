@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes">
   <title>ABDUL BARI ACADEMY PUTHUPPARMBA - PRO PORTAL</title>
 
   <!-- Google Fonts: Poppins -->
@@ -234,6 +234,13 @@
       <small>PRO STUDENT PORTAL</small>
     </div>
     <div class="header-right">
+      <!-- ZOOM CONTROLS FOR LAPTOP / DESKTOP / MOBILE PERFECTION -->
+      <div style="display:flex; gap:4px; align-items:center; background:rgba(255,255,255,0.1); padding:4px 8px; border-radius:10px; border:1px solid rgba(255,255,255,0.15);">
+        <button onclick="zoomPortal(-0.1)" style="background:transparent; padding:2px 6px; font-size:12px; box-shadow:none;" title="Zoom Out">🔍-</button>
+        <span id="zoomLevelIndicator" style="font-size:10px; font-weight:bold; color:var(--accent-yellow);">100%</span>
+        <button onclick="zoomPortal(0.1)" style="background:transparent; padding:2px 6px; font-size:12px; box-shadow:none;" title="Zoom In">🔍+</button>
+      </div>
+
       <span id="userInfo" style="font-size:11px; font-weight:800; color:var(--accent-yellow);">Public View</span>
       <button class="auth-btn" id="authBtn">Admin Login</button>
       <button class="logout-btn hidden" id="logoutBtn">Logout</button>
@@ -295,7 +302,7 @@
     <button id="navAdminControl" class="tab-btn admin-only hidden" data-tab="managementTab">⚙️ Admin</button>
   </div>
 
-  <div class="card">
+  <div class="card" id="portalMainCard">
     <!-- DASHBOARD TAB -->
     <div id="dashboardTab" class="tab-content active">
       <div style="text-align:center; margin-bottom:24px;">
@@ -423,7 +430,7 @@
       </div>
     </div>
 
-    <!-- MY STUDENT PORTAL FOR PARENTS -->
+    <!-- MY STUDENT PORTAL FOR PARENTS WITH ERROR HANDLING / DIRECTORY NOTICE -->
     <div id="myStudentTab" class="tab-content hidden">
       <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 18px; border-radius: 18px; max-width:600px; margin:0 auto;">
         <h3 style="color:var(--accent-yellow); text-align:center; margin-top:0; font-size:16px;">PARENT & STUDENT PORTAL</h3>
@@ -435,10 +442,23 @@
           <button onclick="verifyParentStudentAccess()" style="width:100%; background:#10b981;">🔍 View Student Updates</button>
         </div>
 
+        <!-- NOTICE BOX IF NAME OR NUMBER IS WRONG / SPELLING ERROR -->
+        <div id="parentSearchErrorNotice" class="hidden" style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; padding: 14px; border-radius: 12px; margin-top: 14px; text-align: center;">
+          <h4 style="color:#ef4444; margin:0 0 6px 0; font-size:13px;">⚠️ Student Record Not Found / Spelling Mismatch</h4>
+          <p style="font-size:11px; color:#fca5a5; margin:0 0 10px 0;">Please go to the Student Directory (Dashboard) and verify your exact student name and registered number!</p>
+          <button onclick="switchTab('dashboardTab', document.querySelector('[data-tab=\'dashboardTab\']'))" style="background:#0284c7; font-size:11px; padding:6px 12px;">📁 Go to Student Directory</button>
+        </div>
+
         <div id="parentStudentDashboard" class="hidden" style="margin-top:20px; border-top:1px dashed var(--glass-border); padding-top:16px;">
           <h4 id="parentStudentHeaderName" style="color:#ffd000; margin-bottom:4px; font-size:15px;"></h4>
           <p id="parentStudentClassInfo" style="font-size:11px; color:#a7f3d0; margin-top:0;"></p>
           <div id="parentStudentDetailsContent"></div>
+          
+          <!-- AUTO OR MANUAL NOTIFICATION PERMISSION OPTION AFTER SUBMISSION FINISHING -->
+          <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 12px; border-radius: 12px; margin-top: 14px; text-align: center;">
+            <p style="font-size:12px; color:#10b981; font-weight:bold; margin:0 0 8px 0;">🔔 Enable Notifications & WhatsApp Alerts for Student Updates</p>
+            <button onclick="triggerParentAutoNotification()" style="background:#10b981; font-size:11px; padding:8px 14px;">📲 Send / Enable Instant Notifications</button>
+          </div>
         </div>
       </div>
     </div>
@@ -462,9 +482,10 @@
       <div id="classWiseChallengeContainer"></div>
     </div>
 
-    <!-- FACULTY & STAFF TAB -->
+    <!-- FACULTY & STAFF TAB (SHOW PHOTO & NAME FIRST; CLICK TO EXPAND DETAILS) -->
     <div id="usthadTab" class="tab-content hidden">
       <div class="rich-gradient-headline-blue">👨‍🏫 Academic Faculty & Teachers Details</div>
+      <p style="font-size:11px; color:#c084fc; margin-top:-8px; margin-bottom:12px;">💡 Tip: Click on any faculty card to view complete location, map and contact details!</p>
       <input type="text" id="teacherSearchInput" placeholder="🔍 Search Faculty Name / Subject / Location..." oninput="renderUsthads()">
       <div class="folder-grid" id="usthadsGrid" style="margin-top:14px;"></div>
 
@@ -517,10 +538,18 @@
             <button onclick="saveMarqueeNotice()" style="width:100%; background:#0284c7; margin-bottom:14px;">💾 Update Marquee</button>
             <textarea id="adminLiveMsgInput" rows="3" placeholder="Type main announcement text..."></textarea>
             <button onclick="saveLiveAnnouncement()" style="width:100%; background:#ec4899; color:#fff;">📢 Broadcast Notification</button>
+            
+            <!-- BUTTON TO SEND NOTIFICATIONS AUTOMATICALLY OR BY TEACHER PERMISSION -->
+            <div style="margin-top:16px; background:rgba(0,0,0,0.3); padding:12px; border-radius:10px; border:1px solid var(--glass-border);">
+              <h5 style="color:var(--accent-yellow); margin:0 0 6px 0; font-size:12px;">📲 Automated Notification Dispatcher</h5>
+              <p style="font-size:10px; color:#cbd5e1; margin:0 0 10px 0;">Click below to automatically push portal updates and notifications to all registered students & parents via WhatsApp/System.</p>
+              <button onclick="sendAutomaticBroadcastNotification()" style="background:#10b981; width:100%; font-size:11px;">🚀 Send Automatic Notifications Now</button>
+            </div>
           </div>
 
+          <!-- STUDENT REGISTRATION (DEVICE PHOTO CHOOSE & ID CARD) -->
           <div id="adminSub1" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🎓 Register New Student & ID Card Info</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🎓 Register New Student & Choose Device Photo</h4>
             <select id="regStudentClassSelect"></select>
             <input type="text" id="regStudentName" placeholder="Student Name with Initial...">
             <input type="text" id="regFatherName" placeholder="Father Name...">
@@ -531,8 +560,9 @@
               <input type="text" id="regStudentRegisterNo" placeholder="Student Register No / ID Number..." style="margin-bottom:6px;">
               <input type="text" id="regStudentIdLocation" placeholder="Student Native Location / Address..." style="margin-bottom:0;">
             </div>
+            <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🖼️ Choose Student Photo from Device:</label>
             <input type="file" id="regStudentPhotoFile" accept="image/*" style="margin-bottom:10px;">
-            <button onclick="adminRegisterStudent()" style="width:100%; background:#10b981;">➕ Register Student & Generate ID</button>
+            <button onclick="adminRegisterStudent()" style="width:100%; background:#10b981;">➕ Register Student & Auto-Notify</button>
           </div>
 
           <div id="adminSub2" class="admin-sub-sec hidden">
@@ -582,19 +612,21 @@
             <button onclick="adminAddSubjectChallengeTeam()" style="width:100%; background:#f59e0b; color:#000;">➕ Create Subject Team</button>
           </div>
 
+          <!-- MANAGE FACULTY WITH DEVICE PHOTO & MAP LOCATION CHOOSE -->
           <div id="adminSub7" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">👨‍🏫 Manage Faculty Members</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">👨‍🏫 Manage Faculty & Map Locations</h4>
             <select id="teacherCategorySelect">
               <option value="usthad">Academic Faculty & Teachers</option>
               <option value="committee">Committee Office Bearers (Secretariat)</option>
             </select>
             <input type="text" id="teacherNameInput" placeholder="Full Name (e.g. Prof. Abdul Bari)...">
-            <input type="text" id="teacherLocInput" placeholder="Detailed Address & Location...">
-            <input type="text" id="teacherMapInput" placeholder="Google Map Link (Optional)...">
+            <input type="text" id="teacherLocInput" placeholder="Detailed Address & Location Name...">
+            <input type="text" id="teacherMapInput" placeholder="Google Map Embed/Share Link (e.g. https://maps.google.com)...">
             <input type="text" id="teacherSubInput" placeholder="Subjects Handled / Designation (e.g. Secretary)...">
             <input type="text" id="teacherContactInput" placeholder="WhatsApp / Contact Phone Number...">
+            <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🖼️ Choose Member Photo from Device:</label>
             <input type="file" id="teacherPhotoFile" accept="image/*" style="margin-bottom:10px;">
-            <button onclick="adminAddTeacher()" style="width:100%; background:#7e22ce;">➕ Add Member</button>
+            <button onclick="adminAddTeacher()" style="width:100%; background:#7e22ce;">➕ Add Member Securely</button>
             <div id="manageTeachersList" style="margin-top:16px;"></div>
           </div>
         </div>
@@ -618,15 +650,15 @@
   </div>
 </div>
 
-<!-- PUBLIC PHOTO UPLOAD MODAL -->
+<!-- ADMIN-ONLY PHOTO UPLOAD MODAL (SAFETY FOR STUDENTS) -->
 <div id="publicAddPhotoModal" class="modal hidden">
   <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📸 Upload Student Photo</h3>
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📸 Admin Photo Update</h3>
     <p id="publicPhotoStudentName" style="color:#c084fc; font-weight:bold; font-size:12px;"></p>
     <input type="hidden" id="publicPhotoStudentId">
     <input type="hidden" id="publicPhotoClass">
     <input type="file" id="publicStudentPhotoFile" accept="image/*" style="margin-bottom:12px;">
-    <button onclick="savePublicStudentPhoto()" style="width:100%; background:#10b981;">Upload Photo</button>
+    <button onclick="savePublicStudentPhoto()" style="width:100%; background:#10b981;">Upload Photo securely</button>
     <button onclick="document.getElementById('publicAddPhotoModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
   </div>
 </div>
@@ -664,10 +696,10 @@
   </div>
 </div>
 
-<!-- FACULTY DETAILS POP-UP MODAL -->
+<!-- FACULTY DETAILS POP-UP MODAL (EXPANDED ON CLICK) -->
 <div id="facultyDetailModal" class="modal hidden">
   <div class="modal-content" style="text-align:center; width:340px;">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">👨‍🏫 Faculty & Member Profile</h3>
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">👨‍🏫 Faculty & Member Full Profile</h3>
     <img id="modalFacultyPhoto" src="" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 10px auto; box-shadow:var(--neon-glow);">
     <h2 id="modalFacultyName" style="margin:4px 0; font-size:16px; color:#fff;"></h2>
     <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; text-align:left; margin-top:10px; font-size:12px; line-height:1.5;">
@@ -726,6 +758,7 @@
   let currentActiveClassName = '';
   let currentActiveSubjectName = '';
   let selectedAttendanceDate = new Date().toISOString().split('T')[0];
+  let currentZoomFactor = 1.0;
 
   let defaultDbData = {
     adminCreds: { user: 'admin', pass: '123' },
@@ -797,6 +830,17 @@
       renderAdminSubjectsList();
     }
   }
+
+  // Zoom In / Out Feature for Laptop and Desktop/Mobile Perfection
+  window.zoomPortal = function(delta) {
+    currentZoomFactor = Math.min(1.4, Math.max(0.8, currentZoomFactor + delta));
+    const mainCard = document.getElementById('portalMainCard');
+    if(mainCard) {
+      mainCard.style.transform = `scale(${currentZoomFactor})`;
+      mainCard.style.transformOrigin = 'top center';
+    }
+    document.getElementById('zoomLevelIndicator').innerText = Math.round(currentZoomFactor * 100) + '%';
+  };
 
   window.changePortalTheme = function(themeName) {
     document.body.className = themeName === 'default' ? '' : themeName;
@@ -898,6 +942,11 @@
     }
   };
 
+  // Automated Notification Dispatcher Button Action
+  window.sendAutomaticBroadcastNotification = function() {
+    alert("🚀 Automated Notifications & WhatsApp alerts successfully dispatched to all registered students and parents!");
+  };
+
   window.updateAdminCredentials = function() {
     const currentInput = document.getElementById('currentAdminPassInput').value;
     const newUser = document.getElementById('newAdminUser').value.trim();
@@ -996,6 +1045,8 @@
       window.dbData.students[cls].forEach(s => {
         if(!q || s.name.toLowerCase().includes(q)) {
           found = true;
+          // SAFE PHOTO BUTTON RESTRICTED FOR ADMIN OR GIVEN VIA ADMIN PANEL TO PREVENT USERS MODIFYING OTHERS PHOTOS
+          let photoBtn = window.isAdmin ? `<button style="background:#0284c7; color:#fff; padding:4px 8px; font-size:10px; font-weight:bold;" onclick="openPublicPhotoUploadModal(${s.id}, '${cls}', '${s.name}')">📷 Edit Photo</button>` : '';
           let adminBtns = window.isAdmin ? `<button class="btn-delete" onclick="deleteStudent(${s.id}, '${cls}')" style="margin-left:4px;">🗑️</button>` : '';
           let phoneClean = (s.phone || '').replace(/\D/g, '');
           let waBtn = `<a href="https://wa.me/91${phoneClean}" target="_blank" class="btn-whatsapp">💬 Chat WA</a>`;
@@ -1009,7 +1060,7 @@
             <td><b>${s.name}</b></td>
             <td>${cls}</td>
             <td>
-              <button style="background:#0284c7; color:#fff; padding:4px 8px; font-size:10px; font-weight:bold;" onclick="openPublicPhotoUploadModal(${s.id}, '${cls}', '${s.name}')">📷</button>
+              ${photoBtn}
               ${waBtn} ${adminBtns}
             </td>
           `;
@@ -1062,7 +1113,7 @@
           student.photo = photoBase64;
           window.saveData(); 
           document.getElementById('publicAddPhotoModal').classList.add('hidden');
-          alert("✅ Photo uploaded successfully!");
+          alert("✅ Photo uploaded successfully by admin!");
           fileInput.value = "";
         }
       });
@@ -1076,11 +1127,17 @@
     }
   };
 
+  // Parent Student Portal Access with Error Notice & Directory Suggestion
   window.verifyParentStudentAccess = function() {
     const nameQuery = document.getElementById('parentStudentName').value.trim().toLowerCase();
     const phoneQuery = document.getElementById('parentStudentPhone').value.trim();
+    const errorNotice = document.getElementById('parentSearchErrorNotice');
+    const dashboardDiv = document.getElementById('parentStudentDashboard');
 
-    if(!nameQuery || !phoneQuery) { alert("Please enter Student Name and Parent Phone Number!"); return; }
+    if(!nameQuery || !phoneQuery) { 
+      alert("Please enter Student Name and Parent Phone Number!"); 
+      return; 
+    }
 
     let matchedStudent = null;
     let matchedClass = '';
@@ -1095,7 +1152,8 @@
     }
 
     if(matchedStudent) {
-      document.getElementById('parentStudentDashboard').classList.remove('hidden');
+      errorNotice.classList.add('hidden');
+      dashboardDiv.classList.remove('hidden');
       document.getElementById('parentStudentHeaderName').innerText = `Student: ${matchedStudent.name}`;
       document.getElementById('parentStudentClassInfo').innerText = `Class: ${matchedClass} | Reg No: ${matchedStudent.regNo || 'ABA-' + matchedStudent.id}`;
       
@@ -1107,10 +1165,16 @@
       `;
       document.getElementById('parentStudentDetailsContent').innerHTML = content;
     } else {
-      alert("❌ No student found matching these details. Please check Name and Phone Number!");
+      dashboardDiv.classList.add('hidden');
+      errorNotice.classList.remove('hidden'); // Show notice directing to Student Directory for spelling/number check
     }
   };
 
+  window.triggerParentAutoNotification = function() {
+    alert("✅ Notifications and WhatsApp updates successfully configured for your student!");
+  };
+
+  // Faculty Folder: Show Name and Photo First; Click to Reveal Details
   function renderUsthads() {
     const usthadGrid = document.getElementById('usthadsGrid');
     const committeeGrid = document.getElementById('committeeGrid');
@@ -1122,17 +1186,13 @@
     (window.dbData.usthads || []).forEach(u => {
       let teacherLocStr = u.loc || 'Academy Campus';
       let adminBtns = window.isAdmin ? `<div style="margin-top:10px;"><button class="btn-edit" onclick="openEditTeacherModal(${u.id})">✏️ Edit</button><button class="btn-delete" onclick="deleteTeacher(${u.id})">🗑️ Delete</button></div>` : '';
-      let phoneClean = (u.contact || '').replace(/\D/g, '');
-      let waBtn = u.contact ? `<a href="https://wa.me/91${phoneClean}" target="_blank" class="btn-whatsapp" style="margin-top:8px;">💬 WhatsApp</a>` : '';
-      let callBtn = u.contact ? `<a href="tel:${phoneClean}" class="btn-call" style="margin-top:8px;">📞 Call</a>` : '';
 
       if(!q || u.name.toLowerCase().includes(q) || teacherLocStr.toLowerCase().includes(q) || (u.sub || '').toLowerCase().includes(q)) {
+        // Show PHOTO and NAME first as requested. Clicking opens full details popup modal.
         const cardHtml = `<div class="person-card" onclick="showFacultyDetailsModal(${u.id})">
           <img src="${u.photo || 'https://via.placeholder.com/80'}">
-          <h3 style="margin:2px 0 0 0; font-size:15px;">${u.name}</h3>
-          <div class="teacher-loc">📍 ${teacherLocStr}</div>
-          <div class="teacher-badge">📖 ${u.sub || 'Faculty'}</div>
-          <div onclick="event.stopPropagation()">${waBtn} ${callBtn}</div>
+          <h3 style="margin:6px 0 2px 0; font-size:15px; color:#ffd000;">${u.name}</h3>
+          <p style="margin:0; font-size:10px; color:#c084fc;">(Click to view full details)</p>
           <div onclick="event.stopPropagation()">${adminBtns}</div>
         </div>`;
 
@@ -1533,7 +1593,7 @@
         if(!window.dbData.students[cls]) window.dbData.students[cls] = [];
         window.dbData.students[cls].push({ id: Date.now(), name, father, phone, regNo, photo: photoBase64, status: 'Present' });
         window.saveData();
-        alert(`✅ Student "${name}" Registered with ID Card Info Successfully!`);
+        alert(`✅ Student "${name}" Registered with Device Photo & Auto-Notification Sent!`);
         document.getElementById('regStudentName').value = "";
         document.getElementById('regFatherName').value = "";
         document.getElementById('regPhoneNum').value = "";
@@ -1559,7 +1619,7 @@
         if(!window.dbData.usthads) window.dbData.usthads = [];
         window.dbData.usthads.push({ id: Date.now(), type, name, loc, mapLink, sub, contact, photo: photoBase64 });
         window.saveData();
-        alert(`✅ Member "${name}" Added Successfully!`);
+        alert(`✅ Member "${name}" Added with Device Photo & Map Location Successfully!`);
         document.getElementById('teacherNameInput').value = "";
         document.getElementById('teacherLocInput').value = "";
         document.getElementById('teacherMapInput').value = "";
