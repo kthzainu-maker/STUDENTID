@@ -165,6 +165,20 @@
     .folder-card { background: linear-gradient(135deg, #7e22ce, #4c1d95); color: white; border-radius: 16px; padding: 22px; text-align: center; cursor: pointer; font-weight: 800; box-shadow: 0 8px 25px rgba(126, 34, 206, 0.4); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease; }
     .folder-card:hover { transform: translateY(-6px) scale(1.03); border-color: var(--accent-yellow); box-shadow: 0 12px 30px rgba(255, 208, 0, 0.4); }
 
+    /* Rich Gradient Headlines for Teachers Folder */
+    .rich-gradient-headline-blue {
+      background: linear-gradient(135deg, #38bdf8 0%, #1d4ed8 100%);
+      padding: 14px 20px; border-radius: 14px; color: #fff; font-weight: 900; font-size: 18px;
+      box-shadow: 0 5px 20px rgba(56, 189, 248, 0.4); margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.3);
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+    .rich-gradient-headline-yellow {
+      background: linear-gradient(135deg, #facc15 0%, #ea580c 100%);
+      padding: 14px 20px; border-radius: 14px; color: #000; font-weight: 900; font-size: 18px;
+      box-shadow: 0 5px 20px rgba(250, 204, 21, 0.4); margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.3);
+      text-transform: uppercase; letter-spacing: 1px;
+    }
+
     .grad-orange-yellow { background: linear-gradient(135deg, #f97316, #eab308) !important; color: #000 !important; }
     .grad-red-orange { background: linear-gradient(135deg, #ef4444, #f97316) !important; color: #fff !important; }
     .grad-purple-white { background: linear-gradient(135deg, #a855f7, #f43f5e) !important; color: #fff !important; }
@@ -172,11 +186,11 @@
     .grad-deep-violet { background: linear-gradient(135deg, #6366f1, #4f46e5) !important; color: #fff !important; }
 
     .challenge-card {
-      border-radius: 18px; padding: 20px; text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 2px solid rgba(255, 255, 255, 0.3);
-      position: relative; transition: all 0.3s ease; cursor: pointer;
+      border-radius: 18px; padding: 22px; text-align: center;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.4);
+      position: relative; transition: all 0.35s ease; cursor: pointer;
     }
-    .challenge-card:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 15px 35px rgba(255,208,0,0.5); }
+    .challenge-card:hover { transform: translateY(-8px) scale(1.04); box-shadow: 0 18px 45px rgba(255,208,0,0.7); }
 
     .person-card {
       background: linear-gradient(145deg, #2d0b52, #150529); color: white; border-radius: 20px; padding: 20px; text-align: center;
@@ -239,8 +253,9 @@
         <div onclick="changePortalTheme('theme-vibrant-neon')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#38bdf8;">💎 Vibrant Neon Theme</div>
         
         <div style="border-top: 1px solid rgba(255,255,255,0.15); margin: 8px 0; padding-top: 6px;"></div>
-        <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">💾 Security & Backup</div>
+        <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🔒 Security & Backup (Auto-Saved)</div>
         <div onclick="backupPortalData()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(16,185,129,0.2); color: #10b981; margin-bottom:4px;">📥 Backup Data (JSON)</div>
+        <div onclick="restorePortalDataPrompt()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(56,189,248,0.2); color: #38bdf8; margin-bottom:4px;">📤 Restore Data (JSON)</div>
         
         <div class="admin-only hidden">
           <div onclick="resetPortalData()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(239,68,68,0.2); color: #ef4444;">⚠️ Reset All Data</div>
@@ -303,7 +318,7 @@
         <div style="overflow-x:auto;">
           <table>
             <thead>
-              <tr><th>Photo</th><th>No.</th><th>Student Name</th><th>Father's Name</th><th>Class</th><th>Direct WhatsApp & Actions</th></tr>
+              <tr><th>Photo</th><th>No.</th><th>Student Name</th><th>Class</th><th>Direct WhatsApp & Actions</th></tr>
             </thead>
             <tbody id="dashStudentsTableBody"></tbody>
           </table>
@@ -404,7 +419,7 @@
       </div>
     </div>
 
-    <!-- SUBJECT CHALLENGE TEAMS WITH MYSTERY GIFT BOX -->
+    <!-- SUBJECT CHALLENGE TEAMS WITH RICH MYSTERY GIFT BOX -->
     <div id="pointsTab" class="tab-content hidden">
       <div style="text-align:center; background:linear-gradient(135deg, rgba(236,72,153,0.3), rgba(190,24,93,0.3)); padding:22px; border-radius:18px; border:2px dashed #ec4899; margin-bottom:20px;">
         <h2 style="color:#ffd000; margin:0; font-size:22px;">🏆 SUBJECT-WISE CHALLENGE TEAMS & GIFT BOX 🎁</h2>
@@ -425,12 +440,12 @@
 
     <!-- FACULTY & STAFF TAB -->
     <div id="usthadTab" class="tab-content hidden">
-      <h3 style="color:var(--accent-yellow);">👨‍🏫 Academic Faculty & Teachers Details</h3>
+      <div class="rich-gradient-headline-blue">👨‍🏫 Academic Faculty & Teachers Details</div>
       <input type="text" id="teacherSearchInput" placeholder="🔍 Search Faculty Name / Subject / Location..." oninput="renderUsthads()">
-      <div class="folder-grid" id="usthadsGrid"></div>
+      <div class="folder-grid" id="usthadsGrid" style="margin-top:14px;"></div>
 
-      <h3 style="color:var(--accent-yellow); margin-top:32px;">🤝 Committee & Administrative Staff</h3>
-      <div class="folder-grid" id="committeeGrid"></div>
+      <div class="rich-gradient-headline-yellow" style="margin-top:32px;">🤝 Committee & Administrative Staff</div>
+      <div class="folder-grid" id="committeeGrid" style="margin-top:14px;"></div>
     </div>
 
     <!-- EXAM RESULTS TAB -->
@@ -501,7 +516,7 @@
             </select>
             <input type="text" id="newClassNameInput" placeholder="New Class Name...">
             <select id="newClassTeacherSelect" style="margin-bottom:10px;"></select>
-            <button id="btnAddClass" style="width:100%; background:#0284c7; margin-bottom:16px;">➕ Add Class</button>
+            <button onclick="adminAddNewClass()" style="width:100%; background:#0284c7; margin-bottom:16px;">➕ Add Class</button>
             <div id="manageClassesList"></div>
           </div>
 
@@ -533,7 +548,7 @@
             <input type="text" id="teacherSubInput" placeholder="Subjects Handled (Comma separated)...">
             <input type="text" id="teacherContactInput" placeholder="WhatsApp / Contact Phone Number...">
             <input type="file" id="teacherPhotoFile" accept="image/*" style="margin-bottom:10px;">
-            <button id="btnAddTeacher" style="width:100%; background:#7e22ce;">➕ Add Faculty Member</button>
+            <button onclick="adminAddTeacher()" style="width:100%; background:#7e22ce;">➕ Add Faculty Member</button>
             <div id="manageTeachersList" style="margin-top:16px;"></div>
           </div>
         </div>
@@ -570,18 +585,29 @@
   </div>
 </div>
 
+<!-- RESTORE BACKUP MODAL PROMPT -->
+<div id="restoreModal" class="modal hidden">
+  <div class="modal-content" style="width:380px;">
+    <h3 style="color:var(--accent-yellow); margin-top:0;">📤 Restore Database Backup</h3>
+    <p style="font-size:12px; color:#cbd5e1;">Select your previously downloaded `ab_academy_backup.json` file to restore all student & teacher records:</p>
+    <input type="file" id="restoreFileJson" accept=".json" style="margin-bottom:12px;">
+    <button onclick="processRestoreJson()" style="width:100%; background:#10b981;">Restore Now</button>
+    <button onclick="document.getElementById('restoreModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
+  </div>
+</div>
+
 <!-- LOGIN MODAL -->
 <div id="loginModal" class="modal hidden">
   <div class="modal-content" style="width:340px;">
     <h3 style="text-align:center; color:var(--accent-yellow); margin-top:0;">🔑 Admin Login</h3>
     <input type="text" id="adminUser" placeholder="Username" value="admin">
     <input type="password" id="adminPass" placeholder="Password" value="123">
-    <button id="btnDoLogin" style="width:100%; background:#7e22ce;">Login</button>
-    <button id="btnCancelLogin" style="width:100%; background:#475569; margin-top:8px;">Cancel</button>
+    <button onclick="doAdminLogin()" style="width:100%; background:#7e22ce;">Login</button>
+    <button onclick="document.getElementById('loginModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:8px;">Cancel</button>
   </div>
 </div>
 
-<!-- FIREBASE REALTIME DATABASE INITIALIZATION & LOGIC -->
+<!-- FIREBASE REALTIME DATABASE SYNC & GLOBAL FUNCTIONS -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -601,6 +627,7 @@
   const dbRef = ref(database, 'ab_academy_db');
 
   let isAdmin = false;
+  window.isAdmin = false;
   let currentActiveClassName = '';
   let currentActiveSubjectName = '';
 
@@ -616,7 +643,12 @@
     usthads: [
       { id: 1, type: 'usthad', name: 'Prof. Abdul Bari', loc: 'Puthupparmba Main Road', mapLink: 'https://maps.google.com', sub: 'Fiqh, Arabic, Islamic Studies', contact: '9847000000', photo: 'https://via.placeholder.com/100' }
     ],
-    subjectChallengeTeams: {},
+    subjectChallengeTeams: {
+      'Plus One_Fiqh': [
+        { id: 1, name: 'Fiqh Champions', points: 420, theme: 'grad-orange-yellow', revealed: false },
+        { id: 2, name: 'Fiqh Warriors', points: 380, theme: 'grad-red-orange', revealed: false }
+      ]
+    },
     examMarksSubjectwise: {}, 
     studyNotes: {}
   };
@@ -648,6 +680,9 @@
     renderLiveAnnouncements();
     renderDashStudentsTable();
     renderUsthads();
+    if(document.getElementById('pointsTab') && !document.getElementById('pointsTab').classList.contains('hidden')) {
+      populateChallengeFilters();
+    }
   }
 
   window.changePortalTheme = function(themeName) {
@@ -679,52 +714,48 @@
     setupClick('btnSettingsMenu', () => document.getElementById('settingsDropdown').classList.toggle('hidden'));
     setupClick('btnCloseSettings', () => document.getElementById('settingsDropdown').classList.add('hidden'));
     setupClick('authBtn', () => document.getElementById('loginModal').classList.remove('hidden'));
-    setupClick('btnCancelLogin', () => document.getElementById('loginModal').classList.add('hidden'));
-    
-    setupClick('btnDoLogin', () => {
-      const u = document.getElementById('adminUser').value;
-      const p = document.getElementById('adminPass').value;
-      if(u === window.dbData.adminCreds.user && p === window.dbData.adminCreds.pass) {
-        isAdmin = true;
-        window.isAdmin = true;
-        document.getElementById('userInfo').innerText = "Admin View";
-        document.getElementById('authBtn').classList.add('hidden');
-        document.getElementById('logoutBtn').classList.remove('hidden');
-        document.getElementById('loginModal').classList.add('hidden');
-        document.querySelectorAll('.admin-only').forEach(e => e.classList.remove('hidden'));
-        populateAdminDropdowns();
-        renderDashStudentsTable();
-        alert("✅ Admin Login Success!");
-      } else alert("❌ Invalid Password!");
-    });
-
-    setupClick('logoutBtn', () => {
-      isAdmin = false;
-      window.isAdmin = false;
-      document.getElementById('userInfo').innerText = "Public View";
-      document.getElementById('authBtn').classList.remove('hidden');
-      document.getElementById('logoutBtn').classList.add('hidden');
-      document.querySelectorAll('.admin-only').forEach(e => e.classList.add('hidden'));
-      renderDashStudentsTable();
-    });
-
-    setupClick('btnAddClass', adminAddNewClass);
-    setupClick('btnAddTeacher', adminAddTeacher);
-
-    setupClick('btnCollegePortal', () => openSectionFolders('College Studies'));
-    setupClick('btnSchoolPortal', () => openSectionFolders('School Studies'));
-    setupClick('btnBackToMain', backToMainCategory);
-    setupClick('btnBackToClasses', () => {
-      document.getElementById('subjectFolderLevel').classList.add('hidden');
-      document.getElementById('classFolderLevel').classList.remove('hidden');
-    });
-    setupClick('btnBackToSubjects', () => {
-      document.getElementById('subjectDetailLevel').classList.add('hidden');
-      document.getElementById('subjectFolderLevel').classList.remove('hidden');
-    });
 
     refreshUI();
     populateDashClassFilter();
+  });
+
+  window.doAdminLogin = function() {
+    const u = document.getElementById('adminUser').value;
+    const p = document.getElementById('adminPass').value;
+    if(u === window.dbData.adminCreds.user && p === window.dbData.adminCreds.pass) {
+      isAdmin = true;
+      window.isAdmin = true;
+      document.getElementById('userInfo').innerText = "Admin View";
+      document.getElementById('authBtn').classList.add('hidden');
+      document.getElementById('logoutBtn').classList.remove('hidden');
+      document.getElementById('loginModal').classList.add('hidden');
+      document.querySelectorAll('.admin-only').forEach(e => e.classList.remove('hidden'));
+      populateAdminDropdowns();
+      renderDashStudentsTable();
+      alert("✅ Admin Login Success!");
+    } else alert("❌ Invalid Password!");
+  };
+
+  setupClick('logoutBtn', () => {
+    isAdmin = false;
+    window.isAdmin = false;
+    document.getElementById('userInfo').innerText = "Public View";
+    document.getElementById('authBtn').classList.remove('hidden');
+    document.getElementById('logoutBtn').classList.add('hidden');
+    document.querySelectorAll('.admin-only').forEach(e => e.classList.add('hidden'));
+    renderDashStudentsTable();
+  });
+
+  setupClick('btnCollegePortal', () => openSectionFolders('College Studies'));
+  setupClick('btnSchoolPortal', () => openSectionFolders('School Studies'));
+  setupClick('btnBackToMain', backToMainCategory);
+  setupClick('btnBackToClasses', () => {
+    document.getElementById('subjectFolderLevel').classList.add('hidden');
+    document.getElementById('classFolderLevel').classList.remove('hidden');
+  });
+  setupClick('btnBackToSubjects', () => {
+    document.getElementById('subjectDetailLevel').classList.add('hidden');
+    document.getElementById('subjectFolderLevel').classList.remove('hidden');
   });
 
   function renderLiveAnnouncements() {
@@ -785,7 +816,7 @@
       window.dbData.students[cls].forEach(s => {
         if(!q || s.name.toLowerCase().includes(q)) {
           found = true;
-          let adminBtns = isAdmin ? `<button class="btn-delete" onclick="deleteStudent(${s.id}, '${cls}')">🗑️ Delete</button>` : '';
+          let adminBtns = window.isAdmin ? `<button class="btn-delete" onclick="deleteStudent(${s.id}, '${cls}')">🗑️ Delete</button>` : '';
           let phoneClean = (s.phone || '').replace(/\D/g, '');
           let waBtn = `<a href="https://wa.me/91${phoneClean}" target="_blank" class="btn-whatsapp">💬 Chat WA</a>`;
 
@@ -793,7 +824,6 @@
             <td><img src="${s.photo || 'https://via.placeholder.com/45'}" style="width:38px; height:38px; border-radius:50%; object-fit:cover;"></td>
             <td>${c++}</td>
             <td><b>${s.name}</b></td>
-            <td>${s.father || 'N/A'}</td>
             <td>${cls}</td>
             <td>
               <button style="background:#0284c7; color:#fff; padding:4px 8px; font-size:10px; font-weight:bold;" onclick="openPublicPhotoUploadModal(${s.id}, '${cls}', '${s.name}')">📷 Photo</button>
@@ -803,13 +833,39 @@
         }
       });
     }
-    if(!found) tbody.innerHTML = `<tr><td colspan="6" style="color:#ffd000; padding:16px;">No student records found.</td></tr>`;
+    if(!found) tbody.innerHTML = `<tr><td colspan="5" style="color:#ffd000; padding:16px;">No student records found.</td></tr>`;
+  };
+
+  window.openPublicPhotoUploadModal = function(studentId, cls, studentName) {
+    document.getElementById('publicPhotoStudentId').value = studentId;
+    document.getElementById('publicPhotoClass').value = cls;
+    document.getElementById('publicPhotoStudentName').innerText = `Student: ${studentName} (${cls})`;
+    document.getElementById('publicAddPhotoModal').classList.remove('hidden');
+  };
+
+  window.savePublicStudentPhoto = function() {
+    const studentId = parseInt(document.getElementById('publicPhotoStudentId').value);
+    const cls = document.getElementById('publicPhotoClass').value;
+    const fileInput = document.getElementById('publicStudentPhotoFile');
+
+    if (fileInput.files[0]) {
+      handleImageUpload(fileInput, (photoBase64) => {
+        let student = (window.dbData.students[cls] || []).find(s => s.id === studentId);
+        if (student) {
+          student.photo = photoBase64;
+          window.saveData(); 
+          document.getElementById('publicAddPhotoModal').classList.add('hidden');
+          alert("✅ Photo uploaded successfully!");
+          fileInput.value = "";
+        }
+      });
+    } else alert("Please select an image file!");
   };
 
   window.deleteStudent = function(id, cls) {
     if(confirm("⚠️ Delete this student?")) {
       window.dbData.students[cls] = window.dbData.students[cls].filter(s => s.id !== id);
-      window.saveData(); renderDashStudentsTable();
+      window.saveData();
     }
   };
 
@@ -859,7 +915,7 @@
 
     (window.dbData.usthads || []).forEach(u => {
       let teacherLocStr = u.loc || 'Academy Campus';
-      let adminBtns = isAdmin ? `<div style="margin-top:10px;"><button class="btn-edit" onclick="openEditTeacherModal(${u.id})">✏️ Edit Details</button><button class="btn-delete" onclick="deleteTeacher(${u.id})">🗑️ Delete</button></div>` : '';
+      let adminBtns = window.isAdmin ? `<div style="margin-top:10px;"><button class="btn-edit" onclick="openEditTeacherModal(${u.id})">✏️ Edit Details</button><button class="btn-delete" onclick="deleteTeacher(${u.id})">🗑️ Delete</button></div>` : '';
       let phoneClean = (u.contact || '').replace(/\D/g, '');
       let waBtn = u.contact ? `<a href="https://wa.me/91${phoneClean}" target="_blank" class="btn-whatsapp" style="margin-top:8px;">💬 WhatsApp</a>` : '';
       let callBtn = u.contact ? `<a href="tel:${phoneClean}" class="btn-call" style="margin-top:8px;">📞 Call Usthad</a>` : '';
@@ -914,7 +970,7 @@
       teacher.mapLink = document.getElementById('editTeacherMap').value.trim();
       teacher.sub = document.getElementById('editTeacherSub').value.trim();
       teacher.contact = document.getElementById('editTeacherContact').value.trim();
-      window.saveData(); renderUsthads();
+      window.saveData();
       document.getElementById('editTeacherModal').classList.add('hidden');
       alert("✅ Faculty Updated!");
     }
@@ -923,7 +979,7 @@
   window.deleteTeacher = function(id) {
     if(confirm("Delete faculty member?")) {
       window.dbData.usthads = window.dbData.usthads.filter(u => u.id !== id);
-      window.saveData(); renderUsthads(); renderManageTeachersList();
+      window.saveData();
     }
   };
 
@@ -944,7 +1000,7 @@
     });
   }
 
-  function adminAddNewClass() {
+  window.adminAddNewClass = function() {
     const portal = document.getElementById('newClassPortal').value;
     const name = document.getElementById('newClassNameInput').value.trim();
     if(name) {
@@ -954,7 +1010,7 @@
       window.saveData(); alert("✅ Class Added!");
       document.getElementById('newClassNameInput').value = "";
     }
-  }
+  };
 
   function renderManageClassesList() {
     const container = document.getElementById('manageClassesList');
@@ -973,7 +1029,7 @@
     if(confirm(`Delete class ${cls}?`)) {
       window.dbData.classes[portal] = window.dbData.classes[portal].filter(c => c !== cls);
       delete window.dbData.subjects[cls];
-      window.saveData(); renderManageClassesList();
+      window.saveData();
     }
   };
 
@@ -1029,7 +1085,7 @@
     }
     students.forEach((s, idx) => {
       let stColor = s.status === 'Present' ? '#10b981' : (s.status === 'Absent' ? '#ef4444' : '#f59e0b');
-      let statusBtn = isAdmin 
+      let statusBtn = window.isAdmin 
         ? `<button onclick="toggleStudentStatus('${clsName}', ${s.id})" style="background:${stColor}; color:#fff; padding:6px 14px; border-radius:8px; font-weight:bold; font-size:12px;">${s.status || 'Present'}</button>`
         : `<span style="color:${stColor}; font-weight:bold;">${s.status || 'Present'}</span>`;
 
@@ -1102,7 +1158,7 @@
     } else { callback('https://via.placeholder.com/100'); }
   }
 
-  function adminRegisterStudent() {
+  window.adminRegisterStudent = function() {
     const cls = document.getElementById('regStudentClassSelect').value;
     const name = document.getElementById('regStudentName').value.trim();
     const father = document.getElementById('regFatherName').value.trim();
@@ -1113,17 +1169,19 @@
       handleImageUpload(fileInput, (photoBase64) => {
         if(!window.dbData.students[cls]) window.dbData.students[cls] = [];
         window.dbData.students[cls].push({ id: Date.now(), name, father, phone, photo: photoBase64, status: 'Present' });
-        window.saveData(); renderDashStudentsTable();
+        window.saveData();
         alert(`✅ Student "${name}" Registered Successfully!`);
         document.getElementById('regStudentName').value = "";
         document.getElementById('regFatherName').value = "";
         document.getElementById('regPhoneNum').value = "";
         fileInput.value = "";
       });
+    } else {
+      alert("⚠️ Please select a class and enter student name!");
     }
-  }
+  };
 
-  function adminAddTeacher() {
+  window.adminAddTeacher = function() {
     const type = document.getElementById('teacherCategorySelect').value;
     const name = document.getElementById('teacherNameInput').value.trim();
     const loc = document.getElementById('teacherLocInput').value.trim();
@@ -1136,7 +1194,7 @@
       handleImageUpload(fileInput, (photoBase64) => {
         if(!window.dbData.usthads) window.dbData.usthads = [];
         window.dbData.usthads.push({ id: Date.now(), type, name, loc, mapLink, sub, contact, photo: photoBase64 });
-        window.saveData(); renderUsthads();
+        window.saveData();
         alert(`✅ Faculty "${name}" Added Successfully!`);
         document.getElementById('teacherNameInput').value = "";
         document.getElementById('teacherLocInput').value = "";
@@ -1145,7 +1203,156 @@
         document.getElementById('teacherContactInput').value = "";
         fileInput.value = "";
       });
+    } else {
+      alert("⚠️ Please enter faculty name!");
     }
+  };
+
+  // Challenge Teams & Mystery Box Functions
+  function populateChallengeFilters() {
+    const clsSel = document.getElementById('challengeClassFilter');
+    if(!clsSel) return;
+    clsSel.innerHTML = '<option value="">📁 Select Class...</option>';
+    for(let p in window.dbData.classes) {
+      window.dbData.classes[p].forEach(c => { clsSel.innerHTML += `<option value="${c}">${c}</option>`; });
+    }
+  }
+
+  window.renderChallengeLeaderboard = function() {
+    const cls = document.getElementById('challengeClassFilter').value;
+    const subSel = document.getElementById('challengeSubjectFilter');
+    
+    if(cls && subSel.options.length <= 1) {
+      subSel.innerHTML = '<option value="">📖 Select Subject...</option>';
+      (window.dbData.subjects[cls] || []).forEach(s => { subSel.innerHTML += `<option value="${s}">${s}</option>`; });
+    }
+
+    const sub = subSel.value;
+    const container = document.getElementById('classWiseChallengeContainer');
+    if(!container) return;
+    container.innerHTML = "";
+
+    if(!cls || !sub) {
+      container.innerHTML = `<p style="color:#ffd000; text-align:center;">Please select Class & Subject to view teams!</p>`;
+      return;
+    }
+
+    const key = `${cls}_${sub}`;
+    let teams = (window.dbData.subjectChallengeTeams || {})[key] || [];
+
+    if(teams.length === 0) {
+      container.innerHTML = `<p style="color:#ffd000; text-align:center;">No challenge teams created for ${sub} in ${cls} yet.</p>`;
+      return;
+    }
+
+    let grid = document.createElement('div');
+    grid.className = 'folder-grid';
+
+    teams.forEach(t => {
+      let adminControls = window.isAdmin ? `
+        <div style="margin-top:12px; display:flex; gap:6px; justify-content:center;">
+          <button onclick="adjustTeamPoints('${key}', ${t.id}, 10)" style="background:#10b981; padding:6px 12px; font-size:11px;">+10</button>
+          <button onclick="adjustTeamPoints('${key}', ${t.id}, -10)" style="background:#ef4444; padding:6px 12px; font-size:11px;">-10</button>
+          <button onclick="deleteTeam('${key}', ${t.id})" style="background:#000; padding:6px 12px; font-size:11px;">🗑️</button>
+        </div>
+      ` : '';
+
+      let card = document.createElement('div');
+      card.className = `challenge-card ${t.theme || 'grad-orange-yellow'}`;
+      
+      if (!t.revealed) {
+        card.innerHTML = `
+          <div onclick="revealGiftBox('${key}', ${t.id})" style="padding:10px; cursor:pointer; text-align:center;">
+            <div style="font-size:52px; margin-bottom:8px; animation:bounce 1.5s infinite;">🎁</div>
+            <h3 style="margin:0; font-size:17px; color:#000; font-weight:900;">CLICK MYSTERY GIFT BOX</h3>
+            <p style="margin:4px 0 0 0; font-size:12px; color:#111; font-weight:700;">${t.name}</p>
+          </div>
+        `;
+      } else {
+        card.innerHTML = `
+          <h3 style="margin:0 0 6px 0; font-size:19px;">🏆 ${t.name}</h3>
+          <div style="font-size:26px; font-weight:900;">${t.points} PTS</div>
+          <div style="background:rgba(0,0,0,0.3); padding:4px 10px; border-radius:12px; font-size:11px; font-weight:bold; margin-top:6px;">🌟 TOP PERFORMANCE!</div>
+          ${adminControls}
+        `;
+      }
+      grid.appendChild(card);
+    });
+
+    container.appendChild(grid);
+  };
+
+  window.revealGiftBox = function(key, teamId) {
+    let team = window.dbData.subjectChallengeTeams[key].find(t => t.id === teamId);
+    if(team) {
+      team.revealed = true;
+      window.saveData();
+      playCelebrationSound();
+      try {
+        confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } });
+      } catch(e) {}
+      renderChallengeLeaderboard();
+    }
+  };
+
+  window.adjustTeamPoints = function(key, teamId, delta) {
+    let team = window.dbData.subjectChallengeTeams[key].find(t => t.id === teamId);
+    if(team) {
+      team.points = Math.max(0, team.points + delta);
+      window.saveData(); renderChallengeLeaderboard();
+    }
+  };
+
+  window.deleteTeam = function(key, teamId) {
+    if(confirm("Delete team?")) {
+      window.dbData.subjectChallengeTeams[key] = window.dbData.subjectChallengeTeams[key].filter(t => t.id !== teamId);
+      window.saveData(); renderChallengeLeaderboard();
+    }
+  };
+
+  window.populateChallengeSubjectDropdown = function() {
+    const cls = document.getElementById('challengeTeamClassSelect').value;
+    const subSel = document.getElementById('challengeTeamSubjectSelect');
+    subSel.innerHTML = '<option value="">-- Select Subject --</option>';
+    if(cls) {
+      (window.dbData.subjects[cls] || []).forEach(s => { subSel.innerHTML += `<option value="${s}">${s}</option>`; });
+    }
+  };
+
+  window.adminAddSubjectChallengeTeam = function() {
+    const cls = document.getElementById('challengeTeamClassSelect').value;
+    const sub = document.getElementById('challengeTeamSubjectSelect').value;
+    const name = document.getElementById('newTeamNameInput').value.trim();
+    const pts = parseInt(document.getElementById('newTeamPointsInput').value) || 0;
+    const theme = document.getElementById('newTeamColorSelect').value;
+
+    if(cls && sub && name) {
+      const key = `${cls}_${sub}`;
+      if(!window.dbData.subjectChallengeTeams) window.dbData.subjectChallengeTeams = {};
+      if(!window.dbData.subjectChallengeTeams[key]) window.dbData.subjectChallengeTeams[key] = [];
+
+      window.dbData.subjectChallengeTeams[key].push({ id: Date.now(), name, points: pts, theme, revealed: false });
+      window.saveData(); alert("✅ Subject Challenge Team Created!");
+      document.getElementById('newTeamNameInput').value = "";
+      renderChallengeLeaderboard();
+    } else alert("Fill all fields!");
+  };
+
+  function playCelebrationSound() {
+    try {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.3);
+      gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.5);
+    } catch(e) {}
   }
 
   window.exportAttendanceToExcel = function() {
@@ -1176,6 +1383,36 @@
     downloadAnchor.setAttribute("href", dataStr);
     downloadAnchor.setAttribute("download", `ab_academy_backup.json`);
     document.body.appendChild(downloadAnchor); downloadAnchor.click(); downloadAnchor.remove();
+  };
+
+  window.restorePortalDataPrompt = function() {
+    document.getElementById('restoreModal').classList.remove('hidden');
+  };
+
+  window.processRestoreJson = function() {
+    const fileInput = document.getElementById('restoreFileJson');
+    if (fileInput.files[0]) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const parsed = JSON.parse(e.target.result);
+          if (parsed && parsed.students && parsed.classes) {
+            window.dbData = parsed;
+            window.saveData();
+            document.getElementById('restoreModal').classList.add('hidden');
+            alert("✅ Portal Data Restored Successfully!");
+            location.reload();
+          } else {
+            alert("❌ Invalid backup file format!");
+          }
+        } catch(err) {
+          alert("❌ Error parsing JSON file!");
+        }
+      };
+      reader.readAsText(fileInput.files[0]);
+    } else {
+      alert("Please select a JSON backup file first!");
+    }
   };
 
   window.resetPortalData = function() {
