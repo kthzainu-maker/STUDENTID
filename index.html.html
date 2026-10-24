@@ -175,7 +175,6 @@
     .challenge-card { border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.4); transition: all 0.35s ease; cursor: pointer; }
     .challenge-card:hover { transform: translateY(-6px) scale(1.03); }
 
-    /* RESTRUCTURED FACULTY CARDS */
     .faculty-card-modern {
       background: linear-gradient(145deg, rgba(45, 11, 82, 0.9), rgba(21, 5, 41, 0.95));
       border: 1px solid var(--glass-border); border-radius: 22px; padding: 20px; text-align: center;
@@ -286,47 +285,92 @@
   </div>
 
   <div class="card" id="portalMainCard">
-    <!-- DASHBOARD TAB -->
+    <!-- RESTRUCTURED MODERN DASHBOARD TAB -->
     <div id="dashboardTab" class="tab-content active">
-      <div style="text-align:center; margin-bottom:26px;">
-        <h2 style="color:var(--accent-yellow); margin-bottom:4px; font-size:20px; font-weight:900;">🌟 ABDUL BARI ACADEMY PUTHUPPARMBA</h2>
-        <p style="color:#c084fc; font-size:13px; font-weight:700;">Official Student Portal & Management System</p>
+      
+      <!-- HERO BANNER SECTION -->
+      <div style="background: linear-gradient(135deg, rgba(255, 208, 0, 0.15), rgba(236, 72, 153, 0.15)); border: 1px solid var(--glass-border); padding: 24px; border-radius: 24px; text-align: center; margin-bottom: 24px; box-shadow: var(--neon-glow); backdrop-filter: blur(15px);">
+        <span style="background: var(--accent-yellow); color: #000; padding: 4px 12px; border-radius: 20px; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">🌟 Official Academy Portal</span>
+        <h2 style="color: #fff; margin: 10px 0 4px 0; font-size: 22px; font-weight: 900; letter-spacing: 0.5px;">ABDUL BARI ACADEMY PUTHUPPARMBA</h2>
+        <p style="color: #c084fc; font-size: 13px; font-weight: 700; margin: 0;">Smart Student Management & Live Information System</p>
       </div>
 
+      <!-- LIVE ANALYTICS & STATS GRID -->
       <div class="public-dashboard-grid">
-        <div class="pub-stat-card"><p style="font-weight:800; font-size:12px;">TOTAL STUDENTS</p><h2 id="pubStatStudents" style="font-size:32px; margin:6px 0 0 0; font-weight:900;">0</h2></div>
-        <div class="pub-stat-card"><p style="font-weight:800; font-size:12px;">ACTIVE BATCHES</p><h2 id="pubStatClasses" style="font-size:32px; margin:6px 0 0 0; font-weight:900;">0</h2></div>
-        <div class="pub-stat-card"><p style="font-weight:800; font-size:12px;">FACULTY & COMMITTEE</p><h2 id="pubStatUsthads" style="font-size:32px; margin:6px 0 0 0; font-weight:900;">0</h2></div>
+        <div class="pub-stat-card">
+          <div style="font-size: 28px; margin-bottom: 4px;">🎓</div>
+          <p style="font-weight: 800; font-size: 11px; margin: 0; letter-spacing: 1px;">TOTAL STUDENTS</p>
+          <h2 id="pubStatStudents" style="font-size: 34px; margin: 4px 0 0 0; font-weight: 900; text-shadow: 0 0 10px rgba(255,255,255,0.5);">0</h2>
+        </div>
+
+        <div class="pub-stat-card">
+          <div style="font-size: 28px; margin-bottom: 4px;">📚</div>
+          <p style="font-weight: 800; font-size: 11px; margin: 0; letter-spacing: 1px;">ACTIVE BATCHES</p>
+          <h2 id="pubStatClasses" style="font-size: 34px; margin: 4px 0 0 0; font-weight: 900; text-shadow: 0 0 10px rgba(255,255,255,0.5);">0</h2>
+        </div>
+
+        <div class="pub-stat-card">
+          <div style="font-size: 28px; margin-bottom: 4px;">👨‍🏫</div>
+          <p style="font-weight: 800; font-size: 11px; margin: 0; letter-spacing: 1px;">FACULTY & COMMITTEE</p>
+          <h2 id="pubStatUsthads" style="font-size: 34px; margin: 4px 0 0 0; font-weight: 900; text-shadow: 0 0 10px rgba(255,255,255,0.5);">0</h2>
+        </div>
       </div>
 
-      <!-- COMMITTEE & SECRETARIAT SECTION ON DASHBOARD -->
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 18px; border-radius: 20px; margin-bottom:22px;">
-        <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">🏛️ COLLEGE COMMITTEE & SECRETARIAT</h3>
-        <p style="font-size:11px; color:#c084fc; margin-top:-4px;">Key administrative office bearers of Abdul Bari Academy:</p>
-        <div class="folder-grid" id="dashCommitteeGrid" style="margin-top:12px;"></div>
+      <!-- QUICK ACTION NAVIGATOR BAR -->
+      <div style="display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap;">
+        <button onclick="switchTab('classesTab', document.querySelector('[data-tab=\'classesTab\']'))" style="flex: 1; min-width: 140px; background: linear-gradient(135deg, #0284c7, #0369a1); font-size: 12px; padding: 12px; border-radius: 16px;">
+          📁 Browse Academics
+        </button>
+        <button onclick="switchTab('myStudentTab', document.querySelector('[data-tab=\'myStudentTab\']'))" style="flex: 1; min-width: 140px; background: linear-gradient(135deg, #059669, #047857); font-size: 12px; padding: 12px; border-radius: 16px;">
+          👨‍👩‍👧 Parent Portal
+        </button>
+        <button onclick="switchTab('pointsTab', document.querySelector('[data-tab=\'pointsTab\']'))" style="flex: 1; min-width: 140px; background: linear-gradient(135deg, #ec4899, #be185d); font-size: 12px; padding: 12px; border-radius: 16px;">
+          🎁 Gift Challenges
+        </button>
       </div>
 
-      <!-- DASHBOARD STUDENT DIRECTORY -->
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 18px; border-radius: 20px;">
-        <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">🔍 STUDENT DIRECTORY & DIRECT WHATSAPP</h3>
-        <p style="font-size:11px; color:#c084fc; margin-top:-4px;">💡 Tip: Click 'Chat WA' or right-click/long-press student row for full profile popup!</p>
+      <!-- COMMITTEE & SECRETARIAT WIDGET -->
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 20px; border-radius: 22px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <div>
+            <h3 style="color: var(--accent-yellow); margin: 0; font-size: 16px; font-weight: 800;">🏛️ COLLEGE COMMITTEE & SECRETARIAT</h3>
+            <p style="font-size: 11px; color: #c084fc; margin: 2px 0 0 0;">Key administrative members and management team</p>
+          </div>
+          <button onclick="switchTab('usthadTab', document.querySelector('[data-tab=\'usthadTab\']'))" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); font-size: 11px; padding: 6px 12px; border-radius: 10px;">
+            View All Faculty →
+          </button>
+        </div>
+        <div class="folder-grid" id="dashCommitteeGrid" style="margin-top: 14px;"></div>
+      </div>
+
+      <!-- DIRECTORY & DIRECT WHATSAPP ACTION TABLE -->
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 20px; border-radius: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+        <h3 style="color: var(--accent-yellow); margin-top: 0; font-size: 16px; font-weight: 800;">🔍 STUDENT DIRECTORY & DIRECT WHATSAPP</h3>
+        <p style="font-size: 11px; color: #c084fc; margin-top: -4px; margin-bottom: 14px;">💡 Tip: Click 'Chat WA' or right-click / long-press student row for full profile popup!</p>
         
-        <div style="display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
-          <input type="text" id="dashStudentSearchInput" placeholder="🔍 Search student name..." oninput="renderDashStudentsTable()" style="flex:2; min-width:180px; margin-bottom:0;">
-          <select id="dashClassFilterSelect" onchange="renderDashStudentsTable()" style="flex:1; min-width:140px; margin-bottom:0; background:rgba(0,0,0,0.4); color:#fff;">
+        <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+          <input type="text" id="dashStudentSearchInput" placeholder="🔍 Search student name..." oninput="renderDashStudentsTable()" style="flex: 2; min-width: 180px; margin-bottom: 0;">
+          <select id="dashClassFilterSelect" onchange="renderDashStudentsTable()" style="flex: 1; min-width: 140px; margin-bottom: 0; background: rgba(0,0,0,0.4); color: #fff;">
             <option value="">📁 All Classes</option>
           </select>
         </div>
 
-        <div style="overflow-x:auto;">
+        <div style="overflow-x: auto;">
           <table>
             <thead>
-              <tr><th>Photo</th><th>No.</th><th>Student Name</th><th>Class</th><th>Quick Actions</th></tr>
+              <tr>
+                <th>Photo</th>
+                <th>No.</th>
+                <th>Student Name</th>
+                <th>Class</th>
+                <th>Quick Actions</th>
+              </tr>
             </thead>
             <tbody id="dashStudentsTableBody"></tbody>
           </table>
         </div>
       </div>
+
     </div>
 
     <!-- ACADEMICS TAB -->
@@ -1005,14 +1049,15 @@
     document.getElementById('settingsDropdown').classList.add('hidden');
   };
 
-  function switchTab(tabId, btn) {
+  window.switchTab = function(tabId, btn) {
+    playClickSound();
     document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(tabId).classList.remove('hidden');
     if(btn) btn.classList.add('active');
     if(tabId === 'pointsTab') populateChallengeFilters();
     if(tabId === 'examTab') populateExamClassDropdown();
-  }
+  };
 
   function updateDashboardStats() {
     let stCount = 0; for(let cls in window.dbData.students) stCount += window.dbData.students[cls].length;
