@@ -12,19 +12,20 @@
 
   <style>
     :root {
-      --bg-deep-1: #070114;
-      --bg-deep-2: #180533;
-      --bg-deep-3: #2d0b52;
-      --card-bg: rgba(25, 12, 43, 0.88);
-      --glass-border: rgba(255, 208, 0, 0.5);
+      /* NUCLEAR DEEP BLUE / NAVY GLASS THEME */
+      --bg-deep-1: #0b132b;
+      --bg-deep-2: #1c2541;
+      --bg-deep-3: #3a506b;
+      --card-bg: rgba(28, 37, 65, 0.88);
+      --glass-border: rgba(56, 189, 248, 0.5);
       --text-main: #ffffff;
       --accent-yellow: #ffd000;
       --neon-pink: #ec4899;
       --neon-cyan: #38bdf8;
       --neon-green: #10b981;
       --red: #ef4444;
-      --neon-glow: 0 0 25px rgba(255, 208, 0, 0.6), 0 0 45px rgba(236, 72, 153, 0.35);
-      --card-glow: 0 15px 35px rgba(147, 51, 234, 0.4);
+      --neon-glow: 0 0 25px rgba(56, 189, 248, 0.6), 0 0 45px rgba(255, 208, 0, 0.35);
+      --card-glow: 0 15px 35px rgba(11, 19, 43, 0.6);
     }
 
     body.theme-light-rose {
@@ -49,10 +50,9 @@
       touch-action: manipulation;
     }
 
-    /* ANIMATED GRADIENT BACKGROUND (HD HIGH QUALITY) */
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(-45deg, var(--bg-deep-1), var(--bg-deep-2), var(--bg-deep-3), #120324);
+      background: linear-gradient(-45deg, var(--bg-deep-1), var(--bg-deep-2), var(--bg-deep-3), #070a14);
       background-size: 400% 400%;
       animation: gradientBG 14s ease infinite;
       color: var(--text-main);
@@ -68,9 +68,8 @@
 
     .container { max-width: 1100px; margin: 0 auto; position: relative; width: 100%; }
 
-    /* HEADER WITH NEON GLOW & PULSE ANIMATION */
     header {
-      background: rgba(15, 7, 32, 0.9);
+      background: rgba(11, 19, 43, 0.92);
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--glass-border);
       color: #fff; padding: 18px 22px; border-radius: 22px; margin-bottom: 14px;
@@ -81,13 +80,13 @@
     }
 
     @keyframes headerGlow {
-      0% { box-shadow: 0 5px 25px rgba(147, 51, 234, 0.3); }
+      0% { box-shadow: 0 5px 25px rgba(56, 189, 248, 0.3); }
       100% { box-shadow: 0 10px 45px rgba(255, 208, 0, 0.45); }
     }
 
     .header-title-box h1 { margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 0.5px; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
     .header-title-box h2 { margin: 2px 0 0 0; font-size: 13px; font-weight: 800; color: var(--accent-yellow) !important; }
-    .header-title-box small { display: block; margin-top: 2px; font-size: 10px; font-weight: 800; color: var(--neon-pink) !important; letter-spacing: 2px; }
+    .header-title-box small { display: block; margin-top: 2px; font-size: 10px; font-weight: 800; color: var(--neon-cyan) !important; letter-spacing: 2px; }
 
     .header-right { display: flex; align-items: center; gap: 8px; position: relative; flex-wrap: wrap; }
     .auth-btn { background: linear-gradient(135deg, #ffd000, #f59e0b); color: #000; border: none; padding: 10px 18px; border-radius: 12px; cursor: pointer; font-weight: 800; box-shadow: var(--neon-glow); transition: all 0.3s ease; font-size: 12px; position: relative; z-index: 100; }
@@ -96,12 +95,12 @@
     .menu-icon { font-size: 22px; cursor: pointer; color: #fff; padding: 8px 14px; border-radius: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; position: relative; z-index: 100; }
     .menu-icon:hover { background: rgba(255,255,255,0.25); transform: rotate(90deg); }
 
-    .notice-marquee { background: linear-gradient(90deg, #ffd000, #ec4899, #38bdf8); background-size: 200% 200%; animation: gradientBG 6s ease infinite; color: #000; padding: 10px 16px; border-radius: 12px; font-weight: 800; font-size: 13px; margin-bottom: 16px; box-shadow: 0 5px 20px rgba(255,208,0,0.4); }
+    .notice-marquee { background: linear-gradient(90deg, #ffd000, #38bdf8, #10b981); background-size: 200% 200%; animation: gradientBG 6s ease infinite; color: #000; padding: 10px 16px; border-radius: 12px; font-weight: 800; font-size: 13px; margin-bottom: 16px; box-shadow: 0 5px 20px rgba(56,189,248,0.4); }
 
     .msg-notification-box {
-      background: linear-gradient(135deg, rgba(147, 51, 234, 0.4), rgba(236, 72, 153, 0.4));
-      border: 2px solid var(--accent-yellow); border-radius: 18px; padding: 18px; margin-bottom: 18px;
-      box-shadow: 0 0 30px rgba(236, 72, 153, 0.4); backdrop-filter: blur(10px);
+      background: linear-gradient(135deg, rgba(28, 37, 65, 0.9), rgba(58, 80, 107, 0.9));
+      border: 2px solid var(--neon-cyan); border-radius: 18px; padding: 18px; margin-bottom: 18px;
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.3); backdrop-filter: blur(10px);
       animation: pulseBox 3.5s ease-in-out infinite;
     }
     @keyframes pulseBox {
@@ -110,7 +109,7 @@
     }
 
     #settingsDropdown {
-      position: absolute; top: 55px; right: 0; background: #1a0636; color: #fff;
+      position: absolute; top: 55px; right: 0; background: #0b132b; color: #fff;
       backdrop-filter: blur(20px); border-radius: 18px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); width: 280px; 
       z-index: 99999 !important; padding: 18px; border: 1px solid var(--glass-border);
     }
@@ -118,7 +117,7 @@
     .nav-tabs { display: flex; gap: 8px; margin-bottom: -1px; flex-wrap: wrap; position: relative; z-index: 10; }
     .tab-btn {
       background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px;
-      border-radius: 16px 16px 0 0; cursor: pointer; font-weight: 800; color: #e9d5ff; font-size: 12px;
+      border-radius: 16px 16px 0 0; cursor: pointer; font-weight: 800; color: #e2e8f0; font-size: 12px;
       transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); backdrop-filter: blur(8px); flex: 1; text-align: center; min-width: 100px;
     }
     .tab-btn:hover { background: rgba(255,255,255,0.22); transform: translateY(-4px); color: var(--accent-yellow); }
@@ -143,8 +142,8 @@
       box-shadow: 0 12px 35px rgba(0,0,0,0.5); transition: all 0.35s ease;
     }
     .pub-stat-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-    .pub-stat-card:nth-child(1) { background: linear-gradient(135deg, #ec4899, #831843); }
-    .pub-stat-card:nth-child(2) { background: linear-gradient(135deg, #06b6d4, #0e7490); }
+    .pub-stat-card:nth-child(1) { background: linear-gradient(135deg, #0284c7, #0369a1); }
+    .pub-stat-card:nth-child(2) { background: linear-gradient(135deg, #0d9488, #0f766e); }
     .pub-stat-card:nth-child(3) { background: linear-gradient(135deg, #10b981, #047857); }
 
     .admin-layout { display: flex; gap: 18px; flex-wrap: wrap; }
@@ -160,8 +159,8 @@
     .big-folder-school:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 45px rgba(5, 150, 105, 0.6); }
 
     .folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 22px; }
-    .folder-card { background: linear-gradient(135deg, #7e22ce, #4c1d95); color: white; border-radius: 18px; padding: 20px; text-align: center; cursor: pointer; font-weight: 800; box-shadow: 0 10px 30px rgba(126, 34, 206, 0.4); border: 1px solid rgba(255,255,255,0.2); transition: all 0.35s ease; }
-    .folder-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 18px 40px rgba(126, 34, 206, 0.6); }
+    .folder-card { background: linear-gradient(135deg, #1e293b, #0f172a); color: white; border-radius: 18px; padding: 20px; text-align: center; cursor: pointer; font-weight: 800; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); border: 1px solid var(--glass-border); transition: all 0.35s ease; }
+    .folder-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: var(--neon-glow); }
 
     .rich-gradient-headline-blue { background: linear-gradient(135deg, #38bdf8, #1d4ed8); padding: 14px 18px; border-radius: 16px; color: #fff; font-weight: 900; font-size: 16px; box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4); margin-bottom: 18px; border: 1px solid rgba(255,255,255,0.3); letter-spacing: 1px; }
     .rich-gradient-headline-yellow { background: linear-gradient(135deg, #facc15, #ea580c); padding: 14px 18px; border-radius: 16px; color: #000; font-weight: 900; font-size: 16px; box-shadow: 0 8px 25px rgba(250, 204, 21, 0.4); margin-bottom: 18px; border: 1px solid rgba(255,255,255,0.3); letter-spacing: 1px; }
@@ -175,22 +174,30 @@
     .challenge-card { border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.4); transition: all 0.35s ease; cursor: pointer; }
     .challenge-card:hover { transform: translateY(-6px) scale(1.03); }
 
+    /* MODERN FACULTY CARD WITH DESIGNATION BADGES */
     .faculty-card-modern {
-      background: linear-gradient(145deg, rgba(45, 11, 82, 0.9), rgba(21, 5, 41, 0.95));
+      background: linear-gradient(145deg, rgba(28, 37, 65, 0.95), rgba(11, 19, 43, 0.98));
       border: 1px solid var(--glass-border); border-radius: 22px; padding: 20px; text-align: center;
       box-shadow: 0 12px 30px rgba(0,0,0,0.5); transition: all 0.35s ease; cursor: pointer;
       position: relative; overflow: hidden;
     }
     .faculty-card-modern:hover { transform: translateY(-6px) scale(1.02); box-shadow: var(--neon-glow); }
-    .faculty-avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-yellow); box-shadow: var(--neon-glow); margin: 0 auto 12px auto; display: block; }
+    .faculty-avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-yellow); box-shadow: var(--neon-glow); margin: 10px auto 12px auto; display: block; }
+    
+    .designation-badge {
+      background: linear-gradient(135deg, #38bdf8, #0284c7);
+      color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 10px; font-weight: 800;
+      text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 12px rgba(56,189,248,0.4);
+      display: inline-block;
+    }
 
-    button { background: linear-gradient(135deg, #7e22ce, #6b21a8); color: white; border: none; padding: 11px 18px; border-radius: 14px; cursor: pointer; font-weight: 800; font-family: 'Poppins', sans-serif; transition: all 0.25s ease; box-shadow: 0 5px 20px rgba(126,34,206,0.4); font-size: 12px; position: relative; z-index: 10; }
-    button:hover { transform: translateY(-2px) scale(1.02); filter: brightness(1.15); box-shadow: 0 8px 25px rgba(126,34,206,0.6); }
+    button { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border: none; padding: 11px 18px; border-radius: 14px; cursor: pointer; font-weight: 800; font-family: 'Poppins', sans-serif; transition: all 0.25s ease; box-shadow: 0 5px 20px rgba(2,132,199,0.4); font-size: 12px; position: relative; z-index: 10; }
+    button:hover { transform: translateY(-2px) scale(1.02); filter: brightness(1.15); box-shadow: 0 8px 25px rgba(2,132,199,0.6); }
     .btn-back { background: #475569; padding: 8px 16px; font-size: 11px; margin-bottom: 16px; border-radius: 10px; }
 
     table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 12px; }
     th, td { border: 1px solid rgba(255,255,255,0.18); padding: 12px 10px; text-align: center; }
-    th { background: rgba(255,208,0,0.25); color: var(--accent-yellow); font-weight: 800; }
+    th { background: rgba(56,189,248,0.25); color: var(--accent-yellow); font-weight: 800; }
 
     input, select, textarea { width: 100%; padding: 12px; margin-bottom: 12px; border-radius: 10px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.25); font-family: 'Poppins', sans-serif; font-size: 13px; transition: all 0.3s ease; position: relative; z-index: 10; }
     input:focus, select:focus, textarea:focus { border-color: var(--accent-yellow); outline: none; box-shadow: 0 0 15px rgba(255,208,0,0.3); }
@@ -198,7 +205,7 @@
     .hidden { display: none !important; }
     .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); backdrop-filter: blur(12px); display: flex; justify-content: center; align-items: center; z-index: 999999; padding: 15px; animation: fadeInModal 0.3s ease-out; }
     @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
-    .modal-content { background: #240c42; color: #fff; padding: 24px; border-radius: 22px; width: 450px; max-width: 100%; border: 1px solid var(--glass-border); box-shadow: 0 30px 60px rgba(0,0,0,0.8); max-height:90vh; overflow-y:auto; position: relative; z-index: 1000000; }
+    .modal-content { background: #0b132b; color: #fff; padding: 24px; border-radius: 22px; width: 450px; max-width: 100%; border: 1px solid var(--glass-border); box-shadow: 0 30px 60px rgba(0,0,0,0.8); max-height:90vh; overflow-y:auto; position: relative; z-index: 1000000; }
 
     .btn-edit { background: #0284c7; color: #fff; font-size: 10px; padding: 5px 10px; border-radius: 8px; margin-right: 4px; }
     .btn-delete { background: #ef4444; color: #fff; font-size: 10px; padding: 5px 10px; border-radius: 8px; }
@@ -242,10 +249,10 @@
         </div>
 
         <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🎨 Portal Themes</div>
-        <div onclick="changePortalTheme('default')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700;">🌙 Dark Violet (Default)</div>
+        <div onclick="changePortalTheme('default')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#38bdf8;">🌊 Nuclear Deep Blue (Default)</div>
         <div onclick="changePortalTheme('theme-light-rose')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#be123c;">🌸 Light Rose Theme</div>
         <div onclick="changePortalTheme('theme-light-yellow')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#a16207;">☀️ Light Yellow Theme</div>
-        <div onclick="changePortalTheme('theme-vibrant-neon')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#38bdf8;">💎 Vibrant Neon Theme</div>
+        <div onclick="changePortalTheme('theme-vibrant-neon')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#ec4899;">💎 Vibrant Neon Theme</div>
         
         <div style="border-top: 1px solid rgba(255,255,255,0.15); margin: 8px 0; padding-top: 6px;"></div>
         <div onclick="sharePortalApp()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(37,211,102,0.2); color: #25D366; margin-bottom:4px;">🔗 Share App Link</div>
@@ -269,7 +276,7 @@
   <div id="msgNotificationBox" class="msg-notification-box">
     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
       <h3 style="margin:0; font-size:15px; color:var(--accent-yellow);">🔔 ACADEMY LIVE ANNOUNCEMENTS</h3>
-      <small id="msgTimestamp" style="color:#c084fc; font-weight:bold;"></small>
+      <small id="msgTimestamp" style="color:#38bdf8; font-weight:bold;"></small>
     </div>
     <p id="msgNotificationText" style="margin:8px 0 0 0; font-size:13px; font-weight:600; line-height:1.5; color:#fff;">Welcome to the official digital portal. Check out overall class statistics and subject details below!</p>
   </div>
@@ -285,14 +292,14 @@
   </div>
 
   <div class="card" id="portalMainCard">
-    <!-- RESTRUCTURED MODERN DASHBOARD TAB -->
+    <!-- DASHBOARD TAB -->
     <div id="dashboardTab" class="tab-content active">
       
       <!-- HERO BANNER SECTION -->
-      <div style="background: linear-gradient(135deg, rgba(255, 208, 0, 0.15), rgba(236, 72, 153, 0.15)); border: 1px solid var(--glass-border); padding: 24px; border-radius: 24px; text-align: center; margin-bottom: 24px; box-shadow: var(--neon-glow); backdrop-filter: blur(15px);">
+      <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(255, 208, 0, 0.15)); border: 1px solid var(--glass-border); padding: 24px; border-radius: 24px; text-align: center; margin-bottom: 24px; box-shadow: var(--neon-glow); backdrop-filter: blur(15px);">
         <span style="background: var(--accent-yellow); color: #000; padding: 4px 12px; border-radius: 20px; font-weight: 800; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;">🌟 Official Academy Portal</span>
         <h2 style="color: #fff; margin: 10px 0 4px 0; font-size: 22px; font-weight: 900; letter-spacing: 0.5px;">ABDUL BARI ACADEMY PUTHUPPARMBA</h2>
-        <p style="color: #c084fc; font-size: 13px; font-weight: 700; margin: 0;">Smart Student Management & Live Information System</p>
+        <p style="color: #38bdf8; font-size: 13px; font-weight: 700; margin: 0;">Smart Student Management & Live Information System</p>
       </div>
 
       <!-- LIVE ANALYTICS & STATS GRID -->
@@ -334,7 +341,7 @@
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
           <div>
             <h3 style="color: var(--accent-yellow); margin: 0; font-size: 16px; font-weight: 800;">🏛️ COLLEGE COMMITTEE & SECRETARIAT</h3>
-            <p style="font-size: 11px; color: #c084fc; margin: 2px 0 0 0;">Key administrative members and management team</p>
+            <p style="font-size: 11px; color: #38bdf8; margin: 2px 0 0 0;">Key administrative members and management team</p>
           </div>
           <button onclick="switchTab('usthadTab', document.querySelector('[data-tab=\'usthadTab\']'))" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); font-size: 11px; padding: 6px 12px; border-radius: 10px;">
             View All Faculty →
@@ -343,10 +350,16 @@
         <div class="folder-grid" id="dashCommitteeGrid" style="margin-top: 14px;"></div>
       </div>
 
-      <!-- DIRECTORY & DIRECT WHATSAPP ACTION TABLE -->
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 20px; border-radius: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-        <h3 style="color: var(--accent-yellow); margin-top: 0; font-size: 16px; font-weight: 800;">🔍 STUDENT DIRECTORY & DIRECT WHATSAPP</h3>
-        <p style="font-size: 11px; color: #c084fc; margin-top: -4px; margin-bottom: 14px;">💡 Tip: Click 'Chat WA' or right-click / long-press student row for full profile popup!</p>
+      <!-- COLLAPSIBLE STUDENT DIRECTORY FOLDER CARD -->
+      <div id="btnStudentDirectoryFolder" onclick="toggleStudentDirectory()" class="folder-card" style="background: linear-gradient(135deg, #0284c7, #0b132b); border: 2px solid var(--accent-yellow); padding: 22px; margin-bottom: 20px; text-align: center; border-radius: 22px;">
+        <h2 style="margin:0; font-size: 18px; color: var(--accent-yellow);">🔍 STUDENT DIRECTORY & DIRECT WHATSAPP</h2>
+        <p style="margin: 4px 0 0 0; font-size: 12px; color: #e2e8f0;">(Click here to open/close student search & contact list)</p>
+      </div>
+
+      <!-- DIRECTORY & DIRECT WHATSAPP ACTION TABLE (COLLAPSIBLE CONTENT) -->
+      <div id="studentDirectoryContainer" class="hidden" style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 20px; border-radius: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-bottom: 24px;">
+        <h3 style="color: var(--accent-yellow); margin-top: 0; font-size: 16px; font-weight: 800;">📋 Registered Students List</h3>
+        <p style="font-size: 11px; color: #38bdf8; margin-top: -4px; margin-bottom: 14px;">💡 Tip: Students can add/update their photo directly! Right-click or long-press row for full profile.</p>
         
         <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
           <input type="text" id="dashStudentSearchInput" placeholder="🔍 Search student name..." oninput="renderDashStudentsTable()" style="flex: 2; min-width: 180px; margin-bottom: 0;">
@@ -413,7 +426,7 @@
           </div>
         </div>
         
-        <div style="background: linear-gradient(135deg, rgba(147,51,234,0.3), rgba(59,130,246,0.3)); border:1px solid var(--glass-border); padding:12px 16px; border-radius:14px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+        <div style="background: linear-gradient(135deg, rgba(2,132,199,0.3), rgba(56,189,248,0.3)); border:1px solid var(--glass-border); padding:12px 16px; border-radius:14px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
           <span style="font-size:13px; font-weight:800; color:#ffd000;">📅 Active Date: <span id="currentLiveDateLabel" style="color:#fff;"></span></span>
           <input type="date" id="attendanceDatePicker" onchange="onAttendanceDateChanged()" style="padding:6px 10px; border-radius:8px; background:rgba(0,0,0,0.5); color:#fff; border:1px solid var(--glass-border); font-size:11px; width:auto; margin-bottom:0;">
         </div>
@@ -441,7 +454,7 @@
           <div class="admin-only hidden">
             <input type="text" id="noteTitleInput" placeholder="Note Title...">
             <input type="text" id="noteUrlInput" placeholder="Paste Resource/Drive URL...">
-            <button onclick="addSubjectStudyNote()" style="background:#7e22ce; font-size:11px;">📎 Add Resource</button>
+            <button onclick="addSubjectStudyNote()" style="background:#0284c7; font-size:11px;">📎 Add Resource</button>
           </div>
         </div>
 
@@ -460,7 +473,7 @@
     <div id="myStudentTab" class="tab-content hidden">
       <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 22px; border-radius: 20px; max-width:600px; margin:0 auto;">
         <h3 style="color:var(--accent-yellow); text-align:center; margin-top:0; font-size:17px;">PARENT & STUDENT PORTAL</h3>
-        <p style="text-align:center; font-size:12px; color:#c084fc;">Register and check your student's live marks, leave details, and performance updates!</p>
+        <p style="text-align:center; font-size:12px; color:#38bdf8;">Register and check your student's live marks, leave details, and performance updates!</p>
 
         <div id="parentLoginBox">
           <input type="text" id="parentStudentName" placeholder="Enter Student Name (or Initial)...">
@@ -489,9 +502,9 @@
 
     <!-- CHALLENGE TEAMS WITH MYSTERY GIFT BOX -->
     <div id="pointsTab" class="tab-content hidden">
-      <div style="text-align:center; background:linear-gradient(135deg, rgba(236,72,153,0.3), rgba(190,24,93,0.3)); padding:20px; border-radius:20px; border:2px dashed #ec4899; margin-bottom:22px;">
+      <div style="text-align:center; background:linear-gradient(135deg, rgba(2,132,199,0.3), rgba(56,189,248,0.3)); padding:20px; border-radius:20px; border:2px dashed #38bdf8; margin-bottom:22px;">
         <h2 style="color:#ffd000; margin:0; font-size:19px;">🏆 SUBJECT-WISE CHALLENGE TEAMS & GIFT BOX 🎁</h2>
-        <p style="color:#fce7f3; font-size:12px; margin:6px 0 0 0;">Click on Mystery Gift Box to reveal points with celebration sound & confetti!</p>
+        <p style="color:#e2e8f0; font-size:12px; margin:6px 0 0 0;">Click on Mystery Gift Box to reveal points with celebration sound & confetti!</p>
       </div>
 
       <div style="display:flex; gap:10px; margin-bottom:22px; flex-wrap:wrap;">
@@ -506,10 +519,10 @@
       <div id="classWiseChallengeContainer"></div>
     </div>
 
-    <!-- RESTRUCTURED FACULTY & STAFF TAB -->
+    <!-- FACULTY & STAFF TAB -->
     <div id="usthadTab" class="tab-content hidden">
       <div class="rich-gradient-headline-blue">👨‍🏫 Academic Faculty & Teachers Details</div>
-      <p style="font-size:11px; color:#c084fc; margin-top:-8px; margin-bottom:14px;">💡 Tip: Tap or Click any faculty profile card below to view location, contact, and Google Maps info!</p>
+      <p style="font-size:11px; color:#38bdf8; margin-top:-8px; margin-bottom:14px;">💡 Tip: Tap or Click any faculty profile card below to view location, contact, and Google Maps info!</p>
       <input type="text" id="teacherSearchInput" placeholder="🔍 Search Faculty Name / Subject / Location..." oninput="renderUsthads()">
       <div class="folder-grid" id="usthadsGrid" style="margin-top:16px;"></div>
 
@@ -589,7 +602,7 @@
 
           <div id="adminSub2" class="admin-sub-sec hidden">
             <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">📝 Subject-Wise Exam Mark Entry</h4>
-            <p style="font-size:11px; color:#c084fc;">Use the Exam & Results tab for quick inline table mark entry!</p>
+            <p style="font-size:11px; color:#38bdf8;">Use the Exam & Results tab for quick inline table mark entry!</p>
             <select id="examTargetClassSelect" onchange="onAdminClassSelectForExam()"></select>
             <select id="examTargetSubjectSelect"></select>
             <select id="examTargetStudentSelect"></select>
@@ -635,19 +648,20 @@
           </div>
 
           <div id="adminSub7" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">👨‍🏫 Manage Faculty & Map Locations</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">👨‍🏫 Manage Faculty & Designation Badges</h4>
             <select id="teacherCategorySelect">
               <option value="usthad">Academic Faculty & Teachers</option>
               <option value="committee">Committee Office Bearers (Secretariat)</option>
             </select>
             <input type="text" id="teacherNameInput" placeholder="Full Name (e.g. Prof. Abdul Bari)...">
+            <input type="text" id="teacherDesignationInput" placeholder="Designation Badge (e.g. Principal, Faculty, General Secretary)...">
             <input type="text" id="teacherLocInput" placeholder="Detailed Address & Location Name...">
-            <input type="text" id="teacherMapInput" placeholder="Google Map Embed/Share Link (e.g. https://maps.google.com)...">
-            <input type="text" id="teacherSubInput" placeholder="Subjects Handled / Designation (e.g. Secretary)...">
+            <input type="text" id="teacherMapInput" placeholder="Google Map Embed/Share Link...">
+            <input type="text" id="teacherSubInput" placeholder="Subjects Handled / Roles...">
             <input type="text" id="teacherContactInput" placeholder="WhatsApp / Contact Phone Number...">
             <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🖼️ Choose Member Photo from Device:</label>
             <input type="file" id="teacherPhotoFile" accept="image/*" style="margin-bottom:12px;">
-            <button onclick="adminAddTeacher()" style="width:100%; background:#7e22ce;">➕ Add Member Securely</button>
+            <button onclick="adminAddTeacher()" style="width:100%; background:#0284c7;">➕ Add Member Securely</button>
             <div id="manageTeachersList" style="margin-top:16px;"></div>
           </div>
         </div>
@@ -656,10 +670,11 @@
   </div>
 </div>
 
-<!-- FACULTY DETAILS POP-UP MODAL (RESTRUCTURED SHOWCASE) -->
+<!-- FACULTY DETAILS POP-UP MODAL -->
 <div id="facultyDetailModal" class="modal hidden">
   <div class="modal-content" style="text-align:center; width:360px;">
     <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">👨‍🏫 Faculty & Member Profile</h3>
+    <span id="modalFacultyBadge" class="designation-badge" style="margin-bottom:8px;"></span>
     <img id="modalFacultyPhoto" src="" style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 12px auto; box-shadow:var(--neon-glow);">
     <h2 id="modalFacultyName" style="margin:4px 0; font-size:18px; color:#fff; font-weight:800;"></h2>
     <div style="background:rgba(0,0,0,0.35); padding:14px; border-radius:14px; text-align:left; margin-top:12px; font-size:12px; line-height:1.6; border:1px solid rgba(255,255,255,0.15);">
@@ -696,6 +711,7 @@
     <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">✏️ Edit Faculty/Committee Member</h3>
     <input type="hidden" id="editTeacherId">
     <input type="text" id="editTeacherName" placeholder="Full Name">
+    <input type="text" id="editTeacherBadge" placeholder="Designation Badge (e.g. Principal, Faculty)">
     <input type="text" id="editTeacherLoc" placeholder="Address & Location">
     <input type="text" id="editTeacherMap" placeholder="Google Map Link">
     <input type="text" id="editTeacherSub" placeholder="Subjects / Designation">
@@ -705,14 +721,16 @@
   </div>
 </div>
 
+<!-- PUBLIC / STUDENT PHOTO UPLOAD MODAL -->
 <div id="publicAddPhotoModal" class="modal hidden">
   <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📸 Admin Photo Update</h3>
-    <p id="publicPhotoStudentName" style="color:#c084fc; font-weight:bold; font-size:12px;"></p>
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📸 Student Photo Upload</h3>
+    <p id="publicPhotoStudentName" style="color:#38bdf8; font-weight:bold; font-size:12px;"></p>
     <input type="hidden" id="publicPhotoStudentId">
     <input type="hidden" id="publicPhotoClass">
+    <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">Select photo from device:</label>
     <input type="file" id="publicStudentPhotoFile" accept="image/*" style="margin-bottom:12px;">
-    <button onclick="savePublicStudentPhoto()" style="width:100%; background:#10b981;">Upload Photo securely</button>
+    <button onclick="savePublicStudentPhoto()" style="width:100%; background:#10b981;">Upload Photo</button>
     <button onclick="document.getElementById('publicAddPhotoModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
   </div>
 </div>
@@ -746,7 +764,7 @@
     <h3 style="text-align:center; color:var(--accent-yellow); margin-top:0; font-size:16px;">🔑 Admin Login</h3>
     <input type="text" id="adminUser" placeholder="Username" value="admin">
     <input type="password" id="adminPass" placeholder="Password" value="123">
-    <button onclick="doAdminLogin()" style="width:100%; background:#7e22ce;">Login</button>
+    <button onclick="doAdminLogin()" style="width:100%; background:#0284c7;">Login</button>
     <button onclick="document.getElementById('loginModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:8px;">Cancel</button>
   </div>
 </div>
@@ -788,8 +806,8 @@
     subjects: { 'BA Degree': ['Fiqh', 'Aqeedah'], 'Plus One': ['English', 'Arabic', 'Fiqh'] },
     students: { 'Plus One': [{ id: 101, name: 'Ali Hassan K', father: 'Hassan', phone: '9847000000', regNo: 'ABA-101', photo: 'https://via.placeholder.com/100', status: 'Present' }] },
     usthads: [
-      { id: 1, type: 'usthad', name: 'Prof. Abdul Bari', loc: 'Puthupparmba Main Road', mapLink: 'https://maps.google.com', sub: 'Fiqh, Arabic, Islamic Studies', contact: '9847000000', photo: 'https://via.placeholder.com/100' },
-      { id: 2, type: 'committee', name: 'Sayyid Ali Hakim', loc: 'Puthupparmba', mapLink: 'https://maps.google.com', sub: 'General Secretary', contact: '9847111111', photo: 'https://via.placeholder.com/100' }
+      { id: 1, type: 'usthad', badge: 'Principal', name: 'Prof. Abdul Bari', loc: 'Puthupparmba Main Road', mapLink: 'https://maps.google.com', sub: 'Fiqh, Arabic, Islamic Studies', contact: '9847000000', photo: 'https://via.placeholder.com/100' },
+      { id: 2, type: 'committee', badge: 'General Secretary', name: 'Sayyid Ali Hakim', loc: 'Puthupparmba', mapLink: 'https://maps.google.com', sub: 'Secretariat Officer', contact: '9847111111', photo: 'https://via.placeholder.com/100' }
     ],
     subjectChallengeTeams: {
       'Plus One_Fiqh': [
@@ -821,7 +839,6 @@
     refreshUI();
   };
 
-  // SOUND EFFECTS AUDIO GENERATOR
   function playClickSound() {
     try {
       const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -881,6 +898,14 @@
       renderAdminSubjectsList();
     }
   }
+
+  window.toggleStudentDirectory = function() {
+    playClickSound();
+    const container = document.getElementById('studentDirectoryContainer');
+    if (container) {
+      container.classList.toggle('hidden');
+    }
+  };
 
   window.zoomPortal = function(delta) {
     playClickSound();
@@ -1088,10 +1113,11 @@
     }
     committeeMembers.forEach(m => {
       grid.innerHTML += `
-        <div class="folder-card" style="background:linear-gradient(135deg, #0284c7, #0369a1); padding:16px; text-align:center;" onclick="showFacultyDetailsModal(${m.id})">
-          <img src="${m.photo || 'https://via.placeholder.com/50'}" style="width:50px; height:50px; border-radius:50%; object-fit:cover; border:2px solid #ffd000; margin:0 auto 8px auto; box-shadow:var(--neon-glow);">
+        <div class="folder-card" style="background:linear-gradient(135deg, #0284c7, #0b132b); padding:16px; text-align:center;" onclick="showFacultyDetailsModal(${m.id})">
+          <span class="designation-badge" style="margin-bottom:6px;">${m.badge || 'Committee'}</span>
+          <img src="${m.photo || 'https://via.placeholder.com/50'}" style="width:50px; height:50px; border-radius:50%; object-fit:cover; border:2px solid #ffd000; margin:4px auto 8px auto; box-shadow:var(--neon-glow);">
           <h4 style="margin:0; font-size:14px; color:#fff; font-weight:800;">${m.name}</h4>
-          <p style="margin:3px 0 0 0; font-size:11px; color:#ffd000; font-weight:700;">${m.sub || 'Office Bearer'}</p>
+          <p style="margin:3px 0 0 0; font-size:11px; color:#38bdf8; font-weight:700;">${m.sub || 'Office Bearer'}</p>
         </div>
       `;
     });
@@ -1109,7 +1135,7 @@
       window.dbData.students[cls].forEach(s => {
         if(!q || s.name.toLowerCase().includes(q)) {
           found = true;
-          let photoBtn = window.isAdmin ? `<button style="background:#0284c7; color:#fff; padding:4px 8px; font-size:10px; font-weight:bold;" onclick="openPublicPhotoUploadModal(${s.id}, '${cls}', '${s.name}')">📷 Edit Photo</button>` : '';
+          let photoBtn = `<button style="background:#0284c7; color:#fff; padding:4px 8px; font-size:10px; font-weight:bold; border-radius:6px;" onclick="openPublicPhotoUploadModal(${s.id}, '${cls}', '${s.name}')">📸 Add/Update Photo</button>`;
           let adminBtns = window.isAdmin ? `<button class="btn-delete" onclick="deleteStudent(${s.id}, '${cls}')" style="margin-left:4px;">🗑️</button>` : '';
           let phoneClean = (s.phone || '').replace(/\D/g, '');
           let waBtn = `<a href="https://wa.me/91${phoneClean}" target="_blank" class="btn-whatsapp">💬 Chat WA</a>`;
@@ -1178,7 +1204,7 @@
           student.photo = photoBase64;
           window.saveData(); 
           document.getElementById('publicAddPhotoModal').classList.add('hidden');
-          alert("✅ Photo uploaded successfully by admin!");
+          alert("✅ Photo uploaded successfully!");
           fileInput.value = "";
         }
       });
@@ -1223,9 +1249,12 @@
       document.getElementById('parentStudentClassInfo').innerText = `Class: ${matchedClass} | Reg No: ${matchedStudent.regNo || 'ABA-' + matchedStudent.id}`;
       
       let content = `
-        <div style="background:rgba(0,0,0,0.3); padding:14px; border-radius:12px; margin-top:12px;">
-          <p style="margin:0; font-size:13px; color:#fff;"><b>Attendance Status:</b> <span style="color:#10b981;">${matchedStudent.status || 'Present'}</span></p>
-          <p style="margin:4px 0 0 0; font-size:12px; color:#cbd5e1;"><b>Father Name:</b> ${matchedStudent.father || '-'}</p>
+        <div style="background:rgba(0,0,0,0.3); padding:14px; border-radius:12px; margin-top:12px; text-align:center;">
+          <img src="${matchedStudent.photo || 'https://via.placeholder.com/80'}" style="width:70px; height:70px; border-radius:50%; object-fit:cover; border:2px solid var(--accent-yellow); margin-bottom:8px;">
+          <br>
+          <button style="background:#0284c7; font-size:10px; padding:4px 10px; border-radius:6px; margin-bottom:10px;" onclick="openPublicPhotoUploadModal(${matchedStudent.id}, '${matchedClass}', '${matchedStudent.name}')">📸 Update Photo</button>
+          <p style="margin:0; font-size:13px; color:#fff; text-align:left;"><b>Attendance Status:</b> <span style="color:#10b981;">${matchedStudent.status || 'Present'}</span></p>
+          <p style="margin:4px 0 0 0; font-size:12px; color:#cbd5e1; text-align:left;"><b>Father Name:</b> ${matchedStudent.father || '-'}</p>
         </div>
       `;
       document.getElementById('parentStudentDetailsContent').innerHTML = content;
@@ -1240,7 +1269,6 @@
     alert("✅ Notifications and WhatsApp updates successfully configured for your student!");
   };
 
-  // FACULTY & TEACHERS RESTRUCTURED SHOWCASE
   function renderUsthads() {
     const usthadGrid = document.getElementById('usthadsGrid');
     const committeeGrid = document.getElementById('committeeGrid');
@@ -1255,9 +1283,10 @@
 
       if(!q || u.name.toLowerCase().includes(q) || teacherLocStr.toLowerCase().includes(q) || (u.sub || '').toLowerCase().includes(q)) {
         const cardHtml = `<div class="faculty-card-modern" onclick="showFacultyDetailsModal(${u.id})">
+          <span class="designation-badge">⭐ ${u.badge || (u.type === 'committee' ? 'Committee' : 'Faculty')}</span>
           <img src="${u.photo || 'https://via.placeholder.com/80'}" class="faculty-avatar">
           <h3 style="margin:6px 0 2px 0; font-size:16px; color:#ffd000; font-weight:800;">${u.name}</h3>
-          <p style="margin:0; font-size:11px; color:#c084fc; font-weight:600;">(Tap to view details & map)</p>
+          <p style="margin:0; font-size:11px; color:#38bdf8; font-weight:600;">(Tap to view details & map)</p>
           <div onclick="event.stopPropagation()">${adminBtns}</div>
         </div>`;
 
@@ -1271,6 +1300,7 @@
     playClickSound();
     let u = (window.dbData.usthads || []).find(item => item.id === id);
     if(!u) return;
+    document.getElementById('modalFacultyBadge').innerText = "⭐ " + (u.badge || (u.type === 'committee' ? 'Committee' : 'Faculty'));
     document.getElementById('modalFacultyPhoto').src = u.photo || 'https://via.placeholder.com/100';
     document.getElementById('modalFacultyName').innerText = u.name;
     document.getElementById('modalFacultyLoc').innerText = u.loc || 'Academy Campus';
@@ -1291,7 +1321,7 @@
     if(!container) return; container.innerHTML = "";
     (window.dbData.usthads || []).forEach(u => {
       container.innerHTML += `<div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
-        <span><b>${u.name}</b> (${u.loc || 'Campus'})</span>
+        <span><b>${u.name}</b> (${u.badge || 'Faculty'})</span>
         <div><button class="btn-edit" onclick="openEditTeacherModal(${u.id})">Edit</button><button class="btn-delete" onclick="deleteTeacher(${u.id})">Delete</button></div>
       </div>`;
     });
@@ -1303,6 +1333,7 @@
     if(!teacher) return;
     document.getElementById('editTeacherId').value = id;
     document.getElementById('editTeacherName').value = teacher.name;
+    document.getElementById('editTeacherBadge').value = teacher.badge || '';
     document.getElementById('editTeacherLoc').value = teacher.loc || '';
     document.getElementById('editTeacherMap').value = teacher.mapLink || '';
     document.getElementById('editTeacherSub').value = teacher.sub || '';
@@ -1315,6 +1346,7 @@
     let teacher = window.dbData.usthads.find(u => u.id === id);
     if(teacher) {
       teacher.name = document.getElementById('editTeacherName').value.trim();
+      teacher.badge = document.getElementById('editTeacherBadge').value.trim();
       teacher.loc = document.getElementById('editTeacherLoc').value.trim();
       teacher.mapLink = document.getElementById('editTeacherMap').value.trim();
       teacher.sub = document.getElementById('editTeacherSub').value.trim();
@@ -1682,6 +1714,7 @@
   window.adminAddTeacher = function() {
     const type = document.getElementById('teacherCategorySelect').value;
     const name = document.getElementById('teacherNameInput').value.trim();
+    const badge = document.getElementById('teacherDesignationInput').value.trim();
     const loc = document.getElementById('teacherLocInput').value.trim();
     const mapLink = document.getElementById('teacherMapInput').value.trim();
     const sub = document.getElementById('teacherSubInput').value.trim();
@@ -1691,10 +1724,11 @@
     if(name) {
       handleImageUpload(fileInput, (photoBase64) => {
         if(!window.dbData.usthads) window.dbData.usthads = [];
-        window.dbData.usthads.push({ id: Date.now(), type, name, loc, mapLink, sub, contact, photo: photoBase64 });
+        window.dbData.usthads.push({ id: Date.now(), type, badge, name, loc, mapLink, sub, contact, photo: photoBase64 });
         window.saveData();
-        alert(`✅ Member "${name}" Added with Device Photo & Map Location Successfully!`);
+        alert(`✅ Member "${name}" Added with Designation Badge & Photo Successfully!`);
         document.getElementById('teacherNameInput').value = "";
+        document.getElementById('teacherDesignationInput').value = "";
         document.getElementById('teacherLocInput').value = "";
         document.getElementById('teacherMapInput').value = "";
         document.getElementById('teacherSubInput').value = "";
