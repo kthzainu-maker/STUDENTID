@@ -77,7 +77,7 @@
       transition: background 0.3s ease, color 0.3s ease;
     }
 
-    .container { max-width: 1100px; margin: 0 auto; position: relative; }
+    .container { max-width: 1100px; margin: 0 auto; position: relative; width: 100%; }
 
     header {
       background: rgba(15, 7, 32, 0.92);
@@ -89,17 +89,19 @@
       box-shadow: var(--card-glow);
       position: relative; z-index: 1000;
       animation: fadeInDown 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .header-title-box h1 { margin: 0; font-size: 20px; font-weight: 900; color: #fff !important; }
     .header-title-box h2 { margin: 2px 0 0 0; font-size: 13px; font-weight: 800; color: var(--accent-yellow) !important; }
     .header-title-box small { display: block; margin-top: 2px; font-size: 11px; font-weight: 700; color: #c084fc !important; letter-spacing: 1.5px; }
 
-    .header-right { display: flex; align-items: center; gap: 8px; position: relative; }
-    .auth-btn { background: var(--accent-yellow); color: #000; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; box-shadow: var(--neon-glow); transition: all 0.3s ease; }
+    .header-right { display: flex; align-items: center; gap: 8px; position: relative; flex-wrap: wrap; }
+    .auth-btn { background: var(--accent-yellow); color: #000; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; box-shadow: var(--neon-glow); transition: all 0.3s ease; font-size: 12px; }
     .auth-btn:hover { transform: translateY(-3px) scale(1.05); }
     
-    .logout-btn { background: var(--red); color: white; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; }
+    .logout-btn { background: var(--red); color: white; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; font-size: 12px; }
     .menu-icon { font-size: 22px; cursor: pointer; color: #fff; padding: 8px 14px; border-radius: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease; }
     .menu-icon:hover { background: rgba(255,255,255,0.25); transform: rotate(90deg); }
 
@@ -122,23 +124,25 @@
 
     .nav-tabs { display: flex; gap: 6px; margin-bottom: -1px; flex-wrap: wrap; position: relative; z-index: 10; }
     .tab-btn {
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.05); padding: 12px 18px;
-      border-radius: 14px 14px 0 0; cursor: pointer; font-weight: 800; color: #e9d5ff; font-size: 13px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.05); padding: 10px 14px;
+      border-radius: 14px 14px 0 0; cursor: pointer; font-weight: 800; color: #e9d5ff; font-size: 12px;
       transition: all 0.3s ease; backdrop-filter: blur(5px);
+      flex: 1; text-align: center; min-width: 100px;
     }
     .tab-btn:hover { background: rgba(255,255,255,0.2); transform: translateY(-4px); color: var(--accent-yellow); }
     .tab-btn.active { background: var(--card-bg); color: var(--accent-yellow); border-color: var(--glass-border); border-bottom: none; transform: translateY(-2px); box-shadow: var(--neon-glow); }
 
     .card {
       background: var(--card-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      padding: 26px; border-radius: 0 20px 20px 20px; box-shadow: var(--card-glow);
+      padding: 20px; border-radius: 0 20px 20px 20px; box-shadow: var(--card-glow);
       margin-bottom: 20px; min-height: 440px; border: 1px solid var(--glass-border);
       position: relative; z-index: 1; animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow-x: hidden;
     }
 
-    .public-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-bottom: 22px; }
+    .public-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 22px; }
     .pub-stat-card {
-      padding: 22px; border-radius: 20px; text-align: center; color: #fff;
+      padding: 18px; border-radius: 20px; text-align: center; color: #fff;
       border: 1px solid rgba(255,255,255,0.2); position: relative; overflow: hidden;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: all 0.35s ease;
     }
@@ -146,37 +150,37 @@
     .pub-stat-card:nth-child(2) { background: linear-gradient(135deg, #06b6d4, #0e7490); }
     .pub-stat-card:nth-child(3) { background: linear-gradient(135deg, #10b981, #047857); }
     .pub-stat-card:hover { transform: translateY(-6px) scale(1.03); filter: brightness(1.1); }
-    .pub-stat-card h2 { margin: 6px 0 0 0; font-size: 32px; font-weight:900; color: #ffd000; text-shadow: 0 0 15px rgba(255,208,0,0.6); }
-    .pub-stat-card p { margin: 0; font-size: 13px; font-weight: 800; letter-spacing: 1px; }
+    .pub-stat-card h2 { margin: 6px 0 0 0; font-size: 28px; font-weight:900; color: #ffd000; text-shadow: 0 0 15px rgba(255,208,0,0.6); }
+    .pub-stat-card p { margin: 0; font-size: 12px; font-weight: 800; letter-spacing: 1px; }
 
-    .admin-layout { display: flex; gap: 20px; flex-wrap: wrap; }
-    .admin-sidebar { flex: 1; min-width: 240px; background: rgba(0,0,0,0.3); padding: 14px; border-radius: 16px; border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 8px; }
-    .admin-sidebar-btn { text-align: left; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 13px; transition: all 0.25s ease; width: 100%; }
+    .admin-layout { display: flex; gap: 15px; flex-wrap: wrap; }
+    .admin-sidebar { flex: 1; min-width: 220px; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 16px; border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 8px; }
+    .admin-sidebar-btn { text-align: left; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 10px 14px; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 12px; transition: all 0.25s ease; width: 100%; }
     .admin-sidebar-btn:hover, .admin-sidebar-btn.active { background: var(--accent-yellow); color: #000; box-shadow: var(--neon-glow); font-weight: 900; }
-    .admin-content-area { flex: 3; min-width: 300px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 16px; border: 1px solid var(--glass-border); }
+    .admin-content-area { flex: 3; min-width: 280px; background: rgba(255,255,255,0.02); padding: 16px; border-radius: 16px; border: 1px solid var(--glass-border); }
 
-    .big-folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 20px; }
-    .big-folder-college { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border-radius: 18px; padding: 30px; text-align: center; cursor: pointer; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.4); transition: all 0.35s ease; }
+    .big-folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 20px; }
+    .big-folder-college { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border-radius: 18px; padding: 25px; text-align: center; cursor: pointer; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.4); transition: all 0.35s ease; }
     .big-folder-college:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 15px 35px rgba(2, 132, 199, 0.7); }
-    .big-folder-school { background: linear-gradient(135deg, #059669, #047857); color: white; border-radius: 18px; padding: 30px; text-align: center; cursor: pointer; box-shadow: 0 10px 30px rgba(5, 150, 105, 0.4); transition: all 0.35s ease; }
+    .big-folder-school { background: linear-gradient(135deg, #059669, #047857); color: white; border-radius: 18px; padding: 25px; text-align: center; cursor: pointer; box-shadow: 0 10px 30px rgba(5, 150, 105, 0.4); transition: all 0.35s ease; }
     .big-folder-school:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 15px 35px rgba(5, 150, 105, 0.7); }
 
-    .folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px; }
-    .folder-card { background: linear-gradient(135deg, #7e22ce, #4c1d95); color: white; border-radius: 16px; padding: 22px; text-align: center; cursor: pointer; font-weight: 800; box-shadow: 0 8px 25px rgba(126, 34, 206, 0.4); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease; }
+    .folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 20px; }
+    .folder-card { background: linear-gradient(135deg, #7e22ce, #4c1d95); color: white; border-radius: 16px; padding: 18px; text-align: center; cursor: pointer; font-weight: 800; box-shadow: 0 8px 25px rgba(126, 34, 206, 0.4); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease; word-break: break-word; }
     .folder-card:hover { transform: translateY(-6px) scale(1.03); border-color: var(--accent-yellow); box-shadow: 0 12px 30px rgba(255, 208, 0, 0.4); }
 
-    /* Rich Gradient Headlines for Teachers Folder */
+    /* Responsive Font & Headline Classes */
     .rich-gradient-headline-blue {
       background: linear-gradient(135deg, #38bdf8 0%, #1d4ed8 100%);
-      padding: 14px 20px; border-radius: 14px; color: #fff; font-weight: 900; font-size: 18px;
+      padding: 12px 16px; border-radius: 14px; color: #fff; font-weight: 900; font-size: 16px;
       box-shadow: 0 5px 20px rgba(56, 189, 248, 0.4); margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.3);
-      text-transform: uppercase; letter-spacing: 1px;
+      text-transform: uppercase; letter-spacing: 1px; word-break: break-word;
     }
     .rich-gradient-headline-yellow {
       background: linear-gradient(135deg, #facc15 0%, #ea580c 100%);
-      padding: 14px 20px; border-radius: 14px; color: #000; font-weight: 900; font-size: 18px;
+      padding: 12px 16px; border-radius: 14px; color: #000; font-weight: 900; font-size: 16px;
       box-shadow: 0 5px 20px rgba(250, 204, 21, 0.4); margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.3);
-      text-transform: uppercase; letter-spacing: 1px;
+      text-transform: uppercase; letter-spacing: 1px; word-break: break-word;
     }
 
     .grad-orange-yellow { background: linear-gradient(135deg, #f97316, #eab308) !important; color: #000 !important; }
@@ -186,41 +190,54 @@
     .grad-deep-violet { background: linear-gradient(135deg, #6366f1, #4f46e5) !important; color: #fff !important; }
 
     .challenge-card {
-      border-radius: 18px; padding: 22px; text-align: center;
+      border-radius: 18px; padding: 18px; text-align: center;
       box-shadow: 0 12px 35px rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.4);
       position: relative; transition: all 0.35s ease; cursor: pointer;
     }
     .challenge-card:hover { transform: translateY(-8px) scale(1.04); box-shadow: 0 18px 45px rgba(255,208,0,0.7); }
 
     .person-card {
-      background: linear-gradient(145deg, #2d0b52, #150529); color: white; border-radius: 20px; padding: 20px; text-align: center;
+      background: linear-gradient(145deg, #2d0b52, #150529); color: white; border-radius: 20px; padding: 18px; text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid var(--glass-border); display: flex; flex-direction: column; justify-content: space-between;
-      transition: all 0.3s ease;
+      transition: all 0.3s ease; word-break: break-word;
     }
     .person-card:hover { transform: translateY(-6px); border-color: var(--accent-yellow); box-shadow: 0 12px 30px rgba(255,208,0,0.4); }
-    .person-card img { width: 85px; height: 85px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-yellow); margin: 0 auto 10px auto; box-shadow: var(--neon-glow); }
+    .person-card img { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-yellow); margin: 0 auto 10px auto; box-shadow: var(--neon-glow); }
 
     .teacher-badge { background: rgba(255,208,0,0.15); color: var(--accent-yellow); border: 1px solid var(--accent-yellow); padding: 4px 8px; border-radius: 8px; font-size: 11px; font-weight: 700; margin: 3px 0; display: inline-block; }
     .teacher-loc { font-size: 11px; color: #cbd5e1; margin: 2px 0 6px 0; font-weight: 500; }
 
-    button { background-color: #7e22ce; color: white; border: none; padding: 11px 20px; border-radius: 12px; cursor: pointer; font-weight: 800; font-family: 'Poppins', sans-serif; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(126,34,206,0.3); }
+    button { background-color: #7e22ce; color: white; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; font-family: 'Poppins', sans-serif; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(126,34,206,0.3); font-size: 12px; }
     button:hover { opacity: 0.95; transform: translateY(-2px); filter: brightness(1.1); }
-    .btn-back { background-color: #475569; padding: 8px 16px; font-size: 12px; margin-bottom: 16px; border-radius: 8px; }
+    .btn-back { background-color: #475569; padding: 8px 14px; font-size: 11px; margin-bottom: 14px; border-radius: 8px; }
 
-    table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 13px; }
-    th, td { border: 1px solid rgba(255,255,255,0.2); padding: 12px; text-align: center; }
+    table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 12px; }
+    th, td { border: 1px solid rgba(255,255,255,0.2); padding: 10px 8px; text-align: center; word-break: break-word; }
     th { background-color: rgba(255,208,0,0.2); color: var(--accent-yellow); font-weight: 800; }
 
-    input, select, textarea { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.25); font-family: 'Poppins', sans-serif; }
+    input, select, textarea { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.25); font-family: 'Poppins', sans-serif; font-size: 13px; }
 
     .hidden { display: none !important; }
-    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 99999; animation: fadeIn 0.3s ease; }
-    .modal-content { background: #240c42; color: #fff; padding: 26px; border-radius: 20px; width: 480px; max-width: 95%; border: 1px solid var(--glass-border); box-shadow: 0 25px 50px rgba(0,0,0,0.7); max-height:90vh; overflow-y:auto; animation: fadeInUp 0.3s ease; }
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 99999; animation: fadeIn 0.3s ease; padding: 15px; }
+    .modal-content { background: #240c42; color: #fff; padding: 20px; border-radius: 20px; width: 440px; max-width: 100%; border: 1px solid var(--glass-border); box-shadow: 0 25px 50px rgba(0,0,0,0.7); max-height:90vh; overflow-y:auto; animation: fadeInUp 0.3s ease; }
 
     .btn-edit { background: #0284c7; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; margin-right: 4px; }
     .btn-delete { background: #ef4444; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; }
     .btn-whatsapp { background: #25D366; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: bold; text-decoration: none; display: inline-block; }
     .btn-call { background: #3b82f6; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: bold; text-decoration: none; display: inline-block; margin-left: 4px; }
+
+    /* Mobile Responsive Media Queries */
+    @media (max-width: 768px) {
+      body { padding: 6px; }
+      header { padding: 12px 14px; }
+      .header-title-box h1 { font-size: 16px; }
+      .header-title-box h2 { font-size: 11px; }
+      .header-title-box small { font-size: 9px; }
+      .card { padding: 14px; min-height: 380px; }
+      .pub-stat-card h2 { font-size: 22px; }
+      table { font-size: 11px; }
+      th, td { padding: 8px 6px; }
+    }
 
     @keyframes pulseGlow { 0% { box-shadow: 0 0 15px rgba(236,72,153,0.3); } 50% { box-shadow: 0 0 30px rgba(255,208,0,0.6); } 100% { box-shadow: 0 0 15px rgba(236,72,153,0.3); } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -239,7 +256,7 @@
       <small>PRO STUDENT PORTAL</small>
     </div>
     <div class="header-right">
-      <span id="userInfo" style="font-size:12px; font-weight:800; color:var(--accent-yellow);">Public View</span>
+      <span id="userInfo" style="font-size:11px; font-weight:800; color:var(--accent-yellow);">Public View</span>
       <button class="auth-btn" id="authBtn">Admin Login</button>
       <button class="logout-btn hidden" id="logoutBtn">Logout</button>
       <div class="menu-icon" id="btnSettingsMenu">☰</div>
@@ -253,7 +270,11 @@
         <div onclick="changePortalTheme('theme-vibrant-neon')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#38bdf8;">💎 Vibrant Neon Theme</div>
         
         <div style="border-top: 1px solid rgba(255,255,255,0.15); margin: 8px 0; padding-top: 6px;"></div>
-        <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🔒 Security & Backup (Auto-Saved)</div>
+        <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">📤 Share Portal App</div>
+        <div onclick="sharePortalApp()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(37,211,102,0.2); color: #25D366; margin-bottom:4px;">🔗 Share App Link</div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.15); margin: 8px 0; padding-top: 6px;"></div>
+        <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🔒 Security & Backup</div>
         <div onclick="backupPortalData()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(16,185,129,0.2); color: #10b981; margin-bottom:4px;">📥 Backup Data (JSON)</div>
         <div onclick="restorePortalDataPrompt()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(56,189,248,0.2); color: #38bdf8; margin-bottom:4px;">📤 Restore Data (JSON)</div>
         
@@ -273,29 +294,29 @@
 
   <!-- LIVE MESSAGE NOTIFICATION GLOW BOX -->
   <div id="msgNotificationBox" class="msg-notification-box">
-    <div style="display:flex; justify-content:space-between; align-items:center;">
-      <h3 style="margin:0; font-size:15px; color:var(--accent-yellow);">🔔 ACADEMY LIVE ANNOUNCEMENTS</h3>
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
+      <h3 style="margin:0; font-size:14px; color:var(--accent-yellow);">🔔 ACADEMY LIVE ANNOUNCEMENTS</h3>
       <small id="msgTimestamp" style="color:#c084fc; font-weight:bold;"></small>
     </div>
-    <p id="msgNotificationText" style="margin:8px 0 0 0; font-size:13px; font-weight:600; line-height:1.5; color:#fff;">Welcome to the official digital portal. Check out overall class statistics and subject details below!</p>
+    <p id="msgNotificationText" style="margin:8px 0 0 0; font-size:12px; font-weight:600; line-height:1.5; color:#fff;">Welcome to the official digital portal. Check out overall class statistics and subject details below!</p>
   </div>
 
   <div class="nav-tabs">
     <button class="tab-btn active" data-tab="dashboardTab">📊 Dashboard</button>
     <button class="tab-btn" data-tab="classesTab">📁 Academics</button>
-    <button class="tab-btn" data-tab="myStudentTab">👨‍👩‍👧 My Student Portal</button>
-    <button class="tab-btn" data-tab="pointsTab">🎁 Subject Challenge Teams</button>
-    <button class="tab-btn" data-tab="usthadTab">👨‍🏫 Faculty Details</button>
-    <button class="tab-btn" data-tab="examTab">📝 Exam & Results</button>
-    <button id="navAdminControl" class="tab-btn admin-only hidden" data-tab="managementTab">⚙️ Admin Control</button>
+    <button class="tab-btn" data-tab="myStudentTab">👨‍👩‍👧 My Student</button>
+    <button class="tab-btn" data-tab="pointsTab">🎁 Challenge Teams</button>
+    <button class="tab-btn" data-tab="usthadTab">👨‍🏫 Faculty</button>
+    <button class="tab-btn" data-tab="examTab">📝 Exams</button>
+    <button id="navAdminControl" class="tab-btn admin-only hidden" data-tab="managementTab">⚙️ Admin</button>
   </div>
 
   <div class="card">
     <!-- DASHBOARD TAB -->
     <div id="dashboardTab" class="tab-content active">
       <div style="text-align:center; margin-bottom:24px;">
-        <h2 style="color:var(--accent-yellow); margin-bottom:4px;">🌟 ABDUL BARI ACADEMY PUTHUPPARMBA</h2>
-        <p style="color:#c084fc; font-size:13px; font-weight:700;">Official Student Portal & Management System</p>
+        <h2 style="color:var(--accent-yellow); margin-bottom:4px; font-size:18px;">🌟 ABDUL BARI ACADEMY PUTHUPPARMBA</h2>
+        <p style="color:#c084fc; font-size:12px; font-weight:700;">Official Student Portal & Management System</p>
       </div>
 
       <div class="public-dashboard-grid">
@@ -305,13 +326,13 @@
       </div>
 
       <!-- DASHBOARD STUDENT DIRECTORY -->
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 20px; border-radius: 18px;">
-        <h3 style="color:var(--accent-yellow); margin-top:0;">🔍 STUDENT DIRECTORY & DIRECT WHATSAPP</h3>
-        <p style="font-size:11px; color:#c084fc; margin-top:-6px;">💡 Tip: Right-click on PC or Long-press on mobile on any student row to view full details!</p>
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 16px; border-radius: 18px;">
+        <h3 style="color:var(--accent-yellow); margin-top:0; font-size:15px;">🔍 STUDENT DIRECTORY & DIRECT WHATSAPP</h3>
+        <p style="font-size:11px; color:#c084fc; margin-top:-4px;">💡 Tip: Right-click on PC or Long-press on mobile on any student row to view full details!</p>
         
         <div style="display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
-          <input type="text" id="dashStudentSearchInput" placeholder="🔍 Search student name..." oninput="renderDashStudentsTable()" style="flex:2; min-width:200px; margin-bottom:0;">
-          <select id="dashClassFilterSelect" onchange="renderDashStudentsTable()" style="flex:1; min-width:150px; margin-bottom:0; background:rgba(0,0,0,0.4); color:#fff;">
+          <input type="text" id="dashStudentSearchInput" placeholder="🔍 Search student name..." oninput="renderDashStudentsTable()" style="flex:2; min-width:180px; margin-bottom:0;">
+          <select id="dashClassFilterSelect" onchange="renderDashStudentsTable()" style="flex:1; min-width:140px; margin-bottom:0; background:rgba(0,0,0,0.4); color:#fff;">
             <option value="">📁 All Classes</option>
           </select>
         </div>
@@ -319,7 +340,7 @@
         <div style="overflow-x:auto;">
           <table>
             <thead>
-              <tr><th>Photo</th><th>No.</th><th>Student Name</th><th>Class</th><th>Direct WhatsApp & Actions</th></tr>
+              <tr><th>Photo</th><th>No.</th><th>Student Name</th><th>Class</th><th>WhatsApp & Actions</th></tr>
             </thead>
             <tbody id="dashStudentsTableBody"></tbody>
           </table>
@@ -330,28 +351,28 @@
     <!-- ACADEMICS TAB -->
     <div id="classesTab" class="tab-content hidden">
       <div id="mainCategoryLevel">
-        <h3 style="color:var(--accent-yellow); text-align:center; margin-bottom:18px;">Select Study Portal / Section</h3>
+        <h3 style="color:var(--accent-yellow); text-align:center; margin-bottom:18px; font-size:16px;">Select Study Portal / Section</h3>
         <div class="big-folder-grid">
           <div class="big-folder-college" id="btnCollegePortal">
-            <h2 style="margin:0;">COLLEGE STUDIES</h2>
-            <p style="margin:6px 0 0 0;">(Degree & Higher Studies)</p>
+            <h2 style="margin:0; font-size:18px;">COLLEGE STUDIES</h2>
+            <p style="margin:6px 0 0 0; font-size:12px;">(Degree & Higher Studies)</p>
           </div>
           <div class="big-folder-school" id="btnSchoolPortal">
-            <h2 style="margin:0;">SCHOOL STUDIES</h2>
-            <p style="margin:6px 0 0 0;">Plus One, Plus Two & High School</p>
+            <h2 style="margin:0; font-size:18px;">SCHOOL STUDIES</h2>
+            <p style="margin:6px 0 0 0; font-size:12px;">Plus One, Plus Two & High School</p>
           </div>
         </div>
       </div>
 
       <div id="classFolderLevel" class="hidden">
         <button class="btn-back" id="btnBackToMain">← Back to Portals</button>
-        <h3 id="sectionTitleHeader" style="color:var(--accent-yellow);">Classes</h3>
+        <h3 id="sectionTitleHeader" style="color:var(--accent-yellow); font-size:16px;">Classes</h3>
         <div class="folder-grid" id="classFoldersGrid"></div>
       </div>
 
       <div id="subjectFolderLevel" class="hidden">
         <button class="btn-back" id="btnBackToClasses">← Back to Classes</button>
-        <h3 id="selectedClassHeader" style="color:var(--accent-yellow);">Subjects & Attendance</h3>
+        <h3 id="selectedClassHeader" style="color:var(--accent-yellow); font-size:16px;">Subjects & Attendance</h3>
         <div id="classTeacherBadgeDisplay" style="margin-bottom:8px;"></div>
         <div id="classWaGroupContainer" style="margin-bottom:12px;"></div>
         <div class="folder-grid" id="subjectFoldersGrid"></div>
@@ -360,32 +381,38 @@
       <!-- SUBJECT DETAIL LEVEL -->
       <div id="subjectDetailLevel" class="hidden">
         <button class="btn-back" id="btnBackToSubjects">← Back to Subjects</button>
-        <h2 id="topicTitle" style="color:var(--accent-yellow); margin-bottom:14px; font-size:18px;"></h2>
+        <h2 id="topicTitle" style="color:var(--accent-yellow); margin-bottom:14px; font-size:16px;"></h2>
         
+        <!-- Live Calendar Header with Date & Day Name -->
+        <div style="background: linear-gradient(135deg, rgba(147,51,234,0.3), rgba(59,130,246,0.3)); border:1px solid var(--glass-border); padding:10px 14px; border-radius:12px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <span style="font-size:12px; font-weight:800; color:#ffd000;">📅 Active Date: <span id="currentLiveDateLabel" style="color:#fff;"></span></span>
+          <input type="date" id="attendanceDatePicker" onchange="onAttendanceDateChanged()" style="padding:4px 8px; border-radius:6px; background:rgba(0,0,0,0.5); color:#fff; border:1px solid var(--glass-border); font-size:11px; width:auto; margin-bottom:0;">
+        </div>
+
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
           <div class="admin-only hidden" style="display:flex; gap:6px; flex-wrap:wrap;">
             <button onclick="bulkMarkAttendance('Present')" style="background:#10b981; font-size:11px;">✅ All Present</button>
             <button onclick="bulkMarkAttendance('Absent')" style="background:#ef4444; font-size:11px;">❌ All Absent</button>
-            <button onclick="bulkMarkAttendance('Friday Leave')" style="background:#f59e0b; color:#000; font-size:11px;">🌴 Friday/Leave</button>
+            <button onclick="bulkMarkAttendance('Friday Leave')" style="background:#f59e0b; color:#000; font-size:11px;">🌴 Leave</button>
           </div>
           <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-            <select id="exportPeriodSelect" style="padding:6px 10px; border-radius:8px; margin-bottom:0; background:rgba(0,0,0,0.4); color:#fff; font-size:12px;">
+            <select id="exportPeriodSelect" style="padding:6px 10px; border-radius:8px; margin-bottom:0; background:rgba(0,0,0,0.4); color:#fff; font-size:11px;">
               <option value="daily">📅 Daily (Today)</option>
               <option value="monthly">📆 Monthly (Current Month)</option>
               <option value="annual">🗓️ Annual (1-Year)</option>
             </select>
-            <button onclick="exportAttendanceToExcel()" style="background:#0284c7; font-size:12px;">📊 Export Excel</button>
-            <button onclick="printAttendanceSheet()" style="background:#ffd000; color:#000; font-size:12px;">🖨️ Print Sheet</button>
+            <button onclick="exportAttendanceToExcel()" style="background:#0284c7; font-size:11px;">📊 Export Excel</button>
+            <button onclick="printAttendanceSheet()" style="background:#ffd000; color:#000; font-size:11px;">🖨️ Print Sheet</button>
           </div>
         </div>
 
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 18px; border-radius: 14px; margin-bottom: 20px;">
-          <h4 style="color:var(--accent-yellow); margin:0 0 10px 0;">📚 Study Notes & Lecture Materials</h4>
-          <div id="notesDisplayList" style="margin-bottom:10px; font-size:13px; color:#e2e8f0;">No notes uploaded for this subject yet.</div>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 16px; border-radius: 14px; margin-bottom: 20px;">
+          <h4 style="color:var(--accent-yellow); margin:0 0 10px 0; font-size:14px;">📚 Study Notes & Lecture Materials</h4>
+          <div id="notesDisplayList" style="margin-bottom:10px; font-size:12px; color:#e2e8f0;">No notes uploaded for this subject yet.</div>
           <div class="admin-only hidden">
             <input type="text" id="noteTitleInput" placeholder="Note Title...">
             <input type="text" id="noteUrlInput" placeholder="Paste Resource/Drive URL...">
-            <button onclick="addSubjectStudyNote()" style="background:#7e22ce; font-size:12px;">📎 Add Resource</button>
+            <button onclick="addSubjectStudyNote()" style="background:#7e22ce; font-size:11px;">📎 Add Resource</button>
           </div>
         </div>
 
@@ -402,9 +429,9 @@
 
     <!-- MY STUDENT PORTAL FOR PARENTS -->
     <div id="myStudentTab" class="tab-content hidden">
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 22px; border-radius: 18px; max-width:600px; margin:0 auto;">
-        <h3 style="color:var(--accent-yellow); text-align:center; margin-top:0;">👨‍👩‍👧 PARENT & MY STUDENT PORTAL</h3>
-        <p style="text-align:center; font-size:12px; color:#c084fc;">Register and check your student's live marks, leave details, and performance updates!</p>
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 18px; border-radius: 18px; max-width:600px; margin:0 auto;">
+        <h3 style="color:var(--accent-yellow); text-align:center; margin-top:0; font-size:16px;">👨‍👩‍👧 PARENT & MY STUDENT PORTAL</h3>
+        <p style="text-align:center; font-size:11px; color:#c084fc;">Register and check your student's live marks, leave details, and performance updates!</p>
 
         <div id="parentLoginBox">
           <input type="text" id="parentStudentName" placeholder="Enter Student Name (or Initial)...">
@@ -413,8 +440,8 @@
         </div>
 
         <div id="parentStudentDashboard" class="hidden" style="margin-top:20px; border-top:1px dashed var(--glass-border); padding-top:16px;">
-          <h4 id="parentStudentHeaderName" style="color:#ffd000; margin-bottom:4px;"></h4>
-          <p id="parentStudentClassInfo" style="font-size:12px; color:#a7f3d0; margin-top:0;"></p>
+          <h4 id="parentStudentHeaderName" style="color:#ffd000; margin-bottom:4px; font-size:15px;"></h4>
+          <p id="parentStudentClassInfo" style="font-size:11px; color:#a7f3d0; margin-top:0;"></p>
           <div id="parentStudentDetailsContent"></div>
         </div>
       </div>
@@ -422,9 +449,9 @@
 
     <!-- SUBJECT CHALLENGE TEAMS WITH RICH MYSTERY GIFT BOX -->
     <div id="pointsTab" class="tab-content hidden">
-      <div style="text-align:center; background:linear-gradient(135deg, rgba(236,72,153,0.3), rgba(190,24,93,0.3)); padding:22px; border-radius:18px; border:2px dashed #ec4899; margin-bottom:20px;">
-        <h2 style="color:#ffd000; margin:0; font-size:22px;">🏆 SUBJECT-WISE CHALLENGE TEAMS & GIFT BOX 🎁</h2>
-        <p style="color:#fce7f3; font-size:13px; margin:6px 0 0 0;">Click on Mystery Gift Box to reveal points with celebration sound & confetti!</p>
+      <div style="text-align:center; background:linear-gradient(135deg, rgba(236,72,153,0.3), rgba(190,24,93,0.3)); padding:18px; border-radius:18px; border:2px dashed #ec4899; margin-bottom:20px;">
+        <h2 style="color:#ffd000; margin:0; font-size:18px;">🏆 SUBJECT-WISE CHALLENGE TEAMS & GIFT BOX 🎁</h2>
+        <p style="color:#fce7f3; font-size:12px; margin:6px 0 0 0;">Click on Mystery Gift Box to reveal points with celebration sound & confetti!</p>
       </div>
 
       <div style="display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap;">
@@ -451,7 +478,7 @@
 
     <!-- EXAM RESULTS TAB -->
     <div id="examTab" class="tab-content hidden">
-      <h3 style="color:var(--accent-yellow);">📝 Exam Marks & Progress Cards</h3>
+      <h3 style="color:var(--accent-yellow); font-size:16px;">📝 Exam Marks & Progress Cards</h3>
       <select id="examClassSelect" onchange="renderExamMarksTable()">
         <option value="">-- Select Batch / Class --</option>
       </select>
@@ -460,29 +487,31 @@
 
     <!-- ADMIN CONTROL PANEL -->
     <div id="managementTab" class="tab-content admin-only hidden">
-      <h3 style="color:var(--accent-yellow); margin-top:0;">⚙️ Admin Control Panel</h3>
+      <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">⚙️ Admin Control Panel</h3>
 
       <div class="admin-layout">
         <div class="admin-sidebar">
           <button class="admin-sidebar-btn active" onclick="showAdminSubSection('adminSub0', this)">🔐 Change Password</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSubMsg', this)">📢 Post Announcement</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub1', this)">🎓 Register Student</button>
-          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub2', this)">📝 Manage Exam Marks</button>
-          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub4', this)">📁 Manage Classes & Teachers</button>
-          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub6', this)">🏆 Subject Challenge Teams</button>
+          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub2', this)">📝 Exam Marks</button>
+          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub3', this)">📖 Manage Subjects</button>
+          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub4', this)">📁 Classes & Teachers</button>
+          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub6', this)">🏆 Challenge Teams</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub7', this)">👨‍🏫 Manage Faculty</button>
         </div>
 
         <div class="admin-content-area">
           <div id="adminSub0" class="admin-sub-sec">
-            <h4 style="color:var(--accent-yellow); margin-top:0;">🔐 Change Admin Password</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🔐 Change Admin Password</h4>
+            <input type="password" id="currentAdminPassInput" placeholder="Type Current Password...">
             <input type="text" id="newAdminUser" placeholder="New Admin Username..." value="admin">
-            <input type="password" id="newAdminPass" placeholder="New Admin Password...">
+            <input type="password" id="newAdminPass" placeholder="Type New Password...">
             <button onclick="updateAdminCredentials()" style="width:100%; background:#f59e0b; color:#000;">💾 Update Credentials</button>
           </div>
 
           <div id="adminSubMsg" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0;">📢 Update Live Message & Marquee</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">📢 Update Live Message & Marquee</h4>
             <input type="text" id="adminMarqueeInput" placeholder="Type marquee notice here...">
             <button onclick="saveMarqueeNotice()" style="width:100%; background:#0284c7; margin-bottom:14px;">💾 Update Marquee</button>
             <textarea id="adminLiveMsgInput" rows="3" placeholder="Type main announcement text..."></textarea>
@@ -490,7 +519,7 @@
           </div>
 
           <div id="adminSub1" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0;">🎓 Register New Student</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🎓 Register New Student</h4>
             <select id="regStudentClassSelect"></select>
             <input type="text" id="regStudentName" placeholder="Student Name with Initial...">
             <input type="text" id="regFatherName" placeholder="Father Name...">
@@ -500,7 +529,7 @@
           </div>
 
           <div id="adminSub2" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0;">📝 Subject-Wise Exam Mark Entry</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">📝 Subject-Wise Exam Mark Entry</h4>
             <select id="examTargetClassSelect" onchange="onAdminClassSelectForExam()"></select>
             <select id="examTargetSubjectSelect"></select>
             <select id="examTargetStudentSelect"></select>
@@ -509,8 +538,17 @@
             <button onclick="saveAdvancedSubjectMark()" style="width:100%; background:#10b981;">💾 Save Mark Entry & Notify Parent</button>
           </div>
 
+          <!-- NEW: MANAGE SUBJECTS SECTION -->
+          <div id="adminSub3" class="admin-sub-sec hidden">
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">📖 Add / Remove Subjects for Classes</h4>
+            <select id="subjectManageClassSelect" onchange="renderAdminSubjectsList()" style="margin-bottom:10px;"></select>
+            <input type="text" id="newSubjectNameInput" placeholder="New Subject Name (e.g. Nahw, Fiqh)...">
+            <button onclick="adminAddSubjectToClass()" style="width:100%; background:#10b981; margin-bottom:14px;">➕ Add Subject to Class</button>
+            <div id="adminSubjectsContainer"></div>
+          </div>
+
           <div id="adminSub4" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0;">📁 Manage Classes & Assign Class Teacher</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">📁 Manage Classes & Assign Teacher</h4>
             <select id="newClassPortal">
               <option value="School Studies">School Studies</option>
               <option value="College Studies">College Studies</option>
@@ -522,7 +560,7 @@
           </div>
 
           <div id="adminSub6" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0;">🏆 Create Subject Challenge Team</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🏆 Create Subject Challenge Team</h4>
             <select id="challengeTeamClassSelect" onchange="populateChallengeSubjectDropdown()"></select>
             <select id="challengeTeamSubjectSelect"></select>
             <input type="text" id="newTeamNameInput" placeholder="Team Name...">
@@ -538,7 +576,7 @@
           </div>
 
           <div id="adminSub7" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0;">👨‍🏫 Manage Faculty Members</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">👨‍🏫 Manage Faculty Members</h4>
             <select id="teacherCategorySelect">
               <option value="usthad">Academic Faculty & Teachers</option>
               <option value="committee">Committee & Management Staff</option>
@@ -561,7 +599,7 @@
 <!-- EDIT FACULTY MODAL -->
 <div id="editTeacherModal" class="modal hidden">
   <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0;">✏️ Edit Faculty Member</h3>
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">✏️ Edit Faculty Member</h3>
     <input type="hidden" id="editTeacherId">
     <input type="text" id="editTeacherName" placeholder="Full Name">
     <input type="text" id="editTeacherLoc" placeholder="Address & Location">
@@ -576,8 +614,8 @@
 <!-- PUBLIC PHOTO UPLOAD MODAL -->
 <div id="publicAddPhotoModal" class="modal hidden">
   <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0;">📸 Upload Student Photo</h3>
-    <p id="publicPhotoStudentName" style="color:#c084fc; font-weight:bold; font-size:13px;"></p>
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📸 Upload Student Photo</h3>
+    <p id="publicPhotoStudentName" style="color:#c084fc; font-weight:bold; font-size:12px;"></p>
     <input type="hidden" id="publicPhotoStudentId">
     <input type="hidden" id="publicPhotoClass">
     <input type="file" id="publicStudentPhotoFile" accept="image/*" style="margin-bottom:12px;">
@@ -588,26 +626,26 @@
 
 <!-- STUDENT DETAILS POP-UP MODAL (RIGHT CLICK / HOLD) -->
 <div id="studentDetailModal" class="modal hidden">
-  <div class="modal-content" style="text-align:center; width:360px;">
-    <h3 style="color:var(--accent-yellow); margin-top:0;">📋 Student Full Details</h3>
-    <img id="modalStudentPhoto" src="" style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 12px auto; box-shadow:var(--neon-glow);">
-    <h2 id="modalStudentName" style="margin:4px 0; font-size:18px; color:#fff;"></h2>
-    <div style="background:rgba(0,0,0,0.3); padding:14px; border-radius:12px; text-align:left; margin-top:12px; font-size:13px; line-height:1.6;">
+  <div class="modal-content" style="text-align:center; width:340px;">
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📋 Student Full Details</h3>
+    <img id="modalStudentPhoto" src="" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 10px auto; box-shadow:var(--neon-glow);">
+    <h2 id="modalStudentName" style="margin:4px 0; font-size:16px; color:#fff;"></h2>
+    <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; text-align:left; margin-top:10px; font-size:12px; line-height:1.5;">
       <p style="margin:4px 0;"><b>🏷️ Roll / ID:</b> <span id="modalStudentRoll"></span></p>
       <p style="margin:4px 0;"><b>📁 Class Batch:</b> <span id="modalStudentClass"></span></p>
       <p style="margin:4px 0;"><b>👨‍👧 Father's Name:</b> <span id="modalStudentFather"></span></p>
       <p style="margin:4px 0;"><b>📞 WhatsApp:</b> <span id="modalStudentPhone"></span></p>
       <p style="margin:4px 0;"><b>📊 Status:</b> <span id="modalStudentStatus" style="color:#10b981; font-weight:bold;"></span></p>
     </div>
-    <button onclick="document.getElementById('studentDetailModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:16px;">Close</button>
+    <button onclick="document.getElementById('studentDetailModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:14px;">Close</button>
   </div>
 </div>
 
 <!-- RESTORE BACKUP MODAL PROMPT -->
 <div id="restoreModal" class="modal hidden">
-  <div class="modal-content" style="width:380px;">
-    <h3 style="color:var(--accent-yellow); margin-top:0;">📤 Restore Database Backup</h3>
-    <p style="font-size:12px; color:#cbd5e1;">Select your previously downloaded `ab_academy_backup.json` file to restore all student & teacher records:</p>
+  <div class="modal-content" style="width:360px;">
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📤 Restore Database Backup</h3>
+    <p style="font-size:11px; color:#cbd5e1;">Select your previously downloaded `ab_academy_backup.json` file to restore all records:</p>
     <input type="file" id="restoreFileJson" accept=".json" style="margin-bottom:12px;">
     <button onclick="processRestoreJson()" style="width:100%; background:#10b981;">Restore Now</button>
     <button onclick="document.getElementById('restoreModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
@@ -616,8 +654,8 @@
 
 <!-- LOGIN MODAL -->
 <div id="loginModal" class="modal hidden">
-  <div class="modal-content" style="width:340px;">
-    <h3 style="text-align:center; color:var(--accent-yellow); margin-top:0;">🔑 Admin Login</h3>
+  <div class="modal-content" style="width:320px;">
+    <h3 style="text-align:center; color:var(--accent-yellow); margin-top:0; font-size:16px;">🔑 Admin Login</h3>
     <input type="text" id="adminUser" placeholder="Username" value="admin">
     <input type="password" id="adminPass" placeholder="Password" value="123">
     <button onclick="doAdminLogin()" style="width:100%; background:#7e22ce;">Login</button>
@@ -648,6 +686,7 @@
   window.isAdmin = false;
   let currentActiveClassName = '';
   let currentActiveSubjectName = '';
+  let selectedAttendanceDate = new Date().toISOString().split('T')[0];
 
   let defaultDbData = {
     adminCreds: { user: 'admin', pass: '123' },
@@ -668,7 +707,8 @@
       ]
     },
     examMarksSubjectwise: {}, 
-    studyNotes: {}
+    studyNotes: {},
+    attendanceRecords: {}
   };
 
   window.dbData = JSON.parse(localStorage.getItem('ab_academy_final_db')) || defaultDbData;
@@ -701,6 +741,9 @@
     if(document.getElementById('pointsTab') && !document.getElementById('pointsTab').classList.contains('hidden')) {
       populateChallengeFilters();
     }
+    if(document.getElementById('subjectManageClassSelect') && document.getElementById('subjectManageClassSelect').options.length > 0) {
+      renderAdminSubjectsList();
+    }
   }
 
   window.changePortalTheme = function(themeName) {
@@ -719,6 +762,7 @@
     document.querySelectorAll('.admin-sidebar-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(secId).classList.remove('hidden');
     if(btnEl) btnEl.classList.add('active');
+    if(secId === 'adminSub3') populateSubjectManageDropdown();
   };
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -796,6 +840,47 @@
     }
   };
 
+  // Secure Password Update with Current Password Verification
+  window.updateAdminCredentials = function() {
+    const currentInput = document.getElementById('currentAdminPassInput').value;
+    const newUser = document.getElementById('newAdminUser').value.trim();
+    const newPass = document.getElementById('newAdminPass').value.trim();
+
+    if (currentInput !== window.dbData.adminCreds.pass) {
+      alert("❌ Current password is incorrect!");
+      return;
+    }
+    if (!newUser || !newPass) {
+      alert("⚠️ Please enter new username and password!");
+      return;
+    }
+
+    window.dbData.adminCreds.user = newUser;
+    window.dbData.adminCreds.pass = newPass;
+    window.saveData();
+    alert("✅ Admin Credentials Updated Successfully!");
+    document.getElementById('currentAdminPassInput').value = "";
+    document.getElementById('newAdminPass').value = "";
+  };
+
+  // Share App Link Functionality
+  window.sharePortalApp = function() {
+    const appUrl = window.location.href;
+    const shareText = `🌟 Check out Abdul Bari Academy Puthupparmba Official Portal:\n${appUrl}`;
+    
+    if (navigator.share) {
+      navigator.share({
+        title: 'Abdul Bari Academy Portal',
+        text: shareText,
+        url: appUrl,
+      }).catch(() => {});
+    } else {
+      let waUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+      window.open(waUrl, '_blank');
+    }
+    document.getElementById('settingsDropdown').classList.add('hidden');
+  };
+
   function switchTab(tabId, btn) {
     document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -842,7 +927,7 @@
           tr.style.cursor = "pointer";
           tr.title = "Right-click or Long-press to view full details";
           tr.innerHTML = `
-            <td><img src="${s.photo || 'https://via.placeholder.com/45'}" style="width:38px; height:38px; border-radius:50%; object-fit:cover;"></td>
+            <td><img src="${s.photo || 'https://via.placeholder.com/45'}" style="width:36px; height:36px; border-radius:50%; object-fit:cover;"></td>
             <td>${c++}</td>
             <td><b>${s.name}</b></td>
             <td>${cls}</td>
@@ -852,7 +937,6 @@
             </td>
           `;
 
-          // Right click & Long press support for Student Details
           tr.addEventListener('contextmenu', (e) => {
             e.preventDefault();
             showStudentDetailsModal(s, cls);
@@ -941,8 +1025,8 @@
       
       let content = `
         <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:10px; margin-top:10px;">
-          <p style="margin:0; font-size:13px; color:#fff;"><b>Attendance Status:</b> <span style="color:#10b981;">${matchedStudent.status || 'Present'}</span></p>
-          <p style="margin:4px 0 0 0; font-size:12px; color:#cbd5e1;"><b>Father Name:</b> ${matchedStudent.father || '-'}</p>
+          <p style="margin:0; font-size:12px; color:#fff;"><b>Attendance Status:</b> <span style="color:#10b981;">${matchedStudent.status || 'Present'}</span></p>
+          <p style="margin:4px 0 0 0; font-size:11px; color:#cbd5e1;"><b>Father Name:</b> ${matchedStudent.father || '-'}</p>
         </div>
       `;
       document.getElementById('parentStudentDetailsContent').innerHTML = content;
@@ -970,7 +1054,7 @@
       if(!q || u.name.toLowerCase().includes(q) || teacherLocStr.toLowerCase().includes(q) || (u.sub || '').toLowerCase().includes(q)) {
         const cardHtml = `<div class="person-card">
           <img src="${u.photo || 'https://via.placeholder.com/80'}">
-          <h3 style="margin:2px 0 0 0; font-size:16px;">${u.name}</h3>
+          <h3 style="margin:2px 0 0 0; font-size:15px;">${u.name}</h3>
           <div class="teacher-loc">📍 ${teacherLocStr}</div>
           ${mapBtn}
           <div class="teacher-badge">📖 Subjects: ${u.sub || 'Faculty'}</div>
@@ -1079,6 +1163,68 @@
     }
   };
 
+  // Manage Subjects Functions for Admin
+  function populateSubjectManageDropdown() {
+    const sel = document.getElementById('subjectManageClassSelect');
+    if(!sel) return;
+    sel.innerHTML = '<option value="">-- Select Class Batch --</option>';
+    for(let p in window.dbData.classes) {
+      window.dbData.classes[p].forEach(c => { sel.innerHTML += `<option value="${c}">${c}</option>`; });
+    }
+    renderAdminSubjectsList();
+  }
+
+  window.renderAdminSubjectsList = function() {
+    const cls = document.getElementById('subjectManageClassSelect').value;
+    const container = document.getElementById('adminSubjectsContainer');
+    if(!container) return;
+    container.innerHTML = "";
+    if(!cls) {
+      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">Please select a class to manage subjects.</p>`;
+      return;
+    }
+    let subs = window.dbData.subjects[cls] || [];
+    if(subs.length === 0) {
+      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">No subjects added for ${cls} yet.</p>`;
+      return;
+    }
+    let html = '<div style="display:flex; flex-direction:column; gap:6px;">';
+    subs.forEach(sub => {
+      html += `<div style="background:rgba(0,0,0,0.3); padding:8px 12px; border-radius:8px; display:flex; justify-content:space-between; align-items:center; font-size:12px;">
+        <span>📖 <b>${sub}</b></span>
+        <button onclick="adminDeleteSubjectFromClass('${cls}', '${sub}')" style="background:#ef4444; padding:4px 8px; font-size:10px;">🗑️ Remove</button>
+      </div>`;
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  };
+
+  window.adminAddSubjectToClass = function() {
+    const cls = document.getElementById('subjectManageClassSelect').value;
+    const subName = document.getElementById('newSubjectNameInput').value.trim();
+    if(!cls) { alert("Please select a class!"); return; }
+    if(!subName) { alert("Please enter a subject name!"); return; }
+    
+    if(!window.dbData.subjects[cls]) window.dbData.subjects[cls] = [];
+    if(!window.dbData.subjects[cls].includes(subName)) {
+      window.dbData.subjects[cls].push(subName);
+      window.saveData();
+      alert(`✅ Subject "${subName}" added to ${cls}!`);
+      document.getElementById('newSubjectNameInput').value = "";
+      renderAdminSubjectsList();
+    } else {
+      alert("⚠️ Subject already exists in this class!");
+    }
+  };
+
+  window.adminDeleteSubjectFromClass = function(cls, subName) {
+    if(confirm(`Remove subject "${subName}" from ${cls}?`)) {
+      window.dbData.subjects[cls] = window.dbData.subjects[cls].filter(s => s !== subName);
+      window.saveData();
+      renderAdminSubjectsList();
+    }
+  };
+
   function backToMainCategory() {
     document.getElementById('mainCategoryLevel').classList.remove('hidden');
     document.getElementById('classFolderLevel').classList.add('hidden');
@@ -1119,8 +1265,33 @@
     document.getElementById('subjectFolderLevel').classList.add('hidden');
     document.getElementById('subjectDetailLevel').classList.remove('hidden');
     document.getElementById('topicTitle').innerText = `${clsName} - ${subName} Portal (${(window.dbData.students[clsName] || []).length} Students)`;
-    renderAttendanceTable(clsName); renderSubjectStudyNotes();
+    
+    // Set Calendar Date Picker value & Label
+    const datePicker = document.getElementById('attendanceDatePicker');
+    if(datePicker) datePicker.value = selectedAttendanceDate;
+    updateLiveDateDisplay();
+
+    renderAttendanceTable(clsName); 
+    renderSubjectStudyNotes();
   }
+
+  function updateLiveDateDisplay() {
+    const label = document.getElementById('currentLiveDateLabel');
+    if(label) {
+      let d = new Date(selectedAttendanceDate);
+      let options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+      label.innerText = d.toLocaleDateString('en-US', options);
+    }
+  }
+
+  window.onAttendanceDateChanged = function() {
+    const picker = document.getElementById('attendanceDatePicker');
+    if(picker && picker.value) {
+      selectedAttendanceDate = picker.value;
+      updateLiveDateDisplay();
+      renderAttendanceTable(currentActiveClassName);
+    }
+  };
 
   function renderAttendanceTable(clsName) {
     const tbody = document.getElementById('attendanceList'); tbody.innerHTML = "";
@@ -1129,14 +1300,24 @@
       tbody.innerHTML = `<tr><td colspan="4" style="color:#ffd000;">No students found in ${clsName} yet.</td></tr>`;
       return;
     }
+
+    // Initialize attendance record for this date & subject if not present
+    if(!window.dbData.attendanceRecords) window.dbData.attendanceRecords = {};
+    const attKey = `${clsName}_${currentActiveSubjectName}_${selectedAttendanceDate}`;
+    if(!window.dbData.attendanceRecords[attKey]) {
+      window.dbData.attendanceRecords[attKey] = {};
+      students.forEach(s => { window.dbData.attendanceRecords[attKey][s.id] = s.status || 'Present'; });
+    }
+
     students.forEach((s, idx) => {
-      let stColor = s.status === 'Present' ? '#10b981' : (s.status === 'Absent' ? '#ef4444' : '#f59e0b');
+      let currentStatus = window.dbData.attendanceRecords[attKey][s.id] || 'Present';
+      let stColor = currentStatus === 'Present' ? '#10b981' : (currentStatus === 'Absent' ? '#ef4444' : '#f59e0b');
       let statusBtn = window.isAdmin 
-        ? `<button onclick="toggleStudentStatus('${clsName}', ${s.id})" style="background:${stColor}; color:#fff; padding:6px 14px; border-radius:8px; font-weight:bold; font-size:12px;">${s.status || 'Present'}</button>`
-        : `<span style="color:${stColor}; font-weight:bold;">${s.status || 'Present'}</span>`;
+        ? `<button onclick="toggleStudentStatus('${clsName}', ${s.id})" style="background:${stColor}; color:#fff; padding:6px 12px; border-radius:8px; font-weight:bold; font-size:11px;">${currentStatus}</button>`
+        : `<span style="color:${stColor}; font-weight:bold; font-size:11px;">${currentStatus}</span>`;
 
       tbody.innerHTML += `<tr>
-        <td><img src="${s.photo || 'https://via.placeholder.com/40'}" style="width:36px; height:36px; border-radius:50%; object-fit:cover;"></td>
+        <td><img src="${s.photo || 'https://via.placeholder.com/40'}" style="width:34px; height:34px; border-radius:50%; object-fit:cover;"></td>
         <td>${idx+1}</td>
         <td><b>${s.name}</b></td>
         <td>${statusBtn}</td>
@@ -1145,20 +1326,37 @@
   }
 
   window.toggleStudentStatus = function(clsName, studentId) {
+    const attKey = `${clsName}_${currentActiveSubjectName}_${selectedAttendanceDate}`;
+    if(!window.dbData.attendanceRecords) window.dbData.attendanceRecords = {};
+    if(!window.dbData.attendanceRecords[attKey]) window.dbData.attendanceRecords[attKey] = {};
+
+    let currentStatus = window.dbData.attendanceRecords[attKey][studentId] || 'Present';
+    let nextStatus = currentStatus === 'Present' ? 'Absent' : (currentStatus === 'Absent' ? 'Friday Leave' : 'Present');
+    
+    window.dbData.attendanceRecords[attKey][studentId] = nextStatus;
+    
+    // Also sync main status for quick view
     let student = window.dbData.students[clsName].find(s => s.id === studentId);
-    if(student) {
-      if(student.status === 'Present') student.status = 'Absent';
-      else if(student.status === 'Absent') student.status = 'Friday Leave';
-      else student.status = 'Present';
-      window.saveData(); renderAttendanceTable(clsName);
-    }
+    if(student) student.status = nextStatus;
+
+    window.saveData(); 
+    renderAttendanceTable(clsName);
   };
 
   window.bulkMarkAttendance = function(statusVal) {
     let students = window.dbData.students[currentActiveClassName] || [];
-    students.forEach(s => s.status = statusVal);
-    window.saveData(); renderAttendanceTable(currentActiveClassName);
-    alert(`✅ Marked all students as ${statusVal}!`);
+    const attKey = `${currentActiveClassName}_${currentActiveSubjectName}_${selectedAttendanceDate}`;
+    if(!window.dbData.attendanceRecords) window.dbData.attendanceRecords = {};
+    if(!window.dbData.attendanceRecords[attKey]) window.dbData.attendanceRecords[attKey] = {};
+
+    students.forEach(s => {
+      window.dbData.attendanceRecords[attKey][s.id] = statusVal;
+      s.status = statusVal;
+    });
+
+    window.saveData(); 
+    renderAttendanceTable(currentActiveClassName);
+    alert(`✅ Marked all students as ${statusVal} for ${selectedAttendanceDate}!`);
   };
 
   function renderSubjectStudyNotes() {
@@ -1171,7 +1369,7 @@
       return;
     }
 
-    let html = '<ul style="padding-left:20px; margin:0;">';
+    let html = '<ul style="padding-left:18px; margin:0;">';
     notes.forEach((n) => {
       html += `<li style="margin-bottom:6px;"><a href="${n.url}" target="_blank" style="color:#ffd000; font-weight:bold; text-decoration:underline;">📄 ${n.title}</a></li>`;
     });
@@ -1309,15 +1507,15 @@
       if (!t.revealed) {
         card.innerHTML = `
           <div onclick="revealGiftBox('${key}', ${t.id})" style="padding:10px; cursor:pointer; text-align:center;">
-            <div style="font-size:52px; margin-bottom:8px; animation:bounce 1.5s infinite;">🎁</div>
-            <h3 style="margin:0; font-size:17px; color:#000; font-weight:900;">CLICK MYSTERY GIFT BOX</h3>
-            <p style="margin:4px 0 0 0; font-size:12px; color:#111; font-weight:700;">${t.name}</p>
+            <div style="font-size:48px; margin-bottom:8px;">🎁</div>
+            <h3 style="margin:0; font-size:16px; color:#000; font-weight:900;">CLICK MYSTERY GIFT BOX</h3>
+            <p style="margin:4px 0 0 0; font-size:11px; color:#111; font-weight:700;">${t.name}</p>
           </div>
         `;
       } else {
         card.innerHTML = `
-          <h3 style="margin:0 0 6px 0; font-size:19px;">🏆 ${t.name}</h3>
-          <div style="font-size:26px; font-weight:900;">${t.points} PTS</div>
+          <h3 style="margin:0 0 6px 0; font-size:18px;">🏆 ${t.name}</h3>
+          <div style="font-size:24px; font-weight:900;">${t.points} PTS</div>
           <div style="background:rgba(0,0,0,0.3); padding:4px 10px; border-radius:12px; font-size:11px; font-weight:bold; margin-top:6px;">🌟 TOP PERFORMANCE!</div>
           ${adminControls}
         `;
@@ -1404,7 +1602,7 @@
   window.exportAttendanceToExcel = function() {
     let students = window.dbData.students[currentActiveClassName] || [];
     let selectedPeriod = document.getElementById('exportPeriodSelect').value;
-    let todayDate = new Date().toLocaleDateString();
+    let todayDate = selectedAttendanceDate;
 
     let excelData = students.map((s, i) => ({
       'Roll No': i + 1,
@@ -1418,7 +1616,7 @@
     let worksheet = XLSX.utils.json_to_sheet(excelData);
     let workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Attendance");
-    XLSX.writeFile(workbook, `${currentActiveClassName}_${selectedPeriod}_Attendance.xlsx`);
+    XLSX.writeFile(workbook, `${currentActiveClassName}_${selectedAttendanceDate}_Attendance.xlsx`);
   };
 
   window.printAttendanceSheet = function() { window.print(); };
