@@ -64,7 +64,6 @@
     * { 
       box-sizing: border-box; 
       -webkit-tap-highlight-color: transparent; 
-      touch-action: manipulation;
     }
 
     body {
@@ -88,7 +87,6 @@
       display: flex; justify-content: space-between; align-items: center;
       box-shadow: var(--card-glow);
       position: relative; z-index: 1000;
-      animation: fadeInDown 0.5s cubic-bezier(0.16, 1, 0.3, 1);
       flex-wrap: wrap; gap: 10px;
     }
 
@@ -97,11 +95,11 @@
     .header-title-box small { display: block; margin-top: 2px; font-size: 11px; font-weight: 700; color: #c084fc !important; letter-spacing: 1.5px; }
 
     .header-right { display: flex; align-items: center; gap: 8px; position: relative; flex-wrap: wrap; }
-    .auth-btn { background: var(--accent-yellow); color: #000; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; box-shadow: var(--neon-glow); transition: all 0.3s ease; font-size: 12px; }
+    .auth-btn { background: var(--accent-yellow); color: #000; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; box-shadow: var(--neon-glow); transition: all 0.3s ease; font-size: 12px; z-index: 10; }
     .auth-btn:hover { transform: translateY(-3px) scale(1.05); }
     
-    .logout-btn { background: var(--red); color: white; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; font-size: 12px; }
-    .menu-icon { font-size: 22px; cursor: pointer; color: #fff; padding: 8px 14px; border-radius: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease; }
+    .logout-btn { background: var(--red); color: white; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; font-size: 12px; z-index: 10; }
+    .menu-icon { font-size: 22px; cursor: pointer; color: #fff; padding: 8px 14px; border-radius: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease; z-index: 10; }
     .menu-icon:hover { background: rgba(255,255,255,0.25); transform: rotate(90deg); }
 
     .notice-marquee { background: linear-gradient(90deg, #ffd000, #f59e0b); color: #000; padding: 8px 14px; border-radius: 10px; font-weight: 800; font-size: 13px; margin-bottom: 14px; box-shadow: 0 4px 15px rgba(255,208,0,0.4); }
@@ -111,14 +109,12 @@
       border: 2px solid var(--accent-yellow);
       border-radius: 16px; padding: 16px; margin-bottom: 16px;
       box-shadow: 0 0 25px rgba(236, 72, 153, 0.4);
-      animation: pulseGlow 2s infinite ease-in-out;
     }
 
     #settingsDropdown {
       position: absolute; top: 55px; right: 0; background: #1a0636; color: #fff;
       backdrop-filter: blur(15px); border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); width: 280px; 
-      z-index: 9999 !important; padding: 16px; border: 1px solid var(--glass-border);
-      animation: zoomIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 99999 !important; padding: 16px; border: 1px solid var(--glass-border);
     }
 
     .nav-tabs { display: flex; gap: 6px; margin-bottom: -1px; flex-wrap: wrap; position: relative; z-index: 10; }
@@ -126,6 +122,7 @@
       background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.05); padding: 10px 14px;
       border-radius: 14px 14px 0 0; cursor: pointer; font-weight: 800; color: #e9d5ff; font-size: 12px;
       transition: all 0.3s ease; backdrop-filter: blur(5px); flex: 1; text-align: center; min-width: 90px;
+      z-index: 5;
     }
     .tab-btn:hover { background: rgba(255,255,255,0.2); transform: translateY(-4px); color: var(--accent-yellow); }
     .tab-btn.active { background: var(--card-bg); color: var(--accent-yellow); border-color: var(--glass-border); border-bottom: none; transform: translateY(-2px); box-shadow: var(--neon-glow); }
@@ -134,8 +131,7 @@
       background: var(--card-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       padding: 20px; border-radius: 0 20px 20px 20px; box-shadow: var(--card-glow);
       margin-bottom: 20px; min-height: 440px; border: 1px solid var(--glass-border);
-      position: relative; z-index: 1; animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      overflow-x: hidden;
+      position: relative; z-index: 1; overflow-x: hidden;
     }
 
     .public-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 22px; }
@@ -147,25 +143,19 @@
     .pub-stat-card:nth-child(1) { background: linear-gradient(135deg, #ec4899, #831843); }
     .pub-stat-card:nth-child(2) { background: linear-gradient(135deg, #06b6d4, #0e7490); }
     .pub-stat-card:nth-child(3) { background: linear-gradient(135deg, #10b981, #047857); }
-    .pub-stat-card:hover { transform: translateY(-6px) scale(1.03); filter: brightness(1.1); }
-    .pub-stat-card h2 { margin: 6px 0 0 0; font-size: 28px; font-weight:900; color: #ffd000; text-shadow: 0 0 15px rgba(255,208,0,0.6); }
-    .pub-stat-card p { margin: 0; font-size: 12px; font-weight: 800; letter-spacing: 1px; }
 
     .admin-layout { display: flex; gap: 15px; flex-wrap: wrap; }
     .admin-sidebar { flex: 1; min-width: 220px; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 16px; border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 8px; }
-    .admin-sidebar-btn { text-align: left; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 10px 14px; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 12px; transition: all 0.25s ease; width: 100%; }
+    .admin-sidebar-btn { text-align: left; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 10px 14px; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 12px; transition: all 0.25s ease; width: 100%; z-index: 5; }
     .admin-sidebar-btn:hover, .admin-sidebar-btn.active { background: var(--accent-yellow); color: #000; box-shadow: var(--neon-glow); font-weight: 900; }
     .admin-content-area { flex: 3; min-width: 280px; background: rgba(255,255,255,0.02); padding: 16px; border-radius: 16px; border: 1px solid var(--glass-border); }
 
     .big-folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 20px; }
-    .big-folder-college { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border-radius: 18px; padding: 25px; text-align: center; cursor: pointer; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.4); transition: all 0.35s ease; }
-    .big-folder-college:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 15px 35px rgba(2, 132, 199, 0.7); }
-    .big-folder-school { background: linear-gradient(135deg, #059669, #047857); color: white; border-radius: 18px; padding: 25px; text-align: center; cursor: pointer; box-shadow: 0 10px 30px rgba(5, 150, 105, 0.4); transition: all 0.35s ease; }
-    .big-folder-school:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 15px 35px rgba(5, 150, 105, 0.7); }
+    .big-folder-college { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border-radius: 18px; padding: 25px; text-align: center; cursor: pointer; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.4); transition: all 0.35s ease; z-index: 5; position: relative; }
+    .big-folder-school { background: linear-gradient(135deg, #059669, #047857); color: white; border-radius: 18px; padding: 25px; text-align: center; cursor: pointer; box-shadow: 0 10px 30px rgba(5, 150, 105, 0.4); transition: all 0.35s ease; z-index: 5; position: relative; }
 
     .folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 20px; }
-    .folder-card { background: linear-gradient(135deg, #7e22ce, #4c1d95); color: white; border-radius: 16px; padding: 18px; text-align: center; cursor: pointer; font-weight: 800; box-shadow: 0 8px 25px rgba(126, 34, 206, 0.4); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease; word-break: break-word; }
-    .folder-card:hover { transform: translateY(-6px) scale(1.03); border-color: var(--accent-yellow); box-shadow: 0 12px 30px rgba(255, 208, 0, 0.4); }
+    .folder-card { background: linear-gradient(135deg, #7e22ce, #4c1d95); color: white; border-radius: 16px; padding: 18px; text-align: center; cursor: pointer; font-weight: 800; box-shadow: 0 8px 25px rgba(126, 34, 206, 0.4); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease; word-break: break-word; z-index: 5; position: relative; }
 
     .rich-gradient-headline-blue {
       background: linear-gradient(135deg, #38bdf8 0%, #1d4ed8 100%);
@@ -189,39 +179,37 @@
     .challenge-card {
       border-radius: 18px; padding: 18px; text-align: center;
       box-shadow: 0 12px 35px rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.4);
-      position: relative; transition: all 0.35s ease; cursor: pointer;
+      position: relative; transition: all 0.35s ease; cursor: pointer; z-index: 5;
     }
-    .challenge-card:hover { transform: translateY(-8px) scale(1.04); box-shadow: 0 18px 45px rgba(255,208,0,0.7); }
 
     .person-card {
       background: linear-gradient(145deg, #2d0b52, #150529); color: white; border-radius: 20px; padding: 18px; text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid var(--glass-border); display: flex; flex-direction: column; justify-content: space-between;
-      transition: all 0.3s ease; word-break: break-word; cursor: pointer;
+      transition: all 0.3s ease; word-break: break-word; cursor: pointer; z-index: 5; position: relative;
     }
-    .person-card:hover { transform: translateY(-6px); border-color: var(--accent-yellow); box-shadow: 0 12px 30px rgba(255,208,0,0.4); }
     .person-card img { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-yellow); margin: 0 auto 10px auto; box-shadow: var(--neon-glow); }
 
     .teacher-badge { background: rgba(255,208,0,0.15); color: var(--accent-yellow); border: 1px solid var(--accent-yellow); padding: 4px 8px; border-radius: 8px; font-size: 11px; font-weight: 700; margin: 3px 0; display: inline-block; }
     .teacher-loc { font-size: 11px; color: #cbd5e1; margin: 2px 0 6px 0; font-weight: 500; }
 
-    button { background-color: #7e22ce; color: white; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; font-family: 'Poppins', sans-serif; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(126,34,206,0.3); font-size: 12px; }
+    button { background-color: #7e22ce; color: white; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; font-family: 'Poppins', sans-serif; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(126,34,206,0.3); font-size: 12px; z-index: 10; position: relative; }
     button:hover { opacity: 0.95; transform: translateY(-2px); filter: brightness(1.1); }
     .btn-back { background-color: #475569; padding: 8px 14px; font-size: 11px; margin-bottom: 14px; border-radius: 8px; }
 
-    table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 12px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 12px; position: relative; z-index: 5; }
     th, td { border: 1px solid rgba(255,255,255,0.2); padding: 10px 8px; text-align: center; word-break: break-word; }
     th { background-color: rgba(255,208,0,0.2); color: var(--accent-yellow); font-weight: 800; }
 
-    input, select, textarea { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.25); font-family: 'Poppins', sans-serif; font-size: 13px; }
+    input, select, textarea { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.25); font-family: 'Poppins', sans-serif; font-size: 13px; position: relative; z-index: 10; }
 
     .hidden { display: none !important; }
-    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 99999; animation: fadeIn 0.3s ease; padding: 15px; }
-    .modal-content { background: #240c42; color: #fff; padding: 20px; border-radius: 20px; width: 440px; max-width: 100%; border: 1px solid var(--glass-border); box-shadow: 0 25px 50px rgba(0,0,0,0.7); max-height:90vh; overflow-y:auto; animation: fadeInUp 0.3s ease; }
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 999999; padding: 15px; }
+    .modal-content { background: #240c42; color: #fff; padding: 20px; border-radius: 20px; width: 440px; max-width: 100%; border: 1px solid var(--glass-border); box-shadow: 0 25px 50px rgba(0,0,0,0.7); max-height:90vh; overflow-y:auto; position: relative; z-index: 1000000; }
 
-    .btn-edit { background: #0284c7; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; margin-right: 4px; }
-    .btn-delete { background: #ef4444; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; }
-    .btn-whatsapp { background: #25D366; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: bold; text-decoration: none; display: inline-block; }
-    .btn-call { background: #3b82f6; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: bold; text-decoration: none; display: inline-block; margin-left: 4px; }
+    .btn-edit { background: #0284c7; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; margin-right: 4px; z-index: 10; position: relative; }
+    .btn-delete { background: #ef4444; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; z-index: 10; position: relative; }
+    .btn-whatsapp { background: #25D366; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: bold; text-decoration: none; display: inline-block; z-index: 10; position: relative; }
+    .btn-call { background: #3b82f6; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: bold; text-decoration: none; display: inline-block; margin-left: 4px; z-index: 10; position: relative; }
 
     @media (max-width: 768px) {
       body { padding: 6px; }
@@ -234,12 +222,6 @@
       table { font-size: 11px; }
       th, td { padding: 8px 6px; }
     }
-
-    @keyframes pulseGlow { 0% { box-shadow: 0 0 15px rgba(236,72,153,0.3); } 50% { box-shadow: 0 0 30px rgba(255,208,0,0.6); } 100% { box-shadow: 0 0 15px rgba(236,72,153,0.3); } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes zoomIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
   </style>
 </head>
 <body>
@@ -441,7 +423,7 @@
       </div>
     </div>
 
-    <!-- MY STUDENT PORTAL FOR PARENTS (CLEAN WITHOUT STICKER EMOJIS) -->
+    <!-- MY STUDENT PORTAL FOR PARENTS -->
     <div id="myStudentTab" class="tab-content hidden">
       <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 18px; border-radius: 18px; max-width:600px; margin:0 auto;">
         <h3 style="color:var(--accent-yellow); text-align:center; margin-top:0; font-size:16px;">PARENT & STUDENT PORTAL</h3>
@@ -480,7 +462,7 @@
       <div id="classWiseChallengeContainer"></div>
     </div>
 
-    <!-- FACULTY & STAFF TAB WITH FOLDERS/BOXES -->
+    <!-- FACULTY & STAFF TAB -->
     <div id="usthadTab" class="tab-content hidden">
       <div class="rich-gradient-headline-blue">👨‍🏫 Academic Faculty & Teachers Details</div>
       <input type="text" id="teacherSearchInput" placeholder="🔍 Search Faculty Name / Subject / Location..." oninput="renderUsthads()">
@@ -490,7 +472,7 @@
       <div class="folder-grid" id="committeeGrid" style="margin-top:14px;"></div>
     </div>
 
-    <!-- EXAM RESULTS TAB WITH INLINE TABLE EDITING -->
+    <!-- EXAM RESULTS TAB -->
     <div id="examTab" class="tab-content hidden">
       <h3 style="color:var(--accent-yellow); font-size:16px;">📝 Exam Marks & Progress Cards</h3>
       <div style="display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
@@ -537,7 +519,6 @@
             <button onclick="saveLiveAnnouncement()" style="width:100%; background:#ec4899; color:#fff;">📢 Broadcast Notification</button>
           </div>
 
-          <!-- STUDENT REGISTRATION WITH ID CARD / ACADEMY PREFIX -->
           <div id="adminSub1" class="admin-sub-sec hidden">
             <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🎓 Register New Student & ID Card Info</h4>
             <select id="regStudentClassSelect"></select>
@@ -800,7 +781,6 @@
     renderUsthads();
     renderDashCommitteeGrid();
     
-    // Notification Toggle State Sync
     const notifToggle = document.getElementById('notificationToggleCheckbox');
     if(notifToggle) {
       notifToggle.checked = window.dbData.notificationEnabled !== false;
@@ -994,7 +974,6 @@
       return;
     }
     committeeMembers.forEach(m => {
-      let phoneClean = (m.contact || '').replace(/\D/g, '');
       grid.innerHTML += `
         <div class="folder-card" style="background:linear-gradient(135deg, #0284c7, #0369a1); padding:14px; text-align:center;" onclick="showFacultyDetailsModal(${m.id})">
           <img src="${m.photo || 'https://via.placeholder.com/50'}" style="width:45px; height:45px; border-radius:50%; object-fit:cover; border:2px solid #ffd000; margin:0 auto 6px auto;">
@@ -1097,7 +1076,6 @@
     }
   };
 
-  // Parent Student Portal Logic
   window.verifyParentStudentAccess = function() {
     const nameQuery = document.getElementById('parentStudentName').value.trim().toLowerCase();
     const phoneQuery = document.getElementById('parentStudentPhone').value.trim();
@@ -1133,11 +1111,10 @@
     }
   };
 
-  // Enhanced Faculty Folders & Boxes
   function renderUsthads() {
     const usthadGrid = document.getElementById('usthadsGrid');
     const committeeGrid = document.getElementById('committeeGrid');
-    const q = document.getElementById('teacherSearchInput') ? document.getElementById('teacherSearchInput'].value.toLowerCase().trim() : '';
+    const q = document.getElementById('teacherSearchInput') ? document.getElementById('teacherSearchInput').value.toLowerCase().trim() : '';
     
     if(!usthadGrid || !committeeGrid) return;
     usthadGrid.innerHTML = ""; committeeGrid.innerHTML = "";
@@ -1277,7 +1254,6 @@
     }
   };
 
-  // Manage Subjects Functions for Admin
   function populateSubjectManageDropdown() {
     const sel = document.getElementById('subjectManageClassSelect');
     if(!sel) return;
@@ -1596,7 +1572,6 @@
     }
   };
 
-  // Exam Marks Inline Table Editing Functions
   function populateExamClassDropdown() {
     const sel = document.getElementById('examClassSelect');
     if(!sel) return;
@@ -1677,7 +1652,6 @@
     alert("✅ Exam mark saved successfully!");
   };
 
-  // Challenge Teams & Mystery Box Functions
   function populateChallengeFilters() {
     const clsSel = document.getElementById('challengeClassFilter');
     if(!clsSel) return;
