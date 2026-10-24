@@ -3,172 +3,168 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes">
-  <title>ABDUL BARI ACADEMY PUTHUPPARMBA - PRO PORTAL</title>
+  <title>ABDUL BARI ACADEMY PUTHUPPARMBA - ULTIMATE HD PRO PORTAL</title>
 
-  <!-- Google Fonts: Poppins -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- External Libraries -->
+  <!-- Google Fonts & External Libraries -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
   <style>
     :root {
-      --bg-deep-1: #060112;
-      --bg-deep-2: #150529;
+      --bg-deep-1: #070114;
+      --bg-deep-2: #180533;
       --bg-deep-3: #2d0b52;
-      --card-bg: rgba(30, 17, 54, 0.95);
-      --glass-border: rgba(255, 208, 0, 0.4);
+      --card-bg: rgba(25, 12, 43, 0.88);
+      --glass-border: rgba(255, 208, 0, 0.5);
       --text-main: #ffffff;
       --accent-yellow: #ffd000;
-      --green: #10b981;
+      --neon-pink: #ec4899;
+      --neon-cyan: #38bdf8;
+      --neon-green: #10b981;
       --red: #ef4444;
-      --primary-purple: #9333ea;
-      --neon-glow: 0 0 25px rgba(255, 208, 0, 0.5);
-      --card-glow: 0 10px 30px rgba(147, 51, 234, 0.4);
+      --neon-glow: 0 0 25px rgba(255, 208, 0, 0.6), 0 0 45px rgba(236, 72, 153, 0.35);
+      --card-glow: 0 15px 35px rgba(147, 51, 234, 0.4);
     }
 
     body.theme-light-rose {
-      --bg-deep-1: #fff0f5;
-      --bg-deep-2: #ffe4e1;
-      --bg-deep-3: #ffd1dc;
-      --card-bg: #ffffff;
-      --glass-border: rgba(225, 29, 72, 0.35);
-      --text-main: #111827;
-      --accent-yellow: #be123c;
-      --neon-glow: 0 0 20px rgba(190, 18, 60, 0.3);
+      --bg-deep-1: #fff0f5; --bg-deep-2: #ffe4e1; --bg-deep-3: #ffd1dc;
+      --card-bg: rgba(255, 255, 255, 0.92); --glass-border: rgba(225, 29, 72, 0.4);
+      --text-main: #111827; --accent-yellow: #be123c; --neon-glow: 0 0 20px rgba(190, 18, 60, 0.3);
     }
-
     body.theme-light-yellow {
-      --bg-deep-1: #fefce8;
-      --bg-deep-2: #fef08a;
-      --bg-deep-3: #fde047;
-      --card-bg: #ffffff;
-      --glass-border: rgba(202, 138, 4, 0.4);
-      --text-main: #1f2937;
-      --accent-yellow: #a16207;
-      --neon-glow: 0 0 20px rgba(202, 138, 4, 0.3);
+      --bg-deep-1: #fefce8; --bg-deep-2: #fef08a; --bg-deep-3: #fde047;
+      --card-bg: rgba(255, 255, 255, 0.92); --glass-border: rgba(202, 138, 4, 0.45);
+      --text-main: #1f2937; --accent-yellow: #a16207; --neon-glow: 0 0 20px rgba(202, 138, 4, 0.3);
     }
-
     body.theme-vibrant-neon {
-      --bg-deep-1: #030712;
-      --bg-deep-2: #0f172a;
-      --bg-deep-3: #1e1b4b;
-      --card-bg: #0f172a;
-      --glass-border: rgba(56, 189, 248, 0.4);
-      --text-main: #ffffff;
-      --accent-yellow: #38bdf8;
-      --neon-glow: 0 0 30px rgba(56, 189, 248, 0.6);
+      --bg-deep-1: #030712; --bg-deep-2: #0f172a; --bg-deep-3: #1e1b4b;
+      --card-bg: rgba(15, 23, 42, 0.92); --glass-border: rgba(56, 189, 248, 0.6);
+      --text-main: #ffffff; --accent-yellow: #38bdf8; --neon-glow: 0 0 35px rgba(56, 189, 248, 0.75);
     }
 
     * { 
       box-sizing: border-box; 
       -webkit-tap-highlight-color: transparent; 
+      touch-action: manipulation;
     }
 
+    /* ANIMATED GRADIENT BACKGROUND (HD HIGH QUALITY) */
     body {
       font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, var(--bg-deep-2), var(--bg-deep-1), var(--bg-deep-3));
-      background-attachment: fixed;
+      background: linear-gradient(-45deg, var(--bg-deep-1), var(--bg-deep-2), var(--bg-deep-3), #120324);
+      background-size: 400% 400%;
+      animation: gradientBG 14s ease infinite;
       color: var(--text-main);
       margin: 0; padding: 12px; min-height: 100vh;
       -webkit-font-smoothing: antialiased;
-      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .container { max-width: 1100px; margin: 0 auto; position: relative; width: 100%; }
 
+    /* HEADER WITH NEON GLOW & PULSE ANIMATION */
     header {
-      background: rgba(15, 7, 32, 0.92);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(15, 7, 32, 0.9);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--glass-border);
-      color: #fff; padding: 18px 20px; border-radius: 20px; margin-bottom: 12px;
+      color: #fff; padding: 18px 22px; border-radius: 22px; margin-bottom: 14px;
       display: flex; justify-content: space-between; align-items: center;
       box-shadow: var(--card-glow);
-      position: relative; z-index: 1000;
-      flex-wrap: wrap; gap: 10px;
+      position: relative; z-index: 1000; flex-wrap: wrap; gap: 12px;
+      animation: headerGlow 4s infinite alternate;
     }
 
-    .header-title-box h1 { margin: 0; font-size: 20px; font-weight: 900; color: #fff !important; }
+    @keyframes headerGlow {
+      0% { box-shadow: 0 5px 25px rgba(147, 51, 234, 0.3); }
+      100% { box-shadow: 0 10px 45px rgba(255, 208, 0, 0.45); }
+    }
+
+    .header-title-box h1 { margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 0.5px; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
     .header-title-box h2 { margin: 2px 0 0 0; font-size: 13px; font-weight: 800; color: var(--accent-yellow) !important; }
-    .header-title-box small { display: block; margin-top: 2px; font-size: 11px; font-weight: 700; color: #c084fc !important; letter-spacing: 1.5px; }
+    .header-title-box small { display: block; margin-top: 2px; font-size: 10px; font-weight: 800; color: var(--neon-pink) !important; letter-spacing: 2px; }
 
     .header-right { display: flex; align-items: center; gap: 8px; position: relative; flex-wrap: wrap; }
-    .auth-btn { background: var(--accent-yellow); color: #000; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; box-shadow: var(--neon-glow); transition: all 0.3s ease; font-size: 12px; z-index: 10; }
+    .auth-btn { background: linear-gradient(135deg, #ffd000, #f59e0b); color: #000; border: none; padding: 10px 18px; border-radius: 12px; cursor: pointer; font-weight: 800; box-shadow: var(--neon-glow); transition: all 0.3s ease; font-size: 12px; position: relative; z-index: 100; }
     .auth-btn:hover { transform: translateY(-3px) scale(1.05); }
-    
-    .logout-btn { background: var(--red); color: white; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; font-size: 12px; z-index: 10; }
-    .menu-icon { font-size: 22px; cursor: pointer; color: #fff; padding: 8px 14px; border-radius: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease; z-index: 10; }
+    .logout-btn { background: var(--red); color: white; border: none; padding: 10px 18px; border-radius: 12px; cursor: pointer; font-weight: 800; font-size: 12px; position: relative; z-index: 100; }
+    .menu-icon { font-size: 22px; cursor: pointer; color: #fff; padding: 8px 14px; border-radius: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; position: relative; z-index: 100; }
     .menu-icon:hover { background: rgba(255,255,255,0.25); transform: rotate(90deg); }
 
-    .notice-marquee { background: linear-gradient(90deg, #ffd000, #f59e0b); color: #000; padding: 8px 14px; border-radius: 10px; font-weight: 800; font-size: 13px; margin-bottom: 14px; box-shadow: 0 4px 15px rgba(255,208,0,0.4); }
+    .notice-marquee { background: linear-gradient(90deg, #ffd000, #ec4899, #38bdf8); background-size: 200% 200%; animation: gradientBG 6s ease infinite; color: #000; padding: 10px 16px; border-radius: 12px; font-weight: 800; font-size: 13px; margin-bottom: 16px; box-shadow: 0 5px 20px rgba(255,208,0,0.4); }
 
     .msg-notification-box {
       background: linear-gradient(135deg, rgba(147, 51, 234, 0.4), rgba(236, 72, 153, 0.4));
-      border: 2px solid var(--accent-yellow);
-      border-radius: 16px; padding: 16px; margin-bottom: 16px;
-      box-shadow: 0 0 25px rgba(236, 72, 153, 0.4);
+      border: 2px solid var(--accent-yellow); border-radius: 18px; padding: 18px; margin-bottom: 18px;
+      box-shadow: 0 0 30px rgba(236, 72, 153, 0.4); backdrop-filter: blur(10px);
+      animation: pulseBox 3.5s ease-in-out infinite;
+    }
+    @keyframes pulseBox {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.01); }
     }
 
     #settingsDropdown {
       position: absolute; top: 55px; right: 0; background: #1a0636; color: #fff;
-      backdrop-filter: blur(15px); border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); width: 280px; 
-      z-index: 99999 !important; padding: 16px; border: 1px solid var(--glass-border);
+      backdrop-filter: blur(20px); border-radius: 18px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); width: 280px; 
+      z-index: 99999 !important; padding: 18px; border: 1px solid var(--glass-border);
     }
 
-    .nav-tabs { display: flex; gap: 6px; margin-bottom: -1px; flex-wrap: wrap; position: relative; z-index: 10; }
+    .nav-tabs { display: flex; gap: 8px; margin-bottom: -1px; flex-wrap: wrap; position: relative; z-index: 10; }
     .tab-btn {
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.05); padding: 10px 14px;
-      border-radius: 14px 14px 0 0; cursor: pointer; font-weight: 800; color: #e9d5ff; font-size: 12px;
-      transition: all 0.3s ease; backdrop-filter: blur(5px); flex: 1; text-align: center; min-width: 90px;
-      z-index: 5;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px;
+      border-radius: 16px 16px 0 0; cursor: pointer; font-weight: 800; color: #e9d5ff; font-size: 12px;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); backdrop-filter: blur(8px); flex: 1; text-align: center; min-width: 100px;
     }
-    .tab-btn:hover { background: rgba(255,255,255,0.2); transform: translateY(-4px); color: var(--accent-yellow); }
+    .tab-btn:hover { background: rgba(255,255,255,0.22); transform: translateY(-4px); color: var(--accent-yellow); }
     .tab-btn.active { background: var(--card-bg); color: var(--accent-yellow); border-color: var(--glass-border); border-bottom: none; transform: translateY(-2px); box-shadow: var(--neon-glow); }
 
     .card {
-      background: var(--card-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-      padding: 20px; border-radius: 0 20px 20px 20px; box-shadow: var(--card-glow);
-      margin-bottom: 20px; min-height: 440px; border: 1px solid var(--glass-border);
+      background: var(--card-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      padding: 24px; border-radius: 0 22px 22px 22px; box-shadow: var(--card-glow);
+      margin-bottom: 22px; min-height: 460px; border: 1px solid var(--glass-border);
       position: relative; z-index: 1; overflow-x: hidden;
+      animation: fadeInCard 0.4s ease-in-out;
+    }
+    @keyframes fadeInCard {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .public-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 22px; }
+    .public-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-bottom: 24px; }
     .pub-stat-card {
-      padding: 18px; border-radius: 20px; text-align: center; color: #fff;
-      border: 1px solid rgba(255,255,255,0.2); position: relative; overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4); transition: all 0.35s ease;
+      padding: 22px; border-radius: 22px; text-align: center; color: #fff;
+      border: 1px solid rgba(255,255,255,0.25); position: relative; overflow: hidden;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.5); transition: all 0.35s ease;
     }
+    .pub-stat-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
     .pub-stat-card:nth-child(1) { background: linear-gradient(135deg, #ec4899, #831843); }
     .pub-stat-card:nth-child(2) { background: linear-gradient(135deg, #06b6d4, #0e7490); }
     .pub-stat-card:nth-child(3) { background: linear-gradient(135deg, #10b981, #047857); }
 
-    .admin-layout { display: flex; gap: 15px; flex-wrap: wrap; }
-    .admin-sidebar { flex: 1; min-width: 220px; background: rgba(0,0,0,0.3); padding: 12px; border-radius: 16px; border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 8px; }
-    .admin-sidebar-btn { text-align: left; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid rgba(255,255,255,0.1); padding: 10px 14px; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 12px; transition: all 0.25s ease; width: 100%; z-index: 5; }
-    .admin-sidebar-btn:hover, .admin-sidebar-btn.active { background: var(--accent-yellow); color: #000; box-shadow: var(--neon-glow); font-weight: 900; }
-    .admin-content-area { flex: 3; min-width: 280px; background: rgba(255,255,255,0.02); padding: 16px; border-radius: 16px; border: 1px solid var(--glass-border); }
+    .admin-layout { display: flex; gap: 18px; flex-wrap: wrap; }
+    .admin-sidebar { flex: 1; min-width: 220px; background: rgba(0,0,0,0.4); padding: 14px; border-radius: 18px; border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 10px; }
+    .admin-sidebar-btn { text-align: left; background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.12); padding: 12px 16px; border-radius: 14px; cursor: pointer; font-weight: 700; font-size: 12px; transition: all 0.3s ease; width: 100%; }
+    .admin-sidebar-btn:hover, .admin-sidebar-btn.active { background: var(--accent-yellow); color: #000; box-shadow: var(--neon-glow); font-weight: 900; transform: translateX(5px); }
+    .admin-content-area { flex: 3; min-width: 280px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 18px; border: 1px solid var(--glass-border); }
 
-    .big-folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 20px; }
-    .big-folder-college { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border-radius: 18px; padding: 25px; text-align: center; cursor: pointer; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.4); transition: all 0.35s ease; z-index: 5; position: relative; }
-    .big-folder-school { background: linear-gradient(135deg, #059669, #047857); color: white; border-radius: 18px; padding: 25px; text-align: center; cursor: pointer; box-shadow: 0 10px 30px rgba(5, 150, 105, 0.4); transition: all 0.35s ease; z-index: 5; position: relative; }
+    .big-folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; margin-bottom: 22px; }
+    .big-folder-college { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border-radius: 20px; padding: 28px; text-align: center; cursor: pointer; box-shadow: 0 12px 35px rgba(2, 132, 199, 0.4); transition: all 0.35s ease; border: 1px solid rgba(255,255,255,0.2); }
+    .big-folder-college:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 45px rgba(2, 132, 199, 0.6); }
+    .big-folder-school { background: linear-gradient(135deg, #059669, #047857); color: white; border-radius: 20px; padding: 28px; text-align: center; cursor: pointer; box-shadow: 0 12px 35px rgba(5, 150, 105, 0.4); transition: all 0.35s ease; border: 1px solid rgba(255,255,255,0.2); }
+    .big-folder-school:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 45px rgba(5, 150, 105, 0.6); }
 
-    .folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-bottom: 20px; }
-    .folder-card { background: linear-gradient(135deg, #7e22ce, #4c1d95); color: white; border-radius: 16px; padding: 18px; text-align: center; cursor: pointer; font-weight: 800; box-shadow: 0 8px 25px rgba(126, 34, 206, 0.4); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease; word-break: break-word; z-index: 5; position: relative; }
+    .folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 22px; }
+    .folder-card { background: linear-gradient(135deg, #7e22ce, #4c1d95); color: white; border-radius: 18px; padding: 20px; text-align: center; cursor: pointer; font-weight: 800; box-shadow: 0 10px 30px rgba(126, 34, 206, 0.4); border: 1px solid rgba(255,255,255,0.2); transition: all 0.35s ease; }
+    .folder-card:hover { transform: translateY(-5px) scale(1.02); box-shadow: 0 18px 40px rgba(126, 34, 206, 0.6); }
 
-    .rich-gradient-headline-blue {
-      background: linear-gradient(135deg, #38bdf8 0%, #1d4ed8 100%);
-      padding: 12px 16px; border-radius: 14px; color: #fff; font-weight: 900; font-size: 16px;
-      box-shadow: 0 5px 20px rgba(56, 189, 248, 0.4); margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.3);
-      text-transform: uppercase; letter-spacing: 1px; word-break: break-word;
-    }
-    .rich-gradient-headline-yellow {
-      background: linear-gradient(135deg, #facc15 0%, #ea580c 100%);
-      padding: 12px 16px; border-radius: 14px; color: #000; font-weight: 900; font-size: 16px;
-      box-shadow: 0 5px 20px rgba(250, 204, 21, 0.4); margin-bottom: 16px; border: 1px solid rgba(255,255,255,0.3);
-      text-transform: uppercase; letter-spacing: 1px; word-break: break-word;
-    }
+    .rich-gradient-headline-blue { background: linear-gradient(135deg, #38bdf8, #1d4ed8); padding: 14px 18px; border-radius: 16px; color: #fff; font-weight: 900; font-size: 16px; box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4); margin-bottom: 18px; border: 1px solid rgba(255,255,255,0.3); letter-spacing: 1px; }
+    .rich-gradient-headline-yellow { background: linear-gradient(135deg, #facc15, #ea580c); padding: 14px 18px; border-radius: 16px; color: #000; font-weight: 900; font-size: 16px; box-shadow: 0 8px 25px rgba(250, 204, 21, 0.4); margin-bottom: 18px; border: 1px solid rgba(255,255,255,0.3); letter-spacing: 1px; }
 
     .grad-orange-yellow { background: linear-gradient(135deg, #f97316, #eab308) !important; color: #000 !important; }
     .grad-red-orange { background: linear-gradient(135deg, #ef4444, #f97316) !important; color: #fff !important; }
@@ -176,51 +172,44 @@
     .grad-emerald-green { background: linear-gradient(135deg, #10b981, #059669) !important; color: #fff !important; }
     .grad-deep-violet { background: linear-gradient(135deg, #6366f1, #4f46e5) !important; color: #fff !important; }
 
-    .challenge-card {
-      border-radius: 18px; padding: 18px; text-align: center;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.4);
-      position: relative; transition: all 0.35s ease; cursor: pointer; z-index: 5;
+    .challenge-card { border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.4); transition: all 0.35s ease; cursor: pointer; }
+    .challenge-card:hover { transform: translateY(-6px) scale(1.03); }
+
+    /* RESTRUCTURED FACULTY CARDS */
+    .faculty-card-modern {
+      background: linear-gradient(145deg, rgba(45, 11, 82, 0.9), rgba(21, 5, 41, 0.95));
+      border: 1px solid var(--glass-border); border-radius: 22px; padding: 20px; text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5); transition: all 0.35s ease; cursor: pointer;
+      position: relative; overflow: hidden;
     }
+    .faculty-card-modern:hover { transform: translateY(-6px) scale(1.02); box-shadow: var(--neon-glow); }
+    .faculty-avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-yellow); box-shadow: var(--neon-glow); margin: 0 auto 12px auto; display: block; }
 
-    .person-card {
-      background: linear-gradient(145deg, #2d0b52, #150529); color: white; border-radius: 20px; padding: 18px; text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid var(--glass-border); display: flex; flex-direction: column; justify-content: space-between;
-      transition: all 0.3s ease; word-break: break-word; cursor: pointer; z-index: 5; position: relative;
-    }
-    .person-card img { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-yellow); margin: 0 auto 10px auto; box-shadow: var(--neon-glow); }
+    button { background: linear-gradient(135deg, #7e22ce, #6b21a8); color: white; border: none; padding: 11px 18px; border-radius: 14px; cursor: pointer; font-weight: 800; font-family: 'Poppins', sans-serif; transition: all 0.25s ease; box-shadow: 0 5px 20px rgba(126,34,206,0.4); font-size: 12px; position: relative; z-index: 10; }
+    button:hover { transform: translateY(-2px) scale(1.02); filter: brightness(1.15); box-shadow: 0 8px 25px rgba(126,34,206,0.6); }
+    .btn-back { background: #475569; padding: 8px 16px; font-size: 11px; margin-bottom: 16px; border-radius: 10px; }
 
-    .teacher-badge { background: rgba(255,208,0,0.15); color: var(--accent-yellow); border: 1px solid var(--accent-yellow); padding: 4px 8px; border-radius: 8px; font-size: 11px; font-weight: 700; margin: 3px 0; display: inline-block; }
-    .teacher-loc { font-size: 11px; color: #cbd5e1; margin: 2px 0 6px 0; font-weight: 500; }
+    table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 12px; }
+    th, td { border: 1px solid rgba(255,255,255,0.18); padding: 12px 10px; text-align: center; }
+    th { background: rgba(255,208,0,0.25); color: var(--accent-yellow); font-weight: 800; }
 
-    button { background-color: #7e22ce; color: white; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; font-family: 'Poppins', sans-serif; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(126,34,206,0.3); font-size: 12px; z-index: 10; position: relative; }
-    button:hover { opacity: 0.95; transform: translateY(-2px); filter: brightness(1.1); }
-    .btn-back { background-color: #475569; padding: 8px 14px; font-size: 11px; margin-bottom: 14px; border-radius: 8px; }
-
-    table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 12px; position: relative; z-index: 5; }
-    th, td { border: 1px solid rgba(255,255,255,0.2); padding: 10px 8px; text-align: center; word-break: break-word; }
-    th { background-color: rgba(255,208,0,0.2); color: var(--accent-yellow); font-weight: 800; }
-
-    input, select, textarea { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; background: rgba(0,0,0,0.3); color: #fff; border: 1px solid rgba(255,255,255,0.25); font-family: 'Poppins', sans-serif; font-size: 13px; position: relative; z-index: 10; }
+    input, select, textarea { width: 100%; padding: 12px; margin-bottom: 12px; border-radius: 10px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.25); font-family: 'Poppins', sans-serif; font-size: 13px; transition: all 0.3s ease; position: relative; z-index: 10; }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent-yellow); outline: none; box-shadow: 0 0 15px rgba(255,208,0,0.3); }
 
     .hidden { display: none !important; }
-    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 999999; padding: 15px; }
-    .modal-content { background: #240c42; color: #fff; padding: 20px; border-radius: 20px; width: 440px; max-width: 100%; border: 1px solid var(--glass-border); box-shadow: 0 25px 50px rgba(0,0,0,0.7); max-height:90vh; overflow-y:auto; position: relative; z-index: 1000000; }
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); backdrop-filter: blur(12px); display: flex; justify-content: center; align-items: center; z-index: 999999; padding: 15px; animation: fadeInModal 0.3s ease-out; }
+    @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
+    .modal-content { background: #240c42; color: #fff; padding: 24px; border-radius: 22px; width: 450px; max-width: 100%; border: 1px solid var(--glass-border); box-shadow: 0 30px 60px rgba(0,0,0,0.8); max-height:90vh; overflow-y:auto; position: relative; z-index: 1000000; }
 
-    .btn-edit { background: #0284c7; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; margin-right: 4px; z-index: 10; position: relative; }
-    .btn-delete { background: #ef4444; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; z-index: 10; position: relative; }
-    .btn-whatsapp { background: #25D366; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: bold; text-decoration: none; display: inline-block; z-index: 10; position: relative; }
-    .btn-call { background: #3b82f6; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: bold; text-decoration: none; display: inline-block; margin-left: 4px; z-index: 10; position: relative; }
+    .btn-edit { background: #0284c7; color: #fff; font-size: 10px; padding: 5px 10px; border-radius: 8px; margin-right: 4px; }
+    .btn-delete { background: #ef4444; color: #fff; font-size: 10px; padding: 5px 10px; border-radius: 8px; }
+    .btn-whatsapp { background: #25D366; color: #fff; font-size: 11px; padding: 6px 12px; border-radius: 8px; font-weight: bold; text-decoration: none; display: inline-block; }
 
     @media (max-width: 768px) {
       body { padding: 6px; }
-      header { padding: 12px 14px; }
-      .header-title-box h1 { font-size: 16px; }
-      .header-title-box h2 { font-size: 11px; }
-      .header-title-box small { font-size: 9px; }
-      .card { padding: 14px; min-height: 380px; }
-      .pub-stat-card h2 { font-size: 22px; }
-      table { font-size: 11px; }
-      th, td { padding: 8px 6px; }
+      header { padding: 14px; }
+      .header-title-box h1 { font-size: 17px; }
+      .card { padding: 16px; min-height: 380px; }
     }
   </style>
 </head>
@@ -231,13 +220,12 @@
     <div class="header-title-box">
       <h1>ABDUL BARI ACADEMY</h1>
       <h2>PUTHUPPARMBA</h2>
-      <small>PRO STUDENT PORTAL</small>
+      <small>ULTIMATE HD PRO PORTAL</small>
     </div>
     <div class="header-right">
-      <!-- ZOOM CONTROLS FOR LAPTOP / DESKTOP / MOBILE PERFECTION -->
-      <div style="display:flex; gap:4px; align-items:center; background:rgba(255,255,255,0.1); padding:4px 8px; border-radius:10px; border:1px solid rgba(255,255,255,0.15);">
+      <div style="display:flex; gap:4px; align-items:center; background:rgba(255,255,255,0.12); padding:5px 10px; border-radius:12px; border:1px solid rgba(255,255,255,0.2);">
         <button onclick="zoomPortal(-0.1)" style="background:transparent; padding:2px 6px; font-size:12px; box-shadow:none;" title="Zoom Out">🔍-</button>
-        <span id="zoomLevelIndicator" style="font-size:10px; font-weight:bold; color:var(--accent-yellow);">100%</span>
+        <span id="zoomLevelIndicator" style="font-size:11px; font-weight:bold; color:var(--accent-yellow);">100%</span>
         <button onclick="zoomPortal(0.1)" style="background:transparent; padding:2px 6px; font-size:12px; box-shadow:none;" title="Zoom In">🔍+</button>
       </div>
 
@@ -254,18 +242,14 @@
           <input type="checkbox" id="notificationToggleCheckbox" checked onchange="toggleAppNotificationSetting()" style="width:auto; margin-bottom:0; cursor:pointer;">
         </div>
 
-        <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🎨 Select Portal Theme</div>
+        <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🎨 Portal Themes</div>
         <div onclick="changePortalTheme('default')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700;">🌙 Dark Violet (Default)</div>
         <div onclick="changePortalTheme('theme-light-rose')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#be123c;">🌸 Light Rose Theme</div>
         <div onclick="changePortalTheme('theme-light-yellow')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#a16207;">☀️ Light Yellow Theme</div>
         <div onclick="changePortalTheme('theme-vibrant-neon')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#38bdf8;">💎 Vibrant Neon Theme</div>
         
         <div style="border-top: 1px solid rgba(255,255,255,0.15); margin: 8px 0; padding-top: 6px;"></div>
-        <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">📤 Share Portal App</div>
         <div onclick="sharePortalApp()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(37,211,102,0.2); color: #25D366; margin-bottom:4px;">🔗 Share App Link</div>
-
-        <div style="border-top: 1px solid rgba(255,255,255,0.15); margin: 8px 0; padding-top: 6px;"></div>
-        <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🔒 Security & Backup</div>
         <div onclick="backupPortalData()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(16,185,129,0.2); color: #10b981; margin-bottom:4px;">📥 Backup Data (JSON)</div>
         <div onclick="restorePortalDataPrompt()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(56,189,248,0.2); color: #38bdf8; margin-bottom:4px;">📤 Restore Data (JSON)</div>
         
@@ -283,13 +267,12 @@
     <marquee id="noticeMarqueeText" behavior="scroll" direction="left">📢 Welcome to Abdul Bari Academy Student Information Portal!</marquee>
   </div>
 
-  <!-- LIVE MESSAGE NOTIFICATION GLOW BOX -->
   <div id="msgNotificationBox" class="msg-notification-box">
     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
-      <h3 style="margin:0; font-size:14px; color:var(--accent-yellow);">🔔 ACADEMY LIVE ANNOUNCEMENTS</h3>
+      <h3 style="margin:0; font-size:15px; color:var(--accent-yellow);">🔔 ACADEMY LIVE ANNOUNCEMENTS</h3>
       <small id="msgTimestamp" style="color:#c084fc; font-weight:bold;"></small>
     </div>
-    <p id="msgNotificationText" style="margin:8px 0 0 0; font-size:12px; font-weight:600; line-height:1.5; color:#fff;">Welcome to the official digital portal. Check out overall class statistics and subject details below!</p>
+    <p id="msgNotificationText" style="margin:8px 0 0 0; font-size:13px; font-weight:600; line-height:1.5; color:#fff;">Welcome to the official digital portal. Check out overall class statistics and subject details below!</p>
   </div>
 
   <div class="nav-tabs">
@@ -305,27 +288,27 @@
   <div class="card" id="portalMainCard">
     <!-- DASHBOARD TAB -->
     <div id="dashboardTab" class="tab-content active">
-      <div style="text-align:center; margin-bottom:24px;">
-        <h2 style="color:var(--accent-yellow); margin-bottom:4px; font-size:18px;">🌟 ABDUL BARI ACADEMY PUTHUPPARMBA</h2>
-        <p style="color:#c084fc; font-size:12px; font-weight:700;">Official Student Portal & Management System</p>
+      <div style="text-align:center; margin-bottom:26px;">
+        <h2 style="color:var(--accent-yellow); margin-bottom:4px; font-size:20px; font-weight:900;">🌟 ABDUL BARI ACADEMY PUTHUPPARMBA</h2>
+        <p style="color:#c084fc; font-size:13px; font-weight:700;">Official Student Portal & Management System</p>
       </div>
 
       <div class="public-dashboard-grid">
-        <div class="pub-stat-card"><p>TOTAL STUDENTS</p><h2 id="pubStatStudents">0</h2></div>
-        <div class="pub-stat-card"><p>ACTIVE BATCHES</p><h2 id="pubStatClasses">0</h2></div>
-        <div class="pub-stat-card"><p>FACULTY & COMMITTEE</p><h2 id="pubStatUsthads">0</h2></div>
+        <div class="pub-stat-card"><p style="font-weight:800; font-size:12px;">TOTAL STUDENTS</p><h2 id="pubStatStudents" style="font-size:32px; margin:6px 0 0 0; font-weight:900;">0</h2></div>
+        <div class="pub-stat-card"><p style="font-weight:800; font-size:12px;">ACTIVE BATCHES</p><h2 id="pubStatClasses" style="font-size:32px; margin:6px 0 0 0; font-weight:900;">0</h2></div>
+        <div class="pub-stat-card"><p style="font-weight:800; font-size:12px;">FACULTY & COMMITTEE</p><h2 id="pubStatUsthads" style="font-size:32px; margin:6px 0 0 0; font-weight:900;">0</h2></div>
       </div>
 
       <!-- COMMITTEE & SECRETARIAT SECTION ON DASHBOARD -->
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 16px; border-radius: 18px; margin-bottom:20px;">
-        <h3 style="color:var(--accent-yellow); margin-top:0; font-size:15px;">🏛️ COLLEGE COMMITTEE & SECRETARIAT</h3>
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 18px; border-radius: 20px; margin-bottom:22px;">
+        <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">🏛️ COLLEGE COMMITTEE & SECRETARIAT</h3>
         <p style="font-size:11px; color:#c084fc; margin-top:-4px;">Key administrative office bearers of Abdul Bari Academy:</p>
-        <div class="folder-grid" id="dashCommitteeGrid" style="margin-top:10px;"></div>
+        <div class="folder-grid" id="dashCommitteeGrid" style="margin-top:12px;"></div>
       </div>
 
-      <!-- DASHBOARD STUDENT DIRECTORY WITH DIRECT ACTIONS -->
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 16px; border-radius: 18px;">
-        <h3 style="color:var(--accent-yellow); margin-top:0; font-size:15px;">🔍 STUDENT DIRECTORY & DIRECT WHATSAPP</h3>
+      <!-- DASHBOARD STUDENT DIRECTORY -->
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 18px; border-radius: 20px;">
+        <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">🔍 STUDENT DIRECTORY & DIRECT WHATSAPP</h3>
         <p style="font-size:11px; color:#c084fc; margin-top:-4px;">💡 Tip: Click 'Chat WA' or right-click/long-press student row for full profile popup!</p>
         
         <div style="display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
@@ -349,15 +332,15 @@
     <!-- ACADEMICS TAB -->
     <div id="classesTab" class="tab-content hidden">
       <div id="mainCategoryLevel">
-        <h3 style="color:var(--accent-yellow); text-align:center; margin-bottom:18px; font-size:16px;">Select Study Portal / Section</h3>
+        <h3 style="color:var(--accent-yellow); text-align:center; margin-bottom:20px; font-size:17px;">Select Study Portal / Section</h3>
         <div class="big-folder-grid">
           <div class="big-folder-college" id="btnCollegePortal">
-            <h2 style="margin:0; font-size:18px;">COLLEGE STUDIES</h2>
-            <p style="margin:6px 0 0 0; font-size:12px;">(Degree & Higher Studies)</p>
+            <h2 style="margin:0; font-size:20px;">COLLEGE STUDIES</h2>
+            <p style="margin:6px 0 0 0; font-size:13px;">(Degree & Higher Studies)</p>
           </div>
           <div class="big-folder-school" id="btnSchoolPortal">
-            <h2 style="margin:0; font-size:18px;">SCHOOL STUDIES</h2>
-            <p style="margin:6px 0 0 0; font-size:12px;">Plus One, Plus Two & High School</p>
+            <h2 style="margin:0; font-size:20px;">SCHOOL STUDIES</h2>
+            <p style="margin:6px 0 0 0; font-size:13px;">Plus One, Plus Two & High School</p>
           </div>
         </div>
       </div>
@@ -376,23 +359,22 @@
         <div class="folder-grid" id="subjectFoldersGrid"></div>
       </div>
 
-      <!-- SUBJECT DETAIL LEVEL WITH QUICK ADD STUDENT -->
+      <!-- SUBJECT DETAIL LEVEL -->
       <div id="subjectDetailLevel" class="hidden">
         <button class="btn-back" id="btnBackToSubjects">← Back to Subjects</button>
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
           <h2 id="topicTitle" style="color:var(--accent-yellow); margin-bottom:10px; font-size:16px;"></h2>
           <div class="admin-only hidden">
-            <button onclick="openAddStudentModalForClass()" style="background:#10b981; font-size:11px; padding:6px 12px; margin-bottom:10px;">➕ Add Student to Class</button>
+            <button onclick="openAddStudentModalForClass()" style="background:#10b981; font-size:11px; padding:8px 14px; margin-bottom:10px;">➕ Add Student to Class</button>
           </div>
         </div>
         
-        <!-- Live Calendar Header with Date & Day Name -->
-        <div style="background: linear-gradient(135deg, rgba(147,51,234,0.3), rgba(59,130,246,0.3)); border:1px solid var(--glass-border); padding:10px 14px; border-radius:12px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-          <span style="font-size:12px; font-weight:800; color:#ffd000;">📅 Active Date: <span id="currentLiveDateLabel" style="color:#fff;"></span></span>
-          <input type="date" id="attendanceDatePicker" onchange="onAttendanceDateChanged()" style="padding:4px 8px; border-radius:6px; background:rgba(0,0,0,0.5); color:#fff; border:1px solid var(--glass-border); font-size:11px; width:auto; margin-bottom:0;">
+        <div style="background: linear-gradient(135deg, rgba(147,51,234,0.3), rgba(59,130,246,0.3)); border:1px solid var(--glass-border); padding:12px 16px; border-radius:14px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <span style="font-size:13px; font-weight:800; color:#ffd000;">📅 Active Date: <span id="currentLiveDateLabel" style="color:#fff;"></span></span>
+          <input type="date" id="attendanceDatePicker" onchange="onAttendanceDateChanged()" style="padding:6px 10px; border-radius:8px; background:rgba(0,0,0,0.5); color:#fff; border:1px solid var(--glass-border); font-size:11px; width:auto; margin-bottom:0;">
         </div>
 
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
           <div class="admin-only hidden" style="display:flex; gap:6px; flex-wrap:wrap;">
             <button onclick="bulkMarkAttendance('Present')" style="background:#10b981; font-size:11px;">✅ All Present</button>
             <button onclick="bulkMarkAttendance('Absent')" style="background:#ef4444; font-size:11px;">❌ All Absent</button>
@@ -409,7 +391,7 @@
           </div>
         </div>
 
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 16px; border-radius: 14px; margin-bottom: 20px;">
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 18px; border-radius: 16px; margin-bottom: 22px;">
           <h4 style="color:var(--accent-yellow); margin:0 0 10px 0; font-size:14px;">📚 Study Notes & Lecture Materials</h4>
           <div id="notesDisplayList" style="margin-bottom:10px; font-size:12px; color:#e2e8f0;">No notes uploaded for this subject yet.</div>
           <div class="admin-only hidden">
@@ -430,11 +412,11 @@
       </div>
     </div>
 
-    <!-- MY STUDENT PORTAL FOR PARENTS WITH ERROR HANDLING / DIRECTORY NOTICE -->
+    <!-- MY STUDENT TAB FOR PARENTS WITH ERROR HANDLING -->
     <div id="myStudentTab" class="tab-content hidden">
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 18px; border-radius: 18px; max-width:600px; margin:0 auto;">
-        <h3 style="color:var(--accent-yellow); text-align:center; margin-top:0; font-size:16px;">PARENT & STUDENT PORTAL</h3>
-        <p style="text-align:center; font-size:11px; color:#c084fc;">Register and check your student's live marks, leave details, and performance updates!</p>
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 22px; border-radius: 20px; max-width:600px; margin:0 auto;">
+        <h3 style="color:var(--accent-yellow); text-align:center; margin-top:0; font-size:17px;">PARENT & STUDENT PORTAL</h3>
+        <p style="text-align:center; font-size:12px; color:#c084fc;">Register and check your student's live marks, leave details, and performance updates!</p>
 
         <div id="parentLoginBox">
           <input type="text" id="parentStudentName" placeholder="Enter Student Name (or Initial)...">
@@ -442,35 +424,33 @@
           <button onclick="verifyParentStudentAccess()" style="width:100%; background:#10b981;">🔍 View Student Updates</button>
         </div>
 
-        <!-- NOTICE BOX IF NAME OR NUMBER IS WRONG / SPELLING ERROR -->
-        <div id="parentSearchErrorNotice" class="hidden" style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; padding: 14px; border-radius: 12px; margin-top: 14px; text-align: center;">
-          <h4 style="color:#ef4444; margin:0 0 6px 0; font-size:13px;">⚠️ Student Record Not Found / Spelling Mismatch</h4>
-          <p style="font-size:11px; color:#fca5a5; margin:0 0 10px 0;">Please go to the Student Directory (Dashboard) and verify your exact student name and registered number!</p>
-          <button onclick="switchTab('dashboardTab', document.querySelector('[data-tab=\'dashboardTab\']'))" style="background:#0284c7; font-size:11px; padding:6px 12px;">📁 Go to Student Directory</button>
+        <div id="parentSearchErrorNotice" class="hidden" style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; padding: 16px; border-radius: 14px; margin-top: 16px; text-align: center;">
+          <h4 style="color:#ef4444; margin:0 0 6px 0; font-size:14px;">⚠️ Student Record Not Found / Spelling Mismatch</h4>
+          <p style="font-size:11px; color:#fca5a5; margin:0 0 12px 0;">Please go to the Student Directory (Dashboard) and verify your exact student name and registered number!</p>
+          <button onclick="switchTab('dashboardTab', document.querySelector('[data-tab=\'dashboardTab\']'))" style="background:#0284c7; font-size:11px; padding:8px 14px;">📁 Go to Student Directory</button>
         </div>
 
         <div id="parentStudentDashboard" class="hidden" style="margin-top:20px; border-top:1px dashed var(--glass-border); padding-top:16px;">
-          <h4 id="parentStudentHeaderName" style="color:#ffd000; margin-bottom:4px; font-size:15px;"></h4>
-          <p id="parentStudentClassInfo" style="font-size:11px; color:#a7f3d0; margin-top:0;"></p>
+          <h4 id="parentStudentHeaderName" style="color:#ffd000; margin-bottom:4px; font-size:16px;"></h4>
+          <p id="parentStudentClassInfo" style="font-size:12px; color:#a7f3d0; margin-top:0;"></p>
           <div id="parentStudentDetailsContent"></div>
           
-          <!-- AUTO OR MANUAL NOTIFICATION PERMISSION OPTION AFTER SUBMISSION FINISHING -->
-          <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 12px; border-radius: 12px; margin-top: 14px; text-align: center;">
+          <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; padding: 14px; border-radius: 14px; margin-top: 16px; text-align: center;">
             <p style="font-size:12px; color:#10b981; font-weight:bold; margin:0 0 8px 0;">🔔 Enable Notifications & WhatsApp Alerts for Student Updates</p>
-            <button onclick="triggerParentAutoNotification()" style="background:#10b981; font-size:11px; padding:8px 14px;">📲 Send / Enable Instant Notifications</button>
+            <button onclick="triggerParentAutoNotification()" style="background:#10b981; font-size:11px; padding:8px 16px;">📲 Send / Enable Instant Notifications</button>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- SUBJECT CHALLENGE TEAMS WITH MYSTERY GIFT BOX -->
+    <!-- CHALLENGE TEAMS WITH MYSTERY GIFT BOX -->
     <div id="pointsTab" class="tab-content hidden">
-      <div style="text-align:center; background:linear-gradient(135deg, rgba(236,72,153,0.3), rgba(190,24,93,0.3)); padding:18px; border-radius:18px; border:2px dashed #ec4899; margin-bottom:20px;">
-        <h2 style="color:#ffd000; margin:0; font-size:18px;">🏆 SUBJECT-WISE CHALLENGE TEAMS & GIFT BOX 🎁</h2>
+      <div style="text-align:center; background:linear-gradient(135deg, rgba(236,72,153,0.3), rgba(190,24,93,0.3)); padding:20px; border-radius:20px; border:2px dashed #ec4899; margin-bottom:22px;">
+        <h2 style="color:#ffd000; margin:0; font-size:19px;">🏆 SUBJECT-WISE CHALLENGE TEAMS & GIFT BOX 🎁</h2>
         <p style="color:#fce7f3; font-size:12px; margin:6px 0 0 0;">Click on Mystery Gift Box to reveal points with celebration sound & confetti!</p>
       </div>
 
-      <div style="display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap;">
+      <div style="display:flex; gap:10px; margin-bottom:22px; flex-wrap:wrap;">
         <select id="challengeClassFilter" onchange="renderChallengeLeaderboard()" style="flex:1;">
           <option value="">📁 Select Class...</option>
         </select>
@@ -482,21 +462,21 @@
       <div id="classWiseChallengeContainer"></div>
     </div>
 
-    <!-- FACULTY & STAFF TAB (SHOW PHOTO & NAME FIRST; CLICK TO EXPAND DETAILS) -->
+    <!-- RESTRUCTURED FACULTY & STAFF TAB -->
     <div id="usthadTab" class="tab-content hidden">
       <div class="rich-gradient-headline-blue">👨‍🏫 Academic Faculty & Teachers Details</div>
-      <p style="font-size:11px; color:#c084fc; margin-top:-8px; margin-bottom:12px;">💡 Tip: Click on any faculty card to view complete location, map and contact details!</p>
+      <p style="font-size:11px; color:#c084fc; margin-top:-8px; margin-bottom:14px;">💡 Tip: Tap or Click any faculty profile card below to view location, contact, and Google Maps info!</p>
       <input type="text" id="teacherSearchInput" placeholder="🔍 Search Faculty Name / Subject / Location..." oninput="renderUsthads()">
-      <div class="folder-grid" id="usthadsGrid" style="margin-top:14px;"></div>
+      <div class="folder-grid" id="usthadsGrid" style="margin-top:16px;"></div>
 
-      <div class="rich-gradient-headline-yellow" style="margin-top:32px;">🤝 Committee & Administrative Staff</div>
-      <div class="folder-grid" id="committeeGrid" style="margin-top:14px;"></div>
+      <div class="rich-gradient-headline-yellow" style="margin-top:34px;">🤝 Committee & Administrative Staff</div>
+      <div class="folder-grid" id="committeeGrid" style="margin-top:16px;"></div>
     </div>
 
-    <!-- EXAM RESULTS TAB -->
+    <!-- EXAMS TAB -->
     <div id="examTab" class="tab-content hidden">
       <h3 style="color:var(--accent-yellow); font-size:16px;">📝 Exam Marks & Progress Cards</h3>
-      <div style="display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
+      <div style="display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
         <select id="examClassSelect" onchange="onExamClassChanged()" style="flex:1; margin-bottom:0;">
           <option value="">-- Select Batch / Class --</option>
         </select>
@@ -539,29 +519,27 @@
             <textarea id="adminLiveMsgInput" rows="3" placeholder="Type main announcement text..."></textarea>
             <button onclick="saveLiveAnnouncement()" style="width:100%; background:#ec4899; color:#fff;">📢 Broadcast Notification</button>
             
-            <!-- BUTTON TO SEND NOTIFICATIONS AUTOMATICALLY OR BY TEACHER PERMISSION -->
-            <div style="margin-top:16px; background:rgba(0,0,0,0.3); padding:12px; border-radius:10px; border:1px solid var(--glass-border);">
+            <div style="margin-top:16px; background:rgba(0,0,0,0.3); padding:14px; border-radius:12px; border:1px solid var(--glass-border);">
               <h5 style="color:var(--accent-yellow); margin:0 0 6px 0; font-size:12px;">📲 Automated Notification Dispatcher</h5>
               <p style="font-size:10px; color:#cbd5e1; margin:0 0 10px 0;">Click below to automatically push portal updates and notifications to all registered students & parents via WhatsApp/System.</p>
               <button onclick="sendAutomaticBroadcastNotification()" style="background:#10b981; width:100%; font-size:11px;">🚀 Send Automatic Notifications Now</button>
             </div>
           </div>
 
-          <!-- STUDENT REGISTRATION (DEVICE PHOTO CHOOSE & ID CARD) -->
           <div id="adminSub1" class="admin-sub-sec hidden">
             <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🎓 Register New Student & Choose Device Photo</h4>
             <select id="regStudentClassSelect"></select>
             <input type="text" id="regStudentName" placeholder="Student Name with Initial...">
             <input type="text" id="regFatherName" placeholder="Father Name...">
             <input type="text" id="regPhoneNum" placeholder="WhatsApp Phone Number...">
-            <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:8px; margin-bottom:10px; border:1px solid var(--glass-border);">
+            <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:10px; margin-bottom:10px; border:1px solid var(--glass-border);">
               <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🆔 ID Card Details (Abdul Bari Academy)</label>
               <input type="text" id="regStudentAcademyId" value="Abdul Bari Academy Puthupparmba" readonly style="margin-bottom:6px; font-size:11px; color:#a7f3d0;">
               <input type="text" id="regStudentRegisterNo" placeholder="Student Register No / ID Number..." style="margin-bottom:6px;">
               <input type="text" id="regStudentIdLocation" placeholder="Student Native Location / Address..." style="margin-bottom:0;">
             </div>
             <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🖼️ Choose Student Photo from Device:</label>
-            <input type="file" id="regStudentPhotoFile" accept="image/*" style="margin-bottom:10px;">
+            <input type="file" id="regStudentPhotoFile" accept="image/*" style="margin-bottom:12px;">
             <button onclick="adminRegisterStudent()" style="width:100%; background:#10b981;">➕ Register Student & Auto-Notify</button>
           </div>
 
@@ -612,7 +590,6 @@
             <button onclick="adminAddSubjectChallengeTeam()" style="width:100%; background:#f59e0b; color:#000;">➕ Create Subject Team</button>
           </div>
 
-          <!-- MANAGE FACULTY WITH DEVICE PHOTO & MAP LOCATION CHOOSE -->
           <div id="adminSub7" class="admin-sub-sec hidden">
             <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">👨‍🏫 Manage Faculty & Map Locations</h4>
             <select id="teacherCategorySelect">
@@ -625,7 +602,7 @@
             <input type="text" id="teacherSubInput" placeholder="Subjects Handled / Designation (e.g. Secretary)...">
             <input type="text" id="teacherContactInput" placeholder="WhatsApp / Contact Phone Number...">
             <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🖼️ Choose Member Photo from Device:</label>
-            <input type="file" id="teacherPhotoFile" accept="image/*" style="margin-bottom:10px;">
+            <input type="file" id="teacherPhotoFile" accept="image/*" style="margin-bottom:12px;">
             <button onclick="adminAddTeacher()" style="width:100%; background:#7e22ce;">➕ Add Member Securely</button>
             <div id="manageTeachersList" style="margin-top:16px;"></div>
           </div>
@@ -635,7 +612,41 @@
   </div>
 </div>
 
-<!-- EDIT FACULTY MODAL -->
+<!-- FACULTY DETAILS POP-UP MODAL (RESTRUCTURED SHOWCASE) -->
+<div id="facultyDetailModal" class="modal hidden">
+  <div class="modal-content" style="text-align:center; width:360px;">
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">👨‍🏫 Faculty & Member Profile</h3>
+    <img id="modalFacultyPhoto" src="" style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 12px auto; box-shadow:var(--neon-glow);">
+    <h2 id="modalFacultyName" style="margin:4px 0; font-size:18px; color:#fff; font-weight:800;"></h2>
+    <div style="background:rgba(0,0,0,0.35); padding:14px; border-radius:14px; text-align:left; margin-top:12px; font-size:12px; line-height:1.6; border:1px solid rgba(255,255,255,0.15);">
+      <p style="margin:4px 0;"><b>📍 Location:</b> <span id="modalFacultyLoc"></span></p>
+      <p style="margin:4px 0;"><b>📖 Subjects / Role:</b> <span id="modalFacultySub"></span></p>
+      <p style="margin:4px 0;"><b>📞 Contact:</b> <span id="modalFacultyContact"></span></p>
+      <div id="modalFacultyMapContainer" style="margin-top:10px;"></div>
+    </div>
+    <button onclick="document.getElementById('facultyDetailModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:16px;">Close Profile</button>
+  </div>
+</div>
+
+<!-- STUDENT DETAILS POP-UP MODAL -->
+<div id="studentDetailModal" class="modal hidden">
+  <div class="modal-content" style="text-align:center; width:350px;">
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📋 Student Full Details</h3>
+    <img id="modalStudentPhoto" src="" style="width:85px; height:85px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 12px auto; box-shadow:var(--neon-glow);">
+    <h2 id="modalStudentName" style="margin:4px 0; font-size:17px; color:#fff;"></h2>
+    <div style="background:rgba(0,0,0,0.3); padding:14px; border-radius:14px; text-align:left; margin-top:12px; font-size:12px; line-height:1.6;">
+      <p style="margin:4px 0;"><b>🏷️ Academy:</b> <span id="modalStudentAcademy">Abdul Bari Academy Puthupparmba</span></p>
+      <p style="margin:4px 0;"><b>📌 Reg No:</b> <span id="modalStudentRegNo"></span></p>
+      <p style="margin:4px 0;"><b>📁 Class Batch:</b> <span id="modalStudentClass"></span></p>
+      <p style="margin:4px 0;"><b>👨‍👧 Father's Name:</b> <span id="modalStudentFather"></span></p>
+      <p style="margin:4px 0;"><b>📞 WhatsApp:</b> <span id="modalStudentPhone"></span></p>
+      <p style="margin:4px 0;"><b>📊 Status:</b> <span id="modalStudentStatus" style="color:#10b981; font-weight:bold;"></span></p>
+    </div>
+    <button onclick="document.getElementById('studentDetailModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:16px;">Close</button>
+  </div>
+</div>
+
+<!-- OTHER MODALS -->
 <div id="editTeacherModal" class="modal hidden">
   <div class="modal-content">
     <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">✏️ Edit Faculty/Committee Member</h3>
@@ -650,7 +661,6 @@
   </div>
 </div>
 
-<!-- ADMIN-ONLY PHOTO UPLOAD MODAL (SAFETY FOR STUDENTS) -->
 <div id="publicAddPhotoModal" class="modal hidden">
   <div class="modal-content">
     <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📸 Admin Photo Update</h3>
@@ -663,7 +673,6 @@
   </div>
 </div>
 
-<!-- QUICK ADD STUDENT MODAL IN ACADEMICS -->
 <div id="quickAddStudentModal" class="modal hidden">
   <div class="modal-content">
     <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">➕ Add Student to Class</h3>
@@ -678,41 +687,6 @@
   </div>
 </div>
 
-<!-- STUDENT DETAILS POP-UP MODAL (RIGHT CLICK / HOLD) -->
-<div id="studentDetailModal" class="modal hidden">
-  <div class="modal-content" style="text-align:center; width:340px;">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📋 Student Full Details</h3>
-    <img id="modalStudentPhoto" src="" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 10px auto; box-shadow:var(--neon-glow);">
-    <h2 id="modalStudentName" style="margin:4px 0; font-size:16px; color:#fff;"></h2>
-    <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; text-align:left; margin-top:10px; font-size:12px; line-height:1.5;">
-      <p style="margin:4px 0;"><b>🏷️ Academy:</b> <span id="modalStudentAcademy">Abdul Bari Academy Puthupparmba</span></p>
-      <p style="margin:4px 0;"><b>📌 Reg No:</b> <span id="modalStudentRegNo"></span></p>
-      <p style="margin:4px 0;"><b>📁 Class Batch:</b> <span id="modalStudentClass"></span></p>
-      <p style="margin:4px 0;"><b>👨‍👧 Father's Name:</b> <span id="modalStudentFather"></span></p>
-      <p style="margin:4px 0;"><b>📞 WhatsApp:</b> <span id="modalStudentPhone"></span></p>
-      <p style="margin:4px 0;"><b>📊 Status:</b> <span id="modalStudentStatus" style="color:#10b981; font-weight:bold;"></span></p>
-    </div>
-    <button onclick="document.getElementById('studentDetailModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:14px;">Close</button>
-  </div>
-</div>
-
-<!-- FACULTY DETAILS POP-UP MODAL (EXPANDED ON CLICK) -->
-<div id="facultyDetailModal" class="modal hidden">
-  <div class="modal-content" style="text-align:center; width:340px;">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">👨‍🏫 Faculty & Member Full Profile</h3>
-    <img id="modalFacultyPhoto" src="" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 10px auto; box-shadow:var(--neon-glow);">
-    <h2 id="modalFacultyName" style="margin:4px 0; font-size:16px; color:#fff;"></h2>
-    <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; text-align:left; margin-top:10px; font-size:12px; line-height:1.5;">
-      <p style="margin:4px 0;"><b>📍 Location:</b> <span id="modalFacultyLoc"></span></p>
-      <p style="margin:4px 0;"><b>📖 Subjects / Role:</b> <span id="modalFacultySub"></span></p>
-      <p style="margin:4px 0;"><b>📞 Contact:</b> <span id="modalFacultyContact"></span></p>
-      <div id="modalFacultyMapContainer" style="margin-top:6px;"></div>
-    </div>
-    <button onclick="document.getElementById('facultyDetailModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:14px;">Close</button>
-  </div>
-</div>
-
-<!-- RESTORE BACKUP MODAL PROMPT -->
 <div id="restoreModal" class="modal hidden">
   <div class="modal-content" style="width:360px;">
     <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📤 Restore Database Backup</h3>
@@ -723,7 +697,6 @@
   </div>
 </div>
 
-<!-- LOGIN MODAL -->
 <div id="loginModal" class="modal hidden">
   <div class="modal-content" style="width:320px;">
     <h3 style="text-align:center; color:var(--accent-yellow); margin-top:0; font-size:16px;">🔑 Admin Login</h3>
@@ -804,6 +777,40 @@
     refreshUI();
   };
 
+  // SOUND EFFECTS AUDIO GENERATOR
+  function playClickSound() {
+    try {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.08);
+    } catch(e) {}
+  }
+
+  function playCelebrationSound() {
+    try {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.3);
+      gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.5);
+    } catch(e) {}
+  }
+
   function refreshUI() {
     updateDashboardStats(); 
     populateAdminDropdowns();
@@ -831,8 +838,8 @@
     }
   }
 
-  // Zoom In / Out Feature for Laptop and Desktop/Mobile Perfection
   window.zoomPortal = function(delta) {
+    playClickSound();
     currentZoomFactor = Math.min(1.4, Math.max(0.8, currentZoomFactor + delta));
     const mainCard = document.getElementById('portalMainCard');
     if(mainCard) {
@@ -843,12 +850,14 @@
   };
 
   window.changePortalTheme = function(themeName) {
+    playClickSound();
     document.body.className = themeName === 'default' ? '' : themeName;
     localStorage.setItem('ab_academy_theme', themeName);
     document.getElementById('settingsDropdown').classList.add('hidden');
   };
 
   window.toggleAppNotificationSetting = function() {
+    playClickSound();
     const notifToggle = document.getElementById('notificationToggleCheckbox');
     window.dbData.notificationEnabled = notifToggle.checked;
     window.saveData();
@@ -856,10 +865,16 @@
 
   function setupClick(id, fn) {
     const el = document.getElementById(id);
-    if(el) { el.addEventListener('click', (e) => fn(e)); }
+    if(el) { 
+      el.addEventListener('click', (e) => {
+        playClickSound();
+        fn(e);
+      }); 
+    }
   }
 
   window.showAdminSubSection = function(secId, btnEl) {
+    playClickSound();
     document.querySelectorAll('.admin-sub-sec').forEach(s => s.classList.add('hidden'));
     document.querySelectorAll('.admin-sidebar-btn').forEach(b => b.classList.remove('active'));
     document.getElementById(secId).classList.remove('hidden');
@@ -872,7 +887,10 @@
     if(savedTheme && savedTheme !== 'default') document.body.className = savedTheme;
 
     document.querySelectorAll('.tab-btn').forEach(btn => {
-      btn.addEventListener('click', () => switchTab(btn.dataset.tab, btn));
+      btn.addEventListener('click', () => {
+        playClickSound();
+        switchTab(btn.dataset.tab, btn);
+      });
     });
 
     setupClick('btnSettingsMenu', () => document.getElementById('settingsDropdown').classList.toggle('hidden'));
@@ -884,6 +902,7 @@
   });
 
   window.doAdminLogin = function() {
+    playClickSound();
     const u = document.getElementById('adminUser').value;
     const p = document.getElementById('adminPass').value;
     if(u === window.dbData.adminCreds.user && p === window.dbData.adminCreds.pass) {
@@ -942,8 +961,8 @@
     }
   };
 
-  // Automated Notification Dispatcher Button Action
   window.sendAutomaticBroadcastNotification = function() {
+    playCelebrationSound();
     alert("🚀 Automated Notifications & WhatsApp alerts successfully dispatched to all registered students and parents!");
   };
 
@@ -1024,10 +1043,10 @@
     }
     committeeMembers.forEach(m => {
       grid.innerHTML += `
-        <div class="folder-card" style="background:linear-gradient(135deg, #0284c7, #0369a1); padding:14px; text-align:center;" onclick="showFacultyDetailsModal(${m.id})">
-          <img src="${m.photo || 'https://via.placeholder.com/50'}" style="width:45px; height:45px; border-radius:50%; object-fit:cover; border:2px solid #ffd000; margin:0 auto 6px auto;">
-          <h4 style="margin:0; font-size:13px; color:#fff;">${m.name}</h4>
-          <p style="margin:2px 0 0 0; font-size:11px; color:#ffd000; font-weight:700;">${m.sub || 'Office Bearer'}</p>
+        <div class="folder-card" style="background:linear-gradient(135deg, #0284c7, #0369a1); padding:16px; text-align:center;" onclick="showFacultyDetailsModal(${m.id})">
+          <img src="${m.photo || 'https://via.placeholder.com/50'}" style="width:50px; height:50px; border-radius:50%; object-fit:cover; border:2px solid #ffd000; margin:0 auto 8px auto; box-shadow:var(--neon-glow);">
+          <h4 style="margin:0; font-size:14px; color:#fff; font-weight:800;">${m.name}</h4>
+          <p style="margin:3px 0 0 0; font-size:11px; color:#ffd000; font-weight:700;">${m.sub || 'Office Bearer'}</p>
         </div>
       `;
     });
@@ -1045,7 +1064,6 @@
       window.dbData.students[cls].forEach(s => {
         if(!q || s.name.toLowerCase().includes(q)) {
           found = true;
-          // SAFE PHOTO BUTTON RESTRICTED FOR ADMIN OR GIVEN VIA ADMIN PANEL TO PREVENT USERS MODIFYING OTHERS PHOTOS
           let photoBtn = window.isAdmin ? `<button style="background:#0284c7; color:#fff; padding:4px 8px; font-size:10px; font-weight:bold;" onclick="openPublicPhotoUploadModal(${s.id}, '${cls}', '${s.name}')">📷 Edit Photo</button>` : '';
           let adminBtns = window.isAdmin ? `<button class="btn-delete" onclick="deleteStudent(${s.id}, '${cls}')" style="margin-left:4px;">🗑️</button>` : '';
           let phoneClean = (s.phone || '').replace(/\D/g, '');
@@ -1055,7 +1073,7 @@
           tr.style.cursor = "pointer";
           tr.title = "Right-click or Long-press to view full details";
           tr.innerHTML = `
-            <td><img src="${s.photo || 'https://via.placeholder.com/45'}" style="width:34px; height:34px; border-radius:50%; object-fit:cover;"></td>
+            <td><img src="${s.photo || 'https://via.placeholder.com/45'}" style="width:36px; height:36px; border-radius:50%; object-fit:cover;"></td>
             <td>${c++}</td>
             <td><b>${s.name}</b></td>
             <td>${cls}</td>
@@ -1084,6 +1102,7 @@
   };
 
   function showStudentDetailsModal(student, clsName) {
+    playClickSound();
     document.getElementById('modalStudentPhoto').src = student.photo || 'https://via.placeholder.com/100';
     document.getElementById('modalStudentName').innerText = student.name;
     document.getElementById('modalStudentRegNo').innerText = student.regNo || 'ABA-' + student.id;
@@ -1095,6 +1114,7 @@
   }
 
   window.openPublicPhotoUploadModal = function(studentId, cls, studentName) {
+    playClickSound();
     document.getElementById('publicPhotoStudentId').value = studentId;
     document.getElementById('publicPhotoClass').value = cls;
     document.getElementById('publicPhotoStudentName').innerText = `Student: ${studentName} (${cls})`;
@@ -1127,8 +1147,8 @@
     }
   };
 
-  // Parent Student Portal Access with Error Notice & Directory Suggestion
   window.verifyParentStudentAccess = function() {
+    playClickSound();
     const nameQuery = document.getElementById('parentStudentName').value.trim().toLowerCase();
     const phoneQuery = document.getElementById('parentStudentPhone').value.trim();
     const errorNotice = document.getElementById('parentSearchErrorNotice');
@@ -1158,23 +1178,24 @@
       document.getElementById('parentStudentClassInfo').innerText = `Class: ${matchedClass} | Reg No: ${matchedStudent.regNo || 'ABA-' + matchedStudent.id}`;
       
       let content = `
-        <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:10px; margin-top:10px;">
-          <p style="margin:0; font-size:12px; color:#fff;"><b>Attendance Status:</b> <span style="color:#10b981;">${matchedStudent.status || 'Present'}</span></p>
-          <p style="margin:4px 0 0 0; font-size:11px; color:#cbd5e1;"><b>Father Name:</b> ${matchedStudent.father || '-'}</p>
+        <div style="background:rgba(0,0,0,0.3); padding:14px; border-radius:12px; margin-top:12px;">
+          <p style="margin:0; font-size:13px; color:#fff;"><b>Attendance Status:</b> <span style="color:#10b981;">${matchedStudent.status || 'Present'}</span></p>
+          <p style="margin:4px 0 0 0; font-size:12px; color:#cbd5e1;"><b>Father Name:</b> ${matchedStudent.father || '-'}</p>
         </div>
       `;
       document.getElementById('parentStudentDetailsContent').innerHTML = content;
     } else {
       dashboardDiv.classList.add('hidden');
-      errorNotice.classList.remove('hidden'); // Show notice directing to Student Directory for spelling/number check
+      errorNotice.classList.remove('hidden');
     }
   };
 
   window.triggerParentAutoNotification = function() {
+    playCelebrationSound();
     alert("✅ Notifications and WhatsApp updates successfully configured for your student!");
   };
 
-  // Faculty Folder: Show Name and Photo First; Click to Reveal Details
+  // FACULTY & TEACHERS RESTRUCTURED SHOWCASE
   function renderUsthads() {
     const usthadGrid = document.getElementById('usthadsGrid');
     const committeeGrid = document.getElementById('committeeGrid');
@@ -1188,11 +1209,10 @@
       let adminBtns = window.isAdmin ? `<div style="margin-top:10px;"><button class="btn-edit" onclick="openEditTeacherModal(${u.id})">✏️ Edit</button><button class="btn-delete" onclick="deleteTeacher(${u.id})">🗑️ Delete</button></div>` : '';
 
       if(!q || u.name.toLowerCase().includes(q) || teacherLocStr.toLowerCase().includes(q) || (u.sub || '').toLowerCase().includes(q)) {
-        // Show PHOTO and NAME first as requested. Clicking opens full details popup modal.
-        const cardHtml = `<div class="person-card" onclick="showFacultyDetailsModal(${u.id})">
-          <img src="${u.photo || 'https://via.placeholder.com/80'}">
-          <h3 style="margin:6px 0 2px 0; font-size:15px; color:#ffd000;">${u.name}</h3>
-          <p style="margin:0; font-size:10px; color:#c084fc;">(Click to view full details)</p>
+        const cardHtml = `<div class="faculty-card-modern" onclick="showFacultyDetailsModal(${u.id})">
+          <img src="${u.photo || 'https://via.placeholder.com/80'}" class="faculty-avatar">
+          <h3 style="margin:6px 0 2px 0; font-size:16px; color:#ffd000; font-weight:800;">${u.name}</h3>
+          <p style="margin:0; font-size:11px; color:#c084fc; font-weight:600;">(Tap to view details & map)</p>
           <div onclick="event.stopPropagation()">${adminBtns}</div>
         </div>`;
 
@@ -1203,6 +1223,7 @@
   }
 
   window.showFacultyDetailsModal = function(id) {
+    playClickSound();
     let u = (window.dbData.usthads || []).find(item => item.id === id);
     if(!u) return;
     document.getElementById('modalFacultyPhoto').src = u.photo || 'https://via.placeholder.com/100';
@@ -1213,7 +1234,7 @@
     
     let mapDiv = document.getElementById('modalFacultyMapContainer');
     if(u.mapLink) {
-      mapDiv.innerHTML = `<a href="${u.mapLink}" target="_blank" style="color:#38bdf8; font-size:11px; font-weight:bold;">📍 View Google Map Location</a>`;
+      mapDiv.innerHTML = `<a href="${u.mapLink}" target="_blank" style="color:#38bdf8; font-size:12px; font-weight:bold;">📍 View Google Map Location</a>`;
     } else {
       mapDiv.innerHTML = '';
     }
@@ -1224,7 +1245,7 @@
     const container = document.getElementById('manageTeachersList');
     if(!container) return; container.innerHTML = "";
     (window.dbData.usthads || []).forEach(u => {
-      container.innerHTML += `<div style="background:rgba(0,0,0,0.3); padding:8px; border-radius:8px; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center;">
+      container.innerHTML += `<div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
         <span><b>${u.name}</b> (${u.loc || 'Campus'})</span>
         <div><button class="btn-edit" onclick="openEditTeacherModal(${u.id})">Edit</button><button class="btn-delete" onclick="deleteTeacher(${u.id})">Delete</button></div>
       </div>`;
@@ -1232,6 +1253,7 @@
   }
 
   window.openEditTeacherModal = function(id) {
+    playClickSound();
     let teacher = window.dbData.usthads.find(u => u.id === id);
     if(!teacher) return;
     document.getElementById('editTeacherId').value = id;
@@ -1376,6 +1398,7 @@
   };
 
   function backToMainCategory() {
+    playClickSound();
     document.getElementById('mainCategoryLevel').classList.remove('hidden');
     document.getElementById('classFolderLevel').classList.add('hidden');
     document.getElementById('subjectFolderLevel').classList.add('hidden');
@@ -1383,6 +1406,7 @@
   }
 
   function openSectionFolders(sec) {
+    playClickSound();
     document.getElementById('mainCategoryLevel').classList.add('hidden');
     document.getElementById('classFolderLevel').classList.remove('hidden');
     const grid = document.getElementById('classFoldersGrid'); grid.innerHTML = "";
@@ -1396,6 +1420,7 @@
   }
 
   function openSubjectFoldersForClass(clsName) {
+    playClickSound();
     currentActiveClassName = clsName;
     document.getElementById('classFolderLevel').classList.add('hidden');
     document.getElementById('subjectFolderLevel').classList.remove('hidden');
@@ -1411,6 +1436,7 @@
   }
 
   function openSubjectStudentList(clsName, subName) {
+    playClickSound();
     currentActiveClassName = clsName; currentActiveSubjectName = subName;
     document.getElementById('subjectFolderLevel').classList.add('hidden');
     document.getElementById('subjectDetailLevel').classList.remove('hidden');
@@ -1425,6 +1451,7 @@
   }
 
   window.openAddStudentModalForClass = function() {
+    playClickSound();
     document.getElementById('quickAddStudentClass').value = currentActiveClassName;
     document.getElementById('quickAddStudentModal').classList.remove('hidden');
   };
@@ -1497,7 +1524,7 @@
         : `<span style="color:${stColor}; font-weight:bold; font-size:11px;">${currentStatus}</span>`;
 
       tbody.innerHTML += `<tr>
-        <td><img src="${s.photo || 'https://via.placeholder.com/40'}" style="width:34px; height:34px; border-radius:50%; object-fit:cover;"></td>
+        <td><img src="${s.photo || 'https://via.placeholder.com/40'}" style="width:36px; height:36px; border-radius:50%; object-fit:cover;"></td>
         <td>${idx+1}</td>
         <td><b>${s.name}</b></td>
         <td>${statusBtn}</td>
@@ -1506,6 +1533,7 @@
   }
 
   window.toggleStudentStatus = function(clsName, studentId) {
+    playClickSound();
     const attKey = `${clsName}_${currentActiveSubjectName}_${selectedAttendanceDate}`;
     if(!window.dbData.attendanceRecords) window.dbData.attendanceRecords = {};
     if(!window.dbData.attendanceRecords[attKey]) window.dbData.attendanceRecords[attKey] = {};
@@ -1522,6 +1550,7 @@
   };
 
   window.bulkMarkAttendance = function(statusVal) {
+    playClickSound();
     let students = window.dbData.students[currentActiveClassName] || [];
     const attKey = `${currentActiveClassName}_${currentActiveSubjectName}_${selectedAttendanceDate}`;
     if(!window.dbData.attendanceRecords) window.dbData.attendanceRecords = {};
@@ -1840,23 +1869,6 @@
       renderChallengeLeaderboard();
     } else alert("Fill all fields!");
   };
-
-  function playCelebrationSound() {
-    try {
-      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.3);
-      gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-      osc.start();
-      osc.stop(audioCtx.currentTime + 0.5);
-    } catch(e) {}
-  }
 
   window.exportAttendanceToExcel = function() {
     let students = window.dbData.students[currentActiveClassName] || [];
