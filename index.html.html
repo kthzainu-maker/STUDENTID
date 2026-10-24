@@ -89,8 +89,7 @@
       box-shadow: var(--card-glow);
       position: relative; z-index: 1000;
       animation: fadeInDown 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-      flex-wrap: wrap;
-      gap: 10px;
+      flex-wrap: wrap; gap: 10px;
     }
 
     .header-title-box h1 { margin: 0; font-size: 20px; font-weight: 900; color: #fff !important; }
@@ -126,8 +125,7 @@
     .tab-btn {
       background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.05); padding: 10px 14px;
       border-radius: 14px 14px 0 0; cursor: pointer; font-weight: 800; color: #e9d5ff; font-size: 12px;
-      transition: all 0.3s ease; backdrop-filter: blur(5px);
-      flex: 1; text-align: center; min-width: 100px;
+      transition: all 0.3s ease; backdrop-filter: blur(5px); flex: 1; text-align: center; min-width: 90px;
     }
     .tab-btn:hover { background: rgba(255,255,255,0.2); transform: translateY(-4px); color: var(--accent-yellow); }
     .tab-btn.active { background: var(--card-bg); color: var(--accent-yellow); border-color: var(--glass-border); border-bottom: none; transform: translateY(-2px); box-shadow: var(--neon-glow); }
@@ -169,7 +167,6 @@
     .folder-card { background: linear-gradient(135deg, #7e22ce, #4c1d95); color: white; border-radius: 16px; padding: 18px; text-align: center; cursor: pointer; font-weight: 800; box-shadow: 0 8px 25px rgba(126, 34, 206, 0.4); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s ease; word-break: break-word; }
     .folder-card:hover { transform: translateY(-6px) scale(1.03); border-color: var(--accent-yellow); box-shadow: 0 12px 30px rgba(255, 208, 0, 0.4); }
 
-    /* Responsive Font & Headline Classes */
     .rich-gradient-headline-blue {
       background: linear-gradient(135deg, #38bdf8 0%, #1d4ed8 100%);
       padding: 12px 16px; border-radius: 14px; color: #fff; font-weight: 900; font-size: 16px;
@@ -199,7 +196,7 @@
     .person-card {
       background: linear-gradient(145deg, #2d0b52, #150529); color: white; border-radius: 20px; padding: 18px; text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 1px solid var(--glass-border); display: flex; flex-direction: column; justify-content: space-between;
-      transition: all 0.3s ease; word-break: break-word;
+      transition: all 0.3s ease; word-break: break-word; cursor: pointer;
     }
     .person-card:hover { transform: translateY(-6px); border-color: var(--accent-yellow); box-shadow: 0 12px 30px rgba(255,208,0,0.4); }
     .person-card img { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-yellow); margin: 0 auto 10px auto; box-shadow: var(--neon-glow); }
@@ -226,7 +223,6 @@
     .btn-whatsapp { background: #25D366; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: bold; text-decoration: none; display: inline-block; }
     .btn-call { background: #3b82f6; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; font-weight: bold; text-decoration: none; display: inline-block; margin-left: 4px; }
 
-    /* Mobile Responsive Media Queries */
     @media (max-width: 768px) {
       body { padding: 6px; }
       header { padding: 12px 14px; }
@@ -263,6 +259,12 @@
 
       <!-- SETTINGS DROPDOWN MENU -->
       <div id="settingsDropdown" class="hidden">
+        <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🔔 App Notifications</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 8px; background:rgba(0,0,0,0.3); border-radius:8px; margin-bottom:8px;">
+          <span style="font-size:12px; font-weight:700;">Enable Notifications</span>
+          <input type="checkbox" id="notificationToggleCheckbox" checked onchange="toggleAppNotificationSetting()" style="width:auto; margin-bottom:0; cursor:pointer;">
+        </div>
+
         <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🎨 Select Portal Theme</div>
         <div onclick="changePortalTheme('default')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700;">🌙 Dark Violet (Default)</div>
         <div onclick="changePortalTheme('theme-light-rose')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#be123c;">🌸 Light Rose Theme</div>
@@ -325,10 +327,17 @@
         <div class="pub-stat-card"><p>FACULTY & COMMITTEE</p><h2 id="pubStatUsthads">0</h2></div>
       </div>
 
-      <!-- DASHBOARD STUDENT DIRECTORY -->
+      <!-- COMMITTEE & SECRETARIAT SECTION ON DASHBOARD -->
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 16px; border-radius: 18px; margin-bottom:20px;">
+        <h3 style="color:var(--accent-yellow); margin-top:0; font-size:15px;">🏛️ COLLEGE COMMITTEE & SECRETARIAT</h3>
+        <p style="font-size:11px; color:#c084fc; margin-top:-4px;">Key administrative office bearers of Abdul Bari Academy:</p>
+        <div class="folder-grid" id="dashCommitteeGrid" style="margin-top:10px;"></div>
+      </div>
+
+      <!-- DASHBOARD STUDENT DIRECTORY WITH DIRECT ACTIONS -->
       <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 16px; border-radius: 18px;">
         <h3 style="color:var(--accent-yellow); margin-top:0; font-size:15px;">🔍 STUDENT DIRECTORY & DIRECT WHATSAPP</h3>
-        <p style="font-size:11px; color:#c084fc; margin-top:-4px;">💡 Tip: Right-click on PC or Long-press on mobile on any student row to view full details!</p>
+        <p style="font-size:11px; color:#c084fc; margin-top:-4px;">💡 Tip: Click 'Chat WA' or right-click/long-press student row for full profile popup!</p>
         
         <div style="display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
           <input type="text" id="dashStudentSearchInput" placeholder="🔍 Search student name..." oninput="renderDashStudentsTable()" style="flex:2; min-width:180px; margin-bottom:0;">
@@ -340,7 +349,7 @@
         <div style="overflow-x:auto;">
           <table>
             <thead>
-              <tr><th>Photo</th><th>No.</th><th>Student Name</th><th>Class</th><th>WhatsApp & Actions</th></tr>
+              <tr><th>Photo</th><th>No.</th><th>Student Name</th><th>Class</th><th>Quick Actions</th></tr>
             </thead>
             <tbody id="dashStudentsTableBody"></tbody>
           </table>
@@ -378,10 +387,15 @@
         <div class="folder-grid" id="subjectFoldersGrid"></div>
       </div>
 
-      <!-- SUBJECT DETAIL LEVEL -->
+      <!-- SUBJECT DETAIL LEVEL WITH QUICK ADD STUDENT -->
       <div id="subjectDetailLevel" class="hidden">
         <button class="btn-back" id="btnBackToSubjects">← Back to Subjects</button>
-        <h2 id="topicTitle" style="color:var(--accent-yellow); margin-bottom:14px; font-size:16px;"></h2>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <h2 id="topicTitle" style="color:var(--accent-yellow); margin-bottom:10px; font-size:16px;"></h2>
+          <div class="admin-only hidden">
+            <button onclick="openAddStudentModalForClass()" style="background:#10b981; font-size:11px; padding:6px 12px; margin-bottom:10px;">➕ Add Student to Class</button>
+          </div>
+        </div>
         
         <!-- Live Calendar Header with Date & Day Name -->
         <div style="background: linear-gradient(135deg, rgba(147,51,234,0.3), rgba(59,130,246,0.3)); border:1px solid var(--glass-border); padding:10px 14px; border-radius:12px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
@@ -427,16 +441,16 @@
       </div>
     </div>
 
-    <!-- MY STUDENT PORTAL FOR PARENTS -->
+    <!-- MY STUDENT PORTAL FOR PARENTS (CLEAN WITHOUT STICKER EMOJIS) -->
     <div id="myStudentTab" class="tab-content hidden">
       <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 18px; border-radius: 18px; max-width:600px; margin:0 auto;">
-        <h3 style="color:var(--accent-yellow); text-align:center; margin-top:0; font-size:16px;">👨‍👩‍👧 PARENT & MY STUDENT PORTAL</h3>
+        <h3 style="color:var(--accent-yellow); text-align:center; margin-top:0; font-size:16px;">PARENT & STUDENT PORTAL</h3>
         <p style="text-align:center; font-size:11px; color:#c084fc;">Register and check your student's live marks, leave details, and performance updates!</p>
 
         <div id="parentLoginBox">
           <input type="text" id="parentStudentName" placeholder="Enter Student Name (or Initial)...">
           <input type="text" id="parentStudentPhone" placeholder="Enter Parent WhatsApp Number...">
-          <button onclick="verifyParentStudentAccess()" style="width:100%; background:#10b981;">🔍 View My Student Updates</button>
+          <button onclick="verifyParentStudentAccess()" style="width:100%; background:#10b981;">🔍 View Student Updates</button>
         </div>
 
         <div id="parentStudentDashboard" class="hidden" style="margin-top:20px; border-top:1px dashed var(--glass-border); padding-top:16px;">
@@ -447,7 +461,7 @@
       </div>
     </div>
 
-    <!-- SUBJECT CHALLENGE TEAMS WITH RICH MYSTERY GIFT BOX -->
+    <!-- SUBJECT CHALLENGE TEAMS WITH MYSTERY GIFT BOX -->
     <div id="pointsTab" class="tab-content hidden">
       <div style="text-align:center; background:linear-gradient(135deg, rgba(236,72,153,0.3), rgba(190,24,93,0.3)); padding:18px; border-radius:18px; border:2px dashed #ec4899; margin-bottom:20px;">
         <h2 style="color:#ffd000; margin:0; font-size:18px;">🏆 SUBJECT-WISE CHALLENGE TEAMS & GIFT BOX 🎁</h2>
@@ -466,7 +480,7 @@
       <div id="classWiseChallengeContainer"></div>
     </div>
 
-    <!-- FACULTY & STAFF TAB -->
+    <!-- FACULTY & STAFF TAB WITH FOLDERS/BOXES -->
     <div id="usthadTab" class="tab-content hidden">
       <div class="rich-gradient-headline-blue">👨‍🏫 Academic Faculty & Teachers Details</div>
       <input type="text" id="teacherSearchInput" placeholder="🔍 Search Faculty Name / Subject / Location..." oninput="renderUsthads()">
@@ -476,12 +490,17 @@
       <div class="folder-grid" id="committeeGrid" style="margin-top:14px;"></div>
     </div>
 
-    <!-- EXAM RESULTS TAB -->
+    <!-- EXAM RESULTS TAB WITH INLINE TABLE EDITING -->
     <div id="examTab" class="tab-content hidden">
       <h3 style="color:var(--accent-yellow); font-size:16px;">📝 Exam Marks & Progress Cards</h3>
-      <select id="examClassSelect" onchange="renderExamMarksTable()">
-        <option value="">-- Select Batch / Class --</option>
-      </select>
+      <div style="display:flex; gap:10px; margin-bottom:14px; flex-wrap:wrap;">
+        <select id="examClassSelect" onchange="onExamClassChanged()" style="flex:1; margin-bottom:0;">
+          <option value="">-- Select Batch / Class --</option>
+        </select>
+        <select id="examSubjectSelect" onchange="renderExamMarksTable()" style="flex:1; margin-bottom:0;">
+          <option value="">-- Select Subject --</option>
+        </select>
+      </div>
       <div id="examMarksContainer" style="overflow-x:auto;"></div>
     </div>
 
@@ -518,27 +537,34 @@
             <button onclick="saveLiveAnnouncement()" style="width:100%; background:#ec4899; color:#fff;">📢 Broadcast Notification</button>
           </div>
 
+          <!-- STUDENT REGISTRATION WITH ID CARD / ACADEMY PREFIX -->
           <div id="adminSub1" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🎓 Register New Student</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🎓 Register New Student & ID Card Info</h4>
             <select id="regStudentClassSelect"></select>
             <input type="text" id="regStudentName" placeholder="Student Name with Initial...">
             <input type="text" id="regFatherName" placeholder="Father Name...">
             <input type="text" id="regPhoneNum" placeholder="WhatsApp Phone Number...">
+            <div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:8px; margin-bottom:10px; border:1px solid var(--glass-border);">
+              <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🆔 ID Card Details (Abdul Bari Academy)</label>
+              <input type="text" id="regStudentAcademyId" value="Abdul Bari Academy Puthupparmba" readonly style="margin-bottom:6px; font-size:11px; color:#a7f3d0;">
+              <input type="text" id="regStudentRegisterNo" placeholder="Student Register No / ID Number..." style="margin-bottom:6px;">
+              <input type="text" id="regStudentIdLocation" placeholder="Student Native Location / Address..." style="margin-bottom:0;">
+            </div>
             <input type="file" id="regStudentPhotoFile" accept="image/*" style="margin-bottom:10px;">
-            <button onclick="adminRegisterStudent()" style="width:100%; background:#10b981;">➕ Register Student</button>
+            <button onclick="adminRegisterStudent()" style="width:100%; background:#10b981;">➕ Register Student & Generate ID</button>
           </div>
 
           <div id="adminSub2" class="admin-sub-sec hidden">
             <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">📝 Subject-Wise Exam Mark Entry</h4>
+            <p style="font-size:11px; color:#c084fc;">Use the Exam & Results tab for quick inline table mark entry!</p>
             <select id="examTargetClassSelect" onchange="onAdminClassSelectForExam()"></select>
             <select id="examTargetSubjectSelect"></select>
             <select id="examTargetStudentSelect"></select>
             <input type="number" id="currentExamMarkInput" placeholder="Current Mark...">
             <input type="number" id="previousExamMarkInput" placeholder="Previous Mark...">
-            <button onclick="saveAdvancedSubjectMark()" style="width:100%; background:#10b981;">💾 Save Mark Entry & Notify Parent</button>
+            <button onclick="saveAdvancedSubjectMark()" style="width:100%; background:#10b981;">💾 Save Mark Entry</button>
           </div>
 
-          <!-- NEW: MANAGE SUBJECTS SECTION -->
           <div id="adminSub3" class="admin-sub-sec hidden">
             <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">📖 Add / Remove Subjects for Classes</h4>
             <select id="subjectManageClassSelect" onchange="renderAdminSubjectsList()" style="margin-bottom:10px;"></select>
@@ -579,15 +605,15 @@
             <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">👨‍🏫 Manage Faculty Members</h4>
             <select id="teacherCategorySelect">
               <option value="usthad">Academic Faculty & Teachers</option>
-              <option value="committee">Committee & Management Staff</option>
+              <option value="committee">Committee Office Bearers (Secretariat)</option>
             </select>
             <input type="text" id="teacherNameInput" placeholder="Full Name (e.g. Prof. Abdul Bari)...">
             <input type="text" id="teacherLocInput" placeholder="Detailed Address & Location...">
             <input type="text" id="teacherMapInput" placeholder="Google Map Link (Optional)...">
-            <input type="text" id="teacherSubInput" placeholder="Subjects Handled (Comma separated)...">
+            <input type="text" id="teacherSubInput" placeholder="Subjects Handled / Designation (e.g. Secretary)...">
             <input type="text" id="teacherContactInput" placeholder="WhatsApp / Contact Phone Number...">
             <input type="file" id="teacherPhotoFile" accept="image/*" style="margin-bottom:10px;">
-            <button onclick="adminAddTeacher()" style="width:100%; background:#7e22ce;">➕ Add Faculty Member</button>
+            <button onclick="adminAddTeacher()" style="width:100%; background:#7e22ce;">➕ Add Member</button>
             <div id="manageTeachersList" style="margin-top:16px;"></div>
           </div>
         </div>
@@ -599,12 +625,12 @@
 <!-- EDIT FACULTY MODAL -->
 <div id="editTeacherModal" class="modal hidden">
   <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">✏️ Edit Faculty Member</h3>
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">✏️ Edit Faculty/Committee Member</h3>
     <input type="hidden" id="editTeacherId">
     <input type="text" id="editTeacherName" placeholder="Full Name">
     <input type="text" id="editTeacherLoc" placeholder="Address & Location">
     <input type="text" id="editTeacherMap" placeholder="Google Map Link">
-    <input type="text" id="editTeacherSub" placeholder="Subjects">
+    <input type="text" id="editTeacherSub" placeholder="Subjects / Designation">
     <input type="text" id="editTeacherContact" placeholder="Contact Phone Number">
     <button onclick="saveTeacherEdit()" style="width:100%; background:#10b981; margin-top:10px;">💾 Save Details</button>
     <button onclick="document.getElementById('editTeacherModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
@@ -624,6 +650,21 @@
   </div>
 </div>
 
+<!-- QUICK ADD STUDENT MODAL IN ACADEMICS -->
+<div id="quickAddStudentModal" class="modal hidden">
+  <div class="modal-content">
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">➕ Add Student to Class</h3>
+    <input type="hidden" id="quickAddStudentClass">
+    <input type="text" id="quickStudentName" placeholder="Student Name with Initial...">
+    <input type="text" id="quickStudentFather" placeholder="Father Name...">
+    <input type="text" id="quickStudentPhone" placeholder="WhatsApp Phone Number...">
+    <input type="text" id="quickStudentRegisterNo" placeholder="Register No / ID Number...">
+    <input type="file" id="quickStudentPhoto" accept="image/*" style="margin-bottom:10px;">
+    <button onclick="saveQuickStudentForClass()" style="width:100%; background:#10b981;">Register Student</button>
+    <button onclick="document.getElementById('quickAddStudentModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
+  </div>
+</div>
+
 <!-- STUDENT DETAILS POP-UP MODAL (RIGHT CLICK / HOLD) -->
 <div id="studentDetailModal" class="modal hidden">
   <div class="modal-content" style="text-align:center; width:340px;">
@@ -631,13 +672,30 @@
     <img id="modalStudentPhoto" src="" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 10px auto; box-shadow:var(--neon-glow);">
     <h2 id="modalStudentName" style="margin:4px 0; font-size:16px; color:#fff;"></h2>
     <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; text-align:left; margin-top:10px; font-size:12px; line-height:1.5;">
-      <p style="margin:4px 0;"><b>🏷️ Roll / ID:</b> <span id="modalStudentRoll"></span></p>
+      <p style="margin:4px 0;"><b>🏷️ Academy:</b> <span id="modalStudentAcademy">Abdul Bari Academy Puthupparmba</span></p>
+      <p style="margin:4px 0;"><b>📌 Reg No:</b> <span id="modalStudentRegNo"></span></p>
       <p style="margin:4px 0;"><b>📁 Class Batch:</b> <span id="modalStudentClass"></span></p>
       <p style="margin:4px 0;"><b>👨‍👧 Father's Name:</b> <span id="modalStudentFather"></span></p>
       <p style="margin:4px 0;"><b>📞 WhatsApp:</b> <span id="modalStudentPhone"></span></p>
       <p style="margin:4px 0;"><b>📊 Status:</b> <span id="modalStudentStatus" style="color:#10b981; font-weight:bold;"></span></p>
     </div>
     <button onclick="document.getElementById('studentDetailModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:14px;">Close</button>
+  </div>
+</div>
+
+<!-- FACULTY DETAILS POP-UP MODAL -->
+<div id="facultyDetailModal" class="modal hidden">
+  <div class="modal-content" style="text-align:center; width:340px;">
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">👨‍🏫 Faculty & Member Profile</h3>
+    <img id="modalFacultyPhoto" src="" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 10px auto; box-shadow:var(--neon-glow);">
+    <h2 id="modalFacultyName" style="margin:4px 0; font-size:16px; color:#fff;"></h2>
+    <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; text-align:left; margin-top:10px; font-size:12px; line-height:1.5;">
+      <p style="margin:4px 0;"><b>📍 Location:</b> <span id="modalFacultyLoc"></span></p>
+      <p style="margin:4px 0;"><b>📖 Subjects / Role:</b> <span id="modalFacultySub"></span></p>
+      <p style="margin:4px 0;"><b>📞 Contact:</b> <span id="modalFacultyContact"></span></p>
+      <div id="modalFacultyMapContainer" style="margin-top:6px;"></div>
+    </div>
+    <button onclick="document.getElementById('facultyDetailModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:14px;">Close</button>
   </div>
 </div>
 
@@ -693,12 +751,14 @@
     marqueeText: "📢 Welcome to Abdul Bari Academy Student Information Portal!",
     liveAnnouncement: "Welcome to the official digital portal. Check out overall class statistics and subject details below!",
     msgTimestamp: "Today",
+    notificationEnabled: true,
     classes: { 'College Studies': ['BA Degree'], 'School Studies': ['Plus One', 'Plus Two'] },
     classTeachers: { 'Plus One': 'Prof. Abdul Bari' },
     subjects: { 'BA Degree': ['Fiqh', 'Aqeedah'], 'Plus One': ['English', 'Arabic', 'Fiqh'] },
-    students: { 'Plus One': [{ id: 101, name: 'Ali Hassan K', father: 'Hassan', phone: '9847000000', photo: 'https://via.placeholder.com/100', status: 'Present' }] },
+    students: { 'Plus One': [{ id: 101, name: 'Ali Hassan K', father: 'Hassan', phone: '9847000000', regNo: 'ABA-101', photo: 'https://via.placeholder.com/100', status: 'Present' }] },
     usthads: [
-      { id: 1, type: 'usthad', name: 'Prof. Abdul Bari', loc: 'Puthupparmba Main Road', mapLink: 'https://maps.google.com', sub: 'Fiqh, Arabic, Islamic Studies', contact: '9847000000', photo: 'https://via.placeholder.com/100' }
+      { id: 1, type: 'usthad', name: 'Prof. Abdul Bari', loc: 'Puthupparmba Main Road', mapLink: 'https://maps.google.com', sub: 'Fiqh, Arabic, Islamic Studies', contact: '9847000000', photo: 'https://via.placeholder.com/100' },
+      { id: 2, type: 'committee', name: 'Sayyid Ali Hakim', loc: 'Puthupparmba', mapLink: 'https://maps.google.com', sub: 'General Secretary', contact: '9847111111', photo: 'https://via.placeholder.com/100' }
     ],
     subjectChallengeTeams: {
       'Plus One_Fiqh': [
@@ -738,6 +798,18 @@
     renderLiveAnnouncements();
     renderDashStudentsTable();
     renderUsthads();
+    renderDashCommitteeGrid();
+    
+    // Notification Toggle State Sync
+    const notifToggle = document.getElementById('notificationToggleCheckbox');
+    if(notifToggle) {
+      notifToggle.checked = window.dbData.notificationEnabled !== false;
+    }
+    const notifBox = document.getElementById('msgNotificationBox');
+    if(notifBox) {
+      notifBox.style.display = (window.dbData.notificationEnabled === false) ? 'none' : 'block';
+    }
+
     if(document.getElementById('pointsTab') && !document.getElementById('pointsTab').classList.contains('hidden')) {
       populateChallengeFilters();
     }
@@ -750,6 +822,12 @@
     document.body.className = themeName === 'default' ? '' : themeName;
     localStorage.setItem('ab_academy_theme', themeName);
     document.getElementById('settingsDropdown').classList.add('hidden');
+  };
+
+  window.toggleAppNotificationSetting = function() {
+    const notifToggle = document.getElementById('notificationToggleCheckbox');
+    window.dbData.notificationEnabled = notifToggle.checked;
+    window.saveData();
   };
 
   function setupClick(id, fn) {
@@ -840,7 +918,6 @@
     }
   };
 
-  // Secure Password Update with Current Password Verification
   window.updateAdminCredentials = function() {
     const currentInput = document.getElementById('currentAdminPassInput').value;
     const newUser = document.getElementById('newAdminUser').value.trim();
@@ -863,7 +940,6 @@
     document.getElementById('newAdminPass').value = "";
   };
 
-  // Share App Link Functionality
   window.sharePortalApp = function() {
     const appUrl = window.location.href;
     const shareText = `🌟 Check out Abdul Bari Academy Puthupparmba Official Portal:\n${appUrl}`;
@@ -887,6 +963,7 @@
     document.getElementById(tabId).classList.remove('hidden');
     if(btn) btn.classList.add('active');
     if(tabId === 'pointsTab') populateChallengeFilters();
+    if(tabId === 'examTab') populateExamClassDropdown();
   }
 
   function updateDashboardStats() {
@@ -907,6 +984,27 @@
     }
   }
 
+  function renderDashCommitteeGrid() {
+    const grid = document.getElementById('dashCommitteeGrid');
+    if(!grid) return;
+    grid.innerHTML = "";
+    let committeeMembers = (window.dbData.usthads || []).filter(u => u.type === 'committee');
+    if(committeeMembers.length === 0) {
+      grid.innerHTML = `<p style="color:#ffd000; font-size:11px;">No committee members added yet.</p>`;
+      return;
+    }
+    committeeMembers.forEach(m => {
+      let phoneClean = (m.contact || '').replace(/\D/g, '');
+      grid.innerHTML += `
+        <div class="folder-card" style="background:linear-gradient(135deg, #0284c7, #0369a1); padding:14px; text-align:center;" onclick="showFacultyDetailsModal(${m.id})">
+          <img src="${m.photo || 'https://via.placeholder.com/50'}" style="width:45px; height:45px; border-radius:50%; object-fit:cover; border:2px solid #ffd000; margin:0 auto 6px auto;">
+          <h4 style="margin:0; font-size:13px; color:#fff;">${m.name}</h4>
+          <p style="margin:2px 0 0 0; font-size:11px; color:#ffd000; font-weight:700;">${m.sub || 'Office Bearer'}</p>
+        </div>
+      `;
+    });
+  }
+
   window.renderDashStudentsTable = function() {
     const tbody = document.getElementById('dashStudentsTableBody');
     const q = document.getElementById('dashStudentSearchInput') ? document.getElementById('dashStudentSearchInput').value.toLowerCase().trim() : '';
@@ -919,7 +1017,7 @@
       window.dbData.students[cls].forEach(s => {
         if(!q || s.name.toLowerCase().includes(q)) {
           found = true;
-          let adminBtns = window.isAdmin ? `<button class="btn-delete" onclick="deleteStudent(${s.id}, '${cls}')">🗑️ Delete</button>` : '';
+          let adminBtns = window.isAdmin ? `<button class="btn-delete" onclick="deleteStudent(${s.id}, '${cls}')" style="margin-left:4px;">🗑️</button>` : '';
           let phoneClean = (s.phone || '').replace(/\D/g, '');
           let waBtn = `<a href="https://wa.me/91${phoneClean}" target="_blank" class="btn-whatsapp">💬 Chat WA</a>`;
 
@@ -927,12 +1025,12 @@
           tr.style.cursor = "pointer";
           tr.title = "Right-click or Long-press to view full details";
           tr.innerHTML = `
-            <td><img src="${s.photo || 'https://via.placeholder.com/45'}" style="width:36px; height:36px; border-radius:50%; object-fit:cover;"></td>
+            <td><img src="${s.photo || 'https://via.placeholder.com/45'}" style="width:34px; height:34px; border-radius:50%; object-fit:cover;"></td>
             <td>${c++}</td>
             <td><b>${s.name}</b></td>
             <td>${cls}</td>
             <td>
-              <button style="background:#0284c7; color:#fff; padding:4px 8px; font-size:10px; font-weight:bold;" onclick="openPublicPhotoUploadModal(${s.id}, '${cls}', '${s.name}')">📷 Photo</button>
+              <button style="background:#0284c7; color:#fff; padding:4px 8px; font-size:10px; font-weight:bold;" onclick="openPublicPhotoUploadModal(${s.id}, '${cls}', '${s.name}')">📷</button>
               ${waBtn} ${adminBtns}
             </td>
           `;
@@ -958,7 +1056,7 @@
   function showStudentDetailsModal(student, clsName) {
     document.getElementById('modalStudentPhoto').src = student.photo || 'https://via.placeholder.com/100';
     document.getElementById('modalStudentName').innerText = student.name;
-    document.getElementById('modalStudentRoll').innerText = student.id;
+    document.getElementById('modalStudentRegNo').innerText = student.regNo || 'ABA-' + student.id;
     document.getElementById('modalStudentClass').innerText = clsName;
     document.getElementById('modalStudentFather').innerText = student.father || 'N/A';
     document.getElementById('modalStudentPhone').innerText = student.phone || 'N/A';
@@ -1021,7 +1119,7 @@
     if(matchedStudent) {
       document.getElementById('parentStudentDashboard').classList.remove('hidden');
       document.getElementById('parentStudentHeaderName').innerText = `Student: ${matchedStudent.name}`;
-      document.getElementById('parentStudentClassInfo').innerText = `Class: ${matchedClass} | Roll No: ${matchedStudent.id}`;
+      document.getElementById('parentStudentClassInfo').innerText = `Class: ${matchedClass} | Reg No: ${matchedStudent.regNo || 'ABA-' + matchedStudent.id}`;
       
       let content = `
         <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:10px; margin-top:10px;">
@@ -1035,31 +1133,30 @@
     }
   };
 
+  // Enhanced Faculty Folders & Boxes
   function renderUsthads() {
     const usthadGrid = document.getElementById('usthadsGrid');
     const committeeGrid = document.getElementById('committeeGrid');
-    const q = document.getElementById('teacherSearchInput') ? document.getElementById('teacherSearchInput').value.toLowerCase().trim() : '';
+    const q = document.getElementById('teacherSearchInput') ? document.getElementById('teacherSearchInput'].value.toLowerCase().trim() : '';
     
     if(!usthadGrid || !committeeGrid) return;
     usthadGrid.innerHTML = ""; committeeGrid.innerHTML = "";
 
     (window.dbData.usthads || []).forEach(u => {
       let teacherLocStr = u.loc || 'Academy Campus';
-      let adminBtns = window.isAdmin ? `<div style="margin-top:10px;"><button class="btn-edit" onclick="openEditTeacherModal(${u.id})">✏️ Edit Details</button><button class="btn-delete" onclick="deleteTeacher(${u.id})">🗑️ Delete</button></div>` : '';
+      let adminBtns = window.isAdmin ? `<div style="margin-top:10px;"><button class="btn-edit" onclick="openEditTeacherModal(${u.id})">✏️ Edit</button><button class="btn-delete" onclick="deleteTeacher(${u.id})">🗑️ Delete</button></div>` : '';
       let phoneClean = (u.contact || '').replace(/\D/g, '');
       let waBtn = u.contact ? `<a href="https://wa.me/91${phoneClean}" target="_blank" class="btn-whatsapp" style="margin-top:8px;">💬 WhatsApp</a>` : '';
-      let callBtn = u.contact ? `<a href="tel:${phoneClean}" class="btn-call" style="margin-top:8px;">📞 Call Usthad</a>` : '';
-      let mapBtn = u.mapLink ? `<a href="${u.mapLink}" target="_blank" style="color:#38bdf8; font-size:11px; display:block; margin-top:4px;">📍 View Map Location</a>` : '';
+      let callBtn = u.contact ? `<a href="tel:${phoneClean}" class="btn-call" style="margin-top:8px;">📞 Call</a>` : '';
 
       if(!q || u.name.toLowerCase().includes(q) || teacherLocStr.toLowerCase().includes(q) || (u.sub || '').toLowerCase().includes(q)) {
-        const cardHtml = `<div class="person-card">
+        const cardHtml = `<div class="person-card" onclick="showFacultyDetailsModal(${u.id})">
           <img src="${u.photo || 'https://via.placeholder.com/80'}">
           <h3 style="margin:2px 0 0 0; font-size:15px;">${u.name}</h3>
           <div class="teacher-loc">📍 ${teacherLocStr}</div>
-          ${mapBtn}
-          <div class="teacher-badge">📖 Subjects: ${u.sub || 'Faculty'}</div>
-          <div>${waBtn} ${callBtn}</div>
-          ${adminBtns}
+          <div class="teacher-badge">📖 ${u.sub || 'Faculty'}</div>
+          <div onclick="event.stopPropagation()">${waBtn} ${callBtn}</div>
+          <div onclick="event.stopPropagation()">${adminBtns}</div>
         </div>`;
 
         if(u.type === 'committee') committeeGrid.innerHTML += cardHtml;
@@ -1067,6 +1164,24 @@
       }
     });
   }
+
+  window.showFacultyDetailsModal = function(id) {
+    let u = (window.dbData.usthads || []).find(item => item.id === id);
+    if(!u) return;
+    document.getElementById('modalFacultyPhoto').src = u.photo || 'https://via.placeholder.com/100';
+    document.getElementById('modalFacultyName').innerText = u.name;
+    document.getElementById('modalFacultyLoc').innerText = u.loc || 'Academy Campus';
+    document.getElementById('modalFacultySub').innerText = u.sub || 'Faculty / Member';
+    document.getElementById('modalFacultyContact').innerText = u.contact || 'N/A';
+    
+    let mapDiv = document.getElementById('modalFacultyMapContainer');
+    if(u.mapLink) {
+      mapDiv.innerHTML = `<a href="${u.mapLink}" target="_blank" style="color:#38bdf8; font-size:11px; font-weight:bold;">📍 View Google Map Location</a>`;
+    } else {
+      mapDiv.innerHTML = '';
+    }
+    document.getElementById('facultyDetailModal').classList.remove('hidden');
+  };
 
   function renderManageTeachersList() {
     const container = document.getElementById('manageTeachersList');
@@ -1102,12 +1217,12 @@
       teacher.contact = document.getElementById('editTeacherContact').value.trim();
       window.saveData();
       document.getElementById('editTeacherModal').classList.add('hidden');
-      alert("✅ Faculty Updated!");
+      alert("✅ Updated Successfully!");
     }
   };
 
   window.deleteTeacher = function(id) {
-    if(confirm("Delete faculty member?")) {
+    if(confirm("Delete member?")) {
       window.dbData.usthads = window.dbData.usthads.filter(u => u.id !== id);
       window.saveData();
     }
@@ -1117,7 +1232,6 @@
     const classSelects = [
       document.getElementById('regStudentClassSelect'),
       document.getElementById('examTargetClassSelect'),
-      document.getElementById('examClassSelect'),
       document.getElementById('challengeTeamClassSelect')
     ];
     let allClasses = [];
@@ -1266,7 +1380,6 @@
     document.getElementById('subjectDetailLevel').classList.remove('hidden');
     document.getElementById('topicTitle').innerText = `${clsName} - ${subName} Portal (${(window.dbData.students[clsName] || []).length} Students)`;
     
-    // Set Calendar Date Picker value & Label
     const datePicker = document.getElementById('attendanceDatePicker');
     if(datePicker) datePicker.value = selectedAttendanceDate;
     updateLiveDateDisplay();
@@ -1274,6 +1387,38 @@
     renderAttendanceTable(clsName); 
     renderSubjectStudyNotes();
   }
+
+  window.openAddStudentModalForClass = function() {
+    document.getElementById('quickAddStudentClass').value = currentActiveClassName;
+    document.getElementById('quickAddStudentModal').classList.remove('hidden');
+  };
+
+  window.saveQuickStudentForClass = function() {
+    const cls = document.getElementById('quickAddStudentClass').value;
+    const name = document.getElementById('quickStudentName').value.trim();
+    const father = document.getElementById('quickStudentFather').value.trim();
+    const phone = document.getElementById('quickStudentPhone').value.trim();
+    const regNo = document.getElementById('quickStudentRegisterNo').value.trim() || ('ABA-' + Date.now().toString().slice(-4));
+    const fileInput = document.getElementById('quickStudentPhoto');
+
+    if(cls && name) {
+      handleImageUpload(fileInput, (photoBase64) => {
+        if(!window.dbData.students[cls]) window.dbData.students[cls] = [];
+        window.dbData.students[cls].push({ id: Date.now(), name, father, phone, regNo, photo: photoBase64, status: 'Present' });
+        window.saveData();
+        document.getElementById('quickAddStudentModal').classList.add('hidden');
+        alert(`✅ Student "${name}" added to ${cls}!`);
+        document.getElementById('quickStudentName').value = "";
+        document.getElementById('quickStudentFather').value = "";
+        document.getElementById('quickStudentPhone').value = "";
+        document.getElementById('quickStudentRegisterNo').value = "";
+        fileInput.value = "";
+        openSubjectStudentList(currentActiveClassName, currentActiveSubjectName);
+      });
+    } else {
+      alert("⚠️ Please enter student name!");
+    }
+  };
 
   function updateLiveDateDisplay() {
     const label = document.getElementById('currentLiveDateLabel');
@@ -1301,7 +1446,6 @@
       return;
     }
 
-    // Initialize attendance record for this date & subject if not present
     if(!window.dbData.attendanceRecords) window.dbData.attendanceRecords = {};
     const attKey = `${clsName}_${currentActiveSubjectName}_${selectedAttendanceDate}`;
     if(!window.dbData.attendanceRecords[attKey]) {
@@ -1334,8 +1478,6 @@
     let nextStatus = currentStatus === 'Present' ? 'Absent' : (currentStatus === 'Absent' ? 'Friday Leave' : 'Present');
     
     window.dbData.attendanceRecords[attKey][studentId] = nextStatus;
-    
-    // Also sync main status for quick view
     let student = window.dbData.students[clsName].find(s => s.id === studentId);
     if(student) student.status = nextStatus;
 
@@ -1407,17 +1549,19 @@
     const name = document.getElementById('regStudentName').value.trim();
     const father = document.getElementById('regFatherName').value.trim();
     const phone = document.getElementById('regPhoneNum').value.trim();
+    const regNo = document.getElementById('regStudentRegisterNo').value.trim() || ('ABA-' + Date.now().toString().slice(-4));
     const fileInput = document.getElementById('regStudentPhotoFile');
 
     if(cls && name) {
       handleImageUpload(fileInput, (photoBase64) => {
         if(!window.dbData.students[cls]) window.dbData.students[cls] = [];
-        window.dbData.students[cls].push({ id: Date.now(), name, father, phone, photo: photoBase64, status: 'Present' });
+        window.dbData.students[cls].push({ id: Date.now(), name, father, phone, regNo, photo: photoBase64, status: 'Present' });
         window.saveData();
-        alert(`✅ Student "${name}" Registered Successfully!`);
+        alert(`✅ Student "${name}" Registered with ID Card Info Successfully!`);
         document.getElementById('regStudentName').value = "";
         document.getElementById('regFatherName').value = "";
         document.getElementById('regPhoneNum').value = "";
+        document.getElementById('regStudentRegisterNo').value = "";
         fileInput.value = "";
       });
     } else {
@@ -1439,7 +1583,7 @@
         if(!window.dbData.usthads) window.dbData.usthads = [];
         window.dbData.usthads.push({ id: Date.now(), type, name, loc, mapLink, sub, contact, photo: photoBase64 });
         window.saveData();
-        alert(`✅ Faculty "${name}" Added Successfully!`);
+        alert(`✅ Member "${name}" Added Successfully!`);
         document.getElementById('teacherNameInput').value = "";
         document.getElementById('teacherLocInput').value = "";
         document.getElementById('teacherMapInput').value = "";
@@ -1448,8 +1592,89 @@
         fileInput.value = "";
       });
     } else {
-      alert("⚠️ Please enter faculty name!");
+      alert("⚠️ Please enter name!");
     }
+  };
+
+  // Exam Marks Inline Table Editing Functions
+  function populateExamClassDropdown() {
+    const sel = document.getElementById('examClassSelect');
+    if(!sel) return;
+    sel.innerHTML = '<option value="">-- Select Batch / Class --</option>';
+    for(let p in window.dbData.classes) {
+      window.dbData.classes[p].forEach(c => { sel.innerHTML += `<option value="${c}">${c}</option>`; });
+    }
+  }
+
+  window.onExamClassChanged = function() {
+    const cls = document.getElementById('examClassSelect').value;
+    const subSel = document.getElementById('examSubjectSelect');
+    subSel.innerHTML = '<option value="">-- Select Subject --</option>';
+    if(cls) {
+      (window.dbData.subjects[cls] || []).forEach(s => { subSel.innerHTML += `<option value="${s}">${s}</option>`; });
+    }
+    renderExamMarksTable();
+  };
+
+  window.renderExamMarksTable = function() {
+    const cls = document.getElementById('examClassSelect').value;
+    const sub = document.getElementById('examSubjectSelect').value;
+    const container = document.getElementById('examMarksContainer');
+    if(!container) return; container.innerHTML = "";
+
+    if(!cls || !sub) {
+      container.innerHTML = `<p style="color:#ffd000; text-align:center; padding:12px;">Please select Class and Subject to enter marks.</p>`;
+      return;
+    }
+
+    let students = window.dbData.students[cls] || [];
+    if(students.length === 0) {
+      container.innerHTML = `<p style="color:#ffd000; text-align:center; padding:12px;">No students found in ${cls}.</p>`;
+      return;
+    }
+
+    if(!window.dbData.examMarksSubjectwise) window.dbData.examMarksSubjectwise = {};
+    const examKey = `${cls}_${sub}`;
+    if(!window.dbData.examMarksSubjectwise[examKey]) window.dbData.examMarksSubjectwise[examKey] = {};
+
+    let html = `
+      <table>
+        <thead>
+          <tr><th>No.</th><th>Student Name</th><th>Current Mark</th><th>Previous Mark</th>${isAdmin ? '<th>Action</th>' : ''}</tr>
+        </thead>
+        <tbody>
+    `;
+
+    students.forEach((s, idx) => {
+      let marksObj = window.dbData.examMarksSubjectwise[examKey][s.id] || { current: '', previous: '' };
+      let editControls = isAdmin ? `<td><button onclick="saveInlineExamMark(${s.id}, '${cls}', '${sub}')" style="background:#10b981; padding:4px 10px; font-size:11px;">Save</button></td>` : '';
+
+      html += `
+        <tr>
+          <td>${idx + 1}</td>
+          <td><b>${s.name}</b></td>
+          <td><input type="number" id="inlineCurr_${s.id}" value="${marksObj.current}" placeholder="Curr..." style="margin-bottom:0; padding:6px; text-align:center;"></td>
+          <td><input type="number" id="inlinePrev_${s.id}" value="${marksObj.previous}" placeholder="Prev..." style="margin-bottom:0; padding:6px; text-align:center;"></td>
+          ${editControls}
+        </tr>
+      `;
+    });
+
+    html += `</tbody></table>`;
+    container.innerHTML = html;
+  };
+
+  window.saveInlineExamMark = function(studentId, cls, sub) {
+    const examKey = `${cls}_${sub}`;
+    const currVal = document.getElementById(`inlineCurr_${studentId}`).value;
+    const prevVal = document.getElementById(`inlinePrev_${studentId}`).value;
+
+    if(!window.dbData.examMarksSubjectwise) window.dbData.examMarksSubjectwise = {};
+    if(!window.dbData.examMarksSubjectwise[examKey]) window.dbData.examMarksSubjectwise[examKey] = {};
+
+    window.dbData.examMarksSubjectwise[examKey][studentId] = { current: currVal, previous: prevVal };
+    window.saveData();
+    alert("✅ Exam mark saved successfully!");
   };
 
   // Challenge Teams & Mystery Box Functions
