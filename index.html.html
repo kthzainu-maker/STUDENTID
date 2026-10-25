@@ -214,7 +214,7 @@
       <div id="settingsDropdown" class="hidden">
         <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🔔 App Notifications</div>
         <div style="display:flex; justify-content:space-between; align-items:center; padding: 8px; background:rgba(0,0,0,0.3); border-radius:8px; margin-bottom:8px;">
-          <span style="font-size:12px; font-weight:700;">Enable Notifications</span>
+          <span style="font-size:12px; font-weight:700;">Enable WhatsApp Alerts</span>
           <input type="checkbox" id="notificationToggleCheckbox" checked onchange="toggleAppNotificationSetting()" style="width:auto; margin-bottom:0; cursor:pointer;">
         </div>
 
@@ -531,6 +531,7 @@
           <button class="admin-sidebar-btn active" onclick="showAdminSubSection('adminSub0', this)">🔐 Change Password</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSubMsg', this)">📢 Post Announcement</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub1', this)">🎓 Register Student</button>
+          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSubManageStudents', this)">👥 Manage Students</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub2', this)">📝 Exam Marks</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub3', this)">📖 Manage Subjects</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub4', this)">📁 Classes & Teachers</button>
@@ -565,6 +566,15 @@
             <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🖼️ Choose Student Photo from Device:</label>
             <input type="file" id="regStudentPhotoFile" accept="image/*" style="margin-bottom:12px;">
             <button onclick="adminRegisterStudent()" style="width:100%; background:#10b981;">➕ Register Student & Auto-Notify</button>
+          </div>
+
+          <!-- MANAGE STUDENTS (EDIT / DELETE) -->
+          <div id="adminSubManageStudents" class="admin-sub-sec hidden">
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">👥 Edit or Delete Students</h4>
+            <select id="adminManageStudentClassSelect" onchange="renderAdminStudentsList()" style="margin-bottom:12px;">
+              <option value="">-- Select Class --</option>
+            </select>
+            <div id="adminStudentsListContainer" style="overflow-x:auto;"></div>
           </div>
 
           <div id="adminSub2" class="admin-sub-sec hidden">
@@ -666,6 +676,22 @@
       <p style="margin:4px 0;"><b>📊 Status:</b> <span id="modalStudentStatus" style="color:#10b981; font-weight:bold;"></span></p>
     </div>
     <button onclick="document.getElementById('studentDetailModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:16px;">Close</button>
+  </div>
+</div>
+
+<!-- EDIT STUDENT MODAL -->
+<div id="editStudentModal" class="modal hidden">
+  <div class="modal-content">
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">✏️ Edit Student Details</h3>
+    <input type="hidden" id="editStudentId">
+    <input type="hidden" id="editStudentOldClass">
+    <select id="editStudentClassSelect" style="margin-bottom:10px;"></select>
+    <input type="text" id="editStudentName" placeholder="Student Name...">
+    <input type="text" id="editStudentFather" placeholder="Father Name...">
+    <input type="text" id="editStudentPhone" placeholder="WhatsApp Phone Number...">
+    <input type="text" id="editStudentRegNo" placeholder="Register No...">
+    <button onclick="saveStudentEdit()" style="width:100%; background:#10b981; margin-top:10px;">💾 Save Changes</button>
+    <button onclick="document.getElementById('editStudentModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
   </div>
 </div>
 
@@ -917,6 +943,7 @@
     document.getElementById(secId).classList.remove('hidden');
     if(btnEl) btnEl.classList.add('active');
     if(secId === 'adminSub3') populateSubjectManageDropdown();
+    if(secId === 'adminSubManageStudents') populateAdminManageStudentsDropdown();
   };
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -1219,6 +1246,104 @@
     }
   };
 
+  // ADMIN MANAGE STUDENTS LIST (EDIT/DELETE)
+  function populateAdminManageStudentsDropdown() {
+    const sel = document.getElementById('adminManageStudentClassSelect');
+    if(!sel) return;
+    sel.innerHTML = '<option value="">-- Select Class --</option>';
+    for(let p in window.dbData.classes) {
+      window.dbData.classes[p].forEach(c => { sel.innerHTML += `<option value="${c}">${c}</option>`; });
+    }
+    document.getElementById('adminStudentsListContainer').innerHTML = '';
+  }
+
+  window.renderAdminStudentsList = function() {
+    const cls = document.getElementById('adminManageStudentClassSelect').value;
+    const container = document.getElementById('adminStudentsListContainer');
+    if(!container) return; container.innerHTML = '';
+    if(!cls) return;
+
+    let students = window.dbData.students[cls] || [];
+    if(students.length === 0) {
+      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">No students found in this class.</p>`;
+      return;
+    }
+
+    let html = `<table><thead><tr><th>Name</th><th>Father</th><th>Phone</th><th>Actions</th></tr></thead><tbody>`;
+    students.forEach(s => {
+      html += `<tr>
+        <td><b>${s.name}</b><br><small style="color:#38bdf8;">${s.regNo || ''}</small></td>
+        <td>${s.father || '-'}</td>
+        <td>${s.phone || '-'}</td>
+        <td>
+          <button class="btn-edit" onclick="openEditStudentModal(${s.id}, '${cls}')">✏️ Edit</button>
+          <button class="btn-delete" onclick="adminDeleteStudentRecord(${s.id}, '${cls}')">🗑️ Delete</button>
+        </td>
+      </tr>`;
+    });
+    html += `</tbody></table>`;
+    container.innerHTML = html;
+  };
+
+  window.openEditStudentModal = function(id, clsName) {
+    playClickSound();
+    let student = (window.dbData.students[clsName] || []).find(s => s.id === id);
+    if(!student) return;
+
+    document.getElementById('editStudentId').value = id;
+    document.getElementById('editStudentOldClass').value = clsName;
+    document.getElementById('editStudentName').value = student.name;
+    document.getElementById('editStudentFather').value = student.father || '';
+    document.getElementById('editStudentPhone').value = student.phone || '';
+    document.getElementById('editStudentRegNo').value = student.regNo || '';
+
+    const sel = document.getElementById('editStudentClassSelect');
+    sel.innerHTML = '';
+    for(let p in window.dbData.classes) {
+      window.dbData.classes[p].forEach(c => {
+        sel.innerHTML += `<option value="${c}" ${c === clsName ? 'selected' : ''}>${c}</option>`;
+      });
+    }
+
+    document.getElementById('editStudentModal').classList.remove('hidden');
+  };
+
+  window.saveStudentEdit = function() {
+    let id = parseInt(document.getElementById('editStudentId').value);
+    let oldClass = document.getElementById('editStudentOldClass').value;
+    let newClass = document.getElementById('editStudentClassSelect').value;
+
+    let studentList = window.dbData.students[oldClass] || [];
+    let index = studentList.findIndex(s => s.id === id);
+    if(index === -1) return;
+
+    let student = studentList[index];
+    student.name = document.getElementById('editStudentName').value.trim();
+    student.father = document.getElementById('editStudentFather').value.trim();
+    student.phone = document.getElementById('editStudentPhone').value.trim();
+    student.regNo = document.getElementById('editStudentRegNo').value.trim();
+
+    if(oldClass !== newClass) {
+      // Move student to new class array
+      studentList.splice(index, 1);
+      if(!window.dbData.students[newClass]) window.dbData.students[newClass] = [];
+      window.dbData.students[newClass].push(student);
+    }
+
+    window.saveData();
+    document.getElementById('editStudentModal').classList.add('hidden');
+    renderAdminStudentsList();
+    alert("✅ Student details updated successfully!");
+  };
+
+  window.adminDeleteStudentRecord = function(id, cls) {
+    if(confirm("⚠️ Are you sure you want to delete this student?")) {
+      window.dbData.students[cls] = window.dbData.students[cls].filter(s => s.id !== id);
+      window.saveData();
+      renderAdminStudentsList();
+    }
+  };
+
   window.verifyParentStudentAccess = function() {
     playClickSound();
     const nameQuery = document.getElementById('parentStudentName').value.trim().toLowerCase();
@@ -1254,7 +1379,7 @@
       
       let content = `
         <div style="background:rgba(0,0,0,0.3); padding:14px; border-radius:12px; margin-top:12px; text-align:center;">
-          <p style="color:#10b981; font-weight:bold; font-size:13px; margin:0 0 8px 0;">🎉 Finished! You updated and enabled notifications successfully.</p>
+          <p style="color:#10b981; font-weight:bold; font-size:13px; margin:0 0 8px 0;">🎉 Record verified successfully!</p>
           <p style="margin:0; font-size:13px; color:#fff; text-align:left;"><b>Attendance Status:</b> <span style="color:#10b981;">${matchedStudent.status || 'Present'}</span></p>
           <p style="margin:4px 0 0 0; font-size:12px; color:#cbd5e1; text-align:left;"><b>Father Name:</b> ${matchedStudent.father || '-'}</p>
           <br>
@@ -1262,11 +1387,11 @@
         </div>
       `;
       document.getElementById('parentStudentDetailsContent').innerHTML = content;
-      alert("🎉 Finished! You updated and enabled notifications successfully.");
+      alert("🎉 Student record found successfully!");
     } else {
       dashboardDiv.classList.add('hidden');
       errorNotice.classList.remove('hidden');
-      alert("⚠️ Please check in student directory! Record not found or incorrect details.");
+      alert("⚠️ Student record not found or incorrect details.");
     }
   };
 
@@ -1362,7 +1487,7 @@
       teacher.contact = document.getElementById('editTeacherContact').value.trim();
       window.saveData();
       document.getElementById('editTeacherModal').classList.add('hidden');
-      alert("✅ Updated Successfully!");
+      alert("✅ Teacher Updated Successfully!");
     }
   };
 
@@ -1657,6 +1782,18 @@
     window.saveData(); 
     updateLiveDateDisplay();
     renderAttendanceTable(clsName);
+
+    // AUTO WHATSAPP NOTIFICATION TRIGGER VIA BROWSER
+    if(window.dbData.notificationEnabled !== false && student && student.phone) {
+      let phoneClean = student.phone.replace(/\D/g, '');
+      let msgText = `Hello Parent, update from Abdul Bari Academy for ${student.name}: Attendance status for ${currentActiveSubjectName} on ${selectedAttendanceDate} is recorded as: *${nextStatus}*.`;
+      if(nextStatus === 'Absent') {
+        msgText = `⚠️ Alert: Your student ${student.name} was marked *ABSENT* in ${currentActiveSubjectName} today (${selectedAttendanceDate}). - Abdul Bari Academy`;
+      }
+      let waLink = `https://wa.me/91${phoneClean}?text=${encodeURIComponent(msgText)}`;
+      // Automatically open WhatsApp message link if desired or prompt
+      console.log("Triggering WhatsApp notification alert:", waLink);
+    }
   };
 
   window.bulkMarkAttendance = function(statusVal) {
@@ -1733,6 +1870,14 @@
         if(!window.dbData.students[cls]) window.dbData.students[cls] = [];
         window.dbData.students[cls].push({ id: Date.now(), name, father, phone, regNo, photo: photoBase64, isRegistered: true, status: 'Present' });
         window.saveData();
+
+        // Trigger WhatsApp alert on registration if enabled
+        if(window.dbData.notificationEnabled !== false && phone) {
+          let phoneClean = phone.replace(/\D/g, '');
+          let regMsg = `🎉 Welcome to Abdul Bari Academy, ${name}! Your registration in ${cls} is successful. Reg No: ${regNo}.`;
+          window.open(`https://wa.me/91${phoneClean}?text=${encodeURIComponent(regMsg)}`, '_blank');
+        }
+
         alert(`✅ Student "${name}" Registered Successfully!`);
         document.getElementById('regStudentName').value = "";
         document.getElementById('regFatherName').value = "";
@@ -1911,6 +2056,15 @@
 
     window.dbData.examMarksSubjectwise[examKey][studentId] = { current: currVal, previous: prevVal };
     window.saveData();
+
+    // Check if topper / high scorer (e.g. >= 90) and notify via WhatsApp if enabled
+    let student = (window.dbData.students[cls] || []).find(s => s.id === studentId);
+    if(window.dbData.notificationEnabled !== false && student && student.phone && parseInt(currVal) >= 90) {
+      let phoneClean = student.phone.replace(/\D/g, '');
+      let topperMsg = `🌟 Congratulations! ${student.name} secured a top score of *${currVal}* in ${sub} exam! - Abdul Bari Academy`;
+      window.open(`https://wa.me/91${phoneClean}?text=${encodeURIComponent(topperMsg)}`, '_blank');
+    }
+
     alert("✅ Mark saved successfully!");
   };
 
