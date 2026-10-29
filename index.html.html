@@ -1,9 +1,10 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes">
-  <title>ABDUL BARI ACADEMY PUTHUPPARMBA - ULTIMATE HD PRO PORTAL</title>
+  <title>ABDUL BARI ACADEMY PUTHUPPARMBA - ULTIMATE PRO PORTAL</title>
 
   <!-- Google Fonts & External Libraries -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -16,21 +17,21 @@
       --bg-deep-2: #1c2541;
       --bg-deep-3: #3a506b;
       --card-bg: rgba(28, 37, 65, 0.88);
-      --glass-border: rgba(56, 189, 248, 0.5);
+      --glass-border: rgba(56, 189, 248, 0.4);
       --text-main: #ffffff;
       --accent-yellow: #ffd000;
       --neon-pink: #ec4899;
       --neon-cyan: #38bdf8;
       --neon-green: #10b981;
       --red: #ef4444;
-      --neon-glow: 0 0 25px rgba(56, 189, 248, 0.6), 0 0 45px rgba(255, 208, 0, 0.35);
+      --neon-glow: 0 0 25px rgba(56, 189, 248, 0.5), 0 0 45px rgba(255, 208, 0, 0.3);
       --card-glow: 0 15px 35px rgba(11, 19, 43, 0.6);
     }
 
     body.theme-dark-violet {
       --bg-deep-1: #070114; --bg-deep-2: #180533; --bg-deep-3: #2d0b52;
       --card-bg: rgba(25, 12, 43, 0.88); --glass-border: rgba(255, 208, 0, 0.5);
-      --text-main: #ffffff; --accent-yellow: #ffd000; --neon-glow: 0 0 25px rgba(255, 208, 0, 0.6), 0 0 45px rgba(236, 72, 153, 0.35);
+      --text-main: #ffffff; --accent-yellow: #ffd000; --neon-glow: 0 0 25px rgba(255, 208, 0, 0.6);
     }
     body.theme-light-rose {
       --bg-deep-1: #fff0f5; --bg-deep-2: #ffe4e1; --bg-deep-3: #ffd1dc;
@@ -43,7 +44,7 @@
       --text-main: #1f2937; --accent-yellow: #a16207; --neon-glow: 0 0 20px rgba(202, 138, 4, 0.3);
     }
 
-    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -78,9 +79,10 @@
     .header-title-box small { display: block; margin-top: 2px; font-size: 10px; font-weight: 800; color: var(--neon-cyan) !important; letter-spacing: 2px; }
 
     .header-right { display: flex; align-items: center; gap: 8px; position: relative; flex-wrap: wrap; }
-    .auth-btn { background: linear-gradient(135deg, #ffd000, #f59e0b); color: #000; border: none; padding: 10px 18px; border-radius: 12px; cursor: pointer; font-weight: 800; box-shadow: var(--neon-glow); font-size: 12px; position: relative; z-index: 100; }
-    .logout-btn { background: var(--red); color: white; border: none; padding: 10px 18px; border-radius: 12px; cursor: pointer; font-weight: 800; font-size: 12px; position: relative; z-index: 100; }
-    .menu-icon { font-size: 22px; cursor: pointer; color: #fff; padding: 8px 14px; border-radius: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); position: relative; z-index: 100; }
+    .auth-btn { background: linear-gradient(135deg, #ffd000, #f59e0b); color: #000; border: none; padding: 10px 18px; border-radius: 12px; cursor: pointer; font-weight: 800; box-shadow: var(--neon-glow); font-size: 12px; transition: transform 0.2s ease; }
+    .auth-btn:hover { transform: translateY(-2px); }
+    .logout-btn { background: var(--red); color: white; border: none; padding: 10px 18px; border-radius: 12px; cursor: pointer; font-weight: 800; font-size: 12px; }
+    .menu-icon { font-size: 22px; cursor: pointer; color: #fff; padding: 8px 14px; border-radius: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); }
 
     .notice-marquee { background: linear-gradient(90deg, #ffd000, #38bdf8, #10b981); background-size: 200% 200%; animation: gradientBG 6s ease infinite; color: #000; padding: 10px 16px; border-radius: 12px; font-weight: 800; font-size: 13px; margin-bottom: 16px; }
 
@@ -100,8 +102,9 @@
     .tab-btn {
       background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px;
       border-radius: 16px 16px 0 0; cursor: pointer; font-weight: 800; color: #e2e8f0; font-size: 12px;
-      transition: all 0.35s ease; flex: 1; text-align: center; min-width: 100px;
+      transition: all 0.3s ease; flex: 1; text-align: center; min-width: 90px;
     }
+    .tab-btn:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
     .tab-btn.active { background: var(--card-bg); color: var(--accent-yellow); border-color: var(--glass-border); border-bottom: none; transform: translateY(-2px); box-shadow: var(--neon-glow); }
 
     .card {
@@ -115,23 +118,36 @@
     .pub-stat-card {
       padding: 22px; border-radius: 22px; text-align: center; color: #fff;
       border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 12px 35px rgba(0,0,0,0.5);
+      transition: transform 0.3s ease;
     }
+    .pub-stat-card:hover { transform: translateY(-5px) scale(1.02); }
     .pub-stat-card:nth-child(1) { background: linear-gradient(135deg, #0284c7, #0369a1); }
     .pub-stat-card:nth-child(2) { background: linear-gradient(135deg, #0d9488, #0f766e); }
     .pub-stat-card:nth-child(3) { background: linear-gradient(135deg, #10b981, #047857); }
 
     .admin-layout { display: flex; gap: 18px; flex-wrap: wrap; }
     .admin-sidebar { flex: 1; min-width: 220px; background: rgba(0,0,0,0.4); padding: 14px; border-radius: 18px; border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 10px; }
-    .admin-sidebar-btn { text-align: left; background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.12); padding: 12px 16px; border-radius: 14px; cursor: pointer; font-weight: 700; font-size: 12px; width: 100%; }
+    .admin-sidebar-btn { text-align: left; background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.12); padding: 12px 16px; border-radius: 14px; cursor: pointer; font-weight: 700; font-size: 12px; width: 100%; transition: all 0.2s ease; }
     .admin-sidebar-btn:hover, .admin-sidebar-btn.active { background: var(--accent-yellow); color: #000; font-weight: 900; }
     .admin-content-area { flex: 3; min-width: 280px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 18px; border: 1px solid var(--glass-border); }
 
     .big-folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; margin-bottom: 22px; }
-    .big-folder-college { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border-radius: 20px; padding: 28px; text-align: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); }
-    .big-folder-school { background: linear-gradient(135deg, #059669, #047857); color: white; border-radius: 20px; padding: 28px; text-align: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); }
+    .big-folder-college { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border-radius: 20px; padding: 28px; text-align: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); transition: transform 0.3s ease; }
+    .big-folder-school { background: linear-gradient(135deg, #059669, #047857); color: white; border-radius: 20px; padding: 28px; text-align: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); transition: transform 0.3s ease; }
+    .big-folder-college:hover, .big-folder-school:hover { transform: translateY(-4px); }
 
     .folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 22px; }
-    .folder-card { background: linear-gradient(135deg, #1e293b, #0f172a); color: white; border-radius: 18px; padding: 20px; text-align: center; cursor: pointer; font-weight: 800; border: 1px solid var(--glass-border); }
+    .folder-card { background: linear-gradient(135deg, #1e293b, #0f172a); color: white; border-radius: 18px; padding: 20px; text-align: center; cursor: pointer; font-weight: 800; border: 1px solid var(--glass-border); transition: all 0.3s ease; }
+    .folder-card:hover { transform: translateY(-3px); border-color: var(--accent-yellow); }
+
+    .category-filter-btn {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 11px; font-weight: 700;
+      transition: all 0.25s ease;
+    }
+    .category-filter-btn.active {
+      background: var(--accent-yellow); color: #000; font-weight: 900; box-shadow: 0 0 15px rgba(255, 208, 0, 0.4);
+    }
 
     .rich-gradient-headline-blue { background: linear-gradient(135deg, #38bdf8, #1d4ed8); padding: 14px 18px; border-radius: 16px; color: #fff; font-weight: 900; font-size: 16px; margin-bottom: 18px; }
     .rich-gradient-headline-yellow { background: linear-gradient(135deg, #facc15, #ea580c); padding: 14px 18px; border-radius: 16px; color: #000; font-weight: 900; font-size: 16px; margin-bottom: 18px; }
@@ -142,19 +158,31 @@
     .grad-emerald-green { background: linear-gradient(135deg, #10b981, #059669) !important; color: #fff !important; }
     .grad-deep-violet { background: linear-gradient(135deg, #6366f1, #4f46e5) !important; color: #fff !important; }
 
-    .challenge-card { border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.4); cursor: pointer; }
-    .gift-spin-anim { animation: spinBox 1.2s ease-in-out infinite; }
-    @keyframes spinBox {
-      0% { transform: rotate(0deg) scale(1); }
-      50% { transform: rotate(180deg) scale(1.2); }
-      100% { transform: rotate(360deg) scale(1); }
+    .challenge-card { border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.4); cursor: pointer; transition: transform 0.4s ease, box-shadow 0.4s ease; }
+    .challenge-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 45px rgba(0,0,0,0.7); }
+    .gift-spin-anim { animation: spin3D 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite; }
+    @keyframes spin3D {
+      0% { transform: rotateY(0deg) scale(1); }
+      50% { transform: rotateY(180deg) scale(1.25); }
+      100% { transform: rotateY(360deg) scale(1); }
     }
 
+    /* Distinct Faculty & Committee Styling */
     .faculty-card-modern {
       background: linear-gradient(145deg, rgba(28, 37, 65, 0.95), rgba(11, 19, 43, 0.98));
-      border: 1px solid var(--glass-border); border-radius: 22px; padding: 20px; text-align: center;
-      cursor: pointer; position: relative; overflow: hidden;
+      border: 1px solid var(--neon-cyan); border-radius: 22px; padding: 20px; text-align: center;
+      cursor: pointer; position: relative; overflow: hidden; transition: all 0.35s ease;
     }
+    .faculty-card-modern:hover { transform: translateY(-5px); border-color: var(--accent-yellow); box-shadow: 0 15px 35px rgba(56, 189, 248, 0.25); }
+
+    .committee-card-modern {
+      background: linear-gradient(145deg, rgba(168, 85, 247, 0.25), rgba(15, 23, 42, 0.95));
+      border: 2px solid #a855f7; border-radius: 22px; padding: 20px; text-align: center;
+      cursor: pointer; position: relative; overflow: hidden; transition: all 0.35s ease;
+      box-shadow: 0 10px 30px rgba(168, 85, 247, 0.2);
+    }
+    .committee-card-modern:hover { transform: translateY(-5px); border-color: #f43f5e; box-shadow: 0 15px 40px rgba(168, 85, 247, 0.4); }
+
     .faculty-avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-yellow); margin: 10px auto 12px auto; display: block; }
     
     .designation-badge {
@@ -162,9 +190,14 @@
       color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 10px; font-weight: 800; text-transform: uppercase;
       display: inline-block;
     }
+    .committee-badge {
+      background: linear-gradient(135deg, #a855f7, #ec4899);
+      color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 10px; font-weight: 900; text-transform: uppercase;
+      display: inline-block; box-shadow: 0 0 12px rgba(236, 72, 153, 0.5);
+    }
 
-    button { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border: none; padding: 11px 18px; border-radius: 14px; cursor: pointer; font-weight: 800; font-family: 'Poppins', sans-serif; font-size: 12px; position: relative; z-index: 10; }
-    button:hover { filter: brightness(1.15); }
+    button { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border: none; padding: 11px 18px; border-radius: 14px; cursor: pointer; font-weight: 800; font-family: 'Poppins', sans-serif; font-size: 12px; position: relative; z-index: 10; transition: all 0.2s ease; }
+    button:hover { filter: brightness(1.18); transform: translateY(-1px); }
     .btn-back { background: #475569; padding: 8px 16px; font-size: 11px; margin-bottom: 16px; border-radius: 10px; }
 
     table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 12px; }
@@ -175,11 +208,29 @@
 
     .hidden { display: none !important; }
     .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); backdrop-filter: blur(12px); display: flex; justify-content: center; align-items: center; z-index: 999999; padding: 15px; }
-    .modal-content { background: #0b132b; color: #fff; padding: 24px; border-radius: 22px; width: 450px; max-width: 100%; border: 1px solid var(--glass-border); max-height:90vh; overflow-y:auto; position: relative; z-index: 1000000; }
+    .modal-content { background: #0b132b; color: #fff; padding: 24px; border-radius: 22px; width: 480px; max-width: 100%; border: 1px solid var(--glass-border); max-height:90vh; overflow-y:auto; position: relative; z-index: 1000000; box-shadow: 0 25px 60px rgba(0,0,0,0.8); }
 
     .btn-edit { background: #0284c7; color: #fff; font-size: 10px; padding: 5px 10px; border-radius: 8px; margin-right: 4px; }
     .btn-delete { background: #ef4444; color: #fff; font-size: 10px; padding: 5px 10px; border-radius: 8px; }
     .btn-whatsapp { background: #25D366; color: #fff; font-size: 11px; padding: 6px 12px; border-radius: 8px; font-weight: bold; text-decoration: none; display: inline-block; }
+
+    /* PDF Report / Certificate Card */
+    .pdf-report-card {
+      background: linear-gradient(135deg, #ffffff, #f1f5f9);
+      color: #0f172a; border-radius: 18px; padding: 24px; text-align: left;
+      border: 3px solid #0284c7; box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative;
+    }
+    .pdf-report-header { text-align: center; border-bottom: 2px double #0284c7; padding-bottom: 12px; margin-bottom: 16px; }
+    .pdf-badge-pass { background: #10b981; color: #fff; padding: 6px 16px; border-radius: 20px; font-weight: 900; font-size: 12px; display: inline-block; }
+    .pdf-badge-fail { background: #ef4444; color: #fff; padding: 6px 16px; border-radius: 20px; font-weight: 900; font-size: 12px; display: inline-block; }
+
+    /* Autocomplete List Styling */
+    .autocomplete-list {
+      background: #1c2541; border: 1px solid var(--glass-border); border-radius: 10px;
+      max-height: 150px; overflow-y: auto; margin-top: -8px; margin-bottom: 12px; position: relative; z-index: 1000;
+    }
+    .autocomplete-item { padding: 8px 12px; cursor: pointer; font-size: 12px; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .autocomplete-item:hover { background: var(--accent-yellow); color: #000; font-weight: bold; }
 
     @media (max-width: 768px) {
       body { padding: 4px; }
@@ -196,7 +247,7 @@
     <div class="header-title-box">
       <h1>ABDUL BARI ACADEMY</h1>
       <h2>PUTHUPPARMBA</h2>
-      <small>ULTIMATE HD PRO PORTAL</small>
+      <small>ULTIMATE PRO PORTAL</small>
     </div>
     <div class="header-right">
       <div style="display:flex; gap:4px; align-items:center; background:rgba(255,255,255,0.12); padding:5px 10px; border-radius:12px; border:1px solid rgba(255,255,255,0.2);">
@@ -319,19 +370,26 @@
       <!-- COLLAPSIBLE STUDENT DIRECTORY FOLDER CARD -->
       <div id="btnStudentDirectoryFolder" onclick="toggleStudentDirectory()" class="folder-card" style="background: linear-gradient(135deg, #0284c7, #0b132b); border: 2px solid var(--accent-yellow); padding: 22px; margin-bottom: 20px; text-align: center; border-radius: 22px;">
         <h2 style="margin:0; font-size: 18px; color: var(--accent-yellow);">🔍 Student Directory</h2>
-        <p style="margin: 4px 0 0 0; font-size: 12px; color: #e2e8f0;">(Click here to open/close student search, direct WhatsApp & Photo Upload)</p>
+        <p style="margin: 4px 0 0 0; font-size: 12px; color: #e2e8f0;">(Click to view & filter All, Senior, Junior & Sub Junior Students)</p>
       </div>
 
       <!-- DIRECTORY & DIRECT WHATSAPP ACTION TABLE (COLLAPSED BY DEFAULT) -->
-      <div id="studentDirectoryContainer" class="hidden" style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 14px; border-radius: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-bottom: 24px;">
+      <div id="studentDirectoryContainer" class="hidden" style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 18px; border-radius: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-bottom: 24px;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
           <h3 style="color: var(--accent-yellow); margin: 0; font-size: 15px; font-weight: 800;">📋 Registered Students List</h3>
           <button onclick="openPublicSelfRegisterModal()" style="background:#10b981; font-size:11px; padding:6px 12px;">➕ Add Student / Photo Publicly</button>
         </div>
-        <p style="font-size: 11px; color: #38bdf8; margin-top: -2px; margin-bottom: 12px;">💡 Tip: Students/Parents can add new entries or update photos directly here!</p>
+        
+        <!-- CATEGORY FILTERS (ALL, SENIOR, JUNIOR, SUB JUNIOR) -->
+        <div style="display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap;">
+          <button class="category-filter-btn active" onclick="setStudentCategoryFilter('All', this)">All Students</button>
+          <button class="category-filter-btn" onclick="setStudentCategoryFilter('Senior', this)">Senior Students</button>
+          <button class="category-filter-btn" onclick="setStudentCategoryFilter('Junior', this)">Junior Students</button>
+          <button class="category-filter-btn" onclick="setStudentCategoryFilter('Sub Junior', this)">Sub Junior Students</button>
+        </div>
         
         <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
-          <input type="text" id="dashStudentSearchInput" placeholder="🔍 Search name..." oninput="renderDashStudentsTable()" style="flex: 2; min-width: 140px; margin-bottom: 0; padding: 8px; font-size: 12px;">
+          <input type="text" id="dashStudentSearchInput" placeholder="🔍 Search student name..." oninput="renderDashStudentsTable()" style="flex: 2; min-width: 140px; margin-bottom: 0; padding: 8px; font-size: 12px;">
           <select id="dashClassFilterSelect" onchange="renderDashStudentsTable()" style="flex: 1; min-width: 120px; margin-bottom: 0; background: rgba(0,0,0,0.4); color: #fff; padding: 8px; font-size: 12px;">
             <option value="">📁 All Classes</option>
           </select>
@@ -344,6 +402,7 @@
                 <th style="width: 40px;">Photo</th>
                 <th style="width: 30px;">No.</th>
                 <th>Student Name</th>
+                <th>Category</th>
                 <th style="width: 140px;">Actions</th>
               </tr>
             </thead>
@@ -408,12 +467,7 @@
             <button onclick="bulkMarkAttendance('Friday Leave')" style="background:#f59e0b; color:#000; font-size:11px;">🌴 Leave</button>
           </div>
           <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
-            <select id="exportPeriodSelect" style="padding:6px 10px; border-radius:8px; margin-bottom:0; background:rgba(0,0,0,0.4); color:#fff; font-size:11px;">
-              <option value="daily">📅 Daily (Today)</option>
-              <option value="monthly">📆 Monthly (Current Month)</option>
-              <option value="annual">🗓️ Annual (1-Year)</option>
-            </select>
-            <button onclick="exportAttendanceToExcel()" style="background:#0284c7; font-size:11px;">📊 Export Excel</button>
+            <button onclick="exportAttendanceToExcel()" style="background:#0284c7; font-size:11px;">📊 Export Excel (✅ / ❌)</button>
             <button onclick="printAttendanceSheet()" style="background:#ffd000; color:#000; font-size:11px;">🖨️ Print Sheet</button>
           </div>
         </div>
@@ -443,7 +497,7 @@
     <div id="myStudentTab" class="tab-content hidden">
       <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 22px; border-radius: 20px; max-width:600px; margin:0 auto;">
         <h3 style="color:var(--accent-yellow); text-align:center; margin-top:0; font-size:17px;">MY STUDENT PORTAL</h3>
-        <p style="text-align:center; font-size:12px; color:#38bdf8;">Register and check your student's live marks, leave details, and performance updates!</p>
+        <p style="text-align:center; font-size:12px; color:#38bdf8;">Search and check student's live marks, leave details, and performance updates!</p>
 
         <div id="parentLoginBox">
           <input type="text" id="parentStudentName" placeholder="Enter Student Name (or Initial)...">
@@ -452,7 +506,7 @@
         </div>
 
         <div id="parentSearchErrorNotice" class="hidden" style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; padding: 16px; border-radius: 14px; margin-top: 16px; text-align: center;">
-          <h4 style="color:#ef4444; margin:0 0 6px 0; font-size:14px;">⚠️ Student Record Not Found / Spelling Mismatch</h4>
+          <h4 style="color:#ef4444; margin:0 0 6px 0; font-size:14px;">⚠️ Student Record Not Found</h4>
           <p style="font-size:11px; color:#fca5a5; margin:0 0 12px 0;">Please check in student directory!</p>
           <button onclick="switchTab('dashboardTab', document.querySelector('[data-tab=\'dashboardTab\']'))" style="background:#0284c7; font-size:11px; padding:8px 14px;">📁 Go to Student Directory</button>
         </div>
@@ -469,54 +523,47 @@
     <div id="pointsTab" class="tab-content hidden">
       <div style="text-align:center; background:linear-gradient(135deg, rgba(2,132,199,0.3), rgba(56,189,248,0.3)); padding:20px; border-radius:20px; border:2px dashed #38bdf8; margin-bottom:22px;">
         <h2 style="color:#ffd000; margin:0; font-size:19px;">🏆 SUBJECT-WISE CHALLENGE TEAMS & GIFT BOX 🎁</h2>
-        <p style="color:#e2e8f0; font-size:12px; margin:6px 0 0 0;">Select Class to automatically load subjects below!</p>
+        <p style="color:#e2e8f0; font-size:12px; margin:6px 0 0 0;">Select Class to view sub-portals for each subject below!</p>
       </div>
 
-      <div style="display:flex; gap:10px; margin-bottom:22px; flex-wrap:wrap;">
-        <select id="challengeClassFilter" onchange="onChallengeClassChanged()" style="flex:1;">
-          <option value="">📁 Select Class...</option>
-        </select>
-        <select id="challengeSubjectFilter" onchange="renderChallengeLeaderboard()" style="flex:1;">
-          <option value="">📖 Select Subject...</option>
+      <div style="margin-bottom:22px;">
+        <select id="challengeClassFilter" onchange="renderSubjectPortalsForChallenge()" style="width:100%; font-size:13px; font-weight:bold;">
+          <option value="">📁 Select Class Batch...</option>
         </select>
       </div>
+
+      <!-- SUBJECT SUB-PORTALS GRID -->
+      <div id="challengeSubjectsSubPortalsGrid" class="folder-grid" style="margin-bottom:22px;"></div>
 
       <div id="classWiseChallengeContainer"></div>
     </div>
 
     <!-- FACULTY & STAFF TAB -->
     <div id="usthadTab" class="tab-content hidden">
-      <div class="rich-gradient-headline-blue">👨‍🏫 Academic Faculty & Teachers Details</div>
-      <p style="font-size:11px; color:#38bdf8; margin-top:-8px; margin-bottom:14px;">💡 Tip: Tap Call 📞 or WhatsApp 💬 for instant 1-click contact!</p>
+      <div class="rich-gradient-headline-yellow">🤝 Committee Secretariat & Office Bearers</div>
+      <div class="folder-grid" id="committeeGrid" style="margin-bottom:28px;"></div>
+
+      <div class="rich-gradient-headline-blue">👨‍🏫 Academic Faculty & Teaching Staff</div>
+      <p style="font-size:11px; color:#38bdf8; margin-top:-8px; margin-bottom:14px;">💡 Tap Call 📞 or WhatsApp 💬 for instant 1-click contact!</p>
       <input type="text" id="teacherSearchInput" placeholder="🔍 Search Faculty Name / Subject / Location..." oninput="renderUsthads()">
       <div class="folder-grid" id="usthadsGrid" style="margin-top:16px;"></div>
-
-      <div class="rich-gradient-headline-yellow" style="margin-top:34px;">🤝 Committee & Administrative Staff</div>
-      <div class="folder-grid" id="committeeGrid" style="margin-top:16px;"></div>
     </div>
 
     <!-- EXAMS TAB -->
     <div id="examTab" class="tab-content hidden">
-      <h3 style="color:var(--accent-yellow); font-size:16px;">📝 Exam Marks & Performance Analytics</h3>
+      <h3 style="color:var(--accent-yellow); font-size:16px;">📝 Exam Marks & Report Generation</h3>
       
-      <div id="examPublicGraphContainer" style="background:rgba(0,0,0,0.3); padding:16px; border-radius:18px; border:1px solid var(--glass-border); margin-bottom:18px;">
-        <h4 style="color:#ffd000; margin:0 0 10px 0; font-size:14px; text-align:center;">📊 Overall Academy Pass / Fail Analytics</h4>
-        <div style="display:flex; justify-content:space-around; align-items:center; text-align:center;">
-          <div><h3 style="color:#10b981; margin:0; font-size:24px;" id="statPassRate">88%</h3><small style="font-size:10px; color:#cbd5e1;">PASS RATE</small></div>
-          <div><h3 style="color:#ef4444; margin:0; font-size:24px;" id="statFailRate">12%</h3><small style="font-size:10px; color:#cbd5e1;">FAIL RATE</small></div>
-        </div>
-        <div style="background:rgba(255,255,255,0.1); border-radius:10px; height:14px; overflow:hidden; margin-top:10px; display:flex;">
-          <div id="barPassRate" style="width:88%; background:#10b981; height:100%;"></div>
-          <div id="barFailRate" style="width:12%; background:#ef4444; height:100%;"></div>
-        </div>
-      </div>
-
       <div style="display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
         <select id="examClassSelect" onchange="onExamClassChanged()" style="flex:1; margin-bottom:0;">
           <option value="">-- Select Batch / Class --</option>
         </select>
-        <select id="examSubjectSelect" onchange="renderExamMarksTable()" style="flex:1; margin-bottom:0;">
+        <select id="examSubjectSelect" onchange="onExamSubjectChanged()" style="flex:1; margin-bottom:0;">
           <option value="">-- Select Subject --</option>
+        </select>
+        <select id="examTypeSelect" onchange="renderExamMarksTable()" style="flex:1; margin-bottom:0;">
+          <option value="Unit Test">📝 Unit Test</option>
+          <option value="Mid Term">📑 Mid Term Exam</option>
+          <option value="Annual Exam">🏆 Annual Exam</option>
         </select>
       </div>
       <div id="examMarksContainer" style="overflow-x:auto;"></div>
@@ -532,7 +579,7 @@
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSubMsg', this)">📢 Post Announcement</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub1', this)">🎓 Register Student</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSubManageStudents', this)">👥 Manage Students</button>
-          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub2', this)">📝 Exam Marks</button>
+          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub2', this)">📝 Exam Mark Entry</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub3', this)">📖 Manage Subjects</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub4', this)">📁 Classes & Teachers</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub6', this)">🏆 Challenge Teams</button>
@@ -556,13 +603,26 @@
             <button onclick="saveLiveAnnouncement()" style="width:100%; background:#ec4899; color:#fff;">📢 Broadcast Notification</button>
           </div>
 
+          <!-- REGISTER STUDENT WITH AUTO-COMPLETE LOOKUP -->
           <div id="adminSub1" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🎓 Register New Student & Choose Device Photo</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🎓 Register / Quick-Add Student to Batch</h4>
             <select id="regStudentClassSelect"></select>
-            <input type="text" id="regStudentName" placeholder="Student Name with Initial...">
+            
+            <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:2px;">Type Name (Auto-Lookup registered students):</label>
+            <input type="text" id="regStudentName" placeholder="Student Name..." oninput="handleStudentAutocomplete(this.value)">
+            <div id="regStudentAutocompleteList" class="autocomplete-list hidden"></div>
+
             <input type="text" id="regFatherName" placeholder="Father Name...">
             <input type="text" id="regPhoneNum" placeholder="WhatsApp Phone Number...">
             <input type="text" id="regStudentRegisterNo" placeholder="Student Register No / ID Number...">
+            
+            <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:2px;">Select Category:</label>
+            <select id="regStudentCategory">
+              <option value="Senior">Senior Student</option>
+              <option value="Junior">Junior Student</option>
+              <option value="Sub Junior">Sub Junior Student</option>
+            </select>
+
             <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🖼️ Choose Student Photo from Device:</label>
             <input type="file" id="regStudentPhotoFile" accept="image/*" style="margin-bottom:12px;">
             <button onclick="adminRegisterStudent()" style="width:100%; background:#10b981;">➕ Register Student & Auto-Notify</button>
@@ -577,10 +637,20 @@
             <div id="adminStudentsListContainer" style="overflow-x:auto;"></div>
           </div>
 
+          <!-- EXAM MARK ENTRY WITH MAXIMUM MARKS -->
           <div id="adminSub2" class="admin-sub-sec hidden">
             <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">📝 Subject-Wise Exam Mark Entry</h4>
             <select id="adminExamClassSelect" onchange="onAdminExamClassChanged()"></select>
             <select id="adminExamSubjectSelect" onchange="renderAdminExamMarksList()"></select>
+            <select id="adminExamTypeSelect" onchange="renderAdminExamMarksList()" style="margin-bottom:10px;">
+              <option value="Unit Test">Unit Test</option>
+              <option value="Mid Term">Mid Term Exam</option>
+              <option value="Annual Exam">Annual Exam</option>
+            </select>
+            <div style="display:flex; gap:10px; align-items:center; margin-bottom:10px;">
+              <label style="font-size:12px; color:#ffd000; font-weight:bold;">Set Max Marks:</label>
+              <input type="number" id="adminExamMaxMarks" value="100" style="width:100px; margin-bottom:0; text-align:center;">
+            </div>
             <div id="adminExamMarksTableContainer" style="margin-top:12px;"></div>
           </div>
 
@@ -605,34 +675,36 @@
             <div id="manageClassesList"></div>
           </div>
 
+          <!-- CHALLENGE TEAMS WITH EDIT/DELETE CRUD -->
           <div id="adminSub6" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🏆 Create Subject Challenge Team</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🏆 Challenge Teams CRUD Management</h4>
             <select id="challengeTeamClassSelect" onchange="populateChallengeSubjectDropdown()"></select>
-            <select id="challengeTeamSubjectSelect"></select>
+            <select id="challengeTeamSubjectSelect" onchange="renderAdminChallengeTeamsList()"></select>
             <input type="text" id="newTeamNameInput" placeholder="Team Name...">
             <input type="number" id="newTeamPointsInput" placeholder="Initial Points..." value="100">
             <select id="newTeamColorSelect" style="margin-bottom:10px;">
               <option value="grad-orange-yellow">🍊 Orange Yellow Gradient</option>
               <option value="grad-red-orange">🔥 Red Orange Gradient</option>
-              <option value="grad-purple-white">💜 Purple White/Pink Gradient</option>
+              <option value="grad-purple-white">💜 Purple White Gradient</option>
               <option value="grad-emerald-green">🌲 Emerald Green Gradient</option>
               <option value="grad-deep-violet">⚡ Deep Violet Gradient</option>
             </select>
-            <button onclick="adminAddSubjectChallengeTeam()" style="width:100%; background:#f59e0b; color:#000;">➕ Create Subject Team</button>
+            <button onclick="adminAddSubjectChallengeTeam()" style="width:100%; background:#f59e0b; color:#000; margin-bottom:14px;">➕ Create Subject Team</button>
+            <div id="adminChallengeTeamsListContainer"></div>
           </div>
 
           <div id="adminSub7" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">👨‍🏫 Manage Faculty & Designation Badges</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">👨‍🏫 Manage Faculty & Committee</h4>
             <select id="teacherCategorySelect">
               <option value="usthad">Academic Faculty & Teachers</option>
               <option value="committee">Committee Office Bearers (Secretariat)</option>
             </select>
             <input type="text" id="teacherNameInput" placeholder="Full Name (e.g. Prof. Abdul Bari)...">
-            <input type="text" id="teacherDesignationInput" placeholder="Designation Badge (e.g. Principal, Faculty)...">
+            <input type="text" id="teacherDesignationInput" placeholder="Designation Badge (e.g. Principal, Secretary)...">
             <input type="text" id="teacherLocInput" placeholder="Address & Location Name...">
             <input type="text" id="teacherMapInput" placeholder="Google Map Link...">
-            <input type="text" id="teacherSubInput" placeholder="Subjects Handled / Roles...">
-            <input type="text" id="teacherContactInput" placeholder="WhatsApp / Contact Phone Number...">
+            <input type="text" id="teacherSubInput" placeholder="Subjects Handled / Role...">
+            <input type="text" id="teacherContactInput" placeholder="WhatsApp Phone Number...">
             <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🖼️ Choose Member Photo from Device:</label>
             <input type="file" id="teacherPhotoFile" accept="image/*" style="margin-bottom:12px;">
             <button onclick="adminAddTeacher()" style="width:100%; background:#0284c7;">➕ Add Member Securely</button>
@@ -644,10 +716,10 @@
   </div>
 </div>
 
-<!-- FACULTY DETAILS POP-UP MODAL -->
+<!-- FACULTY DETAILS MODAL -->
 <div id="facultyDetailModal" class="modal hidden">
   <div class="modal-content" style="text-align:center; width:360px;">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">👨‍🏫 Faculty Profile</h3>
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">Profile Details</h3>
     <span id="modalFacultyBadge" class="designation-badge" style="margin-bottom:8px;"></span>
     <img id="modalFacultyPhoto" src="" style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 12px auto;">
     <h2 id="modalFacultyName" style="margin:4px 0; font-size:18px; color:#fff; font-weight:800;"></h2>
@@ -661,14 +733,67 @@
   </div>
 </div>
 
-<!-- STUDENT DETAILS POP-UP MODAL -->
+<!-- PDF REPORT CARD MODAL -->
+<div id="pdfReportModal" class="modal hidden">
+  <div class="modal-content" style="width:500px;">
+    <div id="pdfReportPrintableArea" class="pdf-report-card">
+      <div class="pdf-report-header">
+        <h3 style="margin:0; font-size:16px; color:#0284c7; font-weight:900;">ABDUL BARI ACADEMY PUTHUPPARMBA</h3>
+        <small style="color:#64748b; font-weight:bold;">OFFICIAL EXAM PERFORMANCE STATEMENT</small>
+      </div>
+      <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:12px;">
+        <div>
+          <p style="margin:2px 0;"><b>Student:</b> <span id="pdfStudentName"></span></p>
+          <p style="margin:2px 0;"><b>Reg No:</b> <span id="pdfStudentRegNo"></span></p>
+          <p style="margin:2px 0;"><b>Class:</b> <span id="pdfStudentClass"></span></p>
+        </div>
+        <div style="text-align:right;">
+          <p style="margin:2px 0;"><b>Subject:</b> <span id="pdfExamSubject"></span></p>
+          <p style="margin:2px 0;"><b>Exam:</b> <span id="pdfExamType"></span></p>
+          <p style="margin:2px 0;"><b>Date:</b> <span id="pdfReportDate"></span></p>
+        </div>
+      </div>
+      <div style="background:#e2e8f0; padding:12px; border-radius:10px; margin-bottom:14px; text-align:center;">
+        <div style="font-size:26px; font-weight:900; color:#0f172a;" id="pdfScoreText">0 / 100</div>
+        <div style="font-size:12px; font-weight:bold; color:#475569;" id="pdfPercentageText">Percentage: 0%</div>
+      </div>
+      <div style="text-align:center;" id="pdfBadgeContainer"></div>
+    </div>
+    <div style="display:flex; gap:10px; margin-top:14px;">
+      <button onclick="window.print()" style="flex:1; background:#0284c7;">🖨️ Print / Download PDF</button>
+      <button onclick="document.getElementById('pdfReportModal').classList.add('hidden')" style="flex:1; background:#475569;">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT TEAM MODAL -->
+<div id="editTeamModal" class="modal hidden">
+  <div class="modal-content">
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">✏️ Edit Challenge Team</h3>
+    <input type="hidden" id="editTeamKey">
+    <input type="hidden" id="editTeamId">
+    <input type="text" id="editTeamName" placeholder="Team Name...">
+    <input type="number" id="editTeamPoints" placeholder="Points...">
+    <select id="editTeamColorSelect" style="margin-bottom:10px;">
+      <option value="grad-orange-yellow">🍊 Orange Yellow Gradient</option>
+      <option value="grad-red-orange">🔥 Red Orange Gradient</option>
+      <option value="grad-purple-white">💜 Purple White Gradient</option>
+      <option value="grad-emerald-green">🌲 Emerald Green Gradient</option>
+      <option value="grad-deep-violet">⚡ Deep Violet Gradient</option>
+    </select>
+    <button onclick="saveAdminTeamEdit()" style="width:100%; background:#10b981;">💾 Save Changes</button>
+    <button onclick="document.getElementById('editTeamModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
+  </div>
+</div>
+
+<!-- STUDENT DETAILS MODAL -->
 <div id="studentDetailModal" class="modal hidden">
   <div class="modal-content" style="text-align:center; width:350px;">
     <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📋 Student Full Details</h3>
     <img id="modalStudentPhoto" src="" style="width:85px; height:85px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 12px auto;">
     <h2 id="modalStudentName" style="margin:4px 0; font-size:17px; color:#fff;"></h2>
     <div style="background:rgba(0,0,0,0.3); padding:14px; border-radius:14px; text-align:left; margin-top:12px; font-size:12px; line-height:1.6;">
-      <p style="margin:4px 0;"><b>🏷️ Academy:</b> <span>Abdul Bari Academy Puthupparmba</span></p>
+      <p style="margin:4px 0;"><b>🏷️ Category:</b> <span id="modalStudentCategory" style="color:#ffd000; font-weight:bold;"></span></p>
       <p style="margin:4px 0;"><b>📌 Reg No:</b> <span id="modalStudentRegNo"></span></p>
       <p style="margin:4px 0;"><b>📁 Class Batch:</b> <span id="modalStudentClass"></span></p>
       <p style="margin:4px 0;"><b>👨‍👧 Father's Name:</b> <span id="modalStudentFather"></span></p>
@@ -690,6 +815,11 @@
     <input type="text" id="editStudentFather" placeholder="Father Name...">
     <input type="text" id="editStudentPhone" placeholder="WhatsApp Phone Number...">
     <input type="text" id="editStudentRegNo" placeholder="Register No...">
+    <select id="editStudentCategory">
+      <option value="Senior">Senior Student</option>
+      <option value="Junior">Junior Student</option>
+      <option value="Sub Junior">Sub Junior Student</option>
+    </select>
     <button onclick="saveStudentEdit()" style="width:100%; background:#10b981; margin-top:10px;">💾 Save Changes</button>
     <button onclick="document.getElementById('editStudentModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
   </div>
@@ -698,20 +828,20 @@
 <!-- EDIT FACULTY MODAL -->
 <div id="editTeacherModal" class="modal hidden">
   <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">✏️ Edit Faculty Member</h3>
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">✏️ Edit Member Details</h3>
     <input type="hidden" id="editTeacherId">
     <input type="text" id="editTeacherName" placeholder="Full Name">
     <input type="text" id="editTeacherBadge" placeholder="Designation Badge">
     <input type="text" id="editTeacherLoc" placeholder="Address & Location">
     <input type="text" id="editTeacherMap" placeholder="Google Map Link">
-    <input type="text" id="editTeacherSub" placeholder="Subjects / Designation">
+    <input type="text" id="editTeacherSub" placeholder="Subjects / Role">
     <input type="text" id="editTeacherContact" placeholder="Contact Phone Number">
     <button onclick="saveTeacherEdit()" style="width:100%; background:#10b981; margin-top:10px;">💾 Save Details</button>
     <button onclick="document.getElementById('editTeacherModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
   </div>
 </div>
 
-<!-- PUBLIC PHOTO & STUDENT UPLOAD MODAL -->
+<!-- PUBLIC PHOTO UPLOAD MODAL -->
 <div id="publicAddPhotoModal" class="modal hidden">
   <div class="modal-content">
     <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📸 Student Photo Upload</h3>
@@ -728,11 +858,16 @@
 <!-- PUBLIC SELF REGISTER MODAL -->
 <div id="publicSelfRegisterModal" class="modal hidden">
   <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">➕ Public Student Registration & Photo</h3>
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">➕ Public Student Registration</h3>
     <select id="publicRegClassSelect" style="margin-bottom:10px;"></select>
     <input type="text" id="publicRegName" placeholder="Student Name with Initial...">
     <input type="text" id="publicRegFather" placeholder="Father Name...">
     <input type="text" id="publicRegPhone" placeholder="Parent WhatsApp Number...">
+    <select id="publicRegCategory">
+      <option value="Senior">Senior Student</option>
+      <option value="Junior">Junior Student</option>
+      <option value="Sub Junior">Sub Junior Student</option>
+    </select>
     <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">Select Photo from Device:</label>
     <input type="file" id="publicRegPhotoFile" accept="image/*" style="margin-bottom:12px;">
     <button onclick="savePublicSelfRegisteredStudent()" style="width:100%; background:#10b981;">Submit & Register</button>
@@ -744,10 +879,15 @@
   <div class="modal-content">
     <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">➕ Add Student to Class</h3>
     <input type="hidden" id="quickAddStudentClass">
-    <input type="text" id="quickStudentName" placeholder="Student Name with Initial...">
+    <input type="text" id="quickStudentName" placeholder="Student Name...">
     <input type="text" id="quickStudentFather" placeholder="Father Name...">
     <input type="text" id="quickStudentPhone" placeholder="WhatsApp Phone Number...">
     <input type="text" id="quickStudentRegisterNo" placeholder="Register No / ID Number...">
+    <select id="quickStudentCategory">
+      <option value="Senior">Senior Student</option>
+      <option value="Junior">Junior Student</option>
+      <option value="Sub Junior">Sub Junior Student</option>
+    </select>
     <input type="file" id="quickStudentPhoto" accept="image/*" style="margin-bottom:10px;">
     <button onclick="saveQuickStudentForClass()" style="width:100%; background:#10b981;">Register Student</button>
     <button onclick="document.getElementById('quickAddStudentModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
@@ -774,7 +914,7 @@
   </div>
 </div>
 
-<!-- FIREBASE REALTIME DATABASE SYNC & GLOBAL JS -->
+<!-- FIREBASE REALTIME DATABASE WITH OFFLINE PERSISTENCE -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
   import { getDatabase, ref, onValue, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
@@ -782,11 +922,11 @@
   const firebaseConfig = {
     apiKey: "AIzaSyB5e0DcxX-5AWIgHBU5yyD4-UdM4rXYjhg",
     authDomain: "abdul-bari-academy-attendence.firebaseapp.com",
+    databaseURL: "https://abdul-bari-academy-attendence-default-rtdb.firebaseio.com",
     projectId: "abdul-bari-academy-attendence",
     storageBucket: "abdul-bari-academy-attendence.firebasestorage.app",
     messagingSenderId: "376010557860",
-    appId: "1:376010557860:web:624d8b620c707773f59931",
-    measurementId: "G-8E94QZXLNQ"
+    appId: "1:376010557860:web:624d8b620c707773f59931"
   };
 
   const app = initializeApp(firebaseConfig);
@@ -799,6 +939,7 @@
   let currentActiveSubjectName = '';
   let selectedAttendanceDate = new Date().toISOString().split('T')[0];
   let currentZoomFactor = 1.0;
+  let selectedStudentCategory = 'All';
 
   let defaultDbData = {
     adminCreds: { user: 'admin', pass: '123' },
@@ -809,7 +950,12 @@
     classes: { 'College Studies': ['BA Degree'], 'School Studies': ['Plus One', 'Plus Two'] },
     classTeachers: { 'Plus One': 'Prof. Abdul Bari' },
     subjects: { 'BA Degree': ['Fiqh', 'Aqeedah'], 'Plus One': ['English', 'Arabic', 'Fiqh'] },
-    students: { 'Plus One': [{ id: 101, name: 'Ali Hassan K', father: 'Hassan', phone: '9847000000', regNo: 'ABA-101', photo: '', isRegistered: true, status: 'Present' }] },
+    students: {
+      'Plus One': [
+        { id: 101, name: 'Ali Hassan K', father: 'Hassan', phone: '9847000000', regNo: 'ABA-101', photo: '', category: 'Senior', isRegistered: true, status: 'Present' },
+        { id: 102, name: 'Mohammed Ansil', father: 'Khader', phone: '9847111122', regNo: 'ABA-102', photo: '', category: 'Junior', isRegistered: true, status: 'Present' }
+      ]
+    },
     usthads: [
       { id: 1, type: 'usthad', badge: 'Principal', name: 'Prof. Abdul Bari', loc: 'Puthupparmba Main Road', mapLink: 'https://maps.google.com', sub: 'Fiqh, Arabic, Islamic Studies', contact: '9847000000', photo: 'https://via.placeholder.com/100' },
       { id: 2, type: 'committee', badge: 'General Secretary', name: 'Sayyid Ali Hakim', loc: 'Puthupparmba', mapLink: 'https://maps.google.com', sub: 'Secretariat Officer', contact: '9847111111', photo: 'https://via.placeholder.com/100' }
@@ -825,8 +971,10 @@
     attendanceRecords: {}
   };
 
+  // Cache first from localStorage for instant offline access
   window.dbData = JSON.parse(localStorage.getItem('ab_academy_final_db')) || defaultDbData;
 
+  // Firebase Realtime Sync
   onValue(dbRef, (snapshot) => {
     const data = snapshot.val();
     if (data) {
@@ -840,10 +988,11 @@
 
   window.saveData = function() { 
     localStorage.setItem('ab_academy_final_db', JSON.stringify(window.dbData)); 
-    set(dbRef, window.dbData);
+    try { set(dbRef, window.dbData); } catch(e) {}
     refreshUI();
   };
 
+  // Sound Synth Feedback
   function playClickSound() {
     try {
       const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -867,7 +1016,7 @@
       const gain = audioCtx.createGain();
       osc.type = 'triangle';
       osc.frequency.setValueAtTime(587.33, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.3);
+      osc.frequency.exponentialRampToValueAtTime(880, audioCtx.currentTime + 0.35);
       gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
       osc.connect(gain);
@@ -894,6 +1043,14 @@
 
     if(document.getElementById('pointsTab') && !document.getElementById('pointsTab').classList.contains('hidden')) populateChallengeFilters();
   }
+
+  window.setStudentCategoryFilter = function(cat, btn) {
+    playClickSound();
+    selectedStudentCategory = cat;
+    document.querySelectorAll('.category-filter-btn').forEach(b => b.classList.remove('active'));
+    if(btn) btn.classList.add('active');
+    renderDashStudentsTable();
+  };
 
   window.toggleStudentDirectory = function() {
     playClickSound();
@@ -944,6 +1101,7 @@
     if(btnEl) btnEl.classList.add('active');
     if(secId === 'adminSub3') populateSubjectManageDropdown();
     if(secId === 'adminSubManageStudents') populateAdminManageStudentsDropdown();
+    if(secId === 'adminSub6') renderAdminChallengeTeamsList();
   };
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -1031,12 +1189,10 @@
     const newPass = document.getElementById('newAdminPass').value.trim();
 
     if (currentInput !== window.dbData.adminCreds.pass) {
-      alert("❌ Current password is incorrect!");
-      return;
+      alert("❌ Current password is incorrect!"); return;
     }
     if (!newUser || !newPass) {
-      alert("⚠️ Please enter new username and password!");
-      return;
+      alert("⚠️ Enter new username & password!"); return;
     }
 
     window.dbData.adminCreds.user = newUser;
@@ -1099,11 +1255,11 @@
     }
     committeeMembers.forEach(m => {
       grid.innerHTML += `
-        <div class="folder-card" style="background:linear-gradient(135deg, #0284c7, #0b132b); padding:16px; text-align:center;" onclick="showFacultyDetailsModal(${m.id})">
-          <span class="designation-badge" style="margin-bottom:6px;">${m.badge || 'Committee'}</span>
-          <img src="${m.photo || 'https://via.placeholder.com/50'}" style="width:50px; height:50px; border-radius:50%; object-fit:cover; border:2px solid #ffd000; margin:4px auto 8px auto;">
+        <div class="committee-card-modern" onclick="showFacultyDetailsModal(${m.id})">
+          <span class="committee-badge">${m.badge || 'Committee Officer'}</span>
+          <img src="${m.photo || 'https://via.placeholder.com/60'}" style="width:60px; height:60px; border-radius:50%; object-fit:cover; border:2px solid #a855f7; margin:8px auto; display:block;">
           <h4 style="margin:0; font-size:14px; color:#fff; font-weight:800;">${m.name}</h4>
-          <p style="margin:3px 0 0 0; font-size:11px; color:#38bdf8; font-weight:700;">${m.sub || 'Office Bearer'}</p>
+          <p style="margin:3px 0 0 0; font-size:11px; color:#ec4899; font-weight:700;">${m.sub || 'Secretariat Member'}</p>
         </div>
       `;
     });
@@ -1119,48 +1275,39 @@
     for(let cls in window.dbData.students) {
       if(selectedClass && selectedClass !== cls) continue;
       window.dbData.students[cls].forEach(s => {
+        let stCategory = s.category || 'Senior';
+        if(selectedStudentCategory !== 'All' && stCategory !== selectedStudentCategory) return;
+
         if(!q || s.name.toLowerCase().includes(q)) {
           found = true;
-          let photoBtn = `<button style="background:#0284c7; color:#fff; padding:3px 6px; font-size:9px; font-weight:bold; border-radius:5px;" onclick="openPublicPhotoUploadModal(${s.id}, '${cls}', '${s.name}')">📸 Add Photo</button>`;
+          let photoBtn = `<button style="background:#0284c7; color:#fff; padding:3px 6px; font-size:9px; font-weight:bold; border-radius:5px;" onclick="openPublicPhotoUploadModal(${s.id}, '${cls}', '${s.name}')">📸 Photo</button>`;
           let adminBtns = window.isAdmin ? `<button class="btn-delete" onclick="deleteStudent(${s.id}, '${cls}')" style="margin-left:2px; padding:3px 6px; font-size:9px;">🗑️</button>` : '';
           let phoneClean = (s.phone || '').replace(/\D/g, '');
           let waBtn = `<a href="https://wa.me/91${phoneClean}" target="_blank" class="btn-whatsapp" style="padding:3px 6px; font-size:9px;">💬 WA</a>`;
 
           let tr = document.createElement('tr');
           tr.style.cursor = "pointer";
-          tr.title = "Right-click or Long-press to view full details";
           tr.innerHTML = `
             <td><img src="${s.photo || 'https://via.placeholder.com/35'}" style="width:30px; height:30px; border-radius:50%; object-fit:cover;"></td>
             <td>${c++}</td>
             <td><b>${s.name}</b><br><small style="color:#38bdf8; font-size:9px;">${cls}</small></td>
-            <td>
-              ${photoBtn}
-              ${waBtn} ${adminBtns}
-            </td>
+            <td><span style="color:#ffd000; font-weight:bold; font-size:10px;">${stCategory}</span></td>
+            <td>${photoBtn} ${waBtn} ${adminBtns}</td>
           `;
 
-          tr.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-            showStudentDetailsModal(s, cls);
-          });
-
-          let pressTimer;
-          tr.addEventListener('touchstart', () => {
-            pressTimer = setTimeout(() => { showStudentDetailsModal(s, cls); }, 600);
-          });
-          tr.addEventListener('touchend', () => { clearTimeout(pressTimer); });
-
+          tr.addEventListener('contextmenu', (e) => { e.preventDefault(); showStudentDetailsModal(s, cls); });
           tbody.appendChild(tr);
         }
       });
     }
-    if(!found) tbody.innerHTML = `<tr><td colspan="4" style="color:#ffd000; padding:12px;">No student records found.</td></tr>`;
+    if(!found) tbody.innerHTML = `<tr><td colspan="5" style="color:#ffd000; padding:12px;">No student records found.</td></tr>`;
   };
 
   function showStudentDetailsModal(student, clsName) {
     playClickSound();
     document.getElementById('modalStudentPhoto').src = student.photo || 'https://via.placeholder.com/100';
     document.getElementById('modalStudentName').innerText = student.name;
+    document.getElementById('modalStudentCategory').innerText = student.category || 'Senior';
     document.getElementById('modalStudentRegNo').innerText = student.regNo || 'ABA-' + student.id;
     document.getElementById('modalStudentClass').innerText = clsName;
     document.getElementById('modalStudentFather').innerText = student.father || 'N/A';
@@ -1168,6 +1315,41 @@
     document.getElementById('modalStudentStatus').innerText = student.status || 'Present';
     document.getElementById('studentDetailModal').classList.remove('hidden');
   }
+
+  // AUTOCOMPLETE FOR STUDENT REGISTRATION LOOKUP
+  window.handleStudentAutocomplete = function(val) {
+    const listDiv = document.getElementById('regStudentAutocompleteList');
+    if(!val || val.length < 2) { listDiv.classList.add('hidden'); return; }
+    
+    let matches = [];
+    for(let cls in window.dbData.students) {
+      window.dbData.students[cls].forEach(s => {
+        if(s.name.toLowerCase().includes(val.toLowerCase())) {
+          matches.push({ ...s, clsName: cls });
+        }
+      });
+    }
+
+    if(matches.length === 0) { listDiv.classList.add('hidden'); return; }
+
+    let html = '';
+    matches.slice(0, 5).forEach(m => {
+      html += `<div class="autocomplete-item" onclick="selectAutocompleteStudent('${m.name}', '${m.father || ''}', '${m.phone || ''}', '${m.regNo || ''}', '${m.category || 'Senior'}')">
+        <b>${m.name}</b> (${m.clsName}) - ${m.phone || 'No phone'}
+      </div>`;
+    });
+    listDiv.innerHTML = html;
+    listDiv.classList.remove('hidden');
+  };
+
+  window.selectAutocompleteStudent = function(name, father, phone, regNo, category) {
+    document.getElementById('regStudentName').value = name;
+    document.getElementById('regFatherName').value = father;
+    document.getElementById('regPhoneNum').value = phone;
+    document.getElementById('regStudentRegisterNo').value = regNo;
+    document.getElementById('regStudentCategory').value = category;
+    document.getElementById('regStudentAutocompleteList').classList.add('hidden');
+  };
 
   window.openPublicPhotoUploadModal = function(studentId, cls, studentName) {
     playClickSound();
@@ -1211,42 +1393,31 @@
     const name = document.getElementById('publicRegName').value.trim();
     const father = document.getElementById('publicRegFather').value.trim();
     const phone = document.getElementById('publicRegPhone').value.trim();
+    const category = document.getElementById('publicRegCategory').value;
     const fileInput = document.getElementById('publicRegPhotoFile');
 
     if(cls && name) {
       handleImageUpload(fileInput, (photoBase64) => {
         if(!window.dbData.students[cls]) window.dbData.students[cls] = [];
         window.dbData.students[cls].push({
-          id: Date.now(),
-          name: name,
-          father: father,
-          phone: phone,
+          id: Date.now(), name, father, phone,
           regNo: 'ABA-' + Date.now().toString().slice(-4),
-          photo: photoBase64,
-          isRegistered: true,
-          status: 'Present'
+          category: category, photo: photoBase64, isRegistered: true, status: 'Present'
         });
         window.saveData();
         document.getElementById('publicSelfRegisterModal').classList.add('hidden');
-        alert("✅ Student & Photo registered successfully!");
-        document.getElementById('publicRegName').value = "";
-        document.getElementById('publicRegFather').value = "";
-        document.getElementById('publicRegPhone').value = "";
-        fileInput.value = "";
+        alert("✅ Student registered successfully!");
       });
-    } else {
-      alert("⚠️ Please enter student name!");
-    }
+    } else alert("⚠️ Please enter student name!");
   };
 
   window.deleteStudent = function(id, cls) {
-    if(confirm("⚠️ Delete this student?")) {
+    if(confirm("⚠️ Delete student?")) {
       window.dbData.students[cls] = window.dbData.students[cls].filter(s => s.id !== id);
       window.saveData();
     }
   };
 
-  // ADMIN MANAGE STUDENTS LIST (EDIT/DELETE)
   function populateAdminManageStudentsDropdown() {
     const sel = document.getElementById('adminManageStudentClassSelect');
     if(!sel) return;
@@ -1265,14 +1436,14 @@
 
     let students = window.dbData.students[cls] || [];
     if(students.length === 0) {
-      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">No students found in this class.</p>`;
-      return;
+      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">No students found in this class.</p>`; return;
     }
 
-    let html = `<table><thead><tr><th>Name</th><th>Father</th><th>Phone</th><th>Actions</th></tr></thead><tbody>`;
+    let html = `<table><thead><tr><th>Name</th><th>Category</th><th>Father</th><th>Phone</th><th>Actions</th></tr></thead><tbody>`;
     students.forEach(s => {
       html += `<tr>
         <td><b>${s.name}</b><br><small style="color:#38bdf8;">${s.regNo || ''}</small></td>
+        <td><span style="color:#ffd000; font-weight:bold;">${s.category || 'Senior'}</span></td>
         <td>${s.father || '-'}</td>
         <td>${s.phone || '-'}</td>
         <td>
@@ -1296,6 +1467,7 @@
     document.getElementById('editStudentFather').value = student.father || '';
     document.getElementById('editStudentPhone').value = student.phone || '';
     document.getElementById('editStudentRegNo').value = student.regNo || '';
+    document.getElementById('editStudentCategory').value = student.category || 'Senior';
 
     const sel = document.getElementById('editStudentClassSelect');
     sel.innerHTML = '';
@@ -1322,9 +1494,9 @@
     student.father = document.getElementById('editStudentFather').value.trim();
     student.phone = document.getElementById('editStudentPhone').value.trim();
     student.regNo = document.getElementById('editStudentRegNo').value.trim();
+    student.category = document.getElementById('editStudentCategory').value;
 
     if(oldClass !== newClass) {
-      // Move student to new class array
       studentList.splice(index, 1);
       if(!window.dbData.students[newClass]) window.dbData.students[newClass] = [];
       window.dbData.students[newClass].push(student);
@@ -1333,14 +1505,13 @@
     window.saveData();
     document.getElementById('editStudentModal').classList.add('hidden');
     renderAdminStudentsList();
-    alert("✅ Student details updated successfully!");
+    alert("✅ Student updated successfully!");
   };
 
   window.adminDeleteStudentRecord = function(id, cls) {
     if(confirm("⚠️ Are you sure you want to delete this student?")) {
       window.dbData.students[cls] = window.dbData.students[cls].filter(s => s.id !== id);
-      window.saveData();
-      renderAdminStudentsList();
+      window.saveData(); renderAdminStudentsList();
     }
   };
 
@@ -1351,27 +1522,16 @@
     const errorNotice = document.getElementById('parentSearchErrorNotice');
     const dashboardDiv = document.getElementById('parentStudentDashboard');
 
-    if(!nameQuery || !phoneQuery) { 
-      alert("Please enter Student Name and Parent Phone Number!"); 
-      return; 
-    }
+    if(!nameQuery || !phoneQuery) { alert("Please enter Student Name and Parent Phone Number!"); return; }
 
-    let matchedStudent = null;
-    let matchedClass = '';
-
+    let matchedStudent = null; let matchedClass = '';
     for(let cls in window.dbData.students) {
       let st = window.dbData.students[cls].find(s => s.name.toLowerCase().includes(nameQuery) && (s.phone || '').includes(phoneQuery));
-      if(st) {
-        matchedStudent = st;
-        matchedClass = cls;
-        break;
-      }
+      if(st) { matchedStudent = st; matchedClass = cls; break; }
     }
 
     if(matchedStudent) {
-      matchedStudent.isRegistered = true;
-      window.saveData();
-
+      matchedStudent.isRegistered = true; window.saveData();
       errorNotice.classList.add('hidden');
       dashboardDiv.classList.remove('hidden');
       document.getElementById('parentStudentHeaderName').innerText = `Student: ${matchedStudent.name}`;
@@ -1379,19 +1539,15 @@
       
       let content = `
         <div style="background:rgba(0,0,0,0.3); padding:14px; border-radius:12px; margin-top:12px; text-align:center;">
-          <p style="color:#10b981; font-weight:bold; font-size:13px; margin:0 0 8px 0;">🎉 Record verified successfully!</p>
+          <p style="color:#10b981; font-weight:bold; font-size:13px; margin:0 0 8px 0;">🎉 Record verified!</p>
           <p style="margin:0; font-size:13px; color:#fff; text-align:left;"><b>Attendance Status:</b> <span style="color:#10b981;">${matchedStudent.status || 'Present'}</span></p>
-          <p style="margin:4px 0 0 0; font-size:12px; color:#cbd5e1; text-align:left;"><b>Father Name:</b> ${matchedStudent.father || '-'}</p>
-          <br>
-          <button style="background:#0284c7; font-size:11px; padding:6px 12px; border-radius:8px;" onclick="openPublicPhotoUploadModal(${matchedStudent.id}, '${matchedClass}', '${matchedStudent.name}')">📸 Add / Update Your Photo</button>
+          <p style="margin:4px 0 0 0; font-size:12px; color:#cbd5e1; text-align:left;"><b>Category:</b> ${matchedStudent.category || 'Senior'}</p>
+          <button style="background:#0284c7; font-size:11px; padding:6px 12px; border-radius:8px; margin-top:10px;" onclick="openPublicPhotoUploadModal(${matchedStudent.id}, '${matchedClass}', '${matchedStudent.name}')">📸 Add / Update Photo</button>
         </div>
       `;
       document.getElementById('parentStudentDetailsContent').innerHTML = content;
-      alert("🎉 Student record found successfully!");
     } else {
-      dashboardDiv.classList.add('hidden');
-      errorNotice.classList.remove('hidden');
-      alert("⚠️ Student record not found or incorrect details.");
+      dashboardDiv.classList.add('hidden'); errorNotice.classList.remove('hidden');
     }
   };
 
@@ -1415,17 +1571,23 @@
       let adminBtns = window.isAdmin ? `<div style="margin-top:6px;"><button class="btn-edit" onclick="openEditTeacherModal(${u.id})">✏️ Edit</button><button class="btn-delete" onclick="deleteTeacher(${u.id})">🗑️ Delete</button></div>` : '';
 
       if(!q || u.name.toLowerCase().includes(q) || teacherLocStr.toLowerCase().includes(q) || (u.sub || '').toLowerCase().includes(q)) {
-        const cardHtml = `<div class="faculty-card-modern" onclick="showFacultyDetailsModal(${u.id})">
-          <span class="designation-badge">⭐ ${u.badge || (u.type === 'committee' ? 'Committee' : 'Faculty')}</span>
-          <img src="${u.photo || 'https://via.placeholder.com/80'}" class="faculty-avatar">
-          <h3 style="margin:6px 0 2px 0; font-size:16px; color:#ffd000; font-weight:800;">${u.name}</h3>
-          <p style="margin:0; font-size:11px; color:#38bdf8; font-weight:600;">${u.sub || 'Faculty Member'}</p>
-          ${contactBtns}
-          <div onclick="event.stopPropagation()">${adminBtns}</div>
-        </div>`;
-
-        if(u.type === 'committee') committeeGrid.innerHTML += cardHtml;
-        else usthadGrid.innerHTML += cardHtml;
+        if(u.type === 'committee') {
+          committeeGrid.innerHTML += `<div class="committee-card-modern" onclick="showFacultyDetailsModal(${u.id})">
+            <span class="committee-badge">⭐ ${u.badge || 'Committee Officer'}</span>
+            <img src="${u.photo || 'https://via.placeholder.com/80'}" class="faculty-avatar" style="border-color:#a855f7;">
+            <h3 style="margin:6px 0 2px 0; font-size:16px; color:#ffd000; font-weight:800;">${u.name}</h3>
+            <p style="margin:0; font-size:11px; color:#ec4899; font-weight:600;">${u.sub || 'Secretariat Member'}</p>
+            ${contactBtns} <div onclick="event.stopPropagation()">${adminBtns}</div>
+          </div>`;
+        } else {
+          usthadGrid.innerHTML += `<div class="faculty-card-modern" onclick="showFacultyDetailsModal(${u.id})">
+            <span class="designation-badge">⭐ ${u.badge || 'Faculty'}</span>
+            <img src="${u.photo || 'https://via.placeholder.com/80'}" class="faculty-avatar">
+            <h3 style="margin:6px 0 2px 0; font-size:16px; color:#ffd000; font-weight:800;">${u.name}</h3>
+            <p style="margin:0; font-size:11px; color:#38bdf8; font-weight:600;">${u.sub || 'Faculty Member'}</p>
+            ${contactBtns} <div onclick="event.stopPropagation()">${adminBtns}</div>
+          </div>`;
+        }
       }
     });
   }
@@ -1444,9 +1606,7 @@
     let mapDiv = document.getElementById('modalFacultyMapContainer');
     if(u.mapLink) {
       mapDiv.innerHTML = `<a href="${u.mapLink}" target="_blank" style="color:#38bdf8; font-size:12px; font-weight:bold;">📍 View Google Map Location</a>`;
-    } else {
-      mapDiv.innerHTML = '';
-    }
+    } else mapDiv.innerHTML = '';
     document.getElementById('facultyDetailModal').classList.remove('hidden');
   };
 
@@ -1487,7 +1647,7 @@
       teacher.contact = document.getElementById('editTeacherContact').value.trim();
       window.saveData();
       document.getElementById('editTeacherModal').classList.add('hidden');
-      alert("✅ Teacher Updated Successfully!");
+      alert("✅ Member Updated Successfully!");
     }
   };
 
@@ -1536,7 +1696,7 @@
         if(!window.dbData.classTeachers) window.dbData.classTeachers = {};
         window.dbData.classTeachers[name] = teacher;
       }
-      window.saveData(); alert("✅ Class Added Successfully!");
+      window.saveData(); alert("✅ Class Added!");
       document.getElementById('newClassNameInput').value = "";
     }
   };
@@ -1549,7 +1709,7 @@
         let tName = (window.dbData.classTeachers || {})[cls] || 'Not Assigned';
         container.innerHTML += `<div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
           <div><b>📁 ${cls} (${portal})</b><br><small style="color:#38bdf8;">Teacher: ${tName}</small></div>
-          <button class="btn-delete" onclick="deleteClass('${portal}', '${cls}')">Delete Class</button>
+          <button class="btn-delete" onclick="deleteClass('${portal}', '${cls}')">Delete</button>
         </div>`;
       });
     }
@@ -1558,8 +1718,7 @@
   window.deleteClass = function(portal, cls) {
     if(confirm(`Delete class ${cls}?`)) {
       window.dbData.classes[portal] = window.dbData.classes[portal].filter(c => c !== cls);
-      delete window.dbData.subjects[cls];
-      window.saveData();
+      delete window.dbData.subjects[cls]; window.saveData();
     }
   };
 
@@ -1576,16 +1735,12 @@
   window.renderAdminSubjectsList = function() {
     const cls = document.getElementById('subjectManageClassSelect').value;
     const container = document.getElementById('adminSubjectsContainer');
-    if(!container) return;
-    container.innerHTML = "";
-    if(!cls) {
-      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">Please select a class to manage subjects.</p>`;
-      return;
-    }
+    if(!container) return; container.innerHTML = "";
+    if(!cls) return;
+
     let subs = window.dbData.subjects[cls] || [];
     if(subs.length === 0) {
-      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">No subjects added for ${cls} yet.</p>`;
-      return;
+      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">No subjects added for ${cls} yet.</p>`; return;
     }
     let html = '<div style="display:flex; flex-direction:column; gap:6px;">';
     subs.forEach(sub => {
@@ -1601,26 +1756,20 @@
   window.adminAddSubjectToClass = function() {
     const cls = document.getElementById('subjectManageClassSelect').value;
     const subName = document.getElementById('newSubjectNameInput').value.trim();
-    if(!cls) { alert("Please select a class!"); return; }
-    if(!subName) { alert("Please enter a subject name!"); return; }
+    if(!cls || !subName) return;
     
     if(!window.dbData.subjects[cls]) window.dbData.subjects[cls] = [];
     if(!window.dbData.subjects[cls].includes(subName)) {
-      window.dbData.subjects[cls].push(subName);
-      window.saveData();
-      alert(`✅ Subject "${subName}" added to ${cls}!`);
+      window.dbData.subjects[cls].push(subName); window.saveData();
       document.getElementById('newSubjectNameInput').value = "";
       renderAdminSubjectsList();
-    } else {
-      alert("⚠️ Subject already exists in this class!");
     }
   };
 
   window.adminDeleteSubjectFromClass = function(cls, subName) {
-    if(confirm(`Remove subject "${subName}" from ${cls}?`)) {
+    if(confirm(`Remove subject "${subName}"?`)) {
       window.dbData.subjects[cls] = window.dbData.subjects[cls].filter(s => s !== subName);
-      window.saveData();
-      renderAdminSubjectsList();
+      window.saveData(); renderAdminSubjectsList();
     }
   };
 
@@ -1651,7 +1800,7 @@
     currentActiveClassName = clsName;
     document.getElementById('classFolderLevel').classList.add('hidden');
     document.getElementById('subjectFolderLevel').classList.remove('hidden');
-    document.getElementById('selectedClassHeader').innerText = `Subjects for ${clsName} (${(window.dbData.students[clsName] || []).length} Active Students)`;
+    document.getElementById('selectedClassHeader').innerText = `Subjects for ${clsName}`;
     const grid = document.getElementById('subjectFoldersGrid'); grid.innerHTML = "";
     (window.dbData.subjects[clsName] || []).forEach(sub => {
       const card = document.createElement('div');
@@ -1667,12 +1816,11 @@
     currentActiveClassName = clsName; currentActiveSubjectName = subName;
     document.getElementById('subjectFolderLevel').classList.add('hidden');
     document.getElementById('subjectDetailLevel').classList.remove('hidden');
-    document.getElementById('topicTitle').innerText = `${clsName} - ${subName} Portal (${(window.dbData.students[clsName] || []).length} Students)`;
+    document.getElementById('topicTitle').innerText = `${clsName} - ${subName} Portal`;
     
     const datePicker = document.getElementById('attendanceDatePicker');
     if(datePicker) datePicker.value = selectedAttendanceDate;
     updateLiveDateDisplay();
-
     renderAttendanceTable(clsName); 
     renderSubjectStudyNotes();
   }
@@ -1689,25 +1837,18 @@
     const father = document.getElementById('quickStudentFather').value.trim();
     const phone = document.getElementById('quickStudentPhone').value.trim();
     const regNo = document.getElementById('quickStudentRegisterNo').value.trim() || ('ABA-' + Date.now().toString().slice(-4));
+    const category = document.getElementById('quickStudentCategory').value;
     const fileInput = document.getElementById('quickStudentPhoto');
 
     if(cls && name) {
       handleImageUpload(fileInput, (photoBase64) => {
         if(!window.dbData.students[cls]) window.dbData.students[cls] = [];
-        window.dbData.students[cls].push({ id: Date.now(), name, father, phone, regNo, photo: photoBase64, isRegistered: true, status: 'Present' });
+        window.dbData.students[cls].push({ id: Date.now(), name, father, phone, regNo, category, photo: photoBase64, isRegistered: true, status: 'Present' });
         window.saveData();
         document.getElementById('quickAddStudentModal').classList.add('hidden');
-        alert(`✅ Student "${name}" added to ${cls}!`);
-        document.getElementById('quickStudentName').value = "";
-        document.getElementById('quickStudentFather').value = "";
-        document.getElementById('quickStudentPhone').value = "";
-        document.getElementById('quickStudentRegisterNo').value = "";
-        fileInput.value = "";
         openSubjectStudentList(currentActiveClassName, currentActiveSubjectName);
       });
-    } else {
-      alert("⚠️ Please enter student name!");
-    }
+    } else alert("⚠️ Please enter student name!");
   };
 
   function updateLiveDateDisplay() {
@@ -1715,17 +1856,12 @@
     const badge = document.getElementById('dateAttendanceStatusBadge');
     if(label) {
       let d = new Date(selectedAttendanceDate);
-      let options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
-      label.innerText = d.toLocaleDateString('en-US', options);
+      label.innerText = d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' });
     }
     const attKey = `${currentActiveClassName}_${currentActiveSubjectName}_${selectedAttendanceDate}`;
     const hasRecord = window.dbData.attendanceRecords && window.dbData.attendanceRecords[attKey];
     if(badge) {
-      if(hasRecord) {
-        badge.innerHTML = `<span style="color:#10b981;">✅ Attendance Saved for this date</span>`;
-      } else {
-        badge.innerHTML = `<span style="color:#ef4444;">⚠️ Attendance Not Uploaded for Selected Date</span>`;
-      }
+      badge.innerHTML = hasRecord ? `<span style="color:#10b981;">✅ Attendance Saved</span>` : `<span style="color:#ef4444;">⚠️ Not Uploaded Yet</span>`;
     }
   }
 
@@ -1742,8 +1878,7 @@
     const tbody = document.getElementById('attendanceList'); tbody.innerHTML = "";
     let students = window.dbData.students[clsName] || [];
     if(students.length === 0) {
-      tbody.innerHTML = `<tr><td colspan="4" style="color:#ffd000;">No students found in ${clsName} yet.</td></tr>`;
-      return;
+      tbody.innerHTML = `<tr><td colspan="4" style="color:#ffd000;">No students found.</td></tr>`; return;
     }
 
     const attKey = `${clsName}_${currentActiveSubjectName}_${selectedAttendanceDate}`;
@@ -1783,16 +1918,10 @@
     updateLiveDateDisplay();
     renderAttendanceTable(clsName);
 
-    // AUTO WHATSAPP NOTIFICATION TRIGGER VIA BROWSER
-    if(window.dbData.notificationEnabled !== false && student && student.phone) {
+    if(window.dbData.notificationEnabled !== false && student && student.phone && nextStatus === 'Absent') {
       let phoneClean = student.phone.replace(/\D/g, '');
-      let msgText = `Hello Parent, update from Abdul Bari Academy for ${student.name}: Attendance status for ${currentActiveSubjectName} on ${selectedAttendanceDate} is recorded as: *${nextStatus}*.`;
-      if(nextStatus === 'Absent') {
-        msgText = `⚠️ Alert: Your student ${student.name} was marked *ABSENT* in ${currentActiveSubjectName} today (${selectedAttendanceDate}). - Abdul Bari Academy`;
-      }
-      let waLink = `https://wa.me/91${phoneClean}?text=${encodeURIComponent(msgText)}`;
-      // Automatically open WhatsApp message link if desired or prompt
-      console.log("Triggering WhatsApp notification alert:", waLink);
+      let msgText = `⚠️ Alert: ${student.name} was marked ABSENT in ${currentActiveSubjectName} on ${selectedAttendanceDate}. - Abdul Bari Academy`;
+      window.open(`https://wa.me/91${phoneClean}?text=${encodeURIComponent(msgText)}`, '_blank');
     }
   };
 
@@ -1811,7 +1940,7 @@
     window.saveData(); 
     updateLiveDateDisplay();
     renderAttendanceTable(currentActiveClassName);
-    alert(`✅ Marked all students as ${statusVal} for ${selectedAttendanceDate}!`);
+    alert(`✅ Marked all students as ${statusVal}!`);
   };
 
   function renderSubjectStudyNotes() {
@@ -1820,8 +1949,7 @@
     const notes = (window.dbData.studyNotes || {})[key] || [];
 
     if (notes.length === 0) {
-      display.innerHTML = `<span style="color:#ffd000;">No notes uploaded for ${currentActiveSubjectName} yet.</span>`;
-      return;
+      display.innerHTML = `<span style="color:#ffd000;">No notes uploaded yet.</span>`; return;
     }
 
     let html = '<ul style="padding-left:18px; margin:0;">';
@@ -1842,7 +1970,6 @@
       
       window.dbData.studyNotes[key].push({ title, url });
       window.saveData(); renderSubjectStudyNotes();
-      alert("✅ Study Note added!");
       document.getElementById('noteTitleInput').value = "";
       document.getElementById('noteUrlInput').value = "";
     }
@@ -1854,7 +1981,7 @@
       const reader = new FileReader();
       reader.onload = function(e) { callback(e.target.result); };
       reader.readAsDataURL(file);
-    } else { callback('https://via.placeholder.com/100'); }
+    } else callback('https://via.placeholder.com/100');
   }
 
   window.adminRegisterStudent = function() {
@@ -1863,15 +1990,15 @@
     const father = document.getElementById('regFatherName').value.trim();
     const phone = document.getElementById('regPhoneNum').value.trim();
     const regNo = document.getElementById('regStudentRegisterNo').value.trim() || ('ABA-' + Date.now().toString().slice(-4));
+    const category = document.getElementById('regStudentCategory').value;
     const fileInput = document.getElementById('regStudentPhotoFile');
 
     if(cls && name) {
       handleImageUpload(fileInput, (photoBase64) => {
         if(!window.dbData.students[cls]) window.dbData.students[cls] = [];
-        window.dbData.students[cls].push({ id: Date.now(), name, father, phone, regNo, photo: photoBase64, isRegistered: true, status: 'Present' });
+        window.dbData.students[cls].push({ id: Date.now(), name, father, phone, regNo, category, photo: photoBase64, isRegistered: true, status: 'Present' });
         window.saveData();
 
-        // Trigger WhatsApp alert on registration if enabled
         if(window.dbData.notificationEnabled !== false && phone) {
           let phoneClean = phone.replace(/\D/g, '');
           let regMsg = `🎉 Welcome to Abdul Bari Academy, ${name}! Your registration in ${cls} is successful. Reg No: ${regNo}.`;
@@ -1885,9 +2012,7 @@
         document.getElementById('regStudentRegisterNo').value = "";
         fileInput.value = "";
       });
-    } else {
-      alert("⚠️ Please select a class and enter student name!");
-    }
+    } else alert("⚠️ Please select class & enter student name!");
   };
 
   window.adminAddTeacher = function() {
@@ -1905,18 +2030,12 @@
         if(!window.dbData.usthads) window.dbData.usthads = [];
         window.dbData.usthads.push({ id: Date.now(), type, badge, name, loc, mapLink, sub, contact, photo: photoBase64 });
         window.saveData();
-        alert(`✅ Member "${name}" Added with Designation Badge & Photo Successfully!`);
+        alert(`✅ Member "${name}" Added Successfully!`);
         document.getElementById('teacherNameInput').value = "";
         document.getElementById('teacherDesignationInput').value = "";
-        document.getElementById('teacherLocInput').value = "";
-        document.getElementById('teacherMapInput').value = "";
-        document.getElementById('teacherSubInput').value = "";
-        document.getElementById('teacherContactInput').value = "";
         fileInput.value = "";
       });
-    } else {
-      alert("⚠️ Please enter name!");
-    }
+    } else alert("⚠️ Please enter name!");
   };
 
   function populateExamClassDropdown() {
@@ -1938,57 +2057,84 @@
     renderExamMarksTable();
   };
 
+  window.onExamSubjectChanged = function() { renderExamMarksTable(); };
+
   window.renderExamMarksTable = function() {
     const cls = document.getElementById('examClassSelect').value;
     const sub = document.getElementById('examSubjectSelect').value;
+    const examType = document.getElementById('examTypeSelect').value;
     const container = document.getElementById('examMarksContainer');
     if(!container) return; container.innerHTML = "";
 
     if(!cls || !sub) {
-      container.innerHTML = `<p style="color:#ffd000; text-align:center; padding:12px;">Please select Class and Subject to view exam mark sheet.</p>`;
-      return;
+      container.innerHTML = `<p style="color:#ffd000; text-align:center; padding:12px;">Select Class and Subject to view exam mark sheet.</p>`; return;
     }
 
     let students = window.dbData.students[cls] || [];
     if(students.length === 0) {
-      container.innerHTML = `<p style="color:#ffd000; text-align:center; padding:12px;">No students found in ${cls}.</p>`;
-      return;
+      container.innerHTML = `<p style="color:#ffd000; text-align:center; padding:12px;">No students found in ${cls}.</p>`; return;
     }
 
-    const examKey = `${cls}_${sub}`;
-    const marksData = (window.dbData.examMarksSubjectwise || {})[examKey];
-
-    if(!marksData) {
-      container.innerHTML = `<div style="text-align:center; background:rgba(239,68,68,0.2); padding:16px; border-radius:14px; border:1px solid #ef4444;"><h4 style="color:#ef4444; margin:0;">⚠️ Exam Marks Not Uploaded Yet</h4><p style="font-size:11px; color:#fca5a5; margin:4px 0 0 0;">Marks for ${sub} in ${cls} have not been uploaded by admin.</p></div>`;
-      return;
-    }
+    const examKey = `${cls}_${sub}_${examType}`;
+    const marksData = (window.dbData.examMarksSubjectwise || {})[examKey] || {};
+    const maxMarks = marksData.maxMarks || 100;
 
     let html = `
-      <h4 style="color:#ffd000; margin-top:0;">📝 Mark Sheet: ${cls} - ${sub}</h4>
+      <h4 style="color:#ffd000; margin-top:0;">📝 ${examType} Mark Sheet: ${cls} - ${sub} (Max Marks: ${maxMarks})</h4>
       <table>
         <thead>
-          <tr><th>No.</th><th>Student Name</th><th>Current Mark</th><th>Previous Mark</th><th>Status</th></tr>
+          <tr><th>No.</th><th>Student Name</th><th>Marks Obtained</th><th>Result</th><th>PDF Report</th></tr>
         </thead>
         <tbody>
     `;
 
     students.forEach((s, idx) => {
-      let m = marksData[s.id] || { current: '-', previous: '-' };
-      let passStatus = (parseInt(m.current) >= 40) ? '<span style="color:#10b981; font-weight:bold;">PASSED</span>' : '<span style="color:#ef4444; font-weight:bold;">FAIL / RE-EXAM</span>';
+      let m = marksData[s.id] || { current: '-' };
+      let scoreNum = parseInt(m.current) || 0;
+      let passThreshold = Math.round(maxMarks * 0.4);
+      let isPass = scoreNum >= passThreshold && m.current !== '-';
+      let passStatus = isPass 
+        ? `<span style="color:#10b981; font-weight:bold;">PASSED</span>` 
+        : `<span style="color:#ef4444; font-weight:bold;">FAIL / RE-EXAM</span>`;
 
       html += `
         <tr>
           <td>${idx + 1}</td>
           <td><b>${s.name}</b></td>
-          <td><b style="color:#ffd000;">${m.current}</b></td>
-          <td>${m.previous}</td>
-          <td>${passStatus}</td>
+          <td><b style="color:#ffd000;">${m.current} / ${maxMarks}</b></td>
+          <td>${m.current === '-' ? 'Not Uploaded' : passStatus}</td>
+          <td><button onclick="openPdfReportModal('${s.name}', '${s.regNo || ''}', '${cls}', '${sub}', '${examType}', '${m.current}', ${maxMarks}, ${isPass})" style="background:#0284c7; padding:4px 8px; font-size:10px;">📄 PDF Report</button></td>
         </tr>
       `;
     });
 
     html += `</tbody></table>`;
     container.innerHTML = html;
+  };
+
+  window.openPdfReportModal = function(name, regNo, cls, sub, examType, mark, maxMark, isPass) {
+    playClickSound();
+    document.getElementById('pdfStudentName').innerText = name;
+    document.getElementById('pdfStudentRegNo').innerText = regNo || 'N/A';
+    document.getElementById('pdfStudentClass').innerText = cls;
+    document.getElementById('pdfExamSubject').innerText = sub;
+    document.getElementById('pdfExamType').innerText = examType;
+    document.getElementById('pdfReportDate').innerText = new Date().toLocaleDateString();
+    
+    let scoreVal = parseInt(mark) || 0;
+    let pct = Math.round((scoreVal / maxMark) * 100) || 0;
+
+    document.getElementById('pdfScoreText').innerText = `${scoreVal} / ${maxMark}`;
+    document.getElementById('pdfPercentageText').innerText = `Percentage Score: ${pct}%`;
+
+    let badgeContainer = document.getElementById('pdfBadgeContainer');
+    if(isPass) {
+      badgeContainer.innerHTML = `<span class="pdf-badge-pass">🎉 PASSED SUCCESSFUL</span>`;
+    } else {
+      badgeContainer.innerHTML = `<span class="pdf-badge-fail">⚠️ NEEDS IMPROVEMENT / RE-EXAM</span>`;
+    }
+
+    document.getElementById('pdfReportModal').classList.remove('hidden');
   };
 
   window.onAdminExamClassChanged = function() {
@@ -2004,40 +2150,38 @@
   window.renderAdminExamMarksList = function() {
     const cls = document.getElementById('adminExamClassSelect').value;
     const sub = document.getElementById('adminExamSubjectSelect').value;
+    const examType = document.getElementById('adminExamTypeSelect').value;
     const container = document.getElementById('adminExamMarksTableContainer');
     if(!container) return; container.innerHTML = "";
 
     if(!cls || !sub) {
-      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">Select Class and Subject to load mark entry table.</p>`;
-      return;
+      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">Select Class and Subject to load mark entry table.</p>`; return;
     }
 
     let students = window.dbData.students[cls] || [];
     if(students.length === 0) {
-      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">No students found in ${cls}.</p>`;
-      return;
+      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">No students found in ${cls}.</p>`; return;
     }
 
-    const examKey = `${cls}_${sub}`;
+    const examKey = `${cls}_${sub}_${examType}`;
     if(!window.dbData.examMarksSubjectwise) window.dbData.examMarksSubjectwise = {};
     if(!window.dbData.examMarksSubjectwise[examKey]) window.dbData.examMarksSubjectwise[examKey] = {};
 
     let html = `
       <table>
         <thead>
-          <tr><th>Student Name</th><th>Current Mark</th><th>Previous Mark</th><th>Save</th></tr>
+          <tr><th>Student Name</th><th>Mark Score</th><th>Save Entry</th></tr>
         </thead>
         <tbody>
     `;
 
     students.forEach((s) => {
-      let m = window.dbData.examMarksSubjectwise[examKey][s.id] || { current: '', previous: '' };
+      let m = window.dbData.examMarksSubjectwise[examKey][s.id] || { current: '' };
       html += `
         <tr>
           <td><b>${s.name}</b></td>
           <td><input type="number" id="admCurr_${s.id}" value="${m.current}" style="margin-bottom:0; padding:6px; text-align:center;"></td>
-          <td><input type="number" id="admPrev_${s.id}" value="${m.previous}" style="margin-bottom:0; padding:6px; text-align:center;"></td>
-          <td><button onclick="saveAdminStudentExamMark(${s.id}, '${cls}', '${sub}')" style="background:#10b981; padding:4px 10px; font-size:10px;">Save</button></td>
+          <td><button onclick="saveAdminStudentExamMark(${s.id}, '${cls}', '${sub}', '${examType}')" style="background:#10b981; padding:4px 10px; font-size:10px;">Save</button></td>
         </tr>
       `;
     });
@@ -2046,86 +2190,83 @@
     container.innerHTML = html;
   };
 
-  window.saveAdminStudentExamMark = function(studentId, cls, sub) {
-    const examKey = `${cls}_${sub}`;
+  window.saveAdminStudentExamMark = function(studentId, cls, sub, examType) {
+    const examKey = `${cls}_${sub}_${examType}`;
     const currVal = document.getElementById(`admCurr_${studentId}`).value;
-    const prevVal = document.getElementById(`admPrev_${studentId}`).value;
+    const maxVal = parseInt(document.getElementById('adminExamMaxMarks').value) || 100;
 
     if(!window.dbData.examMarksSubjectwise) window.dbData.examMarksSubjectwise = {};
     if(!window.dbData.examMarksSubjectwise[examKey]) window.dbData.examMarksSubjectwise[examKey] = {};
 
-    window.dbData.examMarksSubjectwise[examKey][studentId] = { current: currVal, previous: prevVal };
+    window.dbData.examMarksSubjectwise[examKey].maxMarks = maxVal;
+    window.dbData.examMarksSubjectwise[examKey][studentId] = { current: currVal };
     window.saveData();
 
-    // Check if topper / high scorer (e.g. >= 90) and notify via WhatsApp if enabled
     let student = (window.dbData.students[cls] || []).find(s => s.id === studentId);
-    if(window.dbData.notificationEnabled !== false && student && student.phone && parseInt(currVal) >= 90) {
+    if(window.dbData.notificationEnabled !== false && student && student.phone && (parseInt(currVal) >= (maxVal * 0.9))) {
       let phoneClean = student.phone.replace(/\D/g, '');
-      let topperMsg = `🌟 Congratulations! ${student.name} secured a top score of *${currVal}* in ${sub} exam! - Abdul Bari Academy`;
+      let topperMsg = `🌟 Congratulations! ${student.name} secured a top score of *${currVal}/${maxVal}* in ${sub} (${examType})! - Abdul Bari Academy`;
       window.open(`https://wa.me/91${phoneClean}?text=${encodeURIComponent(topperMsg)}`, '_blank');
     }
 
-    alert("✅ Mark saved successfully!");
+    alert("✅ Mark saved!");
   };
 
   function populateChallengeFilters() {
     const clsSel = document.getElementById('challengeClassFilter');
     if(!clsSel) return;
-    clsSel.innerHTML = '<option value="">📁 Select Class...</option>';
+    clsSel.innerHTML = '<option value="">📁 Select Class Batch...</option>';
     for(let p in window.dbData.classes) {
       window.dbData.classes[p].forEach(c => { clsSel.innerHTML += `<option value="${c}">${c}</option>`; });
     }
   }
 
-  window.onChallengeClassChanged = function() {
+  window.renderSubjectPortalsForChallenge = function() {
     const cls = document.getElementById('challengeClassFilter').value;
-    const subSel = document.getElementById('challengeSubjectFilter');
-    subSel.innerHTML = '<option value="">📖 Select Subject...</option>';
-    if(cls) {
-      (window.dbData.subjects[cls] || []).forEach(s => { subSel.innerHTML += `<option value="${s}">${s}</option>`; });
-    }
-    renderChallengeLeaderboard();
+    const grid = document.getElementById('challengeSubjectsSubPortalsGrid');
+    const container = document.getElementById('classWiseChallengeContainer');
+    if(!grid || !container) return;
+    grid.innerHTML = ""; container.innerHTML = "";
+
+    if(!cls) return;
+
+    let subs = window.dbData.subjects[cls] || [];
+    subs.forEach(s => {
+      grid.innerHTML += `
+        <div class="folder-card" onclick="selectSubjectForChallengeTeams('${cls}', '${s}')">
+          <h3>📖 ${s}</h3>
+          <small style="color:#38bdf8;">Click to load teams</small>
+        </div>
+      `;
+    });
   };
 
-  window.renderChallengeLeaderboard = function() {
-    const cls = document.getElementById('challengeClassFilter').value;
-    const sub = document.getElementById('challengeSubjectFilter').value;
-    const container = document.getElementById('classWiseChallengeContainer');
-    if(!container) return;
-    container.innerHTML = "";
+  window.selectSubjectForChallengeTeams = function(cls, sub) {
+    playClickSound();
+    renderChallengeLeaderboardForSubject(cls, sub);
+  };
 
-    if(!cls || !sub) {
-      container.innerHTML = `<p style="color:#ffd000; text-align:center;">Please select Class & Subject to view teams!</p>`;
-      return;
-    }
+  function renderChallengeLeaderboardForSubject(cls, sub) {
+    const container = document.getElementById('classWiseChallengeContainer');
+    if(!container) return; container.innerHTML = "";
 
     const key = `${cls}_${sub}`;
     let teams = (window.dbData.subjectChallengeTeams || {})[key] || [];
 
+    let headerHtml = `<h3 style="color:#ffd000; text-align:center; margin-bottom:14px;">🏆 ${cls} - ${sub} Challenge Teams</h3>`;
     if(teams.length === 0) {
-      container.innerHTML = `<p style="color:#ffd000; text-align:center;">No challenge teams created for ${sub} in ${cls} yet.</p>`;
-      return;
+      container.innerHTML = headerHtml + `<p style="color:#ffd000; text-align:center;">No challenge teams created for ${sub} yet.</p>`; return;
     }
 
-    let grid = document.createElement('div');
-    grid.className = 'folder-grid';
-
+    let grid = document.createElement('div'); grid.className = 'folder-grid';
     teams.forEach(t => {
-      let adminControls = window.isAdmin ? `
-        <div style="margin-top:12px; display:flex; gap:6px; justify-content:center;">
-          <button onclick="adjustTeamPoints('${key}', ${t.id}, 10)" style="background:#10b981; padding:6px 12px; font-size:11px;">+10</button>
-          <button onclick="adjustTeamPoints('${key}', ${t.id}, -10)" style="background:#ef4444; padding:6px 12px; font-size:11px;">-10</button>
-          <button onclick="deleteTeam('${key}', ${t.id})" style="background:#000; padding:6px 12px; font-size:11px;">🗑️</button>
-        </div>
-      ` : '';
-
       let card = document.createElement('div');
       card.className = `challenge-card ${t.theme || 'grad-orange-yellow'}`;
       
       if (!t.revealed) {
         card.innerHTML = `
           <div id="giftBoxSpin_${t.id}" onclick="revealGiftBoxWithSpin('${key}', ${t.id})" style="padding:10px; cursor:pointer; text-align:center;">
-            <div class="gift-icon" style="font-size:48px; margin-bottom:8px; transition:all 0.5s ease;">🎁</div>
+            <div class="gift-icon" style="font-size:48px; margin-bottom:8px;">🎁</div>
             <h3 style="margin:0; font-size:16px; color:#000; font-weight:900;">CLICK MYSTERY GIFT BOX</h3>
             <p style="margin:4px 0 0 0; font-size:11px; color:#111; font-weight:700;">${t.name}</p>
           </div>
@@ -2135,14 +2276,14 @@
           <h3 style="margin:0 0 6px 0; font-size:18px;">🏆 ${t.name}</h3>
           <div style="font-size:24px; font-weight:900;">${t.points} PTS</div>
           <div style="background:rgba(0,0,0,0.3); padding:4px 10px; border-radius:12px; font-size:11px; font-weight:bold; margin-top:6px;">🌟 TOP PERFORMANCE!</div>
-          ${adminControls}
         `;
       }
       grid.appendChild(card);
     });
 
+    container.innerHTML = headerHtml;
     container.appendChild(grid);
-  };
+  }
 
   window.revealGiftBoxWithSpin = function(key, teamId) {
     playClickSound();
@@ -2156,24 +2297,73 @@
           window.saveData();
           playCelebrationSound();
           try { confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } }); } catch(e) {}
-          renderChallengeLeaderboard();
+          let parts = key.split('_');
+          renderChallengeLeaderboardForSubject(parts[0], parts[1]);
         }
       }, 1000);
     }
   };
 
-  window.adjustTeamPoints = function(key, teamId, delta) {
+  window.renderAdminChallengeTeamsList = function() {
+    const cls = document.getElementById('challengeTeamClassSelect').value;
+    const sub = document.getElementById('challengeTeamSubjectSelect').value;
+    const container = document.getElementById('adminChallengeTeamsListContainer');
+    if(!container) return; container.innerHTML = '';
+    if(!cls || !sub) return;
+
+    const key = `${cls}_${sub}`;
+    let teams = (window.dbData.subjectChallengeTeams || {})[key] || [];
+
+    if(teams.length === 0) {
+      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">No teams created for ${sub}.</p>`; return;
+    }
+
+    let html = `<table><thead><tr><th>Team Name</th><th>Points</th><th>Actions</th></tr></thead><tbody>`;
+    teams.forEach(t => {
+      html += `<tr>
+        <td><b>${t.name}</b></td>
+        <td><b>${t.points}</b></td>
+        <td>
+          <button class="btn-edit" onclick="openEditTeamModal('${key}', ${t.id})">✏️ Edit</button>
+          <button class="btn-delete" onclick="adminDeleteTeamRecord('${key}', ${t.id})">🗑️ Delete</button>
+        </td>
+      </tr>`;
+    });
+    html += `</tbody></table>`;
+    container.innerHTML = html;
+  };
+
+  window.openEditTeamModal = function(key, teamId) {
+    playClickSound();
     let team = window.dbData.subjectChallengeTeams[key].find(t => t.id === teamId);
+    if(!team) return;
+    document.getElementById('editTeamKey').value = key;
+    document.getElementById('editTeamId').value = teamId;
+    document.getElementById('editTeamName').value = team.name;
+    document.getElementById('editTeamPoints').value = team.points;
+    document.getElementById('editTeamColorSelect').value = team.theme || 'grad-orange-yellow';
+    document.getElementById('editTeamModal').classList.remove('hidden');
+  };
+
+  window.saveAdminTeamEdit = function() {
+    let key = document.getElementById('editTeamKey').value;
+    let id = parseInt(document.getElementById('editTeamId').value);
+    let team = window.dbData.subjectChallengeTeams[key].find(t => t.id === id);
     if(team) {
-      team.points = Math.max(0, team.points + delta);
-      window.saveData(); renderChallengeLeaderboard();
+      team.name = document.getElementById('editTeamName').value.trim();
+      team.points = parseInt(document.getElementById('editTeamPoints').value) || 0;
+      team.theme = document.getElementById('editTeamColorSelect').value;
+      window.saveData();
+      document.getElementById('editTeamModal').classList.add('hidden');
+      renderAdminChallengeTeamsList();
+      alert("✅ Team updated!");
     }
   };
 
-  window.deleteTeam = function(key, teamId) {
+  window.adminDeleteTeamRecord = function(key, id) {
     if(confirm("Delete team?")) {
-      window.dbData.subjectChallengeTeams[key] = window.dbData.subjectChallengeTeams[key].filter(t => t.id !== teamId);
-      window.saveData(); renderChallengeLeaderboard();
+      window.dbData.subjectChallengeTeams[key] = window.dbData.subjectChallengeTeams[key].filter(t => t.id !== id);
+      window.saveData(); renderAdminChallengeTeamsList();
     }
   };
 
@@ -2184,6 +2374,7 @@
     if(cls) {
       (window.dbData.subjects[cls] || []).forEach(s => { subSel.innerHTML += `<option value="${s}">${s}</option>`; });
     }
+    renderAdminChallengeTeamsList();
   };
 
   window.adminAddSubjectChallengeTeam = function() {
@@ -2199,25 +2390,28 @@
       if(!window.dbData.subjectChallengeTeams[key]) window.dbData.subjectChallengeTeams[key] = [];
 
       window.dbData.subjectChallengeTeams[key].push({ id: Date.now(), name, points: pts, theme, revealed: false });
-      window.saveData(); alert("✅ Subject Challenge Team Created!");
+      window.saveData(); alert("✅ Team Created!");
       document.getElementById('newTeamNameInput').value = "";
-      renderChallengeLeaderboard();
+      renderAdminChallengeTeamsList();
     } else alert("Fill all fields!");
   };
 
+  // EXCEL EXPORT WITH ✅ FOR PRESENT AND ❌ FOR ABSENT
   window.exportAttendanceToExcel = function() {
     let students = window.dbData.students[currentActiveClassName] || [];
-    let selectedPeriod = document.getElementById('exportPeriodSelect').value;
     let todayDate = selectedAttendanceDate;
 
-    let excelData = students.map((s, i) => ({
-      'Roll No': i + 1,
-      'Student Name': s.name,
-      'Class': currentActiveClassName,
-      'Report Period': selectedPeriod.toUpperCase(),
-      'Date': todayDate,
-      'Attendance Status': s.status === 'Present' ? 'Present' : (s.status === 'Absent' ? 'Absent' : 'Leave')
-    }));
+    let excelData = students.map((s, i) => {
+      let isPresent = s.status === 'Present';
+      return {
+        'Roll No': i + 1,
+        'Student Name': s.name,
+        'Category': s.category || 'Senior',
+        'Class': currentActiveClassName,
+        'Date': todayDate,
+        'Attendance Status': isPresent ? '✅' : '❌'
+      };
+    });
 
     let worksheet = XLSX.utils.json_to_sheet(excelData);
     let workbook = XLSX.utils.book_new();
@@ -2250,14 +2444,10 @@
             window.dbData = parsed;
             window.saveData();
             document.getElementById('restoreModal').classList.add('hidden');
-            alert("✅ Portal Data Restored Successfully!");
+            alert("✅ Portal Restored!");
             location.reload();
-          } else {
-            alert("❌ Invalid backup file format!");
-          }
-        } catch(err) {
-          alert("❌ Error parsing JSON file!");
-        }
+          } else alert("❌ Invalid backup file format!");
+        } catch(err) { alert("❌ Error parsing JSON!"); }
       };
       reader.readAsText(fileInput.files[0]);
     }
@@ -2272,3 +2462,4 @@
 </script>
 </body>
 </html>
+```
