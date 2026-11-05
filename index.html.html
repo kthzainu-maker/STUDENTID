@@ -1774,7 +1774,7 @@
     const hasRecord = window.dbData.attendanceRecords && window.dbData.attendanceRecords[attKey];
 
     students.forEach((s, idx) => {
-      let currentStatus = hasRecord ? window.dbData.attendanceRecords[attKey][s.id] : 'Not Uploaded';
+      let currentStatus = hasRecord ? (window.dbData.attendanceRecords[attKey][s.id] || s.status || 'Present') : (s.status || 'Present');
       let stColor = currentStatus === 'Present' ? '#10b981' : (currentStatus === 'Absent' ? '#ef4444' : (currentStatus === 'Friday Leave' ? '#f59e0b' : '#94a3b8'));
       
       let statusBtn = window.isAdmin 
@@ -1800,11 +1800,11 @@
     if(!window.dbData.attendanceRecords) window.dbData.attendanceRecords = {};
     if(!window.dbData.attendanceRecords[attKey]) window.dbData.attendanceRecords[attKey] = {};
 
-    let currentStatus = window.dbData.attendanceRecords[attKey][studentId] || 'Present';
+    let student = window.dbData.students[clsName].find(s => s.id === studentId);
+    let currentStatus = window.dbData.attendanceRecords[attKey][studentId] || (student ? student.status : 'Present') || 'Present';
     let nextStatus = currentStatus === 'Present' ? 'Absent' : (currentStatus === 'Absent' ? 'Friday Leave' : 'Present');
     
     window.dbData.attendanceRecords[attKey][studentId] = nextStatus;
-    let student = window.dbData.students[clsName].find(s => s.id === studentId);
     if(student) student.status = nextStatus;
 
     window.saveData(); 
