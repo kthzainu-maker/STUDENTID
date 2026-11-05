@@ -15,31 +15,32 @@
       --bg-deep-1: #0b132b;
       --bg-deep-2: #1c2541;
       --bg-deep-3: #3a506b;
-      --card-bg: rgba(28, 37, 65, 0.92);
+      --card-bg: rgba(28, 37, 65, 0.88);
       --glass-border: rgba(56, 189, 248, 0.5);
       --text-main: #ffffff;
       --accent-yellow: #ffd000;
+      --neon-pink: #ec4899;
       --neon-cyan: #38bdf8;
       --neon-green: #10b981;
       --red: #ef4444;
       --neon-glow: 0 0 25px rgba(56, 189, 248, 0.6), 0 0 45px rgba(255, 208, 0, 0.35);
-      --card-glow: 0 15px 35px rgba(11, 19, 43, 0.7);
+      --card-glow: 0 15px 35px rgba(11, 19, 43, 0.6);
     }
 
     body.theme-dark-violet {
       --bg-deep-1: #070114; --bg-deep-2: #180533; --bg-deep-3: #2d0b52;
-      --card-bg: rgba(25, 12, 43, 0.92); --glass-border: rgba(255, 208, 0, 0.5);
-      --text-main: #ffffff; --accent-yellow: #ffd000;
+      --card-bg: rgba(25, 12, 43, 0.88); --glass-border: rgba(255, 208, 0, 0.5);
+      --text-main: #ffffff; --accent-yellow: #ffd000; --neon-glow: 0 0 25px rgba(255, 208, 0, 0.6), 0 0 45px rgba(236, 72, 153, 0.35);
     }
     body.theme-light-rose {
       --bg-deep-1: #fff0f5; --bg-deep-2: #ffe4e1; --bg-deep-3: #ffd1dc;
-      --card-bg: rgba(255, 255, 255, 0.95); --glass-border: rgba(225, 29, 72, 0.4);
-      --text-main: #111827; --accent-yellow: #be123c;
+      --card-bg: rgba(255, 255, 255, 0.92); --glass-border: rgba(225, 29, 72, 0.4);
+      --text-main: #111827; --accent-yellow: #be123c; --neon-glow: 0 0 20px rgba(190, 18, 60, 0.3);
     }
     body.theme-light-yellow {
       --bg-deep-1: #fefce8; --bg-deep-2: #fef08a; --bg-deep-3: #fde047;
-      --card-bg: rgba(255, 255, 255, 0.95); --glass-border: rgba(202, 138, 4, 0.45);
-      --text-main: #1f2937; --accent-yellow: #a16207;
+      --card-bg: rgba(255, 255, 255, 0.92); --glass-border: rgba(202, 138, 4, 0.45);
+      --text-main: #1f2937; --accent-yellow: #a16207; --neon-glow: 0 0 20px rgba(202, 138, 4, 0.3);
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
@@ -50,7 +51,7 @@
       background-size: 400% 400%;
       animation: gradientBG 14s ease infinite;
       color: var(--text-main);
-      margin: 0; padding: 10px; min-height: 100vh;
+      margin: 0; padding: 12px; min-height: 100vh;
       -webkit-font-smoothing: antialiased;
     }
 
@@ -60,90 +61,80 @@
       100% { background-position: 0% 50%; }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     .container { max-width: 1100px; margin: 0 auto; position: relative; width: 100%; }
 
     header {
-      background: rgba(11, 19, 43, 0.95);
-      backdrop-filter: blur(20px);
+      background: rgba(11, 19, 43, 0.92);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--glass-border);
-      color: #fff; padding: 16px 20px; border-radius: 20px; margin-bottom: 12px;
+      color: #fff; padding: 18px 22px; border-radius: 22px; margin-bottom: 14px;
       display: flex; justify-content: space-between; align-items: center;
       box-shadow: var(--card-glow);
-      position: relative; z-index: 1000; flex-wrap: wrap; gap: 10px;
+      position: relative; z-index: 1000; flex-wrap: wrap; gap: 12px;
     }
 
-    .header-title-box h1 { margin: 0; font-size: 20px; font-weight: 900; letter-spacing: 0.5px; }
-    .header-title-box h2 { margin: 2px 0 0 0; font-size: 12px; font-weight: 800; color: var(--accent-yellow) !important; }
-    .header-title-box small { display: block; margin-top: 2px; font-size: 9px; font-weight: 800; color: var(--neon-cyan) !important; letter-spacing: 2px; }
+    .header-title-box h1 { margin: 0; font-size: 22px; font-weight: 900; letter-spacing: 0.5px; }
+    .header-title-box h2 { margin: 2px 0 0 0; font-size: 13px; font-weight: 800; color: var(--accent-yellow) !important; }
+    .header-title-box small { display: block; margin-top: 2px; font-size: 10px; font-weight: 800; color: var(--neon-cyan) !important; letter-spacing: 2px; }
 
     .header-right { display: flex; align-items: center; gap: 8px; position: relative; flex-wrap: wrap; }
-    .auth-btn, .logout-btn { border: none; padding: 8px 14px; border-radius: 10px; cursor: pointer; font-weight: 800; font-size: 11px; z-index: 100; pointer-events: auto; }
-    .auth-btn { background: linear-gradient(135deg, #ffd000, #f59e0b); color: #000; box-shadow: var(--neon-glow); }
-    .logout-btn { background: var(--red); color: white; }
-    .menu-icon { font-size: 20px; cursor: pointer; color: #fff; padding: 6px 12px; border-radius: 10px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); z-index: 100; pointer-events: auto; }
+    .auth-btn { background: linear-gradient(135deg, #ffd000, #f59e0b); color: #000; border: none; padding: 10px 18px; border-radius: 12px; cursor: pointer; font-weight: 800; box-shadow: var(--neon-glow); font-size: 12px; position: relative; z-index: 100; pointer-events: auto; }
+    .logout-btn { background: var(--red); color: white; border: none; padding: 10px 18px; border-radius: 12px; cursor: pointer; font-weight: 800; font-size: 12px; position: relative; z-index: 100; pointer-events: auto; }
+    .menu-icon { font-size: 22px; cursor: pointer; color: #fff; padding: 8px 14px; border-radius: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); position: relative; z-index: 100; pointer-events: auto; }
 
-    .notice-marquee { background: linear-gradient(90deg, #ffd000, #38bdf8, #10b981); background-size: 200% 200%; animation: gradientBG 6s ease infinite; color: #000; padding: 8px 14px; border-radius: 10px; font-weight: 800; font-size: 12px; margin-bottom: 14px; }
+    .notice-marquee { background: linear-gradient(90deg, #ffd000, #38bdf8, #10b981); background-size: 200% 200%; animation: gradientBG 6s ease infinite; color: #000; padding: 10px 16px; border-radius: 12px; font-weight: 800; font-size: 13px; margin-bottom: 16px; }
 
     .msg-notification-box {
-      background: linear-gradient(135deg, rgba(28, 37, 65, 0.95), rgba(58, 80, 107, 0.95));
-      border: 2px solid var(--neon-cyan); border-radius: 16px; padding: 16px; margin-bottom: 16px;
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.3); backdrop-filter: blur(10px);
+      background: linear-gradient(135deg, rgba(28, 37, 65, 0.9), rgba(58, 80, 107, 0.9));
+      border: 2px solid var(--neon-cyan); border-radius: 18px; padding: 18px; margin-bottom: 18px;
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.3); backdrop-filter: blur(10px);
     }
 
     #settingsDropdown {
-      position: absolute; top: 50px; right: 0; background: #0b132b; color: #fff;
-      backdrop-filter: blur(20px); border-radius: 16px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); width: 270px; 
-      z-index: 99999 !important; padding: 16px; border: 1px solid var(--glass-border);
+      position: absolute; top: 55px; right: 0; background: #0b132b; color: #fff;
+      backdrop-filter: blur(20px); border-radius: 18px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); width: 280px; 
+      z-index: 99999 !important; padding: 18px; border: 1px solid var(--glass-border);
     }
 
-    .nav-tabs { display: flex; gap: 6px; margin-bottom: -1px; flex-wrap: wrap; position: relative; z-index: 10; }
+    .nav-tabs { display: flex; gap: 8px; margin-bottom: -1px; flex-wrap: wrap; position: relative; z-index: 10; }
     .tab-btn {
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); padding: 10px 14px;
-      border-radius: 14px 14px 0 0; cursor: pointer; font-weight: 800; color: #e2e8f0; font-size: 11px;
-      transition: all 0.3s ease; flex: 1; text-align: center; min-width: 90px; pointer-events: auto;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); padding: 12px 16px;
+      border-radius: 16px 16px 0 0; cursor: pointer; font-weight: 800; color: #e2e8f0; font-size: 12px;
+      transition: all 0.35s ease; flex: 1; text-align: center; min-width: 100px; pointer-events: auto;
     }
     .tab-btn.active { background: var(--card-bg); color: var(--accent-yellow); border-color: var(--glass-border); border-bottom: none; transform: translateY(-2px); box-shadow: var(--neon-glow); }
 
     .card {
       background: var(--card-bg); backdrop-filter: blur(20px);
-      padding: 22px; border-radius: 0 20px 20px 20px; box-shadow: var(--card-glow);
-      margin-bottom: 20px; min-height: 440px; border: 1px solid var(--glass-border);
+      padding: 24px; border-radius: 0 22px 22px 22px; box-shadow: var(--card-glow);
+      margin-bottom: 22px; min-height: 460px; border: 1px solid var(--glass-border);
       position: relative; z-index: 1; overflow-x: hidden;
     }
 
-    .tab-content { animation: fadeIn 0.35s ease-in-out; }
-    .tab-content.hidden { display: none !important; }
-
-    .public-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 20px; }
+    .public-dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; margin-bottom: 24px; }
     .pub-stat-card {
-      padding: 18px; border-radius: 18px; text-align: center; color: #fff;
-      border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      padding: 22px; border-radius: 22px; text-align: center; color: #fff;
+      border: 1px solid rgba(255,255,255,0.25); box-shadow: 0 12px 35px rgba(0,0,0,0.5);
     }
     .pub-stat-card:nth-child(1) { background: linear-gradient(135deg, #0284c7, #0369a1); }
     .pub-stat-card:nth-child(2) { background: linear-gradient(135deg, #0d9488, #0f766e); }
     .pub-stat-card:nth-child(3) { background: linear-gradient(135deg, #10b981, #047857); }
 
-    .admin-layout { display: flex; gap: 16px; flex-wrap: wrap; }
-    .admin-sidebar { flex: 1; min-width: 200px; background: rgba(0,0,0,0.4); padding: 12px; border-radius: 16px; border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 8px; }
-    .admin-sidebar-btn { text-align: left; background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.12); padding: 10px 14px; border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 11px; width: 100%; pointer-events: auto; }
+    .admin-layout { display: flex; gap: 18px; flex-wrap: wrap; }
+    .admin-sidebar { flex: 1; min-width: 220px; background: rgba(0,0,0,0.4); padding: 14px; border-radius: 18px; border: 1px solid var(--glass-border); display: flex; flex-direction: column; gap: 10px; }
+    .admin-sidebar-btn { text-align: left; background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.12); padding: 12px 16px; border-radius: 14px; cursor: pointer; font-weight: 700; font-size: 12px; width: 100%; pointer-events: auto; }
     .admin-sidebar-btn:hover, .admin-sidebar-btn.active { background: var(--accent-yellow); color: #000; font-weight: 900; }
-    .admin-content-area { flex: 3; min-width: 260px; background: rgba(255,255,255,0.02); padding: 18px; border-radius: 16px; border: 1px solid var(--glass-border); }
+    .admin-content-area { flex: 3; min-width: 280px; background: rgba(255,255,255,0.02); padding: 20px; border-radius: 18px; border: 1px solid var(--glass-border); }
 
-    .big-folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px; }
-    .big-folder-college { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border-radius: 18px; padding: 24px; text-align: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); pointer-events: auto; }
-    .big-folder-school { background: linear-gradient(135deg, #059669, #047857); color: white; border-radius: 18px; padding: 24px; text-align: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); pointer-events: auto; }
+    .big-folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; margin-bottom: 22px; }
+    .big-folder-college { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border-radius: 20px; padding: 28px; text-align: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); pointer-events: auto; }
+    .big-folder-school { background: linear-gradient(135deg, #059669, #047857); color: white; border-radius: 20px; padding: 28px; text-align: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); pointer-events: auto; }
 
-    .folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 18px; }
-    .folder-card { background: linear-gradient(135deg, #1e293b, #0f172a); color: white; border-radius: 16px; padding: 18px; text-align: center; cursor: pointer; font-weight: 800; border: 1px solid var(--glass-border); pointer-events: auto; transition: transform 0.2s ease; }
-    .folder-card:hover { transform: translateY(-2px); }
+    .folder-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 22px; }
+    .folder-card { background: linear-gradient(135deg, #1e293b, #0f172a); color: white; border-radius: 18px; padding: 20px; text-align: center; cursor: pointer; font-weight: 800; border: 1px solid var(--glass-border); pointer-events: auto; }
 
-    .rich-gradient-headline-blue { background: linear-gradient(135deg, #38bdf8, #1d4ed8); padding: 12px 16px; border-radius: 14px; color: #fff; font-weight: 900; font-size: 15px; margin-bottom: 16px; }
-    .rich-gradient-headline-yellow { background: linear-gradient(135deg, #facc15, #ea580c); padding: 12px 16px; border-radius: 14px; color: #000; font-weight: 900; font-size: 15px; margin-bottom: 16px; }
+    .rich-gradient-headline-blue { background: linear-gradient(135deg, #38bdf8, #1d4ed8); padding: 14px 18px; border-radius: 16px; color: #fff; font-weight: 900; font-size: 16px; margin-bottom: 18px; }
+    .rich-gradient-headline-yellow { background: linear-gradient(135deg, #facc15, #ea580c); padding: 14px 18px; border-radius: 16px; color: #000; font-weight: 900; font-size: 16px; margin-bottom: 18px; }
 
     .grad-orange-yellow { background: linear-gradient(135deg, #f97316, #eab308) !important; color: #000 !important; }
     .grad-red-orange { background: linear-gradient(135deg, #ef4444, #f97316) !important; color: #fff !important; }
@@ -151,7 +142,7 @@
     .grad-emerald-green { background: linear-gradient(135deg, #10b981, #059669) !important; color: #fff !important; }
     .grad-deep-violet { background: linear-gradient(135deg, #6366f1, #4f46e5) !important; color: #fff !important; }
 
-    .challenge-card { border-radius: 18px; padding: 18px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4); border: 2px solid rgba(255, 255, 255, 0.4); cursor: pointer; pointer-events: auto; }
+    .challenge-card { border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.4); cursor: pointer; pointer-events: auto; }
     .gift-spin-anim { animation: spinBox 1.2s ease-in-out infinite; }
     @keyframes spinBox {
       0% { transform: rotate(0deg) scale(1); }
@@ -161,39 +152,40 @@
 
     .faculty-card-modern {
       background: linear-gradient(145deg, rgba(28, 37, 65, 0.95), rgba(11, 19, 43, 0.98));
-      border: 1px solid var(--glass-border); border-radius: 20px; padding: 18px; text-align: center;
+      border: 1px solid var(--glass-border); border-radius: 22px; padding: 20px; text-align: center;
       cursor: pointer; position: relative; overflow: hidden; pointer-events: auto;
     }
-    .faculty-avatar { width: 85px; height: 85px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-yellow); margin: 8px auto 10px auto; display: block; }
+    .faculty-avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-yellow); margin: 10px auto 12px auto; display: block; }
     
     .designation-badge {
       background: linear-gradient(135deg, #38bdf8, #0284c7);
-      color: #fff; padding: 4px 10px; border-radius: 10px; font-size: 9px; font-weight: 800; text-transform: uppercase;
+      color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 10px; font-weight: 800; text-transform: uppercase;
       display: inline-block;
     }
 
-    button { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border: none; padding: 10px 16px; border-radius: 12px; cursor: pointer; font-weight: 800; font-family: 'Poppins', sans-serif; font-size: 11px; position: relative; z-index: 10; pointer-events: auto; }
+    button { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border: none; padding: 11px 18px; border-radius: 14px; cursor: pointer; font-weight: 800; font-family: 'Poppins', sans-serif; font-size: 12px; position: relative; z-index: 10; pointer-events: auto; }
     button:hover { filter: brightness(1.15); }
-    .btn-back { background: #475569; padding: 8px 14px; font-size: 11px; margin-bottom: 14px; border-radius: 10px; }
+    .btn-back { background: #475569; padding: 8px 16px; font-size: 11px; margin-bottom: 16px; border-radius: 10px; }
 
-    table { width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 11px; }
-    th, td { border: 1px solid rgba(255,255,255,0.18); padding: 8px 6px; text-align: center; }
+    table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 12px; }
+    th, td { border: 1px solid rgba(255,255,255,0.18); padding: 10px 8px; text-align: center; }
     th { background: rgba(56,189,248,0.25); color: var(--accent-yellow); font-weight: 800; }
 
-    input, select, textarea { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 10px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.25); font-family: 'Poppins', sans-serif; font-size: 12px; pointer-events: auto; }
+    input, select, textarea { width: 100%; padding: 12px; margin-bottom: 12px; border-radius: 10px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.25); font-family: 'Poppins', sans-serif; font-size: 13px; }
 
-    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); display: flex; justify-content: center; align-items: center; z-index: 999999; padding: 15px; }
-    .modal-content { background: #0b132b; color: #fff; padding: 22px; border-radius: 20px; width: 420px; max-width: 100%; border: 1px solid var(--glass-border); max-height:90vh; overflow-y:auto; position: relative; z-index: 1000000; }
+    .hidden { display: none !important; }
+    .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); backdrop-filter: blur(12px); display: flex; justify-content: center; align-items: center; z-index: 999999; padding: 15px; }
+    .modal-content { background: #0b132b; color: #fff; padding: 24px; border-radius: 22px; width: 450px; max-width: 100%; border: 1px solid var(--glass-border); max-height:90vh; overflow-y:auto; position: relative; z-index: 1000000; }
 
-    .btn-edit { background: #0284c7; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; margin-right: 4px; }
-    .btn-delete { background: #ef4444; color: #fff; font-size: 10px; padding: 4px 8px; border-radius: 6px; }
-    .btn-whatsapp { background: #25D366; color: #fff; font-size: 10px; padding: 5px 10px; border-radius: 6px; font-weight: bold; text-decoration: none; display: inline-block; }
+    .btn-edit { background: #0284c7; color: #fff; font-size: 10px; padding: 5px 10px; border-radius: 8px; margin-right: 4px; }
+    .btn-delete { background: #ef4444; color: #fff; font-size: 10px; padding: 5px 10px; border-radius: 8px; }
+    .btn-whatsapp { background: #25D366; color: #fff; font-size: 11px; padding: 6px 12px; border-radius: 8px; font-weight: bold; text-decoration: none; display: inline-block; }
 
     @media (max-width: 768px) {
       body { padding: 4px; }
-      header { padding: 10px; }
-      .header-title-box h1 { font-size: 15px; }
-      .card { padding: 10px; min-height: 360px; }
+      header { padding: 12px; }
+      .header-title-box h1 { font-size: 16px; }
+      .card { padding: 12px; min-height: 380px; }
     }
   </style>
 </head>
@@ -207,42 +199,42 @@
       <small>ULTIMATE HD PRO PORTAL</small>
     </div>
     <div class="header-right">
-      <div style="display:flex; gap:4px; align-items:center; background:rgba(255,255,255,0.12); padding:4px 8px; border-radius:10px; border:1px solid rgba(255,255,255,0.2);">
-        <button onclick="zoomPortal(-0.1)" style="background:transparent; padding:2px 4px; font-size:11px; box-shadow:none;">🔍-</button>
-        <span id="zoomLevelIndicator" style="font-size:10px; font-weight:bold; color:var(--accent-yellow);">100%</span>
-        <button onclick="zoomPortal(0.1)" style="background:transparent; padding:2px 4px; font-size:11px; box-shadow:none;">🔍+</button>
+      <div style="display:flex; gap:4px; align-items:center; background:rgba(255,255,255,0.12); padding:5px 10px; border-radius:12px; border:1px solid rgba(255,255,255,0.2);">
+        <button onclick="zoomPortal(-0.1)" style="background:transparent; padding:2px 6px; font-size:12px; box-shadow:none;">🔍-</button>
+        <span id="zoomLevelIndicator" style="font-size:11px; font-weight:bold; color:var(--accent-yellow);">100%</span>
+        <button onclick="zoomPortal(0.1)" style="background:transparent; padding:2px 6px; font-size:12px; box-shadow:none;">🔍+</button>
       </div>
 
-      <span id="userInfo" style="font-size:10px; font-weight:800; color:var(--accent-yellow);">Public View</span>
+      <span id="userInfo" style="font-size:11px; font-weight:800; color:var(--accent-yellow);">Public View</span>
       <button class="auth-btn" id="authBtn">Admin Login</button>
       <button class="logout-btn hidden" id="logoutBtn">Logout</button>
       <div class="menu-icon" id="btnSettingsMenu">☰</div>
 
       <!-- SETTINGS DROPDOWN MENU -->
       <div id="settingsDropdown" class="hidden">
-        <div style="font-size: 10px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🔔 App Notifications</div>
-        <div style="display:flex; justify-content:space-between; align-items:center; padding: 6px; background:rgba(0,0,0,0.3); border-radius:6px; margin-bottom:6px;">
-          <span style="font-size:11px; font-weight:700;">Enable Notifications</span>
+        <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🔔 App Notifications</div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding: 8px; background:rgba(0,0,0,0.3); border-radius:8px; margin-bottom:8px;">
+          <span style="font-size:12px; font-weight:700;">Enable Notifications</span>
           <input type="checkbox" id="notificationToggleCheckbox" checked onchange="toggleAppNotificationSetting()" style="width:auto; margin-bottom:0; cursor:pointer;">
         </div>
 
-        <div style="font-size: 10px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🎨 Portal Themes</div>
-        <div onclick="changePortalTheme('default')" style="padding: 6px; cursor: pointer; font-size: 11px; font-weight: 700; color:#38bdf8;">🌊 Nuclear Deep Blue (Default)</div>
-        <div onclick="changePortalTheme('theme-dark-violet')" style="padding: 6px; cursor: pointer; font-size: 11px; font-weight: 700; color:#a855f7;">💜 Dark Violet Theme</div>
-        <div onclick="changePortalTheme('theme-light-rose')" style="padding: 6px; cursor: pointer; font-size: 11px; font-weight: 700; color:#be123c;">🌸 Light Rose Theme</div>
-        <div onclick="changePortalTheme('theme-light-yellow')" style="padding: 6px; cursor: pointer; font-size: 11px; font-weight: 700; color:#a16207;">☀️ Light Yellow Theme</div>
+        <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🎨 Portal Themes</div>
+        <div onclick="changePortalTheme('default')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#38bdf8;">🌊 Nuclear Deep Blue (Default)</div>
+        <div onclick="changePortalTheme('theme-dark-violet')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#a855f7;">💜 Dark Violet Theme</div>
+        <div onclick="changePortalTheme('theme-light-rose')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#be123c;">🌸 Light Rose Theme</div>
+        <div onclick="changePortalTheme('theme-light-yellow')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#a16207;">☀️ Light Yellow Theme</div>
         
-        <div style="border-top: 1px solid rgba(255,255,255,0.15); margin: 6px 0; padding-top: 4px;"></div>
-        <div onclick="sharePortalApp()" style="padding: 6px; cursor: pointer; font-weight: 700; font-size: 11px; border-radius: 6px; background: rgba(37,211,102,0.2); color: #25D366; margin-bottom:3px;">🔗 Share App Link</div>
-        <div onclick="backupPortalData()" style="padding: 6px; cursor: pointer; font-weight: 700; font-size: 11px; border-radius: 6px; background: rgba(16,185,129,0.2); color: #10b981; margin-bottom:3px;">📥 Backup Data (JSON)</div>
-        <div onclick="restorePortalDataPrompt()" style="padding: 6px; cursor: pointer; font-weight: 700; font-size: 11px; border-radius: 6px; background: rgba(56,189,248,0.2); color: #38bdf8; margin-bottom:3px;">📤 Restore Data (JSON)</div>
+        <div style="border-top: 1px solid rgba(255,255,255,0.15); margin: 8px 0; padding-top: 6px;"></div>
+        <div onclick="sharePortalApp()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(37,211,102,0.2); color: #25D366; margin-bottom:4px;">🔗 Share App Link</div>
+        <div onclick="backupPortalData()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(16,185,129,0.2); color: #10b981; margin-bottom:4px;">📥 Backup Data (JSON)</div>
+        <div onclick="restorePortalDataPrompt()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(56,189,248,0.2); color: #38bdf8; margin-bottom:4px;">📤 Restore Data (JSON)</div>
         
         <div class="admin-only hidden">
-          <div onclick="resetPortalData()" style="padding: 6px; cursor: pointer; font-weight: 700; font-size: 11px; border-radius: 6px; background: rgba(239,68,68,0.2); color: #ef4444;">⚠️ Reset All Data</div>
+          <div onclick="resetPortalData()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(239,68,68,0.2); color: #ef4444;">⚠️ Reset All Data</div>
         </div>
 
-        <div style="border-top: 1px solid rgba(255,255,255,0.15); margin-top: 6px; padding-top: 4px;"></div>
-        <div id="btnCloseSettings" style="padding: 8px; cursor: pointer; font-weight: 800; font-size: 12px; color: #ef4444; text-align: center;">❌ Close Menu</div>
+        <div style="border-top: 1px solid rgba(255,255,255,0.15); margin-top: 8px; padding-top: 6px;"></div>
+        <div id="btnCloseSettings" style="padding: 10px; cursor: pointer; font-weight: 800; font-size: 13px; color: #ef4444; text-align: center;">❌ Close Menu</div>
       </div>
     </div>
   </header>
@@ -253,10 +245,10 @@
 
   <div id="msgNotificationBox" class="msg-notification-box">
     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px;">
-      <h3 style="margin:0; font-size:14px; color:var(--accent-yellow);">🔔 ACADEMY LIVE ANNOUNCEMENTS</h3>
+      <h3 style="margin:0; font-size:15px; color:var(--accent-yellow);">🔔 ACADEMY LIVE ANNOUNCEMENTS</h3>
       <small id="msgTimestamp" style="color:#38bdf8; font-weight:bold;"></small>
     </div>
-    <p id="msgNotificationText" style="margin:6px 0 0 0; font-size:12px; font-weight:600; line-height:1.4; color:#fff;"></p>
+    <p id="msgNotificationText" style="margin:8px 0 0 0; font-size:13px; font-weight:600; line-height:1.5; color:#fff;"></p>
   </div>
 
   <div class="nav-tabs">
@@ -269,83 +261,83 @@
     <button id="navAdminControl" class="tab-btn admin-only hidden" data-tab="managementTab">⚙️ Admin</button>
   </div>
 
-  <!-- SINGLE UNIFIED MAIN PORTAL CONTAINER CARD -->
   <div class="card" id="portalMainCard">
     <!-- DASHBOARD TAB -->
-    <div id="dashboardTab" class="tab-content">
-      <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(255, 208, 0, 0.15)); border: 1px solid var(--glass-border); padding: 20px; border-radius: 20px; text-align: center; margin-bottom: 20px; box-shadow: var(--neon-glow);">
-        <span style="background: var(--accent-yellow); color: #000; padding: 3px 10px; border-radius: 16px; font-weight: 800; font-size: 10px; text-transform: uppercase;">🌟 Official Academy Portal</span>
-        <h2 style="color: #fff; margin: 8px 0 4px 0; font-size: 20px; font-weight: 900;">ABDUL BARI ACADEMY PUTHUPPARMBA</h2>
-        <p style="color: #38bdf8; font-size: 12px; font-weight: 700; margin: 0;">Smart Student Management & Live Information System</p>
+    <div id="dashboardTab" class="tab-content active">
+      
+      <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(255, 208, 0, 0.15)); border: 1px solid var(--glass-border); padding: 24px; border-radius: 24px; text-align: center; margin-bottom: 24px; box-shadow: var(--neon-glow);">
+        <span style="background: var(--accent-yellow); color: #000; padding: 4px 12px; border-radius: 20px; font-weight: 800; font-size: 11px; text-transform: uppercase;">🌟 Official Academy Portal</span>
+        <h2 style="color: #fff; margin: 10px 0 4px 0; font-size: 22px; font-weight: 900;">ABDUL BARI ACADEMY PUTHUPPARMBA</h2>
+        <p style="color: #38bdf8; font-size: 13px; font-weight: 700; margin: 0;">Smart Student Management & Live Information System</p>
       </div>
 
       <div class="public-dashboard-grid">
         <div class="pub-stat-card">
-          <div style="font-size: 24px; margin-bottom: 4px;">🎓</div>
-          <p style="font-weight: 800; font-size: 10px; margin: 0;">TOTAL STUDENTS</p>
-          <h2 id="pubStatStudents" style="font-size: 30px; margin: 4px 0 0 0; font-weight: 900;">0</h2>
+          <div style="font-size: 28px; margin-bottom: 4px;">🎓</div>
+          <p style="font-weight: 800; font-size: 11px; margin: 0;">TOTAL STUDENTS</p>
+          <h2 id="pubStatStudents" style="font-size: 34px; margin: 4px 0 0 0; font-weight: 900;">0</h2>
         </div>
 
         <div class="pub-stat-card">
-          <div style="font-size: 24px; margin-bottom: 4px;">📚</div>
-          <p style="font-weight: 800; font-size: 10px; margin: 0;">ACTIVE BATCHES</p>
-          <h2 id="pubStatClasses" style="font-size: 30px; margin: 4px 0 0 0; font-weight: 900;">0</h2>
+          <div style="font-size: 28px; margin-bottom: 4px;">📚</div>
+          <p style="font-weight: 800; font-size: 11px; margin: 0;">ACTIVE BATCHES</p>
+          <h2 id="pubStatClasses" style="font-size: 34px; margin: 4px 0 0 0; font-weight: 900;">0</h2>
         </div>
 
         <div class="pub-stat-card">
-          <div style="font-size: 24px; margin-bottom: 4px;">👨‍🏫</div>
-          <p style="font-weight: 800; font-size: 10px; margin: 0;">FACULTY & COMMITTEE</p>
-          <h2 id="pubStatUsthads" style="font-size: 30px; margin: 4px 0 0 0; font-weight: 900;">0</h2>
+          <div style="font-size: 28px; margin-bottom: 4px;">👨‍🏫</div>
+          <p style="font-weight: 800; font-size: 11px; margin: 0;">FACULTY & COMMITTEE</p>
+          <h2 id="pubStatUsthads" style="font-size: 34px; margin: 4px 0 0 0; font-weight: 900;">0</h2>
         </div>
       </div>
 
-      <div style="display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap;">
-        <button onclick="switchTab('classesTab', document.querySelector('[data-tab=\'classesTab\']'))" style="flex: 1; min-width: 130px; background: linear-gradient(135deg, #0284c7, #0369a1); font-size: 11px; padding: 10px; border-radius: 12px;">
+      <div style="display: flex; gap: 10px; margin-bottom: 24px; flex-wrap: wrap;">
+        <button onclick="switchTab('classesTab', document.querySelector('[data-tab=\'classesTab\']'))" style="flex: 1; min-width: 140px; background: linear-gradient(135deg, #0284c7, #0369a1); font-size: 12px; padding: 12px; border-radius: 16px;">
           📁 Browse Academics
         </button>
-        <button onclick="switchTab('myStudentTab', document.querySelector('[data-tab=\'myStudentTab\']'))" style="flex: 1; min-width: 130px; background: linear-gradient(135deg, #059669, #047857); font-size: 11px; padding: 10px; border-radius: 12px;">
+        <button onclick="switchTab('myStudentTab', document.querySelector('[data-tab=\'myStudentTab\']'))" style="flex: 1; min-width: 140px; background: linear-gradient(135deg, #059669, #047857); font-size: 12px; padding: 12px; border-radius: 16px;">
           👨‍👩‍👧 Parent Portal
         </button>
-        <button onclick="switchTab('pointsTab', document.querySelector('[data-tab=\'pointsTab\']'))" style="flex: 1; min-width: 130px; background: linear-gradient(135deg, #ec4899, #be185d); font-size: 11px; padding: 10px; border-radius: 12px;">
+        <button onclick="switchTab('pointsTab', document.querySelector('[data-tab=\'pointsTab\']'))" style="flex: 1; min-width: 140px; background: linear-gradient(135deg, #ec4899, #be185d); font-size: 12px; padding: 12px; border-radius: 16px;">
           🎁 Gift Challenges
         </button>
       </div>
 
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 16px; border-radius: 18px; margin-bottom: 20px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; gap: 6px;">
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 20px; border-radius: 22px; margin-bottom: 24px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
           <div>
-            <h3 style="color: var(--accent-yellow); margin: 0; font-size: 15px; font-weight: 800;">🏛️ COLLEGE COMMITTEE & SECRETARIAT</h3>
-            <p style="font-size: 10px; color: #38bdf8; margin: 2px 0 0 0;">Key administrative members and management team</p>
+            <h3 style="color: var(--accent-yellow); margin: 0; font-size: 16px; font-weight: 800;">🏛️ COLLEGE COMMITTEE & SECRETARIAT</h3>
+            <p style="font-size: 11px; color: #38bdf8; margin: 2px 0 0 0;">Key administrative members and management team</p>
           </div>
-          <button onclick="switchTab('usthadTab', document.querySelector('[data-tab=\'usthadTab\']'))" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); font-size: 10px; padding: 5px 10px; border-radius: 8px;">
+          <button onclick="switchTab('usthadTab', document.querySelector('[data-tab=\'usthadTab\']'))" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); font-size: 11px; padding: 6px 12px; border-radius: 10px;">
             View All Faculty →
           </button>
         </div>
-        <div class="folder-grid" id="dashCommitteeGrid" style="margin-top: 12px;"></div>
+        <div class="folder-grid" id="dashCommitteeGrid" style="margin-top: 14px;"></div>
       </div>
 
       <!-- COLLAPSIBLE STUDENT DIRECTORY FOLDER CARD -->
-      <div id="btnStudentDirectoryFolder" onclick="toggleStudentDirectory()" class="folder-card" style="background: linear-gradient(135deg, #0284c7, #0b132b); border: 2px solid var(--accent-yellow); padding: 18px; margin-bottom: 16px; text-align: center; border-radius: 18px;">
-        <h2 style="margin:0; font-size: 16px; color: var(--accent-yellow);">🔍 Student Directory</h2>
-        <p style="margin: 4px 0 0 0; font-size: 11px; color: #e2e8f0;">(Click here to open/close student search, direct WhatsApp & Photo Upload)</p>
+      <div id="btnStudentDirectoryFolder" onclick="toggleStudentDirectory()" class="folder-card" style="background: linear-gradient(135deg, #0284c7, #0b132b); border: 2px solid var(--accent-yellow); padding: 22px; margin-bottom: 20px; text-align: center; border-radius: 22px;">
+        <h2 style="margin:0; font-size: 18px; color: var(--accent-yellow);">🔍 Student Directory</h2>
+        <p style="margin: 4px 0 0 0; font-size: 12px; color: #e2e8f0;">(Click here to open/close student search, direct WhatsApp & Photo Upload)</p>
       </div>
 
-      <!-- DIRECTORY & DIRECT WHATSAPP ACTION TABLE -->
-      <div id="studentDirectoryContainer" class="hidden" style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 12px; border-radius: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-bottom: 20px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:6px;">
-          <h3 style="color: var(--accent-yellow); margin: 0; font-size: 14px; font-weight: 800;">📋 Registered Students List</h3>
-          <button onclick="openPublicSelfRegisterModal()" style="background:#10b981; font-size:10px; padding:5px 10px;">➕ Add Student / Photo Publicly</button>
+      <!-- DIRECTORY & DIRECT WHATSAPP ACTION TABLE (COLLAPSED BY DEFAULT) -->
+      <div id="studentDirectoryContainer" class="hidden" style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 14px; border-radius: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-bottom: 24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+          <h3 style="color: var(--accent-yellow); margin: 0; font-size: 15px; font-weight: 800;">📋 Registered Students List</h3>
+          <button onclick="openPublicSelfRegisterModal()" style="background:#10b981; font-size:11px; padding:6px 12px;">➕ Add Student / Photo Publicly</button>
         </div>
         
-        <div style="display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap;">
-          <input type="text" id="dashStudentSearchInput" placeholder="🔍 Search name..." oninput="renderDashStudentsTable()" style="flex: 2; min-width: 130px; margin-bottom: 0; padding: 7px; font-size: 11px;">
-          <select id="dashCategoryFilterSelect" onchange="renderDashStudentsTable()" style="flex: 1; min-width: 100px; margin-bottom: 0; background: rgba(0,0,0,0.4); color: #fff; padding: 7px; font-size: 11px;">
+        <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
+          <input type="text" id="dashStudentSearchInput" placeholder="🔍 Search name..." oninput="renderDashStudentsTable()" style="flex: 2; min-width: 140px; margin-bottom: 0; padding: 8px; font-size: 12px;">
+          <select id="dashCategoryFilterSelect" onchange="renderDashStudentsTable()" style="flex: 1; min-width: 110px; margin-bottom: 0; background: rgba(0,0,0,0.4); color: #fff; padding: 8px; font-size: 12px;">
             <option value="All">👤 All Students</option>
             <option value="Senior">🎓 Senior</option>
             <option value="Junior">🧑‍🎓 Junior</option>
             <option value="Sub Junior">🎒 Sub Junior</option>
           </select>
-          <select id="dashClassFilterSelect" onchange="renderDashStudentsTable()" style="flex: 1; min-width: 100px; margin-bottom: 0; background: rgba(0,0,0,0.4); color: #fff; padding: 7px; font-size: 11px;">
+          <select id="dashClassFilterSelect" onchange="renderDashStudentsTable()" style="flex: 1; min-width: 110px; margin-bottom: 0; background: rgba(0,0,0,0.4); color: #fff; padding: 8px; font-size: 12px;">
             <option value="">📁 All Classes</option>
           </select>
         </div>
@@ -354,49 +346,51 @@
           <table style="width:100%; font-size: 11px;">
             <thead>
               <tr>
-                <th style="width: 35px;">Photo</th>
-                <th style="width: 25px;">No.</th>
+                <th style="width: 40px;">Photo</th>
+                <th style="width: 30px;">No.</th>
                 <th>Student Name</th>
-                <th style="width: 120px;">Actions</th>
+                <th style="width: 140px;">Actions</th>
               </tr>
             </thead>
             <tbody id="dashStudentsTableBody"></tbody>
           </table>
         </div>
       </div>
+
     </div>
 
     <!-- ACADEMICS TAB -->
     <div id="classesTab" class="tab-content hidden">
       <div id="mainCategoryLevel">
-        <h3 style="color:var(--accent-yellow); text-align:center; margin-bottom:16px; font-size:16px;">Select Study Portal / Section</h3>
+        <h3 style="color:var(--accent-yellow); text-align:center; margin-bottom:20px; font-size:17px;">Select Study Portal / Section</h3>
         <div class="big-folder-grid">
           <div class="big-folder-college" id="btnCollegePortal">
-            <h2 style="margin:0; font-size:18px;">COLLEGE STUDIES</h2>
-            <p style="margin:4px 0 0 0; font-size:12px;">(Degree & Higher Studies)</p>
+            <h2 style="margin:0; font-size:20px;">COLLEGE STUDIES</h2>
+            <p style="margin:6px 0 0 0; font-size:13px;">(Degree & Higher Studies)</p>
           </div>
           <div class="big-folder-school" id="btnSchoolPortal">
-            <h2 style="margin:0; font-size:18px;">SCHOOL STUDIES</h2>
-            <p style="margin:4px 0 0 0; font-size:12px;">Plus One, Plus Two & High School</p>
+            <h2 style="margin:0; font-size:20px;">SCHOOL STUDIES</h2>
+            <p style="margin:6px 0 0 0; font-size:13px;">Plus One, Plus Two & High School</p>
           </div>
         </div>
       </div>
 
       <div id="classFolderLevel" class="hidden">
         <button class="btn-back" id="btnBackToMain">← Back to Portals</button>
-        <h3 id="sectionTitleHeader" style="color:var(--accent-yellow); font-size:15px;">Classes</h3>
+        <h3 id="sectionTitleHeader" style="color:var(--accent-yellow); font-size:16px;">Classes</h3>
         <div class="folder-grid" id="classFoldersGrid"></div>
       </div>
 
       <div id="subjectFolderLevel" class="hidden">
         <button class="btn-back" id="btnBackToClasses">← Back to Classes</button>
-        <h3 id="selectedClassHeader" style="color:var(--accent-yellow); font-size:15px;">Subjects & Attendance</h3>
+        <h3 id="selectedClassHeader" style="color:var(--accent-yellow); font-size:16px;">Subjects & Attendance</h3>
         
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); padding:12px; border-radius:14px; margin-bottom:14px;">
-          <h4 style="color:#ffd000; margin:0 0 6px 0; font-size:12px;">➕ Select Existing Student from Directory</h4>
-          <div style="display:flex; gap:6px; flex-wrap:wrap;">
-            <select id="existingStudentDropdownSelect" style="flex:2; margin-bottom:0; padding:7px; font-size:11px;"></select>
-            <button onclick="addExistingStudentToCurrentClass()" style="flex:1; background:#10b981; font-size:10px; padding:7px;">Add Student</button>
+        <!-- SEARCHABLE DROPDOWN ADDER FOR EXISTING STUDENTS -->
+        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); padding:14px; border-radius:16px; margin-bottom:16px;">
+          <h4 style="color:#ffd000; margin:0 0 8px 0; font-size:13px;">➕ Select Existing Student from Directory</h4>
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <select id="existingStudentDropdownSelect" style="flex:2; margin-bottom:0; padding:8px; font-size:12px;"></select>
+            <button onclick="addExistingStudentToCurrentClass()" style="flex:1; background:#10b981; font-size:11px; padding:8px;">Add Student</button>
           </div>
         </div>
 
@@ -405,45 +399,45 @@
 
       <div id="subjectDetailLevel" class="hidden">
         <button class="btn-back" id="btnBackToSubjects">← Back to Subjects</button>
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-          <h2 id="topicTitle" style="color:var(--accent-yellow); margin-bottom:8px; font-size:15px;"></h2>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <h2 id="topicTitle" style="color:var(--accent-yellow); margin-bottom:10px; font-size:16px;"></h2>
           <div class="admin-only hidden">
-            <button onclick="openAddStudentModalForClass()" style="background:#10b981; font-size:10px; padding:7px 12px; margin-bottom:8px;">➕ Add Student to Class</button>
+            <button onclick="openAddStudentModalForClass()" style="background:#10b981; font-size:11px; padding:8px 14px; margin-bottom:10px;">➕ Add Student to Class</button>
           </div>
         </div>
         
-        <div style="background: linear-gradient(135deg, rgba(2,132,199,0.3), rgba(56,189,248,0.3)); border:1px solid var(--glass-border); padding:12px; border-radius:14px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+        <div style="background: linear-gradient(135deg, rgba(2,132,199,0.3), rgba(56,189,248,0.3)); border:1px solid var(--glass-border); padding:14px; border-radius:16px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
           <div>
-            <span style="font-size:12px; font-weight:800; color:#ffd000;">📅 Date: <span id="currentLiveDateLabel" style="color:#fff;"></span></span>
-            <div id="dateAttendanceStatusBadge" style="font-size:10px; font-weight:bold; margin-top:2px;"></div>
+            <span style="font-size:13px; font-weight:800; color:#ffd000;">📅 Date: <span id="currentLiveDateLabel" style="color:#fff;"></span></span>
+            <div id="dateAttendanceStatusBadge" style="font-size:11px; font-weight:bold; margin-top:2px;"></div>
           </div>
-          <input type="date" id="attendanceDatePicker" onchange="onAttendanceDateChanged()" style="padding:7px 10px; border-radius:8px; background:rgba(0,0,0,0.6); color:#fff; border:1px solid var(--accent-yellow); font-size:11px; width:auto; margin-bottom:0;">
+          <input type="date" id="attendanceDatePicker" onchange="onAttendanceDateChanged()" style="padding:8px 12px; border-radius:10px; background:rgba(0,0,0,0.6); color:#fff; border:1px solid var(--accent-yellow); font-size:12px; width:auto; margin-bottom:0;">
         </div>
 
-        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:14px;">
-          <div class="admin-only hidden" style="display:flex; gap:5px; flex-wrap:wrap;">
-            <button onclick="bulkMarkAttendance('Present')" style="background:#10b981; font-size:10px; padding:6px 10px;">✅ All Present</button>
-            <button onclick="bulkMarkAttendance('Absent')" style="background:#ef4444; font-size:10px; padding:6px 10px;">❌ All Absent</button>
-            <button onclick="bulkMarkAttendance('Friday Leave')" style="background:#f59e0b; color:#000; font-size:10px; padding:6px 10px;">🌴 Leave</button>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
+          <div class="admin-only hidden" style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button onclick="bulkMarkAttendance('Present')" style="background:#10b981; font-size:11px;">✅ All Present</button>
+            <button onclick="bulkMarkAttendance('Absent')" style="background:#ef4444; font-size:11px;">❌ All Absent</button>
+            <button onclick="bulkMarkAttendance('Friday Leave')" style="background:#f59e0b; color:#000; font-size:11px;">🌴 Leave</button>
           </div>
-          <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap;">
-            <select id="exportPeriodSelect" style="padding:5px 8px; border-radius:6px; margin-bottom:0; background:rgba(0,0,0,0.4); color:#fff; font-size:10px;">
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <select id="exportPeriodSelect" style="padding:6px 10px; border-radius:8px; margin-bottom:0; background:rgba(0,0,0,0.4); color:#fff; font-size:11px;">
               <option value="daily">📅 Daily (Today)</option>
               <option value="monthly">📆 Monthly (Current Month)</option>
               <option value="annual">🗓️ Annual (1-Year)</option>
             </select>
-            <button onclick="exportAttendanceToExcel()" style="background:#0284c7; font-size:10px; padding:6px 10px;">📊 Export Excel (Tick/Cross)</button>
-            <button onclick="printAttendanceSheet()" style="background:#ffd000; color:#000; font-size:10px; padding:6px 10px;">🖨️ Print Sheet</button>
+            <button onclick="exportAttendanceToExcel()" style="background:#0284c7; font-size:11px;">📊 Export Excel (Tick/Cross)</button>
+            <button onclick="printAttendanceSheet()" style="background:#ffd000; color:#000; font-size:11px;">🖨️ Print Sheet</button>
           </div>
         </div>
 
-        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 14px; border-radius: 14px; margin-bottom: 18px;">
-          <h4 style="color:var(--accent-yellow); margin:0 0 8px 0; font-size:13px;">📚 Study Notes & Lecture Materials</h4>
-          <div id="notesDisplayList" style="margin-bottom:8px; font-size:11px; color:#e2e8f0;">No notes uploaded for this subject yet.</div>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 18px; border-radius: 16px; margin-bottom: 22px;">
+          <h4 style="color:var(--accent-yellow); margin:0 0 10px 0; font-size:14px;">📚 Study Notes & Lecture Materials</h4>
+          <div id="notesDisplayList" style="margin-bottom:10px; font-size:12px; color:#e2e8f0;">No notes uploaded for this subject yet.</div>
           <div class="admin-only hidden">
             <input type="text" id="noteTitleInput" placeholder="Note Title...">
             <input type="text" id="noteUrlInput" placeholder="Paste Resource/Drive URL...">
-            <button onclick="addSubjectStudyNote()" style="background:#0284c7; font-size:10px; padding:7px 12px;">📎 Add Resource</button>
+            <button onclick="addSubjectStudyNote()" style="background:#0284c7; font-size:11px;">📎 Add Resource</button>
           </div>
         </div>
 
@@ -460,9 +454,9 @@
 
     <!-- MY STUDENT TAB FOR PARENTS -->
     <div id="myStudentTab" class="tab-content hidden">
-      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 20px; border-radius: 18px; max-width:550px; margin:0 auto;">
-        <h3 style="color:var(--accent-yellow); text-align:center; margin-top:0; font-size:16px;">MY STUDENT PORTAL</h3>
-        <p style="text-align:center; font-size:11px; color:#38bdf8;">Register and check your student's live marks, leave details, and performance updates!</p>
+      <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 22px; border-radius: 20px; max-width:600px; margin:0 auto;">
+        <h3 style="color:var(--accent-yellow); text-align:center; margin-top:0; font-size:17px;">MY STUDENT PORTAL</h3>
+        <p style="text-align:center; font-size:12px; color:#38bdf8;">Register and check your student's live marks, leave details, and performance updates!</p>
 
         <div id="parentLoginBox">
           <input type="text" id="parentStudentName" placeholder="Enter Student Name (or Initial)...">
@@ -470,15 +464,15 @@
           <button onclick="verifyParentStudentAccess()" style="width:100%; background:#10b981;">🔍 View Student Updates</button>
         </div>
 
-        <div id="parentSearchErrorNotice" class="hidden" style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; padding: 14px; border-radius: 12px; margin-top: 14px; text-align: center;">
-          <h4 style="color:#ef4444; margin:0 0 5px 0; font-size:13px;">⚠️ Student Record Not Found / Spelling Mismatch</h4>
-          <p style="font-size:10px; color:#fca5a5; margin:0 0 10px 0;">Please check in student directory!</p>
-          <button onclick="switchTab('dashboardTab', document.querySelector('[data-tab=\'dashboardTab\']'))" style="background:#0284c7; font-size:10px; padding:7px 12px;">📁 Go to Student Directory</button>
+        <div id="parentSearchErrorNotice" class="hidden" style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; padding: 16px; border-radius: 14px; margin-top: 16px; text-align: center;">
+          <h4 style="color:#ef4444; margin:0 0 6px 0; font-size:14px;">⚠️ Student Record Not Found / Spelling Mismatch</h4>
+          <p style="font-size:11px; color:#fca5a5; margin:0 0 12px 0;">Please check in student directory!</p>
+          <button onclick="switchTab('dashboardTab', document.querySelector('[data-tab=\'dashboardTab\']'))" style="background:#0284c7; font-size:11px; padding:8px 14px;">📁 Go to Student Directory</button>
         </div>
 
-        <div id="parentStudentDashboard" class="hidden" style="margin-top:16px; border-top:1px dashed var(--glass-border); padding-top:14px;">
-          <h4 id="parentStudentHeaderName" style="color:#ffd000; margin-bottom:4px; font-size:15px;"></h4>
-          <p id="parentStudentClassInfo" style="font-size:11px; color:#a7f3d0; margin-top:0;"></p>
+        <div id="parentStudentDashboard" class="hidden" style="margin-top:20px; border-top:1px dashed var(--glass-border); padding-top:16px;">
+          <h4 id="parentStudentHeaderName" style="color:#ffd000; margin-bottom:4px; font-size:16px;"></h4>
+          <p id="parentStudentClassInfo" style="font-size:12px; color:#a7f3d0; margin-top:0;"></p>
           <div id="parentStudentDetailsContent"></div>
         </div>
       </div>
@@ -486,12 +480,12 @@
 
     <!-- CHALLENGE TEAMS -->
     <div id="pointsTab" class="tab-content hidden">
-      <div style="text-align:center; background:linear-gradient(135deg, rgba(2,132,199,0.3), rgba(56,189,248,0.3)); padding:16px; border-radius:18px; border:2px dashed #38bdf8; margin-bottom:18px;">
-        <h2 style="color:#ffd000; margin:0; font-size:17px;">🏆 SUBJECT-WISE CHALLENGE TEAMS & GIFT BOX 🎁</h2>
-        <p style="color:#e2e8f0; font-size:11px; margin:5px 0 0 0;">Select Class to automatically load subjects below!</p>
+      <div style="text-align:center; background:linear-gradient(135deg, rgba(2,132,199,0.3), rgba(56,189,248,0.3)); padding:20px; border-radius:20px; border:2px dashed #38bdf8; margin-bottom:22px;">
+        <h2 style="color:#ffd000; margin:0; font-size:19px;">🏆 SUBJECT-WISE CHALLENGE TEAMS & GIFT BOX 🎁</h2>
+        <p style="color:#e2e8f0; font-size:12px; margin:6px 0 0 0;">Select Class to automatically load subjects below!</p>
       </div>
 
-      <div style="display:flex; gap:8px; margin-bottom:18px; flex-wrap:wrap;">
+      <div style="display:flex; gap:10px; margin-bottom:22px; flex-wrap:wrap;">
         <select id="challengeClassFilter" onchange="onChallengeClassChanged()" style="flex:1;">
           <option value="">📁 Select Class...</option>
         </select>
@@ -507,17 +501,17 @@
     <div id="usthadTab" class="tab-content hidden">
       <div class="rich-gradient-headline-blue">👨‍🏫 Academic Faculty & Teachers Details</div>
       <input type="text" id="teacherSearchInput" placeholder="🔍 Search Faculty Name / Subject / Location..." oninput="renderUsthads()">
-      <div class="folder-grid" id="usthadsGrid" style="margin-top:14px;"></div>
+      <div class="folder-grid" id="usthadsGrid" style="margin-top:16px;"></div>
 
-      <div class="rich-gradient-headline-yellow" style="margin-top:28px;">🤝 Committee & Administrative Staff</div>
-      <div class="folder-grid" id="committeeGrid" style="margin-top:14px;"></div>
+      <div class="rich-gradient-headline-yellow" style="margin-top:34px;">🤝 Committee & Administrative Staff</div>
+      <div class="folder-grid" id="committeeGrid" style="margin-top:16px;"></div>
     </div>
 
     <!-- EXAMS TAB -->
     <div id="examTab" class="tab-content hidden">
-      <h3 style="color:var(--accent-yellow); font-size:15px;">📝 Exam Marks & Performance Analytics</h3>
+      <h3 style="color:var(--accent-yellow); font-size:16px;">📝 Exam Marks & Performance Analytics</h3>
 
-      <div style="display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap;">
+      <div style="display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap;">
         <select id="examClassSelect" onchange="onExamClassChanged()" style="flex:1; margin-bottom:0;">
           <option value="">-- Select Batch / Class --</option>
         </select>
@@ -530,14 +524,13 @@
 
     <!-- ADMIN CONTROL PANEL -->
     <div id="managementTab" class="tab-content admin-only hidden">
-      <h3 style="color:var(--accent-yellow); margin-top:0; font-size:15px;">⚙️ Admin Control Panel</h3>
+      <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">⚙️ Admin Control Panel</h3>
 
       <div class="admin-layout">
         <div class="admin-sidebar">
           <button class="admin-sidebar-btn active" onclick="showAdminSubSection('adminSub0', this)">🔐 Change Password</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSubMsg', this)">📢 Post Announcement</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub1', this)">🎓 Register Student</button>
-          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSubManageStudents', this)">👥 Manage Students</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub2', this)">📝 Exam Marks & PDF</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub3', this)">📖 Manage Subjects</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub4', this)">📁 Classes & Teachers</button>
@@ -547,7 +540,7 @@
 
         <div class="admin-content-area">
           <div id="adminSub0" class="admin-sub-sec">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:13px;">🔐 Change Admin Password</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🔐 Change Admin Password</h4>
             <input type="password" id="currentAdminPassInput" placeholder="Type Current Password...">
             <input type="text" id="newAdminUser" placeholder="New Admin Username..." value="admin">
             <input type="password" id="newAdminPass" placeholder="Type New Password...">
@@ -555,15 +548,15 @@
           </div>
 
           <div id="adminSubMsg" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:13px;">📢 Update Live Message & Marquee</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">📢 Update Live Message & Marquee</h4>
             <input type="text" id="adminMarqueeInput" placeholder="Type marquee notice here...">
-            <button onclick="saveMarqueeNotice()" style="width:100%; background:#0284c7; margin-bottom:12px;">💾 Update Marquee</button>
+            <button onclick="saveMarqueeNotice()" style="width:100%; background:#0284c7; margin-bottom:14px;">💾 Update Marquee</button>
             <textarea id="adminLiveMsgInput" rows="3" placeholder="Type main announcement text..."></textarea>
             <button onclick="saveLiveAnnouncement()" style="width:100%; background:#ec4899; color:#fff;">📢 Broadcast Notification</button>
           </div>
 
           <div id="adminSub1" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:13px;">🎓 Register New Student & Choose Category</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🎓 Register New Student & Choose Category</h4>
             <select id="regStudentClassSelect"></select>
             <input type="text" id="regStudentName" placeholder="Student Name with Initial...">
             <select id="regStudentCategorySelect" style="margin-bottom:10px;">
@@ -574,54 +567,46 @@
             <input type="text" id="regFatherName" placeholder="Father Name...">
             <input type="text" id="regPhoneNum" placeholder="WhatsApp Phone Number...">
             <input type="text" id="regStudentRegisterNo" placeholder="Student Register No / ID Number...">
-            <label style="font-size:10px; color:var(--accent-yellow); display:block; margin-bottom:3px;">🖼️ Choose Student Photo from Device:</label>
-            <input type="file" id="regStudentPhotoFile" accept="image/*" style="margin-bottom:10px;">
+            <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🖼️ Choose Student Photo from Device:</label>
+            <input type="file" id="regStudentPhotoFile" accept="image/*" style="margin-bottom:12px;">
             <button onclick="adminRegisterStudent()" style="width:100%; background:#10b981;">➕ Register Student & Auto-Notify</button>
           </div>
 
-          <div id="adminSubManageStudents" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:13px;">👥 Edit or Delete Students</h4>
-            <select id="adminManageStudentClassSelect" onchange="renderAdminStudentsList()" style="margin-bottom:10px;">
-              <option value="">-- Select Class --</option>
-            </select>
-            <div id="adminStudentsListContainer" style="overflow-x:auto;"></div>
-          </div>
-
           <div id="adminSub2" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:13px;">📝 Subject-Wise Exam Mark Entry & PDF Attach</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">📝 Subject-Wise Exam Mark Entry & PDF Attach</h4>
             <select id="adminExamClassSelect" onchange="onAdminExamClassChanged()"></select>
             <select id="adminExamSubjectSelect" onchange="renderAdminExamMarksList()"></select>
-            <input type="text" id="adminExamPdfUrlInput" placeholder="Paste Exam PDF Report Link / URL..." style="margin-top:8px;">
-            <button onclick="saveAdminExamPdfLink()" style="width:100%; background:#0284c7; margin-bottom:12px;">💾 Attach Exam PDF Link</button>
-            <div id="adminExamMarksTableContainer" style="margin-top:10px;"></div>
+            <input type="text" id="adminExamPdfUrlInput" placeholder="Paste Exam PDF Report Link / URL..." style="margin-top:10px;">
+            <button onclick="saveAdminExamPdfLink()" style="width:100%; background:#0284c7; margin-bottom:14px;">💾 Attach Exam PDF Link</button>
+            <div id="adminExamMarksTableContainer" style="margin-top:12px;"></div>
           </div>
 
           <div id="adminSub3" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:13px;">📖 Add / Remove Subjects for Classes</h4>
-            <select id="subjectManageClassSelect" onchange="renderAdminSubjectsList()" style="margin-bottom:8px;"></select>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">📖 Add / Remove Subjects for Classes</h4>
+            <select id="subjectManageClassSelect" onchange="renderAdminSubjectsList()" style="margin-bottom:10px;"></select>
             <input type="text" id="newSubjectNameInput" placeholder="New Subject Name (e.g. Nahw, Fiqh)...">
-            <button onclick="adminAddSubjectToClass()" style="width:100%; background:#10b981; margin-bottom:12px;">➕ Add Subject to Class</button>
+            <button onclick="adminAddSubjectToClass()" style="width:100%; background:#10b981; margin-bottom:14px;">➕ Add Subject to Class</button>
             <div id="adminSubjectsContainer"></div>
           </div>
 
           <div id="adminSub4" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:13px;">📁 Manage Classes & Assign Teacher</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">📁 Manage Classes & Assign Teacher</h4>
             <select id="newClassPortal">
               <option value="School Studies">School Studies</option>
               <option value="College Studies">College Studies</option>
             </select>
             <input type="text" id="newClassNameInput" placeholder="New Class Name...">
-            <label style="font-size:10px; color:var(--accent-yellow); display:block; margin-bottom:3px;">👨‍🏫 Select Class Teacher:</label>
+            <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">👨‍🏫 Select Class Teacher:</label>
             <select id="newClassTeacherSelect" style="margin-bottom:10px;"></select>
-            <button onclick="adminAddNewClass()" style="width:100%; background:#0284c7; margin-bottom:14px;">➕ Add Class</button>
+            <button onclick="adminAddNewClass()" style="width:100%; background:#0284c7; margin-bottom:16px;">➕ Add Class</button>
             <div id="manageClassesList"></div>
           </div>
 
           <div id="adminSub6" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:13px;">🏆 Create Subject Challenge Team</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🏆 Create Subject Challenge Team</h4>
             <select id="challengeTeamClassSelect" onchange="populateChallengeSubjectDropdown()"></select>
             <select id="challengeTeamSubjectSelect"></select>
-            <input type="text" id="newTeamNameInput" placeholder="Team Name..." style="margin-top:6px;">
+            <input type="text" id="newTeamNameInput" placeholder="Team Name...">
             <input type="number" id="newTeamPointsInput" placeholder="Initial Points..." value="100">
             <select id="newTeamColorSelect" style="margin-bottom:10px;">
               <option value="grad-orange-yellow">🍊 Orange Yellow Gradient</option>
@@ -634,21 +619,21 @@
           </div>
 
           <div id="adminSub7" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:13px;">👨‍🏫 Manage Faculty & Designation Badges</h4>
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">👨‍🏫 Manage Faculty & Designation Badges</h4>
             <select id="teacherCategorySelect">
               <option value="usthad">Academic Faculty & Teachers</option>
               <option value="committee">Committee Office Bearers (Secretariat)</option>
             </select>
-            <input type="text" id="teacherNameInput" placeholder="Full Name...">
-            <input type="text" id="teacherDesignationInput" placeholder="Designation Badge...">
+            <input type="text" id="teacherNameInput" placeholder="Full Name (e.g. Prof. Abdul Bari)...">
+            <input type="text" id="teacherDesignationInput" placeholder="Designation Badge (e.g. Principal, Faculty)...">
             <input type="text" id="teacherLocInput" placeholder="Address & Location Name...">
             <input type="text" id="teacherMapInput" placeholder="Google Map Link...">
             <input type="text" id="teacherSubInput" placeholder="Subjects Handled / Roles...">
             <input type="text" id="teacherContactInput" placeholder="WhatsApp / Contact Phone Number...">
-            <label style="font-size:10px; color:var(--accent-yellow); display:block; margin-bottom:3px;">🖼️ Choose Member Photo from Device:</label>
-            <input type="file" id="teacherPhotoFile" accept="image/*" style="margin-bottom:10px;">
+            <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🖼️ Choose Member Photo from Device:</label>
+            <input type="file" id="teacherPhotoFile" accept="image/*" style="margin-bottom:12px;">
             <button onclick="adminAddTeacher()" style="width:100%; background:#0284c7;">➕ Add Member Securely</button>
-            <div id="manageTeachersList" style="margin-top:14px;"></div>
+            <div id="manageTeachersList" style="margin-top:16px;"></div>
           </div>
         </div>
       </div>
@@ -656,44 +641,46 @@
   </div>
 </div>
 
-<!-- MODALS -->
+<!-- FACULTY DETAILS POP-UP MODAL -->
 <div id="facultyDetailModal" class="modal hidden">
-  <div class="modal-content" style="text-align:center; width:340px;">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:15px;">👨‍🏫 Faculty Profile</h3>
-    <span id="modalFacultyBadge" class="designation-badge" style="margin-bottom:6px;"></span>
-    <img id="modalFacultyPhoto" src="" style="width:85px; height:85px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 10px auto;">
-    <h2 id="modalFacultyName" style="margin:4px 0; font-size:17px; color:#fff; font-weight:800;"></h2>
-    <div style="background:rgba(0,0,0,0.35); padding:12px; border-radius:12px; text-align:left; margin-top:10px; font-size:11px; line-height:1.5; border:1px solid rgba(255,255,255,0.15);">
-      <p style="margin:3px 0;"><b>📍 Location:</b> <span id="modalFacultyLoc"></span></p>
-      <p style="margin:3px 0;"><b>📖 Role:</b> <span id="modalFacultySub"></span></p>
-      <p style="margin:3px 0;"><b>📞 Contact:</b> <span id="modalFacultyContact"></span></p>
-      <div id="modalFacultyMapContainer" style="margin-top:8px;"></div>
+  <div class="modal-content" style="text-align:center; width:360px;">
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">👨‍🏫 Faculty Profile</h3>
+    <span id="modalFacultyBadge" class="designation-badge" style="margin-bottom:8px;"></span>
+    <img id="modalFacultyPhoto" src="" style="width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 12px auto;">
+    <h2 id="modalFacultyName" style="margin:4px 0; font-size:18px; color:#fff; font-weight:800;"></h2>
+    <div style="background:rgba(0,0,0,0.35); padding:14px; border-radius:14px; text-align:left; margin-top:12px; font-size:12px; line-height:1.6; border:1px solid rgba(255,255,255,0.15);">
+      <p style="margin:4px 0;"><b>📍 Location:</b> <span id="modalFacultyLoc"></span></p>
+      <p style="margin:4px 0;"><b>📖 Role:</b> <span id="modalFacultySub"></span></p>
+      <p style="margin:4px 0;"><b>📞 Contact:</b> <span id="modalFacultyContact"></span></p>
+      <div id="modalFacultyMapContainer" style="margin-top:10px;"></div>
     </div>
-    <button onclick="document.getElementById('facultyDetailModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:14px;">Close Profile</button>
+    <button onclick="document.getElementById('facultyDetailModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:16px;">Close Profile</button>
   </div>
 </div>
 
+<!-- STUDENT DETAILS POP-UP MODAL -->
 <div id="studentDetailModal" class="modal hidden">
-  <div class="modal-content" style="text-align:center; width:330px;">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:15px;">📋 Student Full Details</h3>
-    <img id="modalStudentPhoto" src="" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 10px auto;">
-    <h2 id="modalStudentName" style="margin:4px 0; font-size:16px; color:#fff;"></h2>
-    <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:12px; text-align:left; margin-top:10px; font-size:11px; line-height:1.5;">
-      <p style="margin:3px 0;"><b>🏷️ Academy:</b> <span>Abdul Bari Academy Puthupparmba</span></p>
-      <p style="margin:3px 0;"><b>📌 Reg No:</b> <span id="modalStudentRegNo"></span></p>
-      <p style="margin:3px 0;"><b>📁 Class Batch:</b> <span id="modalStudentClass"></span></p>
-      <p style="margin:3px 0;"><b>👤 Category:</b> <span id="modalStudentCategoryBadge" style="color:var(--accent-yellow); font-weight:bold;"></span></p>
-      <p style="margin:3px 0;"><b>👨‍👧 Father's Name:</b> <span id="modalStudentFather"></span></p>
-      <p style="margin:3px 0;"><b>📞 WhatsApp:</b> <span id="modalStudentPhone"></span></p>
-      <p style="margin:3px 0;"><b>📊 Status:</b> <span id="modalStudentStatus" style="color:#10b981; font-weight:bold;"></span></p>
+  <div class="modal-content" style="text-align:center; width:350px;">
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📋 Student Full Details</h3>
+    <img id="modalStudentPhoto" src="" style="width:85px; height:85px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow); margin:0 auto 12px auto;">
+    <h2 id="modalStudentName" style="margin:4px 0; font-size:17px; color:#fff;"></h2>
+    <div style="background:rgba(0,0,0,0.3); padding:14px; border-radius:14px; text-align:left; margin-top:12px; font-size:12px; line-height:1.6;">
+      <p style="margin:4px 0;"><b>🏷️ Academy:</b> <span>Abdul Bari Academy Puthupparmba</span></p>
+      <p style="margin:4px 0;"><b>📌 Reg No:</b> <span id="modalStudentRegNo"></span></p>
+      <p style="margin:4px 0;"><b>📁 Class Batch:</b> <span id="modalStudentClass"></span></p>
+      <p style="margin:4px 0;"><b>👤 Category:</b> <span id="modalStudentCategoryBadge" style="color:var(--accent-yellow); font-weight:bold;"></span></p>
+      <p style="margin:4px 0;"><b>👨‍👧 Father's Name:</b> <span id="modalStudentFather"></span></p>
+      <p style="margin:4px 0;"><b>📞 WhatsApp:</b> <span id="modalStudentPhone"></span></p>
+      <p style="margin:4px 0;"><b>📊 Status:</b> <span id="modalStudentStatus" style="color:#10b981; font-weight:bold;"></span></p>
     </div>
-    <button onclick="document.getElementById('studentDetailModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:14px;">Close</button>
+    <button onclick="document.getElementById('studentDetailModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:16px;">Close</button>
   </div>
 </div>
 
+<!-- EDIT FACULTY MODAL -->
 <div id="editTeacherModal" class="modal hidden">
   <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:15px;">✏️ Edit Faculty Member</h3>
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">✏️ Edit Faculty Member</h3>
     <input type="hidden" id="editTeacherId">
     <input type="text" id="editTeacherName" placeholder="Full Name">
     <input type="text" id="editTeacherBadge" placeholder="Designation Badge">
@@ -701,49 +688,51 @@
     <input type="text" id="editTeacherMap" placeholder="Google Map Link">
     <input type="text" id="editTeacherSub" placeholder="Subjects / Designation">
     <input type="text" id="editTeacherContact" placeholder="Contact Phone Number">
-    <button onclick="saveTeacherEdit()" style="width:100%; background:#10b981; margin-top:8px;">💾 Save Details</button>
-    <button onclick="document.getElementById('editTeacherModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:5px;">Cancel</button>
+    <button onclick="saveTeacherEdit()" style="width:100%; background:#10b981; margin-top:10px;">💾 Save Details</button>
+    <button onclick="document.getElementById('editTeacherModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
   </div>
 </div>
 
+<!-- PUBLIC PHOTO & STUDENT UPLOAD MODAL -->
 <div id="publicAddPhotoModal" class="modal hidden">
   <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:15px;">📸 Student Photo Upload</h3>
-    <p id="publicPhotoStudentName" style="color:#38bdf8; font-weight:bold; font-size:11px;"></p>
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📸 Student Photo Upload</h3>
+    <p id="publicPhotoStudentName" style="color:#38bdf8; font-weight:bold; font-size:12px;"></p>
     <input type="hidden" id="publicPhotoStudentId">
     <input type="hidden" id="publicPhotoClass">
-    <label style="font-size:10px; color:var(--accent-yellow); display:block; margin-bottom:3px;">Select photo from device:</label>
-    <input type="file" id="publicStudentPhotoFile" accept="image/*" style="margin-bottom:10px;">
+    <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">Select photo from device:</label>
+    <input type="file" id="publicStudentPhotoFile" accept="image/*" style="margin-bottom:12px;">
     <button onclick="savePublicStudentPhoto()" style="width:100%; background:#10b981;">Upload Photo</button>
-    <button onclick="document.getElementById('publicAddPhotoModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:5px;">Cancel</button>
+    <button onclick="document.getElementById('publicAddPhotoModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
   </div>
 </div>
 
+<!-- PUBLIC SELF REGISTER MODAL -->
 <div id="publicSelfRegisterModal" class="modal hidden">
   <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:15px;">➕ Public Student Registration & Photo</h3>
-    <select id="publicRegClassSelect" style="margin-bottom:8px;"></select>
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">➕ Public Student Registration & Photo</h3>
+    <select id="publicRegClassSelect" style="margin-bottom:10px;"></select>
     <input type="text" id="publicRegName" placeholder="Student Name with Initial...">
-    <select id="publicRegCategorySelect" style="margin-bottom:8px;">
+    <select id="publicRegCategorySelect" style="margin-bottom:10px;">
       <option value="Senior">🎓 Senior</option>
       <option value="Junior">🧑‍🎓 Junior</option>
       <option value="Sub Junior">🎒 Sub Junior</option>
     </select>
     <input type="text" id="publicRegFather" placeholder="Father Name...">
     <input type="text" id="publicRegPhone" placeholder="Parent WhatsApp Number...">
-    <label style="font-size:10px; color:var(--accent-yellow); display:block; margin-bottom:3px;">Select Photo from Device:</label>
-    <input type="file" id="publicRegPhotoFile" accept="image/*" style="margin-bottom:10px;">
+    <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">Select Photo from Device:</label>
+    <input type="file" id="publicRegPhotoFile" accept="image/*" style="margin-bottom:12px;">
     <button onclick="savePublicSelfRegisteredStudent()" style="width:100%; background:#10b981;">Submit & Register</button>
-    <button onclick="document.getElementById('publicSelfRegisterModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:5px;">Cancel</button>
+    <button onclick="document.getElementById('publicSelfRegisterModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
   </div>
 </div>
 
 <div id="quickAddStudentModal" class="modal hidden">
   <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:15px;">➕ Add Student to Class</h3>
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">➕ Add Student to Class</h3>
     <input type="hidden" id="quickAddStudentClass">
     <input type="text" id="quickStudentName" placeholder="Student Name with Initial...">
-    <select id="quickStudentCategorySelect" style="margin-bottom:8px;">
+    <select id="quickStudentCategorySelect" style="margin-bottom:10px;">
       <option value="Senior">🎓 Senior</option>
       <option value="Junior">🧑‍🎓 Junior</option>
       <option value="Sub Junior">🎒 Sub Junior</option>
@@ -751,29 +740,29 @@
     <input type="text" id="quickStudentFather" placeholder="Father Name...">
     <input type="text" id="quickStudentPhone" placeholder="WhatsApp Phone Number...">
     <input type="text" id="quickStudentRegisterNo" placeholder="Register No / ID Number...">
-    <input type="file" id="quickStudentPhoto" accept="image/*" style="margin-bottom:8px;">
+    <input type="file" id="quickStudentPhoto" accept="image/*" style="margin-bottom:10px;">
     <button onclick="saveQuickStudentForClass()" style="width:100%; background:#10b981;">Register Student</button>
-    <button onclick="document.getElementById('quickAddStudentModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:5px;">Cancel</button>
+    <button onclick="document.getElementById('quickAddStudentModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
   </div>
 </div>
 
 <div id="restoreModal" class="modal hidden">
-  <div class="modal-content" style="width:340px;">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:15px;">📤 Restore Database Backup</h3>
-    <p style="font-size:10px; color:#cbd5e1;">Select your previously downloaded `ab_academy_backup.json` file to restore all records:</p>
-    <input type="file" id="restoreFileJson" accept=".json" style="margin-bottom:10px;">
+  <div class="modal-content" style="width:360px;">
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📤 Restore Database Backup</h3>
+    <p style="font-size:11px; color:#cbd5e1;">Select your previously downloaded `ab_academy_backup.json` file to restore all records:</p>
+    <input type="file" id="restoreFileJson" accept=".json" style="margin-bottom:12px;">
     <button onclick="processRestoreJson()" style="width:100%; background:#10b981;">Restore Now</button>
-    <button onclick="document.getElementById('restoreModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:5px;">Cancel</button>
+    <button onclick="document.getElementById('restoreModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
   </div>
 </div>
 
 <div id="loginModal" class="modal hidden">
-  <div class="modal-content" style="width:300px;">
-    <h3 style="text-align:center; color:var(--accent-yellow); margin-top:0; font-size:15px;">🔑 Admin Login</h3>
+  <div class="modal-content" style="width:320px;">
+    <h3 style="text-align:center; color:var(--accent-yellow); margin-top:0; font-size:16px;">🔑 Admin Login</h3>
     <input type="text" id="adminUser" placeholder="Username" value="admin">
     <input type="password" id="adminPass" placeholder="Password" value="123">
     <button onclick="doAdminLogin()" style="width:100%; background:#0284c7;">Login</button>
-    <button onclick="document.getElementById('loginModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
+    <button onclick="document.getElementById('loginModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:8px;">Cancel</button>
   </div>
 </div>
 
@@ -947,7 +936,6 @@
     document.getElementById(secId).classList.remove('hidden');
     if(btnEl) btnEl.classList.add('active');
     if(secId === 'adminSub3') populateSubjectManageDropdown();
-    if(secId === 'adminSubManageStudents') populateAdminManageStudentsDropdown();
   };
 
   document.addEventListener('DOMContentLoaded', () => {
@@ -1103,11 +1091,11 @@
     }
     committeeMembers.forEach(m => {
       grid.innerHTML += `
-        <div class="folder-card" style="background:linear-gradient(135deg, #0284c7, #0b132b); padding:14px; text-align:center;" onclick="showFacultyDetailsModal(${m.id})">
+        <div class="folder-card" style="background:linear-gradient(135deg, #0284c7, #0b132b); padding:16px; text-align:center;" onclick="showFacultyDetailsModal(${m.id})">
           <span class="designation-badge" style="margin-bottom:6px;">${m.badge || 'Committee'}</span>
-          <img src="${m.photo || 'https://via.placeholder.com/50'}" style="width:50px; height:50px; border-radius:50%; object-fit:cover; border:2px solid #ffd000; margin:4px auto 6px auto;">
-          <h4 style="margin:0; font-size:13px; color:#fff; font-weight:800;">${m.name}</h4>
-          <p style="margin:2px 0 0 0; font-size:10px; color:#38bdf8; font-weight:700;">${m.sub || 'Office Bearer'}</p>
+          <img src="${m.photo || 'https://via.placeholder.com/50'}" style="width:50px; height:50px; border-radius:50%; object-fit:cover; border:2px solid #ffd000; margin:4px auto 8px auto;">
+          <h4 style="margin:0; font-size:14px; color:#fff; font-weight:800;">${m.name}</h4>
+          <p style="margin:3px 0 0 0; font-size:11px; color:#38bdf8; font-weight:700;">${m.sub || 'Office Bearer'}</p>
         </div>
       `;
     });
@@ -1136,6 +1124,7 @@
 
           let tr = document.createElement('tr');
           tr.style.cursor = "pointer";
+          tr.title = "Right-click or Long-press to view full details";
           tr.innerHTML = `
             <td><img src="${s.photo || 'https://via.placeholder.com/35'}" style="width:30px; height:30px; border-radius:50%; object-fit:cover;"></td>
             <td>${c++}</td>
@@ -1146,12 +1135,22 @@
             </td>
           `;
 
-          tr.onclick = () => showStudentDetailsModal(s, cls);
+          tr.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            showStudentDetailsModal(s, cls);
+          });
+
+          let pressTimer;
+          tr.addEventListener('touchstart', () => {
+            pressTimer = setTimeout(() => { showStudentDetailsModal(s, cls); }, 600);
+          });
+          tr.addEventListener('touchend', () => { clearTimeout(pressTimer); });
+
           tbody.appendChild(tr);
         }
       });
     }
-    if(!found) tbody.innerHTML = `<tr><td colspan="4" style="color:#ffd000; padding:10px;">No student records found.</td></tr>`;
+    if(!found) tbody.innerHTML = `<tr><td colspan="4" style="color:#ffd000; padding:12px;">No student records found.</td></tr>`;
   };
 
   function showStudentDetailsModal(student, clsName) {
@@ -1280,21 +1279,21 @@
       document.getElementById('parentStudentClassInfo').innerText = `Class: ${matchedClass} | Reg No: ${matchedStudent.regNo || 'ABA-' + matchedStudent.id}`;
       
       let content = `
-        <div style="background:rgba(0,0,0,0.3); padding:12px; border-radius:10px; margin-top:10px; text-align:center;">
-          <p style="color:#10b981; font-weight:bold; font-size:12px; margin:0 0 6px 0;">🎉 Record verified successfully!</p>
-          <p style="margin:0; font-size:12px; color:#fff; text-align:left;"><b>Attendance Status:</b> <span style="color:#10b981;">${matchedStudent.status || 'Present'}</span></p>
-          <p style="margin:3px 0 0 0; font-size:11px; color:#cbd5e1; text-align:left;"><b>Category:</b> ${matchedStudent.category || 'Senior'}</p>
-          <p style="margin:3px 0 0 0; font-size:11px; color:#cbd5e1; text-align:left;"><b>Father Name:</b> ${matchedStudent.father || '-'}</p>
+        <div style="background:rgba(0,0,0,0.3); padding:14px; border-radius:12px; margin-top:12px; text-align:center;">
+          <p style="color:#10b981; font-weight:bold; font-size:13px; margin:0 0 8px 0;">🎉 Finished! You updated and enabled notifications successfully.</p>
+          <p style="margin:0; font-size:13px; color:#fff; text-align:left;"><b>Attendance Status:</b> <span style="color:#10b981;">${matchedStudent.status || 'Present'}</span></p>
+          <p style="margin:4px 0 0 0; font-size:12px; color:#cbd5e1; text-align:left;"><b>Category:</b> ${matchedStudent.category || 'Senior'}</p>
+          <p style="margin:4px 0 0 0; font-size:12px; color:#cbd5e1; text-align:left;"><b>Father Name:</b> ${matchedStudent.father || '-'}</p>
           <br>
-          <button style="background:#0284c7; font-size:10px; padding:5px 10px; border-radius:6px;" onclick="openPublicPhotoUploadModal(${matchedStudent.id}, '${matchedClass}', '${matchedStudent.name}')">📸 Add / Update Your Photo</button>
+          <button style="background:#0284c7; font-size:11px; padding:6px 12px; border-radius:8px;" onclick="openPublicPhotoUploadModal(${matchedStudent.id}, '${matchedClass}', '${matchedStudent.name}')">📸 Add / Update Your Photo</button>
         </div>
       `;
       document.getElementById('parentStudentDetailsContent').innerHTML = content;
-      alert("🎉 Student record verified successfully!");
+      alert("🎉 Finished! You updated and enabled notifications successfully.");
     } else {
       dashboardDiv.classList.add('hidden');
       errorNotice.classList.remove('hidden');
-      alert("⚠️ Student record not found or incorrect details.");
+      alert("⚠️ Please check in student directory! Record not found or incorrect details.");
     }
   };
 
@@ -1310,19 +1309,19 @@
       let teacherLocStr = u.loc || 'Academy Campus';
       let phoneClean = (u.contact || '').replace(/\D/g, '');
       let contactBtns = `
-        <div style="display:flex; gap:5px; justify-content:center; margin-top:6px;" onclick="event.stopPropagation()">
-          <a href="tel:${phoneClean}" style="background:#0284c7; color:#fff; text-decoration:none; padding:3px 8px; border-radius:6px; font-size:10px; font-weight:bold;">📞 Call</a>
-          <a href="https://wa.me/91${phoneClean}" target="_blank" style="background:#25D366; color:#fff; text-decoration:none; padding:3px 8px; border-radius:6px; font-size:10px; font-weight:bold;">💬 WhatsApp</a>
+        <div style="display:flex; gap:6px; justify-content:center; margin-top:8px;" onclick="event.stopPropagation()">
+          <a href="tel:${phoneClean}" style="background:#0284c7; color:#fff; text-decoration:none; padding:4px 10px; border-radius:8px; font-size:10px; font-weight:bold;">📞 Call</a>
+          <a href="https://wa.me/91${phoneClean}" target="_blank" style="background:#25D366; color:#fff; text-decoration:none; padding:4px 10px; border-radius:8px; font-size:10px; font-weight:bold;">💬 WhatsApp</a>
         </div>
       `;
-      let adminBtns = window.isAdmin ? `<div style="margin-top:5px;"><button class="btn-edit" onclick="openEditTeacherModal(${u.id})">✏️ Edit</button><button class="btn-delete" onclick="deleteTeacher(${u.id})">🗑️ Delete</button></div>` : '';
+      let adminBtns = window.isAdmin ? `<div style="margin-top:6px;"><button class="btn-edit" onclick="openEditTeacherModal(${u.id})">✏️ Edit</button><button class="btn-delete" onclick="deleteTeacher(${u.id})">🗑️ Delete</button></div>` : '';
 
       if(!q || u.name.toLowerCase().includes(q) || teacherLocStr.toLowerCase().includes(q) || (u.sub || '').toLowerCase().includes(q)) {
         const cardHtml = `<div class="faculty-card-modern" onclick="showFacultyDetailsModal(${u.id})">
           <span class="designation-badge">⭐ ${u.badge || (u.type === 'committee' ? 'Committee' : 'Faculty')}</span>
           <img src="${u.photo || 'https://via.placeholder.com/80'}" class="faculty-avatar">
-          <h3 style="margin:4px 0 2px 0; font-size:15px; color:#ffd000; font-weight:800;">${u.name}</h3>
-          <p style="margin:0; font-size:10px; color:#38bdf8; font-weight:600;">${u.sub || 'Faculty Member'}</p>
+          <h3 style="margin:6px 0 2px 0; font-size:16px; color:#ffd000; font-weight:800;">${u.name}</h3>
+          <p style="margin:0; font-size:11px; color:#38bdf8; font-weight:600;">${u.sub || 'Faculty Member'}</p>
           ${contactBtns}
           <div onclick="event.stopPropagation()">${adminBtns}</div>
         </div>`;
@@ -1346,7 +1345,7 @@
     
     let mapDiv = document.getElementById('modalFacultyMapContainer');
     if(u.mapLink) {
-      mapDiv.innerHTML = `<a href="${u.mapLink}" target="_blank" style="color:#38bdf8; font-size:11px; font-weight:bold;">📍 View Google Map Location</a>`;
+      mapDiv.innerHTML = `<a href="${u.mapLink}" target="_blank" style="color:#38bdf8; font-size:12px; font-weight:bold;">📍 View Google Map Location</a>`;
     } else {
       mapDiv.innerHTML = '';
     }
@@ -1357,7 +1356,7 @@
     const container = document.getElementById('manageTeachersList');
     if(!container) return; container.innerHTML = "";
     (window.dbData.usthads || []).forEach(u => {
-      container.innerHTML += `<div style="background:rgba(0,0,0,0.3); padding:8px; border-radius:8px; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center; font-size:11px;">
+      container.innerHTML += `<div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
         <span><b>${u.name}</b> (${u.badge || 'Faculty'})</span>
         <div><button class="btn-edit" onclick="openEditTeacherModal(${u.id})">Edit</button><button class="btn-delete" onclick="deleteTeacher(${u.id})">Delete</button></div>
       </div>`;
@@ -1450,9 +1449,9 @@
     for(let portal in window.dbData.classes) {
       window.dbData.classes[portal].forEach(cls => {
         let tName = (window.dbData.classTeachers || {})[cls] || 'Not Assigned';
-        container.innerHTML += `<div style="background:rgba(0,0,0,0.3); padding:8px; border-radius:8px; margin-bottom:6px; display:flex; justify-content:space-between; align-items:center; font-size:11px;">
+        container.innerHTML += `<div style="background:rgba(0,0,0,0.3); padding:10px; border-radius:10px; margin-bottom:8px; display:flex; justify-content:space-between; align-items:center;">
           <div><b>📁 ${cls} (${portal})</b><br><small style="color:#38bdf8;">Teacher: ${tName}</small></div>
-          <button class="btn-delete" onclick="deleteClass('${portal}', '${cls}')">Delete</button>
+          <button class="btn-delete" onclick="deleteClass('${portal}', '${cls}')">Delete Class</button>
         </div>`;
       });
     }
@@ -1482,19 +1481,19 @@
     if(!container) return;
     container.innerHTML = "";
     if(!cls) {
-      container.innerHTML = `<p style="color:#ffd000; font-size:11px;">Please select a class to manage subjects.</p>`;
+      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">Please select a class to manage subjects.</p>`;
       return;
     }
     let subs = window.dbData.subjects[cls] || [];
     if(subs.length === 0) {
-      container.innerHTML = `<p style="color:#ffd000; font-size:11px;">No subjects added for ${cls} yet.</p>`;
+      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">No subjects added for ${cls} yet.</p>`;
       return;
     }
-    let html = '<div style="display:flex; flex-direction:column; gap:5px;">';
+    let html = '<div style="display:flex; flex-direction:column; gap:6px;">';
     subs.forEach(sub => {
-      html += `<div style="background:rgba(0,0,0,0.3); padding:6px 10px; border-radius:6px; display:flex; justify-content:space-between; align-items:center; font-size:11px;">
+      html += `<div style="background:rgba(0,0,0,0.3); padding:8px 12px; border-radius:8px; display:flex; justify-content:space-between; align-items:center; font-size:12px;">
         <span>📖 <b>${sub}</b></span>
-        <button onclick="adminDeleteSubjectFromClass('${cls}', '${sub}')" style="background:#ef4444; padding:3px 6px; font-size:9px;">🗑️ Remove</button>
+        <button onclick="adminDeleteSubjectFromClass('${cls}', '${sub}')" style="background:#ef4444; padding:4px 8px; font-size:10px;">🗑️ Remove</button>
       </div>`;
     });
     html += '</div>';
@@ -1694,11 +1693,11 @@
       let stColor = currentStatus === 'Present' ? '#10b981' : (currentStatus === 'Absent' ? '#ef4444' : (currentStatus === 'Friday Leave' ? '#f59e0b' : '#94a3b8'));
       
       let statusBtn = window.isAdmin 
-        ? `<button onclick="toggleStudentStatus('${clsName}', ${s.id})" style="background:${stColor}; color:#fff; padding:5px 10px; border-radius:6px; font-weight:bold; font-size:10px;">${currentStatus}</button>`
-        : `<span style="color:${stColor}; font-weight:bold; font-size:10px;">${currentStatus}</span>`;
+        ? `<button onclick="toggleStudentStatus('${clsName}', ${s.id})" style="background:${stColor}; color:#fff; padding:6px 12px; border-radius:8px; font-weight:bold; font-size:11px;">${currentStatus}</button>`
+        : `<span style="color:${stColor}; font-weight:bold; font-size:11px;">${currentStatus}</span>`;
 
       tbody.innerHTML += `<tr>
-        <td><img src="${s.photo || 'https://via.placeholder.com/40'}" style="width:34px; height:34px; border-radius:50%; object-fit:cover;"></td>
+        <td><img src="${s.photo || 'https://via.placeholder.com/40'}" style="width:36px; height:36px; border-radius:50%; object-fit:cover;"></td>
         <td>${idx+1}</td>
         <td><b>${s.name}</b> <small style="color:#ffd000;">[${s.category || 'Senior'}]</small></td>
         <td>${statusBtn}</td>
@@ -1752,9 +1751,9 @@
       return;
     }
 
-    let html = '<ul style="padding-left:16px; margin:0;">';
+    let html = '<ul style="padding-left:18px; margin:0;">';
     notes.forEach((n) => {
-      html += `<li style="margin-bottom:5px;"><a href="${n.url}" target="_blank" style="color:#ffd000; font-weight:bold; text-decoration:underline;">📄 ${n.title}</a></li>`;
+      html += `<li style="margin-bottom:6px;"><a href="${n.url}" target="_blank" style="color:#ffd000; font-weight:bold; text-decoration:underline;">📄 ${n.title}</a></li>`;
     });
     html += '</ul>';
     display.innerHTML = html;
@@ -1826,7 +1825,7 @@
         if(!window.dbData.usthads) window.dbData.usthads = [];
         window.dbData.usthads.push({ id: Date.now(), type, badge, name, loc, mapLink, sub, contact, photo: photoBase64 });
         window.saveData();
-        alert(`✅ Member "${name}" Added Successfully!`);
+        alert(`✅ Member "${name}" Added with Designation Badge & Photo Successfully!`);
         document.getElementById('teacherNameInput').value = "";
         document.getElementById('teacherDesignationInput').value = "";
         document.getElementById('teacherLocInput').value = "";
@@ -1866,13 +1865,13 @@
     if(!container) return; container.innerHTML = "";
 
     if(!cls || !sub) {
-      container.innerHTML = `<p style="color:#ffd000; text-align:center; padding:10px;">Please select Class and Subject to view exam mark sheet.</p>`;
+      container.innerHTML = `<p style="color:#ffd000; text-align:center; padding:12px;">Please select Class and Subject to view exam mark sheet.</p>`;
       return;
     }
 
     let students = window.dbData.students[cls] || [];
     if(students.length === 0) {
-      container.innerHTML = `<p style="color:#ffd000; text-align:center; padding:10px;">No students found in ${cls}.</p>`;
+      container.innerHTML = `<p style="color:#ffd000; text-align:center; padding:12px;">No students found in ${cls}.</p>`;
       return;
     }
 
@@ -1881,11 +1880,11 @@
     const pdfUrl = (window.dbData.examPdfReports || {})[examKey];
 
     if(!marksData) {
-      container.innerHTML = `<div style="text-align:center; background:rgba(239,68,68,0.2); padding:14px; border-radius:12px; border:1px solid #ef4444;"><h4 style="color:#ef4444; margin:0;">⚠️ Exam Marks Not Uploaded Yet</h4><p style="font-size:10px; color:#fca5a5; margin:3px 0 0 0;">Marks for ${sub} in ${cls} have not been uploaded by admin.</p></div>`;
+      container.innerHTML = `<div style="text-align:center; background:rgba(239,68,68,0.2); padding:16px; border-radius:14px; border:1px solid #ef4444;"><h4 style="color:#ef4444; margin:0;">⚠️ Exam Marks Not Uploaded Yet</h4><p style="font-size:11px; color:#fca5a5; margin:4px 0 0 0;">Marks for ${sub} in ${cls} have not been uploaded by admin.</p></div>`;
       return;
     }
 
-    let pdfLinkBtn = pdfUrl ? `<a href="${pdfUrl}" target="_blank" style="background:#0284c7; color:#fff; font-size:10px; font-weight:bold; padding:5px 10px; border-radius:6px; text-decoration:none; display:inline-block; margin-bottom:10px;">📄 Download Official Exam PDF Report</a>` : '';
+    let pdfLinkBtn = pdfUrl ? `<a href="${pdfUrl}" target="_blank" style="background:#0284c7; color:#fff; font-size:11px; font-weight:bold; padding:6px 12px; border-radius:8px; text-decoration:none; display:inline-block; margin-bottom:12px;">📄 Download Official Exam PDF Report</a>` : '';
 
     let html = `
       <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;">
@@ -1949,13 +1948,13 @@
     if(!container) return; container.innerHTML = "";
 
     if(!cls || !sub) {
-      container.innerHTML = `<p style="color:#ffd000; font-size:11px;">Select Class and Subject to load mark entry table.</p>`;
+      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">Select Class and Subject to load mark entry table.</p>`;
       return;
     }
 
     let students = window.dbData.students[cls] || [];
     if(students.length === 0) {
-      container.innerHTML = `<p style="color:#ffd000; font-size:11px;">No students found in ${cls}.</p>`;
+      container.innerHTML = `<p style="color:#ffd000; font-size:12px;">No students found in ${cls}.</p>`;
       return;
     }
 
@@ -1976,9 +1975,9 @@
       html += `
         <tr>
           <td><b>${s.name}</b></td>
-          <td><input type="number" id="admCurr_${s.id}" value="${m.current}" style="margin-bottom:0; padding:5px; text-align:center;"></td>
-          <td><input type="number" id="admPrev_${s.id}" value="${m.previous}" style="margin-bottom:0; padding:5px; text-align:center;"></td>
-          <td><button onclick="saveAdminStudentExamMark(${s.id}, '${cls}', '${sub}')" style="background:#10b981; padding:3px 8px; font-size:9px;">Save</button></td>
+          <td><input type="number" id="admCurr_${s.id}" value="${m.current}" style="margin-bottom:0; padding:6px; text-align:center;"></td>
+          <td><input type="number" id="admPrev_${s.id}" value="${m.previous}" style="margin-bottom:0; padding:6px; text-align:center;"></td>
+          <td><button onclick="saveAdminStudentExamMark(${s.id}, '${cls}', '${sub}')" style="background:#10b981; padding:4px 10px; font-size:10px;">Save</button></td>
         </tr>
       `;
     });
@@ -2044,10 +2043,10 @@
 
     teams.forEach(t => {
       let adminControls = window.isAdmin ? `
-        <div style="margin-top:10px; display:flex; gap:5px; justify-content:center;">
-          <button onclick="adjustTeamPoints('${key}', ${t.id}, 10)" style="background:#10b981; padding:5px 10px; font-size:10px;">+10</button>
-          <button onclick="adjustTeamPoints('${key}', ${t.id}, -10)" style="background:#ef4444; padding:5px 10px; font-size:10px;">-10</button>
-          <button onclick="deleteTeam('${key}', ${t.id})" style="background:#000; padding:5px 10px; font-size:10px;">🗑️</button>
+        <div style="margin-top:12px; display:flex; gap:6px; justify-content:center;">
+          <button onclick="adjustTeamPoints('${key}', ${t.id}, 10)" style="background:#10b981; padding:6px 12px; font-size:11px;">+10</button>
+          <button onclick="adjustTeamPoints('${key}', ${t.id}, -10)" style="background:#ef4444; padding:6px 12px; font-size:11px;">-10</button>
+          <button onclick="deleteTeam('${key}', ${t.id})" style="background:#000; padding:6px 12px; font-size:11px;">🗑️</button>
         </div>
       ` : '';
 
@@ -2056,17 +2055,17 @@
       
       if (!t.revealed) {
         card.innerHTML = `
-          <div id="giftBoxSpin_${t.id}" onclick="revealGiftBoxWithSpin('${key}', ${t.id})" style="padding:8px; cursor:pointer; text-align:center;">
-            <div class="gift-icon" style="font-size:42px; margin-bottom:6px; transition:all 0.5s ease;">🎁</div>
-            <h3 style="margin:0; font-size:15px; color:#000; font-weight:900;">CLICK MYSTERY GIFT BOX</h3>
-            <p style="margin:3px 0 0 0; font-size:10px; color:#111; font-weight:700;">${t.name}</p>
+          <div id="giftBoxSpin_${t.id}" onclick="revealGiftBoxWithSpin('${key}', ${t.id})" style="padding:10px; cursor:pointer; text-align:center;">
+            <div class="gift-icon" style="font-size:48px; margin-bottom:8px; transition:all 0.5s ease;">🎁</div>
+            <h3 style="margin:0; font-size:16px; color:#000; font-weight:900;">CLICK MYSTERY GIFT BOX</h3>
+            <p style="margin:4px 0 0 0; font-size:11px; color:#111; font-weight:700;">${t.name}</p>
           </div>
         `;
       } else {
         card.innerHTML = `
-          <h3 style="margin:0 0 5px 0; font-size:16px;">🏆 ${t.name}</h3>
-          <div style="font-size:22px; font-weight:900;">${t.points} PTS</div>
-          <div style="background:rgba(0,0,0,0.3); padding:3px 8px; border-radius:10px; font-size:10px; font-weight:bold; margin-top:5px;">🌟 TOP PERFORMANCE!</div>
+          <h3 style="margin:0 0 6px 0; font-size:18px;">🏆 ${t.name}</h3>
+          <div style="font-size:24px; font-weight:900;">${t.points} PTS</div>
+          <div style="background:rgba(0,0,0,0.3); padding:4px 10px; border-radius:12px; font-size:11px; font-weight:bold; margin-top:6px;">🌟 TOP PERFORMANCE!</div>
           ${adminControls}
         `;
       }
@@ -2178,7 +2177,6 @@
       reader.onload = function(e) {
         try {
           const parsed = JSON.parse(e.target.result);
-          print
           if (parsed && parsed.students && parsed.classes) {
             window.dbData = parsed;
             window.saveData();
