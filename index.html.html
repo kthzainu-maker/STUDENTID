@@ -3,46 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3.0, user-scalable=yes">
-  <title>ABDUL BARI ACADEMY PUTHUPPARMBA - ULTIMATE HD PRO PORTAL</title>
+  <title>ABDUL BARI ACADEMY PUTHUPPARMBA - ULTIMATE NUCLEAR PRO PORTAL</title>
 
   <!-- Google Fonts & External Libraries -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-  <!-- Chart.js for Performance & Attendance Analytics -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
     :root {
-      --bg-deep-1: #0b132b;
-      --bg-deep-2: #1c2541;
-      --bg-deep-3: #3a506b;
-      --card-bg: rgba(28, 37, 65, 0.88);
-      --glass-border: rgba(56, 189, 248, 0.5);
+      --bg-deep-1: #060814;
+      --bg-deep-2: #0b132b;
+      --bg-deep-3: #1c2541;
+      --card-bg: rgba(11, 19, 43, 0.94);
+      --glass-border: rgba(56, 189, 248, 0.6);
       --text-main: #ffffff;
       --accent-yellow: #ffd000;
       --neon-pink: #ec4899;
       --neon-cyan: #38bdf8;
       --neon-green: #10b981;
       --red: #ef4444;
-      --neon-glow: 0 0 25px rgba(56, 189, 248, 0.6), 0 0 45px rgba(255, 208, 0, 0.35);
-      --card-glow: 0 15px 35px rgba(11, 19, 43, 0.6);
+      --neon-glow: 0 0 30px rgba(56, 189, 248, 0.7), 0 0 50px rgba(255, 208, 0, 0.4);
+      --card-glow: 0 15px 35px rgba(7, 1, 20, 0.7);
     }
 
+    body.theme-nuclear {
+      --bg-deep-1: #050505; --bg-deep-2: #0d1a0d; --bg-deep-3: #122b15;
+      --card-bg: rgba(10, 25, 12, 0.94); --glass-border: rgba(0, 255, 102, 0.5);
+      --text-main: #ffffff; --accent-yellow: #00ff66; --neon-glow: 0 0 30px rgba(0, 255, 102, 0.7), 0 0 50px rgba(0, 204, 82, 0.4);
+    }
+    body.theme-nuclear-blue {
+      --bg-deep-1: #020b14; --bg-deep-2: #0a192f; --bg-deep-3: #002244;
+      --card-bg: rgba(10, 25, 47, 0.94); --glass-border: rgba(0, 216, 255, 0.5);
+      --text-main: #ffffff; --accent-yellow: #00d8ff; --neon-glow: 0 0 30px rgba(0, 216, 255, 0.7), 0 0 50px rgba(0, 163, 204, 0.4);
+    }
     body.theme-dark-violet {
       --bg-deep-1: #070114; --bg-deep-2: #180533; --bg-deep-3: #2d0b52;
       --card-bg: rgba(25, 12, 43, 0.88); --glass-border: rgba(255, 208, 0, 0.5);
       --text-main: #ffffff; --accent-yellow: #ffd000; --neon-glow: 0 0 25px rgba(255, 208, 0, 0.6), 0 0 45px rgba(236, 72, 153, 0.35);
-    }
-    body.theme-light-rose {
-      --bg-deep-1: #fff0f5; --bg-deep-2: #ffe4e1; --bg-deep-3: #ffd1dc;
-      --card-bg: rgba(255, 255, 255, 0.92); --glass-border: rgba(225, 29, 72, 0.4);
-      --text-main: #111827; --accent-yellow: #be123c; --neon-glow: 0 0 20px rgba(190, 18, 60, 0.3);
-    }
-    body.theme-light-yellow {
-      --bg-deep-1: #fefce8; --bg-deep-2: #fef08a; --bg-deep-3: #fde047;
-      --card-bg: rgba(255, 255, 255, 0.92); --glass-border: rgba(202, 138, 4, 0.45);
-      --text-main: #1f2937; --accent-yellow: #a16207; --neon-glow: 0 0 20px rgba(202, 138, 4, 0.3);
     }
 
     * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
@@ -66,7 +65,7 @@
     .container { max-width: 1100px; margin: 0 auto; position: relative; width: 100%; }
 
     header {
-      background: rgba(11, 19, 43, 0.92);
+      background: var(--card-bg);
       backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--glass-border);
       color: #fff; padding: 18px 22px; border-radius: 22px; margin-bottom: 14px;
@@ -80,11 +79,11 @@
     .header-title-box small { display: block; margin-top: 2px; font-size: 10px; font-weight: 800; color: var(--neon-cyan) !important; letter-spacing: 2px; }
 
     .header-right { display: flex; align-items: center; gap: 8px; position: relative; flex-wrap: wrap; }
-    .auth-btn { background: linear-gradient(135deg, #ffd000, #f59e0b); color: #000; border: none; padding: 10px 18px; border-radius: 12px; cursor: pointer; font-weight: 800; box-shadow: var(--neon-glow); font-size: 12px; position: relative; z-index: 100; pointer-events: auto; }
+    .auth-btn { background: linear-gradient(135deg, var(--accent-yellow), #f59e0b); color: #000; border: none; padding: 10px 18px; border-radius: 12px; cursor: pointer; font-weight: 800; box-shadow: var(--neon-glow); font-size: 12px; position: relative; z-index: 100; pointer-events: auto; }
     .logout-btn { background: var(--red); color: white; border: none; padding: 10px 18px; border-radius: 12px; cursor: pointer; font-weight: 800; font-size: 12px; position: relative; z-index: 100; pointer-events: auto; }
     .menu-icon { font-size: 22px; cursor: pointer; color: #fff; padding: 8px 14px; border-radius: 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); position: relative; z-index: 100; pointer-events: auto; }
 
-    .notice-marquee { background: linear-gradient(90deg, #ffd000, #38bdf8, #10b981); background-size: 200% 200%; animation: gradientBG 6s ease infinite; color: #000; padding: 10px 16px; border-radius: 12px; font-weight: 800; font-size: 13px; margin-bottom: 16px; }
+    .notice-marquee { background: linear-gradient(90deg, var(--accent-yellow), #38bdf8, #10b981); background-size: 200% 200%; animation: gradientBG 6s ease infinite; color: #000; padding: 10px 16px; border-radius: 12px; font-weight: 800; font-size: 13px; margin-bottom: 16px; }
 
     .msg-notification-box {
       background: linear-gradient(135deg, rgba(28, 37, 65, 0.9), rgba(58, 80, 107, 0.9));
@@ -93,7 +92,7 @@
     }
 
     #settingsDropdown {
-      position: absolute; top: 55px; right: 0; background: #0b132b; color: #fff;
+      position: absolute; top: 55px; right: 0; background: var(--card-bg); color: #fff;
       backdrop-filter: blur(20px); border-radius: 18px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); width: 280px; 
       z-index: 99999 !important; padding: 18px; border: 1px solid var(--glass-border);
     }
@@ -144,7 +143,59 @@
     .grad-emerald-green { background: linear-gradient(135deg, #10b981, #059669) !important; color: #fff !important; }
     .grad-deep-violet { background: linear-gradient(135deg, #6366f1, #4f46e5) !important; color: #fff !important; }
 
-    .challenge-card { border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 2px solid rgba(255, 255, 255, 0.4); cursor: pointer; pointer-events: auto; }
+    /* TOUCH OPTIMIZED 3D VERTICAL FLIP CHALLENGE BOX */
+    .challenge-container {
+      perspective: 1000px;
+      min-height: 200px;
+      cursor: pointer;
+      touch-action: manipulation;
+      user-select: none;
+      margin-top: 12px;
+    }
+
+    .challenge-card {
+      width: 100%;
+      height: 100%;
+      min-height: 200px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border-radius: 16px;
+      pointer-events: none;
+    }
+
+    .challenge-container.flipped .challenge-card {
+      transform: rotateX(180deg);
+    }
+
+    .challenge-front, .challenge-back {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      border-radius: 16px;
+      border: 2px dashed var(--accent-yellow);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      box-shadow: inset 0 0 20px var(--card-glow);
+    }
+
+    .challenge-back {
+      transform: rotateX(180deg);
+      border-style: solid;
+      background: rgba(0, 0, 0, 0.85);
+    }
+
+    .points-badge {
+      font-size: 2.5rem; font-weight: 900;
+      color: var(--accent-yellow);
+      text-shadow: 0 0 15px var(--accent-yellow);
+      margin-top: 10px;
+    }
+
     .gift-spin-anim { animation: spinBox 1.2s ease-in-out infinite; }
     @keyframes spinBox {
       0% { transform: rotate(0deg) scale(1); }
@@ -173,17 +224,16 @@
     th, td { border: 1px solid rgba(255,255,255,0.18); padding: 10px 8px; text-align: center; }
     th { background: rgba(56,189,248,0.25); color: var(--accent-yellow); font-weight: 800; }
 
-    input, select, textarea { width: 100%; padding: 12px; margin-bottom: 12px; border-radius: 10px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.25); font-family: 'Poppins', sans-serif; font-size: 13px; }
+    input, select, textarea { width: 100%; padding: 12px; margin-bottom: 12px; border-radius: 10px; background: rgba(0,0,0,0.4); color: #fff; border: 1px solid rgba(255,255,255,0.25); font-family: 'Poppins', sans-serif; font-size: 13px; outline: none; }
 
     .hidden { display: none !important; }
     .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); backdrop-filter: blur(12px); display: flex; justify-content: center; align-items: center; z-index: 999999; padding: 15px; }
-    .modal-content { background: #0b132b; color: #fff; padding: 24px; border-radius: 22px; width: 480px; max-width: 100%; border: 1px solid var(--glass-border); max-height:90vh; overflow-y:auto; position: relative; z-index: 1000000; }
+    .modal-content { background: var(--card-bg); color: #fff; padding: 24px; border-radius: 22px; width: 480px; max-width: 100%; border: 1px solid var(--glass-border); max-height:90vh; overflow-y:auto; position: relative; z-index: 1000000; }
 
     .btn-edit { background: #0284c7; color: #fff; font-size: 10px; padding: 5px 10px; border-radius: 8px; margin-right: 4px; }
     .btn-delete { background: #ef4444; color: #fff; font-size: 10px; padding: 5px 10px; border-radius: 8px; }
     .btn-whatsapp { background: #25D366; color: #fff; font-size: 11px; padding: 6px 12px; border-radius: 8px; font-weight: bold; text-decoration: none; display: inline-block; }
 
-    /* Graph Card Specific Styling */
     .graph-card-container {
       background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
       border: 2px solid var(--glass-border);
@@ -201,14 +251,14 @@
     }
   </style>
 </head>
-<body>
+<body class="theme-nuclear">
 
 <div class="container">
   <header>
     <div class="header-title-box">
       <h1>ABDUL BARI ACADEMY</h1>
       <h2>PUTHUPPARMBA</h2>
-      <small>ULTIMATE HD PRO PORTAL</small>
+      <small>ULTIMATE NUCLEAR PRO PORTAL</small>
     </div>
     <div class="header-right">
       <div style="display:flex; gap:4px; align-items:center; background:rgba(255,255,255,0.12); padding:5px 10px; border-radius:12px; border:1px solid rgba(255,255,255,0.2);">
@@ -231,10 +281,9 @@
         </div>
 
         <div style="font-size: 11px; font-weight: 800; color: var(--accent-yellow); padding: 4px; text-transform: uppercase;">🎨 Portal Themes</div>
-        <div onclick="changePortalTheme('default')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#38bdf8;">🌊 Nuclear Deep Blue (Default)</div>
-        <div onclick="changePortalTheme('theme-dark-violet')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#a855f7;">💜 Dark Violet Theme</div>
-        <div onclick="changePortalTheme('theme-light-rose')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#be123c;">🌸 Light Rose Theme</div>
-        <div onclick="changePortalTheme('theme-light-yellow')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#a16207;">☀️ Light Yellow Theme</div>
+        <div onclick="changePortalTheme('theme-nuclear')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#00ff66;">☢️ Nuclear Green</div>
+        <div onclick="changePortalTheme('theme-nuclear-blue')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#00d8ff;">🌐 Nuclear Blue</div>
+        <div onclick="changePortalTheme('theme-dark-violet')" style="padding: 8px; cursor: pointer; font-size: 12px; font-weight: 700; color:#ffd000;">💜 Dark Violet Theme</div>
         
         <div style="border-top: 1px solid rgba(255,255,255,0.15); margin: 8px 0; padding-top: 6px;"></div>
         <div onclick="sharePortalApp()" style="padding: 8px; cursor: pointer; font-weight: 700; font-size: 12px; border-radius: 8px; background: rgba(37,211,102,0.2); color: #25D366; margin-bottom:4px;">🔗 Share App Link</div>
@@ -271,7 +320,7 @@
     <button class="tab-btn" data-tab="usthadTab">👨‍🏫 Faculty</button>
     <button class="tab-btn" data-tab="examTab">📝 Exams</button>
     <button class="tab-btn" data-tab="homeworkTab">📚 Homework</button>
-    <button id="navAdminControl" class="tab-btn admin-only hidden" data-tab="managementTab">⚙️ Admin</button>
+    <button id="navAdminControl" class="tab-btn admin-only hidden" data-tab="managementTab">⚙️ Admin Control</button>
   </div>
 
   <div class="card" id="portalMainCard">
@@ -287,7 +336,7 @@
       <div class="public-dashboard-grid">
         <div class="pub-stat-card">
           <div style="font-size: 28px; margin-bottom: 4px;">🎓</div>
-          <p style="font-weight: 800; font-size: 11px; margin: 0;">TOTAL STUDENTS</p>
+          <p style="font-weight: 800; font-size: 11px; margin: 0;">UNIQUE STUDENTS</p>
           <h2 id="pubStatStudents" style="font-size: 34px; margin: 4px 0 0 0; font-weight: 900;">0</h2>
         </div>
 
@@ -332,14 +381,13 @@
       <!-- COLLAPSIBLE STUDENT DIRECTORY FOLDER CARD -->
       <div id="btnStudentDirectoryFolder" onclick="toggleStudentDirectory()" class="folder-card" style="background: linear-gradient(135deg, #0284c7, #0b132b); border: 2px solid var(--accent-yellow); padding: 22px; margin-bottom: 20px; text-align: center; border-radius: 22px;">
         <h2 style="margin:0; font-size: 18px; color: var(--accent-yellow);">🔍 Student Directory</h2>
-        <p style="margin: 4px 0 0 0; font-size: 12px; color: #e2e8f0;">(Click here to open/close student search, direct WhatsApp & Photo Upload)</p>
+        <p style="margin: 4px 0 0 0; font-size: 12px; color: #e2e8f0;">(Click here to search directory & view profile details)</p>
       </div>
 
-      <!-- DIRECTORY & DIRECT WHATSAPP ACTION TABLE -->
+      <!-- DIRECTORY & WHATSAPP ACTION TABLE -->
       <div id="studentDirectoryContainer" class="hidden" style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 14px; border-radius: 22px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-bottom: 24px;">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
           <h3 style="color: var(--accent-yellow); margin: 0; font-size: 15px; font-weight: 800;">📋 Registered Students List</h3>
-          <button onclick="openPublicSelfRegisterModal()" style="background:#10b981; font-size:11px; padding:6px 12px;">➕ Add Student / Photo Publicly</button>
         </div>
         
         <div style="display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap;">
@@ -361,8 +409,8 @@
               <tr>
                 <th style="width: 40px;">Photo</th>
                 <th style="width: 30px;">No.</th>
-                <th>Student Name</th>
-                <th style="width: 140px;">Actions</th>
+                <th>Student Name & Place</th>
+                <th style="width: 100px;">Actions</th>
               </tr>
             </thead>
             <tbody id="dashStudentsTableBody"></tbody>
@@ -397,23 +445,14 @@
       <div id="subjectFolderLevel" class="hidden">
         <button class="btn-back" id="btnBackToClasses">← Back to Classes</button>
         <h3 id="selectedClassHeader" style="color:var(--accent-yellow); font-size:16px;">Subjects & Attendance</h3>
-        
-        <!-- SEARCHABLE DROPDOWN ADDER FOR EXISTING STUDENTS -->
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); padding:14px; border-radius:16px; margin-bottom:16px;">
-          <h4 style="color:#ffd000; margin:0 0 8px 0; font-size:13px;">➕ Select Existing Student from Directory</h4>
-          <div style="display:flex; gap:8px; flex-wrap:wrap;">
-            <select id="existingStudentDropdownSelect" style="flex:2; margin-bottom:0; padding:8px; font-size:12px;"></select>
-            <button onclick="addExistingStudentToCurrentClass()" style="flex:1; background:#10b981; font-size:11px; padding:8px;">Add Student</button>
-          </div>
-        </div>
 
         <div class="folder-grid" id="subjectFoldersGrid"></div>
 
-        <!-- OVERALL ATTENDANCE SUMMARY PORTAL & GRAPH TRIGGER (BEFORE SUBJECT DETAILS) -->
+        <!-- OVERALL ATTENDANCE SUMMARY PORTAL & GRAPH TRIGGER -->
         <div class="graph-card-container">
           <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
             <div>
-              <h3 style="color:var(--accent-yellow); margin:0; font-size:15px; font-weight:800;">📊 Overall Class Attendance Analytics</h3>
+              <h3 style="color:var(--accent-yellow); margin:0; font-size:15px; font-weight:800;">📊 Class Overall Attendance Analytics</h3>
               <p style="color:#38bdf8; font-size:11px; margin:2px 0 0 0;">Overall attendance percentage and leaves for all subjects</p>
             </div>
             <button onclick="openClassAttendanceGraphModal()" style="background: linear-gradient(135deg, #a855f7, #6366f1); font-size:11px; padding:8px 14px;">
@@ -447,9 +486,6 @@
         <button class="btn-back" id="btnBackToSubjects">← Back to Subjects</button>
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
           <h2 id="topicTitle" style="color:var(--accent-yellow); margin-bottom:10px; font-size:16px;"></h2>
-          <div class="admin-only hidden">
-            <button onclick="openAddStudentModalForClass()" style="background:#10b981; font-size:11px; padding:8px 14px; margin-bottom:10px;">➕ Add Student to Class</button>
-          </div>
         </div>
         
         <div style="background: linear-gradient(135deg, rgba(2,132,199,0.3), rgba(56,189,248,0.3)); border:1px solid var(--glass-border); padding:14px; border-radius:16px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
@@ -502,18 +538,17 @@
     <div id="myStudentTab" class="tab-content hidden">
       <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 22px; border-radius: 20px; max-width:600px; margin:0 auto;">
         <h3 style="color:var(--accent-yellow); text-align:center; margin-top:0; font-size:17px;">MY STUDENT PORTAL</h3>
-        <p style="text-align:center; font-size:12px; color:#38bdf8;">Register and check your student's live marks, leave details, fee status & performance updates!</p>
+        <p style="text-align:center; font-size:12px; color:#38bdf8;">Verify your student's live marks, leave details, fee status & upload profile photo!</p>
 
         <div id="parentLoginBox">
-          <input type="text" id="parentStudentName" placeholder="Enter Student Name (or Initial)...">
+          <input type="text" id="parentStudentName" placeholder="Enter Student Name...">
           <input type="text" id="parentStudentPhone" placeholder="Enter Parent WhatsApp Number...">
           <button onclick="verifyParentStudentAccess()" style="width:100%; background:#10b981;">🔍 View Student Updates</button>
         </div>
 
         <div id="parentSearchErrorNotice" class="hidden" style="background: rgba(239, 68, 68, 0.2); border: 1px solid #ef4444; padding: 16px; border-radius: 14px; margin-top: 16px; text-align: center;">
           <h4 style="color:#ef4444; margin:0 0 6px 0; font-size:14px;">⚠️ Student Record Not Found / Spelling Mismatch</h4>
-          <p style="font-size:11px; color:#fca5a5; margin:0 0 12px 0;">Please check in student directory!</p>
-          <button onclick="switchTab('dashboardTab', document.querySelector('[data-tab=\'dashboardTab\']'))" style="background:#0284c7; font-size:11px; padding:8px 14px;">📁 Go to Student Directory</button>
+          <p style="font-size:11px; color:#fca5a5; margin:0 0 12px 0;">Please check student name and phone number.</p>
         </div>
 
         <div id="parentStudentDashboard" class="hidden" style="margin-top:20px; border-top:1px dashed var(--glass-border); padding-top:16px;">
@@ -536,7 +571,7 @@
     <div id="pointsTab" class="tab-content hidden">
       <div style="text-align:center; background:linear-gradient(135deg, rgba(2,132,199,0.3), rgba(56,189,248,0.3)); padding:20px; border-radius:20px; border:2px dashed #38bdf8; margin-bottom:22px;">
         <h2 style="color:#ffd000; margin:0; font-size:19px;">🏆 SUBJECT-WISE CHALLENGE TEAMS & GIFT BOX 🎁</h2>
-        <p style="color:#e2e8f0; font-size:12px; margin:6px 0 0 0;">Select Class to automatically load subjects below!</p>
+        <p style="color:#e2e8f0; font-size:12px; margin:6px 0 0 0;">Select Class & Subject to reveal interactive animated gift challenges!</p>
       </div>
 
       <div style="display:flex; gap:10px; margin-bottom:22px; flex-wrap:wrap;">
@@ -597,7 +632,7 @@
 
       <div class="admin-only hidden" style="background:rgba(255,255,255,0.03); border:1px solid var(--glass-border); padding:16px; border-radius:16px; margin-bottom:20px;">
         <h4 style="color:#ffd000; margin:0 0 10px 0; font-size:14px;">➕ Post New Homework / Assignment</h4>
-        <input type="text" id="hwTitleInput" placeholder="Assignment Title (e.g. Chapter 4 Exercises)...">
+        <input type="text" id="hwTitleInput" placeholder="Assignment Title...">
         <textarea id="hwDescInput" rows="3" placeholder="Assignment Details / Instructions..." style="margin-bottom:10px;"></textarea>
         <input type="date" id="hwDueDateInput" style="margin-bottom:10px;">
         <button onclick="adminPostHomework()" style="background:#10b981; font-size:11px;">Publish Homework</button>
@@ -612,9 +647,9 @@
 
       <div class="admin-layout">
         <div class="admin-sidebar">
-          <button class="admin-sidebar-btn active" onclick="showAdminSubSection('adminSub0', this)">🔐 Change Password</button>
-          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSubMsg', this)">📢 Post Announcement</button>
-          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub1', this)">🎓 Register Student</button>
+          <button class="admin-sidebar-btn active" onclick="showAdminSubSection('adminSubManageStudents', this)">🎓 Manage Students</button>
+          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub0', this)">🔐 Change Password</button>
+          <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSubMsg', this)">📢 Announcement</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSubFee', this)">💳 Fee Management</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub2', this)">📝 Exam Marks & PDF</button>
           <button class="admin-sidebar-btn" onclick="showAdminSubSection('adminSub3', this)">📖 Manage Subjects</button>
@@ -624,7 +659,35 @@
         </div>
 
         <div class="admin-content-area">
-          <div id="adminSub0" class="admin-sub-sec">
+
+          <!-- MANAGE STUDENTS SECTION -->
+          <div id="adminSubManageStudents" class="admin-sub-sec">
+            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🎓 Manage & Register Students (Class-wise)</h4>
+            
+            <div style="background:rgba(0,0,0,0.3); padding:14px; border-radius:14px; margin-bottom:16px; border:1px solid var(--glass-border);">
+              <h5 style="color:#38bdf8; margin:0 0 8px 0; font-size:13px;">➕ Register New Student with Place</h5>
+              <select id="regStudentClassSelect"></select>
+              <input type="text" id="regStudentName" placeholder="Student Full Name...">
+              <input type="text" id="regStudentPlace" placeholder="Place / Location (e.g. Puthupparmba)...">
+              <select id="regStudentCategorySelect" style="margin-bottom:10px;">
+                <option value="Senior">🎓 Senior</option>
+                <option value="Junior">🧑‍🎓 Junior</option>
+                <option value="Sub Junior">🎒 Sub Junior</option>
+              </select>
+              <input type="text" id="regFatherName" placeholder="Father Name...">
+              <input type="text" id="regPhoneNum" placeholder="WhatsApp Phone Number...">
+              <input type="text" id="regStudentRegisterNo" placeholder="Student Reg No (Auto/Manual)...">
+              <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🖼️ Choose Student Photo:</label>
+              <input type="file" id="regStudentPhotoFile" accept="image/*" style="margin-bottom:12px;">
+              <button onclick="adminRegisterStudent()" style="width:100%; background:#10b981;">➕ Register Student</button>
+            </div>
+
+            <h5 style="color:var(--accent-yellow); margin:12px 0 8px 0; font-size:13px;">📋 Edit / Filter Existing Students</h5>
+            <select id="adminManageStudentClassFilter" onchange="renderAdminManageStudentsTable()" style="margin-bottom:10px;"></select>
+            <div id="adminManageStudentsTableContainer" style="overflow-x:auto;"></div>
+          </div>
+
+          <div id="adminSub0" class="admin-sub-sec hidden">
             <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🔐 Change Admin Password</h4>
             <input type="password" id="currentAdminPassInput" placeholder="Type Current Password...">
             <input type="text" id="newAdminUser" placeholder="New Admin Username..." value="admin">
@@ -640,23 +703,6 @@
             <button onclick="saveLiveAnnouncement()" style="width:100%; background:#ec4899; color:#fff;">📢 Broadcast Notification</button>
           </div>
 
-          <div id="adminSub1" class="admin-sub-sec hidden">
-            <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">🎓 Register New Student & Choose Category</h4>
-            <select id="regStudentClassSelect"></select>
-            <input type="text" id="regStudentName" placeholder="Student Name with Initial...">
-            <select id="regStudentCategorySelect" style="margin-bottom:10px;">
-              <option value="Senior">🎓 Senior</option>
-              <option value="Junior">🧑‍🎓 Junior</option>
-              <option value="Sub Junior">🎒 Sub Junior</option>
-            </select>
-            <input type="text" id="regFatherName" placeholder="Father Name...">
-            <input type="text" id="regPhoneNum" placeholder="WhatsApp Phone Number...">
-            <input type="text" id="regStudentRegisterNo" placeholder="Student Register No / ID Number...">
-            <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🖼️ Choose Student Photo from Device:</label>
-            <input type="file" id="regStudentPhotoFile" accept="image/*" style="margin-bottom:12px;">
-            <button onclick="adminRegisterStudent()" style="width:100%; background:#10b981;">➕ Register Student & Auto-Notify</button>
-          </div>
-
           <div id="adminSubFee" class="admin-sub-sec hidden">
             <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">💳 Fee Dues Tracker & Management</h4>
             <select id="adminFeeClassSelect" onchange="renderAdminFeeTable()"></select>
@@ -667,7 +713,7 @@
             <h4 style="color:var(--accent-yellow); margin-top:0; font-size:14px;">📝 Subject-Wise Exam Mark Entry & PDF Attach</h4>
             <select id="adminExamClassSelect" onchange="onAdminExamClassChanged()"></select>
             <select id="adminExamSubjectSelect" onchange="renderAdminExamMarksList()"></select>
-            <input type="text" id="adminExamPdfUrlInput" placeholder="Paste Exam PDF Report Link / URL..." style="margin-top:10px;">
+            <input type="text" id="adminExamPdfUrlInput" placeholder="Paste Exam PDF Report Link..." style="margin-top:10px;">
             <button onclick="saveAdminExamPdfLink()" style="width:100%; background:#0284c7; margin-bottom:14px;">💾 Attach Exam PDF Link</button>
             <div id="adminExamMarksTableContainer" style="margin-top:12px;"></div>
           </div>
@@ -716,14 +762,14 @@
               <option value="committee">Committee Office Bearers (Secretariat)</option>
             </select>
             <input type="text" id="teacherNameInput" placeholder="Full Name (e.g. Prof. Abdul Bari)...">
-            <input type="text" id="teacherDesignationInput" placeholder="Designation Badge (e.g. Principal, Faculty)...">
+            <input type="text" id="teacherDesignationInput" placeholder="Designation Badge...">
             <input type="text" id="teacherLocInput" placeholder="Address & Location Name...">
             <input type="text" id="teacherMapInput" placeholder="Google Map Link...">
             <input type="text" id="teacherSubInput" placeholder="Subjects Handled / Roles...">
             <input type="text" id="teacherContactInput" placeholder="WhatsApp / Contact Phone Number...">
-            <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🖼️ Choose Member Photo from Device:</label>
+            <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">🖼️ Choose Member Photo:</label>
             <input type="file" id="teacherPhotoFile" accept="image/*" style="margin-bottom:12px;">
-            <button onclick="adminAddTeacher()" style="width:100%; background:#0284c7;">➕ Add Member Securely</button>
+            <button onclick="adminAddTeacher()" style="width:100%; background:#0284c7;">➕ Add Member</button>
             <div id="manageTeachersList" style="margin-top:16px;"></div>
           </div>
         </div>
@@ -735,7 +781,7 @@
 <!-- CLASS ATTENDANCE GRAPH ANALYTICS MODAL -->
 <div id="classAttendanceGraphModal" class="modal hidden">
   <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px; text-align:center;">📊 Class Attendance Graph & Topic Breakdown</h3>
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px; text-align:center;">📊 Class Attendance Graph & Breakdown</h3>
     <p id="classAttendanceGraphSubtitle" style="font-size:12px; color:#38bdf8; text-align:center; margin-bottom:14px;"></p>
     <div style="max-width:380px; margin:0 auto 16px auto;">
       <canvas id="classAttendanceChartCanvas" style="max-height:260px;"></canvas>
@@ -756,7 +802,7 @@
   </div>
 </div>
 
-<!-- FACULTY DETAILS POP-UP MODAL -->
+<!-- FACULTY DETAIL MODAL -->
 <div id="facultyDetailModal" class="modal hidden">
   <div class="modal-content" style="text-align:center; width:360px;">
     <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">👨‍🏫 Faculty Profile</h3>
@@ -773,7 +819,7 @@
   </div>
 </div>
 
-<!-- STUDENT DETAILS POP-UP MODAL -->
+<!-- STUDENT DETAIL MODAL -->
 <div id="studentDetailModal" class="modal hidden">
   <div class="modal-content" style="text-align:center; width:350px;">
     <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📋 Student Full Details</h3>
@@ -781,6 +827,7 @@
     <h2 id="modalStudentName" style="margin:4px 0; font-size:17px; color:#fff;"></h2>
     <div style="background:rgba(0,0,0,0.3); padding:14px; border-radius:14px; text-align:left; margin-top:12px; font-size:12px; line-height:1.6;">
       <p style="margin:4px 0;"><b>🏷️ Academy:</b> <span>Abdul Bari Academy Puthupparmba</span></p>
+      <p style="margin:4px 0;"><b>📍 Place:</b> <span id="modalStudentPlace" style="color:#ffd000; font-weight:bold;"></span></p>
       <p style="margin:4px 0;"><b>📌 Reg No:</b> <span id="modalStudentRegNo"></span></p>
       <p style="margin:4px 0;"><b>📁 Class Batch:</b> <span id="modalStudentClass"></span></p>
       <p style="margin:4px 0;"><b>👤 Category:</b> <span id="modalStudentCategoryBadge" style="color:var(--accent-yellow); font-weight:bold;"></span></p>
@@ -808,56 +855,40 @@
   </div>
 </div>
 
-<!-- PUBLIC PHOTO & STUDENT UPLOAD MODAL -->
-<div id="publicAddPhotoModal" class="modal hidden">
+<!-- EDIT STUDENT ADMIN MODAL -->
+<div id="editStudentModal" class="modal hidden">
   <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📸 Student Photo Upload</h3>
-    <p id="publicPhotoStudentName" style="color:#38bdf8; font-weight:bold; font-size:12px;"></p>
-    <input type="hidden" id="publicPhotoStudentId">
-    <input type="hidden" id="publicPhotoClass">
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">✏️ Edit Student Details</h3>
+    <input type="hidden" id="editStudentId">
+    <input type="hidden" id="editStudentOldClass">
+    <input type="text" id="editStudentNameInput" placeholder="Student Full Name">
+    <input type="text" id="editStudentPlaceInput" placeholder="Place / Location">
+    <input type="text" id="editStudentFatherInput" placeholder="Father Name">
+    <input type="text" id="editStudentPhoneInput" placeholder="WhatsApp Phone Number">
+    <input type="text" id="editStudentRegNoInput" placeholder="Register Number">
+    <select id="editStudentCategoryInput" style="margin-bottom:10px;">
+      <option value="Senior">🎓 Senior</option>
+      <option value="Junior">🧑‍🎓 Junior</option>
+      <option value="Sub Junior">🎒 Sub Junior</option>
+    </select>
+    <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">Change Student Photo:</label>
+    <input type="file" id="editStudentPhotoFile" accept="image/*" style="margin-bottom:12px;">
+    <button onclick="saveAdminStudentEdit()" style="width:100%; background:#10b981; margin-top:10px;">💾 Save Student Record</button>
+    <button onclick="document.getElementById('editStudentModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
+  </div>
+</div>
+
+<!-- PARENT REGISTERED PHOTO UPLOAD MODAL -->
+<div id="parentPhotoUploadModal" class="modal hidden">
+  <div class="modal-content">
+    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">📸 Parent Photo Upload</h3>
+    <p id="parentPhotoStudentName" style="color:#38bdf8; font-weight:bold; font-size:12px;"></p>
+    <input type="hidden" id="parentPhotoStudentId">
+    <input type="hidden" id="parentPhotoClass">
     <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">Select photo from device:</label>
-    <input type="file" id="publicStudentPhotoFile" accept="image/*" style="margin-bottom:12px;">
-    <button onclick="savePublicStudentPhoto()" style="width:100%; background:#10b981;">Upload Photo</button>
-    <button onclick="document.getElementById('publicAddPhotoModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
-  </div>
-</div>
-
-<!-- PUBLIC SELF REGISTER MODAL -->
-<div id="publicSelfRegisterModal" class="modal hidden">
-  <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">➕ Public Student Registration & Photo</h3>
-    <select id="publicRegClassSelect" style="margin-bottom:10px;"></select>
-    <input type="text" id="publicRegName" placeholder="Student Name with Initial...">
-    <select id="publicRegCategorySelect" style="margin-bottom:10px;">
-      <option value="Senior">🎓 Senior</option>
-      <option value="Junior">🧑‍🎓 Junior</option>
-      <option value="Sub Junior">🎒 Sub Junior</option>
-    </select>
-    <input type="text" id="publicRegFather" placeholder="Father Name...">
-    <input type="text" id="publicRegPhone" placeholder="Parent WhatsApp Number...">
-    <label style="font-size:11px; color:var(--accent-yellow); display:block; margin-bottom:4px;">Select Photo from Device:</label>
-    <input type="file" id="publicRegPhotoFile" accept="image/*" style="margin-bottom:12px;">
-    <button onclick="savePublicSelfRegisteredStudent()" style="width:100%; background:#10b981;">Submit & Register</button>
-    <button onclick="document.getElementById('publicSelfRegisterModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
-  </div>
-</div>
-
-<div id="quickAddStudentModal" class="modal hidden">
-  <div class="modal-content">
-    <h3 style="color:var(--accent-yellow); margin-top:0; font-size:16px;">➕ Add Student to Class</h3>
-    <input type="hidden" id="quickAddStudentClass">
-    <input type="text" id="quickStudentName" placeholder="Student Name with Initial...">
-    <select id="quickStudentCategorySelect" style="margin-bottom:10px;">
-      <option value="Senior">🎓 Senior</option>
-      <option value="Junior">🧑‍🎓 Junior</option>
-      <option value="Sub Junior">🎒 Sub Junior</option>
-    </select>
-    <input type="text" id="quickStudentFather" placeholder="Father Name...">
-    <input type="text" id="quickStudentPhone" placeholder="WhatsApp Phone Number...">
-    <input type="text" id="quickStudentRegisterNo" placeholder="Register No / ID Number...">
-    <input type="file" id="quickStudentPhoto" accept="image/*" style="margin-bottom:10px;">
-    <button onclick="saveQuickStudentForClass()" style="width:100%; background:#10b981;">Register Student</button>
-    <button onclick="document.getElementById('quickAddStudentModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
+    <input type="file" id="parentStudentPhotoFile" accept="image/*" style="margin-bottom:12px;">
+    <button onclick="saveParentUploadedStudentPhoto()" style="width:100%; background:#10b981;">Upload Photo</button>
+    <button onclick="document.getElementById('parentPhotoUploadModal').classList.add('hidden')" style="width:100%; background:#475569; margin-top:6px;">Cancel</button>
   </div>
 </div>
 
@@ -907,7 +938,6 @@
   let selectedAttendanceDate = new Date().toISOString().split('T')[0];
   let currentZoomFactor = 1.0;
 
-  // Global Chart Instance References
   let classAttendanceChartInstance = null;
   let examAnalyticsChartInstance = null;
   let parentStudentChartInstance = null;
@@ -921,7 +951,7 @@
     classes: { 'College Studies': ['BA Degree'], 'School Studies': ['Plus One', 'Plus Two'] },
     classTeachers: { 'Plus One': 'Prof. Abdul Bari' },
     subjects: { 'BA Degree': ['Fiqh', 'Aqeedah'], 'Plus One': ['English', 'Arabic', 'Fiqh'] },
-    students: { 'Plus One': [{ id: 101, name: 'Ali Hassan K', category: 'Senior', father: 'Hassan', phone: '9847000000', regNo: 'ABA-101', photo: '', isRegistered: true, status: 'Present', feeStatus: 'Paid' }] },
+    students: { 'Plus One': [{ id: 101, name: 'Ali Hassan K', place: 'Puthupparmba', category: 'Senior', father: 'Hassan', phone: '9847000000', regNo: 'ABA-101', photo: '', isRegistered: true, status: 'Present', feeStatus: 'Paid' }] },
     usthads: [
       { id: 1, type: 'usthad', badge: 'Principal', name: 'Prof. Abdul Bari', loc: 'Puthupparmba Main Road', mapLink: 'https://maps.google.com', sub: 'Fiqh, Arabic, Islamic Studies', contact: '9847000000', photo: 'https://via.placeholder.com/100' },
       { id: 2, type: 'committee', badge: 'General Secretary', name: 'Sayyid Ali Hakim', loc: 'Puthupparmba', mapLink: 'https://maps.google.com', sub: 'Secretariat Officer', contact: '9847111111', photo: 'https://via.placeholder.com/100' }
@@ -940,6 +970,13 @@
   };
 
   window.dbData = JSON.parse(localStorage.getItem('ab_academy_final_db')) || defaultDbData;
+
+  function enforceNuclearThemeLock() {
+    let savedTheme = localStorage.getItem('portalTheme') || localStorage.getItem('ab_academy_theme') || 'theme-nuclear';
+    localStorage.setItem('portalTheme', savedTheme);
+    localStorage.setItem('ab_academy_theme', savedTheme);
+    document.body.className = savedTheme;
+  }
 
   onValue(dbRef, (snapshot) => {
     const data = snapshot.val();
@@ -992,6 +1029,7 @@
   }
 
   function refreshUI() {
+    enforceNuclearThemeLock();
     updateDashboardStats(); 
     populateAdminDropdowns();
     renderManageClassesList();
@@ -1002,6 +1040,7 @@
     renderDashCommitteeGrid();
     populateHomeworkDropdowns();
     renderHomeworkList();
+    renderAdminManageStudentsTable();
     
     const notifToggle = document.getElementById('notificationToggleCheckbox');
     if(notifToggle) notifToggle.checked = window.dbData.notificationEnabled !== false;
@@ -1030,7 +1069,8 @@
 
   window.changePortalTheme = function(themeName) {
     playClickSound();
-    document.body.className = themeName === 'default' ? '' : themeName;
+    document.body.className = themeName;
+    localStorage.setItem('portalTheme', themeName);
     localStorage.setItem('ab_academy_theme', themeName);
     document.getElementById('settingsDropdown').classList.add('hidden');
   };
@@ -1055,21 +1095,21 @@
   window.showAdminSubSection = function(secId, btnEl) {
     playClickSound();
     document.querySelectorAll('.admin-sub-sec').forEach(s => s.classList.add('hidden'));
+    const target = document.getElementById(secId);
+    if(target) target.classList.remove('hidden');
     document.querySelectorAll('.admin-sidebar-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(secId).classList.remove('hidden');
     if(btnEl) btnEl.classList.add('active');
-    if(secId === 'adminSub3') populateSubjectManageDropdown();
     if(secId === 'adminSubFee') populateAdminFeeDropdown();
+    if(secId === 'adminSub3') populateSubjectManageDropdown();
   };
 
   document.addEventListener('DOMContentLoaded', () => {
-    let savedTheme = localStorage.getItem('ab_academy_theme');
-    if(savedTheme && savedTheme !== 'default') document.body.className = savedTheme;
+    enforceNuclearThemeLock();
 
     document.querySelectorAll('.tab-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        playClickSound();
-        switchTab(btn.dataset.tab, btn);
+        const tab = btn.getAttribute('data-tab');
+        if(tab) switchTab(tab, btn);
       });
     });
 
@@ -1095,6 +1135,7 @@
       document.querySelectorAll('.admin-only').forEach(e => e.classList.remove('hidden'));
       populateAdminDropdowns();
       renderDashStudentsTable();
+      renderAdminManageStudentsTable();
       alert("✅ Admin Login Success!");
     } else alert("❌ Invalid Password!");
   };
@@ -1188,12 +1229,15 @@
   };
 
   function updateDashboardStats() {
-    let stCount = 0; for(let cls in window.dbData.students) stCount += window.dbData.students[cls].length;
-    let clsCount = 0; for(let p in window.dbData.classes) clsCount += window.dbData.classes[p].length;
-    let ustCount = window.dbData.usthads ? window.dbData.usthads.length : 0;
-    document.getElementById('pubStatStudents').innerText = stCount;
-    document.getElementById('pubStatClasses').innerText = clsCount;
-    document.getElementById('pubStatUsthads').innerText = ustCount;
+    let totalStudents = 0;
+    for(let c in window.dbData.students) { totalStudents += window.dbData.students[c].length; }
+    document.getElementById('pubStatStudents').innerText = totalStudents;
+
+    let totalClasses = 0;
+    for(let p in window.dbData.classes) { totalClasses += window.dbData.classes[p].length; }
+    document.getElementById('pubStatClasses').innerText = totalClasses;
+
+    document.getElementById('pubStatUsthads').innerText = (window.dbData.usthads || []).length;
   }
 
   function populateDashClassFilter() {
@@ -1207,72 +1251,105 @@
 
   function renderDashCommitteeGrid() {
     const grid = document.getElementById('dashCommitteeGrid');
-    if(!grid) return;
-    grid.innerHTML = "";
-    let committeeMembers = (window.dbData.usthads || []).filter(u => u.type === 'committee');
-    if(committeeMembers.length === 0) {
-      grid.innerHTML = `<p style="color:#ffd000; font-size:11px;">No committee members added yet.</p>`;
-      return;
-    }
-    committeeMembers.forEach(m => {
+    if(!grid) return; grid.innerHTML = "";
+    (window.dbData.usthads || []).filter(u => u.type === 'committee').slice(0, 4).forEach(u => {
       grid.innerHTML += `
-        <div class="folder-card" style="background:linear-gradient(135deg, #0284c7, #0b132b); padding:16px; text-align:center;" onclick="showFacultyDetailsModal(${m.id})">
-          <span class="designation-badge" style="margin-bottom:6px;">${m.badge || 'Committee'}</span>
-          <img src="${m.photo || 'https://via.placeholder.com/50'}" style="width:50px; height:50px; border-radius:50%; object-fit:cover; border:2px solid #ffd000; margin:4px auto 8px auto;">
-          <h4 style="margin:0; font-size:14px; color:#fff; font-weight:800;">${m.name}</h4>
-          <p style="margin:3px 0 0 0; font-size:11px; color:#38bdf8; font-weight:700;">${m.sub || 'Office Bearer'}</p>
+        <div style="background:rgba(0,0,0,0.3); border:1px solid var(--glass-border); padding:14px; border-radius:16px; text-align:center;">
+          <img src="${u.photo || 'https://via.placeholder.com/60'}" style="width:55px; height:55px; border-radius:50%; object-fit:cover; border:2px solid var(--accent-yellow); margin:0 auto 8px auto;">
+          <h4 style="margin:0; font-size:13px; color:#ffd000;">${u.name}</h4>
+          <span style="font-size:10px; color:#38bdf8; font-weight:bold;">${u.badge || 'Committee'}</span>
         </div>
       `;
     });
   }
 
+  window.verifyParentStudentAccess = function() {
+    playClickSound();
+    const nameQuery = document.getElementById('parentStudentName').value.trim().toLowerCase();
+    const phoneQuery = document.getElementById('parentStudentPhone').value.trim();
+
+    let foundStudent = null;
+    let foundClass = null;
+
+    for (let cls in window.dbData.students) {
+      let match = window.dbData.students[cls].find(s => 
+        s.name.toLowerCase().includes(nameQuery) && (s.phone || '').includes(phoneQuery)
+      );
+      if (match) {
+        foundStudent = match;
+        foundClass = cls;
+        break;
+      }
+    }
+
+    const errNotice = document.getElementById('parentSearchErrorNotice');
+    const dashBox = document.getElementById('parentStudentDashboard');
+
+    if (foundStudent) {
+      errNotice.classList.add('hidden');
+      dashBox.classList.remove('hidden');
+
+      document.getElementById('parentStudentHeaderName').innerText = `👤 ${foundStudent.name}`;
+      document.getElementById('parentStudentClassInfo').innerText = `📁 Class: ${foundClass} | 📍 Place: ${foundStudent.place || 'Puthupparmba'}`;
+
+      let feePaid = foundStudent.feeStatus === 'Paid';
+      let photoSrc = foundStudent.photo || 'https://via.placeholder.com/90';
+
+      let detailsHtml = `
+        <div style="display:flex; gap:16px; align-items:center; flex-wrap:wrap; margin-top:12px; background:rgba(0,0,0,0.3); padding:16px; border-radius:16px; border:1px solid var(--glass-border);">
+          <img src="${photoSrc}" style="width:85px; height:85px; border-radius:50%; object-fit:cover; border:3px solid var(--accent-yellow);">
+          <div style="flex:1; font-size:12px; line-height:1.6;">
+            <p style="margin:2px 0;"><b>📌 Reg No:</b> ${foundStudent.regNo || 'ABA-' + foundStudent.id}</p>
+            <p style="margin:2px 0;"><b>👤 Category:</b> <span style="color:var(--accent-yellow);">${foundStudent.category || 'Senior'}</span></p>
+            <p style="margin:2px 0;"><b>👨‍👧 Father:</b> ${foundStudent.father || 'N/A'}</p>
+            <p style="margin:2px 0;"><b>💳 Fee Status:</b> <span style="color:${feePaid ? '#10b981' : '#ef4444'}; font-weight:bold;">${foundStudent.feeStatus || 'Pending'}</span></p>
+            <button onclick="openParentPhotoUploadModal(${foundStudent.id}, '${foundClass}', '${foundStudent.name}')" style="margin-top:8px; background:#0284c7; padding:5px 10px; font-size:10px;">📸 Upload / Change Photo</button>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('parentStudentDetailsContent').innerHTML = detailsHtml;
+      renderParentStudentAnalyticsChart(foundStudent.id, foundClass);
+
+    } else {
+      errNotice.classList.remove('hidden');
+      dashBox.classList.add('hidden');
+    }
+  };
+
   window.renderDashStudentsTable = function() {
-    const tbody = document.getElementById('dashStudentsTableBody');
     const q = document.getElementById('dashStudentSearchInput') ? document.getElementById('dashStudentSearchInput').value.toLowerCase().trim() : '';
-    const selectedClass = document.getElementById('dashClassFilterSelect') ? document.getElementById('dashClassFilterSelect').value : '';
-    const selectedCategory = document.getElementById('dashCategoryFilterSelect') ? document.getElementById('dashCategoryFilterSelect').value : 'All';
+    const catSel = document.getElementById('dashCategoryFilterSelect') ? document.getElementById('dashCategoryFilterSelect').value : 'All';
+    const clsSel = document.getElementById('dashClassFilterSelect') ? document.getElementById('dashClassFilterSelect').value : '';
+
+    const tbody = document.getElementById('dashStudentsTableBody');
     if(!tbody) return; tbody.innerHTML = "";
 
-    let c = 1, found = false;
+    let count = 0;
+    let found = false;
+
     for(let cls in window.dbData.students) {
-      if(selectedClass && selectedClass !== cls) continue;
+      if(clsSel && clsSel !== cls) continue;
       window.dbData.students[cls].forEach(s => {
-        let cat = s.category || 'Senior';
-        if(selectedCategory !== 'All' && cat !== selectedCategory) return;
+        if(catSel !== 'All' && s.category !== catSel) return;
+        if(q && !s.name.toLowerCase().includes(q) && !(s.place || '').toLowerCase().includes(q)) return;
 
-        if(!q || s.name.toLowerCase().includes(q)) {
-          found = true;
-          let photoBtn = `<button style="background:#0284c7; color:#fff; padding:3px 6px; font-size:9px; font-weight:bold; border-radius:5px;" onclick="openPublicPhotoUploadModal(${s.id}, '${cls}', '${s.name}')">📸 Add Photo</button>`;
-          let adminBtns = window.isAdmin ? `<button class="btn-delete" onclick="deleteStudent(${s.id}, '${cls}')" style="margin-left:2px; padding:3px 6px; font-size:9px;">🗑️</button>` : '';
-          let phoneClean = (s.phone || '').replace(/\D/g, '');
-          let waBtn = `<a href="https://wa.me/91${phoneClean}" target="_blank" class="btn-whatsapp" style="padding:3px 6px; font-size:9px;">💬 WA</a>`;
+        found = true; count++;
+        let phoneClean = (s.phone || '').replace(/\D/g, '');
+        let waMsg = encodeURIComponent(`Assalamu Alaikum, regarding student ${s.name} (${cls}) at Abdul Bari Academy Puthupparmba:`);
+        let waBtn = phoneClean ? `<a href="https://wa.me/91${phoneClean}?text=${waMsg}" target="_blank" class="btn-whatsapp" style="padding:4px 8px; font-size:10px;">💬 WhatsApp</a>` : '';
 
-          let tr = document.createElement('tr');
-          tr.style.cursor = "pointer";
-          tr.title = "Right-click or Long-press to view full details";
-          tr.innerHTML = `
+        tbody.innerHTML += `
+          <tr>
             <td><img src="${s.photo || 'https://via.placeholder.com/35'}" style="width:30px; height:30px; border-radius:50%; object-fit:cover;"></td>
-            <td>${c++}</td>
-            <td><b>${s.name}</b><br><small style="color:#ffd000; font-size:9px;">[${cat}]</small> <small style="color:#38bdf8; font-size:9px;">${cls}</small></td>
-            <td>
-              ${photoBtn}
-              ${waBtn} ${adminBtns}
+            <td>${count}</td>
+            <td style="text-align:left;">
+              <a href="javascript:void(0)" onclick="showStudentDetailsModal(${JSON.stringify(s).replace(/"/g, '&quot;')}, '${cls}')" style="color:var(--accent-yellow); font-weight:bold; text-decoration:underline; font-size:12px;">${s.name}</a><br>
+              <small style="color:#38bdf8;">📍 ${s.place || 'Puthupparmba'} | 📁 ${cls}</small>
             </td>
-          `;
-
-          tr.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-            showStudentDetailsModal(s, cls);
-          });
-
-          let pressTimer;
-          tr.addEventListener('touchstart', () => {
-            pressTimer = setTimeout(() => { showStudentDetailsModal(s, cls); }, 600);
-          });
-          tr.addEventListener('touchend', () => { clearTimeout(pressTimer); });
-
-          tbody.appendChild(tr);
-        }
+            <td>${waBtn}</td>
+          </tr>
+        `;
       });
     }
     if(!found) tbody.innerHTML = `<tr><td colspan="4" style="color:#ffd000; padding:12px;">No student records found.</td></tr>`;
@@ -1282,6 +1359,7 @@
     playClickSound();
     document.getElementById('modalStudentPhoto').src = student.photo || 'https://via.placeholder.com/100';
     document.getElementById('modalStudentName').innerText = student.name;
+    document.getElementById('modalStudentPlace').innerText = student.place || 'Puthupparmba';
     document.getElementById('modalStudentRegNo').innerText = student.regNo || 'ABA-' + student.id;
     document.getElementById('modalStudentClass').innerText = clsName;
     document.getElementById('modalStudentCategoryBadge').innerText = student.category || 'Senior';
@@ -1291,18 +1369,115 @@
     document.getElementById('studentDetailModal').classList.remove('hidden');
   }
 
-  window.openPublicPhotoUploadModal = function(studentId, cls, studentName) {
-    playClickSound();
-    document.getElementById('publicPhotoStudentId').value = studentId;
-    document.getElementById('publicPhotoClass').value = cls;
-    document.getElementById('publicPhotoStudentName').innerText = `Student: ${studentName} (${cls})`;
-    document.getElementById('publicAddPhotoModal').classList.remove('hidden');
+  window.renderAdminManageStudentsTable = function() {
+    const filterSel = document.getElementById('adminManageStudentClassFilter');
+    if(filterSel && filterSel.children.length === 0) {
+      filterSel.innerHTML = '<option value="">📁 All Classes</option>';
+      for(let p in window.dbData.classes) {
+        window.dbData.classes[p].forEach(c => { filterSel.innerHTML += `<option value="${c}">${c}</option>`; });
+      }
+    }
+
+    const selectedCls = filterSel ? filterSel.value : '';
+    const container = document.getElementById('adminManageStudentsTableContainer');
+    if(!container) return;
+    container.innerHTML = "";
+
+    let html = `<table><thead><tr><th>Photo</th><th>Name & Place</th><th>Class</th><th>Phone</th><th>Actions</th></tr></thead><tbody>`;
+    let found = false;
+
+    for(let cls in window.dbData.students) {
+      if(selectedCls && selectedCls !== cls) continue;
+      window.dbData.students[cls].forEach(s => {
+        found = true;
+        html += `
+          <tr>
+            <td><img src="${s.photo || 'https://via.placeholder.com/35'}" style="width:30px; height:30px; border-radius:50%; object-fit:cover;"></td>
+            <td><b>${s.name}</b><br><small style="color:#ffd000;">📍 ${s.place || 'N/A'}</small></td>
+            <td>${cls}</td>
+            <td>${s.phone || '-'}</td>
+            <td>
+              <button class="btn-edit" onclick="openAdminEditStudentModal(${s.id}, '${cls}')">✏️ Edit</button>
+              <button class="btn-delete" onclick="deleteStudent(${s.id}, '${cls}')">🗑️ Delete</button>
+            </td>
+          </tr>
+        `;
+      });
+    }
+
+    html += `</tbody></table>`;
+    if(!found) html = `<p style="color:#ffd000; padding:12px;">No student records found.</p>`;
+    container.innerHTML = html;
   };
 
-  window.savePublicStudentPhoto = function() {
-    const studentId = parseInt(document.getElementById('publicPhotoStudentId').value);
-    const cls = document.getElementById('publicPhotoClass').value;
-    const fileInput = document.getElementById('publicStudentPhotoFile');
+  window.openAdminEditStudentModal = function(studentId, cls) {
+    playClickSound();
+    let student = (window.dbData.students[cls] || []).find(s => s.id === studentId);
+    if(!student) return;
+
+    document.getElementById('editStudentId').value = student.id;
+    document.getElementById('editStudentOldClass').value = cls;
+    document.getElementById('editStudentNameInput').value = student.name;
+    document.getElementById('editStudentPlaceInput').value = student.place || '';
+    document.getElementById('editStudentFatherInput').value = student.father || '';
+    document.getElementById('editStudentPhoneInput').value = student.phone || '';
+    document.getElementById('editStudentRegNoInput').value = student.regNo || '';
+    document.getElementById('editStudentCategoryInput').value = student.category || 'Senior';
+
+    document.getElementById('editStudentModal').classList.remove('hidden');
+  };
+
+  window.saveAdminStudentEdit = function() {
+    let studentId = parseInt(document.getElementById('editStudentId').value);
+    let oldCls = document.getElementById('editStudentOldClass').value;
+    let fileInput = document.getElementById('editStudentPhotoFile');
+
+    let student = (window.dbData.students[oldCls] || []).find(s => s.id === studentId);
+    if(!student) return;
+
+    student.name = document.getElementById('editStudentNameInput').value.trim();
+    student.place = document.getElementById('editStudentPlaceInput').value.trim();
+    student.father = document.getElementById('editStudentFatherInput').value.trim();
+    student.phone = document.getElementById('editStudentPhoneInput').value.trim();
+    student.regNo = document.getElementById('editStudentRegNoInput').value.trim();
+    student.category = document.getElementById('editStudentCategoryInput').value;
+
+    if(fileInput.files[0]) {
+      handleImageUpload(fileInput, (base64) => {
+        student.photo = base64;
+        window.saveData();
+        document.getElementById('editStudentModal').classList.add('hidden');
+        alert("✅ Student updated successfully!");
+        renderAdminManageStudentsTable();
+      });
+    } else {
+      window.saveData();
+      document.getElementById('editStudentModal').classList.add('hidden');
+      alert("✅ Student updated successfully!");
+      renderAdminManageStudentsTable();
+    }
+  };
+
+  window.deleteStudent = function(studentId, cls) {
+    if(confirm("Delete student record?")) {
+      window.dbData.students[cls] = window.dbData.students[cls].filter(s => s.id !== studentId);
+      window.saveData();
+      renderAdminManageStudentsTable();
+    }
+  };
+
+  window.openParentPhotoUploadModal = function(studentId, cls, studentName) {
+    playClickSound();
+    document.getElementById('parentPhotoStudentId').value = studentId;
+    document.getElementById('parentPhotoClass').value = cls;
+    document.getElementById('parentPhotoStudentName').innerText = `Student: ${studentName} (${cls})`;
+    document.getElementById('parentPhotoUploadModal').classList.remove('hidden');
+  };
+
+  window.saveParentUploadedStudentPhoto = function() {
+    const studentId = parseInt(document.getElementById('parentPhotoStudentId').value);
+    const cls = document.getElementById('parentPhotoClass').value;
+    const fileInput = document.getElementById('parentStudentPhotoFile');
 
     if (fileInput.files[0]) {
       handleImageUpload(fileInput, (photoBase64) => {
@@ -1310,7 +1485,7 @@
         if (student) {
           student.photo = photoBase64;
           window.saveData(); 
-          document.getElementById('publicAddPhotoModal').classList.add('hidden');
+          document.getElementById('parentPhotoUploadModal').classList.add('hidden');
           alert("✅ Photo uploaded successfully!");
           fileInput.value = "";
         }
@@ -1318,127 +1493,16 @@
     } else alert("Please select an image file!");
   };
 
-  window.openPublicSelfRegisterModal = function() {
-    playClickSound();
-    const sel = document.getElementById('publicRegClassSelect');
-    sel.innerHTML = '';
-    for(let p in window.dbData.classes) {
-      window.dbData.classes[p].forEach(c => { sel.innerHTML += `<option value="${c}">${c}</option>`; });
-    }
-    document.getElementById('publicSelfRegisterModal').classList.remove('hidden');
-  };
-
-  window.savePublicSelfRegisteredStudent = function() {
-    const cls = document.getElementById('publicRegClassSelect').value;
-    const name = document.getElementById('publicRegName').value.trim();
-    const cat = document.getElementById('publicRegCategorySelect').value;
-    const father = document.getElementById('publicRegFather').value.trim();
-    const phone = document.getElementById('publicRegPhone').value.trim();
-    const fileInput = document.getElementById('publicRegPhotoFile');
-
-    if(cls && name) {
-      handleImageUpload(fileInput, (photoBase64) => {
-        if(!window.dbData.students[cls]) window.dbData.students[cls] = [];
-        window.dbData.students[cls].push({
-          id: Date.now(),
-          name: name,
-          category: cat,
-          father: father,
-          phone: phone,
-          regNo: 'ABA-' + Date.now().toString().slice(-4),
-          photo: photoBase64,
-          isRegistered: true,
-          status: 'Present',
-          feeStatus: 'Pending'
-        });
-        window.saveData();
-        document.getElementById('publicSelfRegisterModal').classList.add('hidden');
-        alert("✅ Student & Photo registered successfully!");
-        document.getElementById('publicRegName').value = "";
-        document.getElementById('publicRegFather').value = "";
-        document.getElementById('publicRegPhone').value = "";
-        fileInput.value = "";
-      });
-    } else {
-      alert("⚠️ Please enter student name!");
-    }
-  };
-
-  window.deleteStudent = function(id, cls) {
-    if(confirm("⚠️ Delete this student?")) {
-      window.dbData.students[cls] = window.dbData.students[cls].filter(s => s.id !== id);
-      window.saveData();
-    }
-  };
-
-  window.verifyParentStudentAccess = function() {
-    playClickSound();
-    const nameQuery = document.getElementById('parentStudentName').value.trim().toLowerCase();
-    const phoneQuery = document.getElementById('parentStudentPhone').value.trim();
-    const errorNotice = document.getElementById('parentSearchErrorNotice');
-    const dashboardDiv = document.getElementById('parentStudentDashboard');
-
-    if(!nameQuery || !phoneQuery) { 
-      alert("Please enter Student Name and Parent Phone Number!"); 
-      return; 
-    }
-
-    let matchedStudent = null;
-    let matchedClass = '';
-
-    for(let cls in window.dbData.students) {
-      let st = window.dbData.students[cls].find(s => s.name.toLowerCase().includes(nameQuery) && (s.phone || '').includes(phoneQuery));
-      if(st) {
-        matchedStudent = st;
-        matchedClass = cls;
-        break;
-      }
-    }
-
-    if(matchedStudent) {
-      matchedStudent.isRegistered = true;
-      window.saveData();
-
-      errorNotice.classList.add('hidden');
-      dashboardDiv.classList.remove('hidden');
-      document.getElementById('parentStudentHeaderName').innerText = `Student: ${matchedStudent.name}`;
-      document.getElementById('parentStudentClassInfo').innerText = `Class: ${matchedClass} | Reg No: ${matchedStudent.regNo || 'ABA-' + matchedStudent.id}`;
-      
-      let feeBadgeColor = matchedStudent.feeStatus === 'Paid' ? '#10b981' : '#ef4444';
-      let content = `
-        <div style="background:rgba(0,0,0,0.3); padding:14px; border-radius:12px; margin-top:12px; text-align:center;">
-          <p style="color:#10b981; font-weight:bold; font-size:13px; margin:0 0 8px 0;">🎉 Record Verified Successfully!</p>
-          <p style="margin:0; font-size:13px; color:#fff; text-align:left;"><b>Attendance Status:</b> <span style="color:#10b981;">${matchedStudent.status || 'Present'}</span></p>
-          <p style="margin:4px 0 0 0; font-size:12px; color:#cbd5e1; text-align:left;"><b>Fee Status:</b> <span style="color:${feeBadgeColor}; font-weight:bold;">${matchedStudent.feeStatus || 'Pending'}</span></p>
-          <p style="margin:4px 0 0 0; font-size:12px; color:#cbd5e1; text-align:left;"><b>Category:</b> ${matchedStudent.category || 'Senior'}</p>
-          <p style="margin:4px 0 0 0; font-size:12px; color:#cbd5e1; text-align:left;"><b>Father Name:</b> ${matchedStudent.father || '-'}</p>
-          <br>
-          <button style="background:#0284c7; font-size:11px; padding:6px 12px; border-radius:8px;" onclick="openPublicPhotoUploadModal(${matchedStudent.id}, '${matchedClass}', '${matchedStudent.name}')">📸 Add / Update Your Photo</button>
-        </div>
-      `;
-      document.getElementById('parentStudentDetailsContent').innerHTML = content;
-
-      // Render Parent Analytics Graph
-      renderParentStudentAnalyticsChart(matchedStudent.id, matchedClass);
-      alert("🎉 Verified successfully!");
-    } else {
-      dashboardDiv.classList.add('hidden');
-      errorNotice.classList.remove('hidden');
-      alert("⚠️ Please check in student directory! Record not found or incorrect details.");
-    }
-  };
-
   function renderParentStudentAnalyticsChart(studentId, className) {
     const ctx = document.getElementById('parentStudentChartCanvas').getContext('2d');
     if (parentStudentChartInstance) parentStudentChartInstance.destroy();
 
-    // Gather marks data
     let subjects = window.dbData.subjects[className] || ['General'];
     let studentMarks = [];
     subjects.forEach(sub => {
       let key = `${className}_${sub}`;
       let mData = (window.dbData.examMarksSubjectwise || {})[key];
-      let val = mData && mData[studentId] ? parseInt(mData[studentId].current) || 0 : 75; // Default demo fallback
+      let val = mData && mData[studentId] ? parseInt(mData[studentId].current) || 0 : 75;
       studentMarks.push(val);
     });
 
@@ -1763,39 +1827,6 @@
     });
   }
 
-  function populateExistingStudentsDropdown() {
-    const sel = document.getElementById('existingStudentDropdownSelect');
-    if(!sel) return;
-    sel.innerHTML = '<option value="">-- Choose Student from Directory --</option>';
-    let addedIds = new Set((window.dbData.students[currentActiveClassName] || []).map(s => s.id));
-
-    for(let cls in window.dbData.students) {
-      window.dbData.students[cls].forEach(s => {
-        if(!addedIds.has(s.id)) {
-          sel.innerHTML += `<option value="${s.id}" data-cls="${cls}">${s.name} (${cls})</option>`;
-        }
-      });
-    }
-  }
-
-  window.addExistingStudentToCurrentClass = function() {
-    const sel = document.getElementById('existingStudentDropdownSelect');
-    const selectedOpt = sel.options[sel.selectedIndex];
-    if(!selectedOpt || !selectedOpt.value) { alert("Please select a student!"); return; }
-
-    const stId = parseInt(selectedOpt.value);
-    const origCls = selectedOpt.getAttribute('data-cls');
-
-    let st = window.dbData.students[origCls].find(s => s.id === stId);
-    if(st) {
-      if(!window.dbData.students[currentActiveClassName]) window.dbData.students[currentActiveClassName] = [];
-      window.dbData.students[currentActiveClassName].push(st);
-      window.saveData();
-      populateExistingStudentsDropdown();
-      alert(`✅ ${st.name} added to ${currentActiveClassName}!`);
-    }
-  };
-
   function openSubjectFoldersForClass(clsName) {
     playClickSound();
     currentActiveClassName = clsName;
@@ -1803,7 +1834,6 @@
     document.getElementById('subjectFolderLevel').classList.remove('hidden');
     document.getElementById('selectedClassHeader').innerText = `Subjects for ${clsName} (${(window.dbData.students[clsName] || []).length} Active Students)`;
     
-    populateExistingStudentsDropdown();
     calculateOverallAttendanceSummary(clsName);
 
     const grid = document.getElementById('subjectFoldersGrid'); grid.innerHTML = "";
@@ -1833,7 +1863,6 @@
       }
     }
 
-    // Default demo counts if no records stored yet
     if (totalPresent === 0 && totalAbsent === 0 && totalLeave === 0 && students.length > 0) {
       totalPresent = students.length * 8;
       totalAbsent = students.length * 1;
@@ -1851,7 +1880,7 @@
 
   window.openClassAttendanceGraphModal = function() {
     playClickSound();
-    document.getElementById('classAttendanceGraphSubtitle').innerText = `Class: ${currentActiveClassName} | Interactive Topic & Attendance Pie/Doughnut Analysis`;
+    document.getElementById('classAttendanceGraphSubtitle').innerText = `Class: ${currentActiveClassName} | Interactive Attendance Breakdown`;
     document.getElementById('classAttendanceGraphModal').classList.remove('hidden');
 
     const ctx = document.getElementById('classAttendanceChartCanvas').getContext('2d');
@@ -1895,40 +1924,6 @@
     renderAttendanceTable(clsName); 
     renderSubjectStudyNotes();
   }
-
-  window.openAddStudentModalForClass = function() {
-    playClickSound();
-    document.getElementById('quickAddStudentClass').value = currentActiveClassName;
-    document.getElementById('quickAddStudentModal').classList.remove('hidden');
-  };
-
-  window.saveQuickStudentForClass = function() {
-    const cls = document.getElementById('quickAddStudentClass').value;
-    const name = document.getElementById('quickStudentName').value.trim();
-    const cat = document.getElementById('quickStudentCategorySelect').value;
-    const father = document.getElementById('quickStudentFather').value.trim();
-    const phone = document.getElementById('quickStudentPhone').value.trim();
-    const regNo = document.getElementById('quickStudentRegisterNo').value.trim() || ('ABA-' + Date.now().toString().slice(-4));
-    const fileInput = document.getElementById('quickStudentPhoto');
-
-    if(cls && name) {
-      handleImageUpload(fileInput, (photoBase64) => {
-        if(!window.dbData.students[cls]) window.dbData.students[cls] = [];
-        window.dbData.students[cls].push({ id: Date.now(), name, category: cat, father, phone, regNo, photo: photoBase64, isRegistered: true, status: 'Present', feeStatus: 'Pending' });
-        window.saveData();
-        document.getElementById('quickAddStudentModal').classList.add('hidden');
-        alert(`✅ Student "${name}" added to ${cls}!`);
-        document.getElementById('quickStudentName').value = "";
-        document.getElementById('quickStudentFather').value = "";
-        document.getElementById('quickStudentPhone').value = "";
-        document.getElementById('quickStudentRegisterNo').value = "";
-        fileInput.value = "";
-        openSubjectStudentList(currentActiveClassName, currentActiveSubjectName);
-      });
-    } else {
-      alert("⚠️ Please enter student name!");
-    }
-  };
 
   function updateLiveDateDisplay() {
     const label = document.getElementById('currentLiveDateLabel');
@@ -1984,7 +1979,7 @@
       tbody.innerHTML += `<tr>
         <td><img src="${s.photo || 'https://via.placeholder.com/40'}" style="width:36px; height:36px; border-radius:50%; object-fit:cover;"></td>
         <td>${idx+1}</td>
-        <td><b>${s.name}</b> <small style="color:#ffd000;">[${s.category || 'Senior'}]</small></td>
+        <td><b>${s.name}</b> <small style="color:#a7f3d0;">[${s.place || 'Puthupparmba'}]</small> <small style="color:#ffd000;">[${s.category || 'Senior'}]</small></td>
         <td>${statusBtn} ${absWaBtn}</td>
       </tr>`;
     });
@@ -2072,6 +2067,7 @@
   window.adminRegisterStudent = function() {
     const cls = document.getElementById('regStudentClassSelect').value;
     const name = document.getElementById('regStudentName').value.trim();
+    const place = document.getElementById('regStudentPlace').value.trim();
     const cat = document.getElementById('regStudentCategorySelect').value;
     const father = document.getElementById('regFatherName').value.trim();
     const phone = document.getElementById('regPhoneNum').value.trim();
@@ -2081,14 +2077,16 @@
     if(cls && name) {
       handleImageUpload(fileInput, (photoBase64) => {
         if(!window.dbData.students[cls]) window.dbData.students[cls] = [];
-        window.dbData.students[cls].push({ id: Date.now(), name, category: cat, father, phone, regNo, photo: photoBase64, isRegistered: true, status: 'Present', feeStatus: 'Pending' });
+        window.dbData.students[cls].push({ id: Date.now(), name, place, category: cat, father, phone, regNo, photo: photoBase64, isRegistered: true, status: 'Present', feeStatus: 'Pending' });
         window.saveData();
         alert(`✅ Student "${name}" Registered Successfully!`);
         document.getElementById('regStudentName').value = "";
+        document.getElementById('regStudentPlace').value = "";
         document.getElementById('regFatherName').value = "";
         document.getElementById('regPhoneNum').value = "";
         document.getElementById('regStudentRegisterNo').value = "";
         fileInput.value = "";
+        renderAdminManageStudentsTable();
       });
     } else {
       alert("⚠️ Please select a class and enter student name!");
@@ -2110,7 +2108,7 @@
         if(!window.dbData.usthads) window.dbData.usthads = [];
         window.dbData.usthads.push({ id: Date.now(), type, badge, name, loc, mapLink, sub, contact, photo: photoBase64 });
         window.saveData();
-        alert(`✅ Member "${name}" Added with Designation Badge & Photo Successfully!`);
+        alert(`✅ Member "${name}" Added Successfully!`);
         document.getElementById('teacherNameInput').value = "";
         document.getElementById('teacherDesignationInput').value = "";
         document.getElementById('teacherLocInput').value = "";
@@ -2229,7 +2227,6 @@
       else failCount++;
     });
 
-    // Fallback counts for demo
     if (passCount === 0 && failCount === 0) { passCount = 12; failCount = 3; }
 
     examAnalyticsChartInstance = new Chart(ctx, {
@@ -2503,7 +2500,7 @@
       } else {
         card.innerHTML = `
           <h3 style="margin:0 0 6px 0; font-size:18px;">🏆 ${t.name}</h3>
-          <div style="font-size:24px; font-weight:900;">${t.points} PTS</div>
+          <div id="ptsDisplay_${t.id}" style="font-size:24px; font-weight:900;">${t.points} PTS</div>
           <div style="background:rgba(0,0,0,0.3); padding:4px 10px; border-radius:12px; font-size:11px; font-weight:bold; margin-top:6px;">🌟 TOP PERFORMANCE!</div>
           ${adminControls}
         `;
@@ -2525,7 +2522,7 @@
           team.revealed = true;
           window.saveData();
           playCelebrationSound();
-          try { confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 } }); } catch(e) {}
+          try { confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 } }); } catch(e) {}
           renderChallengeLeaderboard();
         }
       }, 1000);
@@ -2536,7 +2533,10 @@
     let team = window.dbData.subjectChallengeTeams[key].find(t => t.id === teamId);
     if(team) {
       team.points = Math.max(0, team.points + delta);
-      window.saveData(); renderChallengeLeaderboard();
+      window.saveData();
+      playCelebrationSound();
+      try { confetti({ particleCount: 60, spread: 50, origin: { y: 0.7 } }); } catch(e) {}
+      renderChallengeLeaderboard();
     }
   };
 
@@ -2583,6 +2583,7 @@
     let excelData = students.map((s, i) => ({
       'Roll No': i + 1,
       'Student Name': s.name,
+      'Place': s.place || 'Puthupparmba',
       'Class': currentActiveClassName,
       'Report Period': selectedPeriod.toUpperCase(),
       'Date': todayDate,
@@ -2642,4 +2643,3 @@
 </script>
 </body>
 </html>
-```
