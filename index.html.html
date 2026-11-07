@@ -135,7 +135,9 @@
     .folder-card { background: linear-gradient(135deg, #1e293b, #0f172a); color: white; border-radius: 18px; padding: 20px; text-align: center; cursor: pointer; font-weight: 800; border: 1px solid var(--glass-border); pointer-events: auto; }
 
     .rich-gradient-headline-blue { background: linear-gradient(135deg, #38bdf8, #1d4ed8); padding: 14px 18px; border-radius: 16px; color: #fff; font-weight: 900; font-size: 16px; margin-bottom: 18px; }
-    .rich-gradient-headline-yellow { background: linear-gradient(135deg, #facc15, #ea580c); padding: 14px 18px; border-radius: 16px; color: #000; font-weight: 900; font-size: 16px; margin-bottom: 18px; }
+    
+    /* ROSE AND WHITE MIXED COLOR GRADIENT FOR COMMITTEE */
+    .rich-gradient-headline-rose { background: linear-gradient(135deg, #ff65a3, #ffffff); padding: 14px 18px; border-radius: 16px; color: #9f1239; font-weight: 900; font-size: 16px; margin-bottom: 18px; box-shadow: 0 4px 20px rgba(255, 101, 163, 0.4); border: 1px solid rgba(255,255,255,0.6); }
 
     .grad-orange-yellow { background: linear-gradient(135deg, #f97316, #eab308) !important; color: #000 !important; }
     .grad-red-orange { background: linear-gradient(135deg, #ef4444, #f97316) !important; color: #fff !important; }
@@ -151,6 +153,7 @@
       touch-action: manipulation;
       user-select: none;
       margin-top: 12px;
+      pointer-events: auto;
     }
 
     .challenge-card {
@@ -181,6 +184,7 @@
       background: rgba(0, 0, 0, 0.4);
       padding: 20px;
       box-shadow: inset 0 0 20px var(--card-glow);
+      pointer-events: auto;
     }
 
     .challenge-back {
@@ -189,26 +193,22 @@
       background: rgba(0, 0, 0, 0.85);
     }
 
-    .points-badge {
-      font-size: 2.5rem; font-weight: 900;
-      color: var(--accent-yellow);
-      text-shadow: 0 0 15px var(--accent-yellow);
-      margin-top: 10px;
-    }
-
-    .gift-spin-anim { animation: spinBox 1.2s ease-in-out infinite; }
-    @keyframes spinBox {
-      0% { transform: rotate(0deg) scale(1); }
-      50% { transform: rotate(180deg) scale(1.2); }
-      100% { transform: rotate(360deg) scale(1); }
-    }
-
     .faculty-card-modern {
       background: linear-gradient(145deg, rgba(28, 37, 65, 0.95), rgba(11, 19, 43, 0.98));
       border: 1px solid var(--glass-border); border-radius: 22px; padding: 20px; text-align: center;
       cursor: pointer; position: relative; overflow: hidden; pointer-events: auto;
     }
+    
+    /* COMMITTEE CARD ROSE THEME STYLE */
+    .faculty-card-rose {
+      background: linear-gradient(145deg, rgba(50, 15, 30, 0.95), rgba(30, 10, 20, 0.98));
+      border: 1px solid rgba(255, 101, 163, 0.5); border-radius: 22px; padding: 20px; text-align: center;
+      cursor: pointer; position: relative; overflow: hidden; pointer-events: auto;
+      box-shadow: 0 8px 25px rgba(255, 101, 163, 0.25);
+    }
+
     .faculty-avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-yellow); margin: 10px auto 12px auto; display: block; }
+    .faculty-avatar-rose { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid #ff65a3; margin: 10px auto 12px auto; display: block; }
     
     .designation-badge {
       background: linear-gradient(135deg, #38bdf8, #0284c7);
@@ -216,7 +216,13 @@
       display: inline-block;
     }
 
-    button { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border: none; padding: 11px 18px; border-radius: 14px; cursor: pointer; font-weight: 800; font-family: 'Poppins', sans-serif; font-size: 12px; position: relative; z-index: 10; pointer-events: auto; }
+    .designation-badge-rose {
+      background: linear-gradient(135deg, #ff65a3, #f43f5e);
+      color: #fff; padding: 4px 12px; border-radius: 12px; font-size: 10px; font-weight: 800; text-transform: uppercase;
+      display: inline-block;
+    }
+
+    button { background: linear-gradient(135deg, #0284c7, #0369a1); color: white; border: none; padding: 11px 18px; border-radius: 14px; cursor: pointer; font-weight: 800; font-family: 'Poppins', sans-serif; font-size: 12px; position: relative; z-index: 10; pointer-events: auto; touch-action: manipulation; }
     button:hover { filter: brightness(1.15); }
     .btn-back { background: #475569; padding: 8px 16px; font-size: 11px; margin-bottom: 16px; border-radius: 10px; }
 
@@ -368,7 +374,7 @@
       <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); padding: 20px; border-radius: 22px; margin-bottom: 24px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
           <div>
-            <h3 style="color: var(--accent-yellow); margin: 0; font-size: 16px; font-weight: 800;">🏛️ COLLEGE COMMITTEE & SECRETARIAT</h3>
+            <h3 style="color: #ff65a3; margin: 0; font-size: 16px; font-weight: 800;">🏛️ COLLEGE COMMITTEE & SECRETARIAT</h3>
             <p style="font-size: 11px; color: #38bdf8; margin: 2px 0 0 0;">Key administrative members and management team</p>
           </div>
           <button onclick="switchTab('usthadTab', document.querySelector('[data-tab=\'usthadTab\']'))" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); font-size: 11px; padding: 6px 12px; border-radius: 10px;">
@@ -592,7 +598,7 @@
       <input type="text" id="teacherSearchInput" placeholder="🔍 Search Faculty Name / Subject / Location..." oninput="renderUsthads()">
       <div class="folder-grid" id="usthadsGrid" style="margin-top:16px;"></div>
 
-      <div class="rich-gradient-headline-yellow" style="margin-top:34px;">🤝 Committee & Administrative Staff</div>
+      <div class="rich-gradient-headline-rose" style="margin-top:34px;">🤝 Committee & Administrative Staff</div>
       <div class="folder-grid" id="committeeGrid" style="margin-top:16px;"></div>
     </div>
 
@@ -1254,10 +1260,10 @@
     if(!grid) return; grid.innerHTML = "";
     (window.dbData.usthads || []).filter(u => u.type === 'committee').slice(0, 4).forEach(u => {
       grid.innerHTML += `
-        <div style="background:rgba(0,0,0,0.3); border:1px solid var(--glass-border); padding:14px; border-radius:16px; text-align:center;">
-          <img src="${u.photo || 'https://via.placeholder.com/60'}" style="width:55px; height:55px; border-radius:50%; object-fit:cover; border:2px solid var(--accent-yellow); margin:0 auto 8px auto;">
-          <h4 style="margin:0; font-size:13px; color:#ffd000;">${u.name}</h4>
-          <span style="font-size:10px; color:#38bdf8; font-weight:bold;">${u.badge || 'Committee'}</span>
+        <div style="background:rgba(50,15,30,0.6); border:1px solid rgba(255,101,163,0.5); padding:14px; border-radius:16px; text-align:center; box-shadow:0 4px 15px rgba(255,101,163,0.2);">
+          <img src="${u.photo || 'https://via.placeholder.com/60'}" style="width:55px; height:55px; border-radius:50%; object-fit:cover; border:2px solid #ff65a3; margin:0 auto 8px auto;">
+          <h4 style="margin:0; font-size:13px; color:#ff65a3;">${u.name}</h4>
+          <span style="font-size:10px; color:#ffffff; font-weight:bold; background:rgba(255,101,163,0.3); padding:2px 8px; border-radius:8px; display:inline-block; margin-top:4px;">${u.badge || 'Committee'}</span>
         </div>
       `;
     });
@@ -1552,17 +1558,32 @@
       let adminBtns = window.isAdmin ? `<div style="margin-top:6px;"><button class="btn-edit" onclick="openEditTeacherModal(${u.id})">✏️ Edit</button><button class="btn-delete" onclick="deleteTeacher(${u.id})">🗑️ Delete</button></div>` : '';
 
       if(!q || u.name.toLowerCase().includes(q) || teacherLocStr.toLowerCase().includes(q) || (u.sub || '').toLowerCase().includes(q)) {
-        const cardHtml = `<div class="faculty-card-modern" onclick="showFacultyDetailsModal(${u.id})">
-          <span class="designation-badge">⭐ ${u.badge || (u.type === 'committee' ? 'Committee' : 'Faculty')}</span>
-          <img src="${u.photo || 'https://via.placeholder.com/80'}" class="faculty-avatar">
-          <h3 style="margin:6px 0 2px 0; font-size:16px; color:#ffd000; font-weight:800;">${u.name}</h3>
-          <p style="margin:0; font-size:11px; color:#38bdf8; font-weight:600;">${u.sub || 'Faculty Member'}</p>
-          ${contactBtns}
-          <div onclick="event.stopPropagation()">${adminBtns}</div>
-        </div>`;
-
-        if(u.type === 'committee') committeeGrid.innerHTML += cardHtml;
-        else usthadGrid.innerHTML += cardHtml;
+        
+        if (u.type === 'committee') {
+          const roseCardHtml = `
+            <div class="faculty-card-rose" onclick="showFacultyDetailsModal(${u.id})">
+              <span class="designation-badge-rose">⭐ ${u.badge || 'Committee'}</span>
+              <img src="${u.photo || 'https://via.placeholder.com/80'}" class="faculty-avatar-rose">
+              <h3 style="margin:6px 0 2px 0; font-size:16px; color:#ff65a3; font-weight:800;">${u.name}</h3>
+              <p style="margin:0; font-size:11px; color:#ffffff; font-weight:600;">${u.sub || 'Secretariat Officer'}</p>
+              ${contactBtns}
+              <div onclick="event.stopPropagation()">${adminBtns}</div>
+            </div>
+          `;
+          committeeGrid.innerHTML += roseCardHtml;
+        } else {
+          const usthadCardHtml = `
+            <div class="faculty-card-modern" onclick="showFacultyDetailsModal(${u.id})">
+              <span class="designation-badge">⭐ ${u.badge || 'Faculty'}</span>
+              <img src="${u.photo || 'https://via.placeholder.com/80'}" class="faculty-avatar">
+              <h3 style="margin:6px 0 2px 0; font-size:16px; color:#ffd000; font-weight:800;">${u.name}</h3>
+              <p style="margin:0; font-size:11px; color:#38bdf8; font-weight:600;">${u.sub || 'Faculty Member'}</p>
+              ${contactBtns}
+              <div onclick="event.stopPropagation()">${adminBtns}</div>
+            </div>
+          `;
+          usthadGrid.innerHTML += usthadCardHtml;
+        }
       }
     });
   }
@@ -2487,22 +2508,35 @@
       ` : '';
 
       let card = document.createElement('div');
-      card.className = `challenge-card ${t.theme || 'grad-orange-yellow'}`;
+      card.className = `challenge-container ${t.theme || 'grad-orange-yellow'}`;
+      card.style.minHeight = '180px';
+      card.style.borderRadius = '16px';
+      card.style.overflow = 'hidden';
       
       if (!t.revealed) {
         card.innerHTML = `
-          <div id="giftBoxSpin_${t.id}" onclick="revealGiftBoxWithSpin('${key}', ${t.id})" style="padding:10px; cursor:pointer; text-align:center;">
-            <div class="gift-icon" style="font-size:48px; margin-bottom:8px; transition:all 0.5s ease;">🎁</div>
-            <h3 style="margin:0; font-size:16px; color:#000; font-weight:900;">CLICK MYSTERY GIFT BOX</h3>
-            <p style="margin:4px 0 0 0; font-size:11px; color:#111; font-weight:700;">${t.name}</p>
+          <div class="challenge-card">
+            <div class="challenge-front" onclick="revealGiftBoxWithSpin('${key}', ${t.id})">
+              <div class="gift-icon" style="font-size:42px; margin-bottom:6px;">🎁</div>
+              <h3 style="margin:0; font-size:15px; color:#000; font-weight:900;">CLICK MYSTERY GIFT BOX</h3>
+              <p style="margin:4px 0 0 0; font-size:11px; color:#111; font-weight:700;">${t.name}</p>
+            </div>
+            <div class="challenge-back">
+              <h3 style="margin:0 0 4px 0; font-size:16px;">🏆 ${t.name}</h3>
+              <div style="font-size:22px; font-weight:900;">${t.points} PTS</div>
+            </div>
           </div>
         `;
       } else {
         card.innerHTML = `
-          <h3 style="margin:0 0 6px 0; font-size:18px;">🏆 ${t.name}</h3>
-          <div id="ptsDisplay_${t.id}" style="font-size:24px; font-weight:900;">${t.points} PTS</div>
-          <div style="background:rgba(0,0,0,0.3); padding:4px 10px; border-radius:12px; font-size:11px; font-weight:bold; margin-top:6px;">🌟 TOP PERFORMANCE!</div>
-          ${adminControls}
+          <div class="challenge-card" style="transform: rotateX(0deg);">
+            <div class="challenge-front" style="position:relative; background:rgba(0,0,0,0.6);">
+              <h3 style="margin:0 0 6px 0; font-size:18px;">🏆 ${t.name}</h3>
+              <div style="font-size:24px; font-weight:900;">${t.points} PTS</div>
+              <div style="background:rgba(0,0,0,0.3); padding:4px 10px; border-radius:12px; font-size:11px; font-weight:bold; margin-top:6px;">🌟 TOP PERFORMANCE!</div>
+              ${adminControls}
+            </div>
+          </div>
         `;
       }
       grid.appendChild(card);
@@ -2513,19 +2547,13 @@
 
   window.revealGiftBoxWithSpin = function(key, teamId) {
     playClickSound();
-    const boxEl = document.getElementById(`giftBoxSpin_${teamId}`);
-    if(boxEl) {
-      boxEl.querySelector('.gift-icon').classList.add('gift-spin-anim');
-      setTimeout(() => {
-        let team = window.dbData.subjectChallengeTeams[key].find(t => t.id === teamId);
-        if(team) {
-          team.revealed = true;
-          window.saveData();
-          playCelebrationSound();
-          try { confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 } }); } catch(e) {}
-          renderChallengeLeaderboard();
-        }
-      }, 1000);
+    let team = window.dbData.subjectChallengeTeams[key].find(t => t.id === teamId);
+    if(team) {
+      team.revealed = true;
+      window.saveData();
+      playCelebrationSound();
+      try { confetti({ particleCount: 150, spread: 90, origin: { y: 0.6 } }); } catch(e) {}
+      renderChallengeLeaderboard();
     }
   };
 
